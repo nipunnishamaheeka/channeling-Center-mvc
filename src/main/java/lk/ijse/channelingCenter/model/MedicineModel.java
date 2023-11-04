@@ -50,28 +50,26 @@ public class MedicineModel {
 
         ResultSet resultSet = pstm.executeQuery();
 
-        EmployeeDto dto = null;
+        MedicineDto dto = null;
 
         if (resultSet.next()) {
-            String emp_id = resultSet.getString(1);
-            String emp_name = resultSet.getString(2);
-            String emp_address = resultSet.getString(3);
-            String email = resultSet.getString(4);
-            String qualification = resultSet.getString(5);
+            String medi_code = resultSet.getString(1);
+            String stock = resultSet.getString(2);
+            String supplier_id = resultSet.getString(3);
+            String location = resultSet.getString(4);
 
-
-            dto = new EmployeeDto(emp_id, emp_name, emp_address, email, qualification);
+            dto = new MedicineDto(medi_code, stock, supplier_id, location);
         }
 
         return dto;
     }
 
-    public boolean deleteEmployee(String emp_id) throws SQLException {
+    public boolean deleteMedicine(String medi_code) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "DELETE FROM employee WHERE emp_id = ?";
+        String sql = "DELETE FROM medicine WHERE medi_code = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, emp_id);
+        pstm.setString(1, medi_code);
 
         return pstm.executeUpdate() > 0;
     }

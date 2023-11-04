@@ -127,5 +127,4 @@ public class PatientModel {
         }
         return dtoList;
     }
-
 }
