@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="832.0" prefWidth="1280.00" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.DashboardFromController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="842.0" layoutX="-7.0" layoutY="-6.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dashboard_pane" width="1280.0" />
+      <Text layoutX="72.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered?">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#0066ff" layoutX="217.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an Account">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="125.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="#828181" layoutX="71.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please login to your account.">
+         <font>
+            <Font size="48.0" />
+         </font>
+         <styleClass>
+            <String fx:value="welcome_back" />
+            <String fx:value="welcome_back" />
+         </styleClass>
+      </Text>
+      <Text layoutX="71.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="welcome_back" text="User Name">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <TextField layoutX="71.0" layoutY="234.0" prefHeight="63.0" prefWidth="498.0" promptText="Please enter your user name" styleClass="password-field">
+            <font>
+                <Font size="24.0" />
+            </font>
+      </TextField>
+
+      <Text layoutX="71.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="welcome_back" text="Password">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <TextField layoutX="71.0" layoutY="364.0" prefHeight="63.0" prefWidth="498.0" promptText="Enter password" styleClass="password-field" stylesheets="@../css/style.css" />
+      <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="526.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Icon.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="71.0" layoutY="474.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="494.0" style="-fx-background-color: 0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Login">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text fill="#0066ff" layoutX="72.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="password-field" text="Forget Password?" />
+      <ImageView fitHeight="38.0" fitWidth="498.0" layoutX="70.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Or%20-%20divider.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="267.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Using">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="90.0" fitWidth="71.0" layoutX="322.0" layoutY="731.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/facebook.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="71.0" layoutX="234.0" layoutY="730.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/google%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="839.0" fitWidth="1118.0" layoutX="162.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/45.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</AnchorPane>

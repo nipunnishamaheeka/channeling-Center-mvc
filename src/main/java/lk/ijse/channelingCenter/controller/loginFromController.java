@@ -1,4 +1,4 @@
 package lk.ijse.channelingCenter.controller;
 
-public class DashboardFromController {
+public class loginFromController {
 }

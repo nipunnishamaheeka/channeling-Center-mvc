@@ -11,7 +11,7 @@ public class Launcher extends Application {
     }
 
     public void start(Stage stage) throws Exception{
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/dashboardFrom.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"))));
         stage.centerOnScreen();
         stage.show();
     }

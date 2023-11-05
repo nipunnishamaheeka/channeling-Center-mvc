@@ -12,17 +12,19 @@ public class DbConnection {
     private Connection connection;
 
     private DbConnection() throws SQLException {
-        connection= DriverManager.getConnection(
+        connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/channelingcenter",
                 "root",
                 "Mahee@10985"
+
         );
     }
+
     public static DbConnection getInstance() throws SQLException {
-        if (dbconnection==null){
-            dbconnection=new DbConnection();
+        if (dbconnection == null) {
+            dbconnection = new DbConnection();
             return dbconnection;
-        }else {
+        } else {
             return dbconnection;
         }
     }

@@ -19,3 +19,36 @@
     -fx-border-radius: 50;
     -fx-border-color: #3877EF;
 }
+.dashboard_pane{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #ffffff;
+}
+.channeling_center{
+    -fx-font-family: Arial;
+    -fx-font-size: 40;
+    -fx-font-color: #333333;
+}
+.welcome_back{
+    -fx-font-family: Arial;
+    -fx-font-size: 24;
+    -fx-font-color: #828181;
+}
+.password-field{
+    -fx-font-family: Arial;
+    -fx-font-size: 20;
+    -fx-font-color: #828181;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.login_button{
+    -fx-font-family: Arial;
+    -fx-font-size: 20;
+    -fx-font-color: #ffffff;
+    -fx-background-color: #0067FF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+}
