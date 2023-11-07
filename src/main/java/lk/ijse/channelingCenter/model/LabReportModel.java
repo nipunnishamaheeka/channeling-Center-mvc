@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LabReportModel{
+public class LabReportModel {
     public boolean saveLabReport(final LabReportDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -26,6 +26,7 @@ public class LabReportModel{
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
+
 
     }
 
@@ -43,7 +44,7 @@ public class LabReportModel{
         return pstm.executeUpdate() > 0;
     }
 
-    public EmployeeDto searchLabReport(String patient_id) throws SQLException {
+    /*public EmployeeDto searchLabReport(String patient_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM labReport WHERE patient_id = ?";
@@ -55,7 +56,8 @@ public class LabReportModel{
         LabReportDto dto = null;
 
         if (resultSet.next()) {
-            String patient_id = resultSet.getString(1);
+            String labReport_id = resultSet.getString(1);
 
         }
-    }
+    }*/
+}

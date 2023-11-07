@@ -4,40 +4,54 @@
     -fx-border-radius:100;
     -fx-background-radius: 100;
 }
+.OverView _pane{
+    -fx-background-color: #A2ABB7;
+    -fx-fill: #A2ABB7;
+    -fx-border-radius:2500;
+    -fx-background-radius: 2500;
+}
 .searchbar{
     -fx-font-family: Inter;
-    -fx-font-size: 16;
-    -fx-font-weight: 500;
+    -fx-font-size: 14;
     -fx-background-color: #ffffff;
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
-    -fx-border-color: black;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color:non;
 }
 .searchbar:hover{
-    -fx-background-color: #ff0000;
-    -fx-background-radius: 50;
-    -fx-border-radius: 50;
+    -fx-background-color: #DEDEDE;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
     -fx-border-color: #3877EF;
 }
 .dashboard_pane{
     -fx-background-color: #ffffff;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
     -fx-border-color: #ffffff;
 }
 .channeling_center{
     -fx-font-family: Arial;
-    -fx-font-size: 40;
+    -fx-font-size: 30;
     -fx-font-color: #333333;
 }
 .welcome_back{
     -fx-font-family: Arial;
-    -fx-font-size: 24;
+    -fx-font-size: 18;
     -fx-font-color: #828181;
 }
-.password-field{
+
+.promtText-field{
     -fx-font-family: Arial;
-    -fx-font-size: 20;
+    -fx-font-size: 12;
+    -fx-font-color: #828181;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.userName{
+    -fx-font-family: Arial;
+    -fx-font-size: 14;
     -fx-font-color: #828181;
     -fx-background-color: #ffffff;
     -fx-background-radius: 10;
@@ -50,5 +64,10 @@
     -fx-background-color: #0067FF;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-
+}
+.rectrangal_pane{
+    -fx-background-color: white;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-fill: white;
 }

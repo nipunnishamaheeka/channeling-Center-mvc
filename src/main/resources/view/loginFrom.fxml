@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="832.0" prefWidth="1280.00" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.DashboardFromController">
+<AnchorPane fx:id="loginPane" prefHeight="750.0" prefWidth="1380.0" style="-fx-background-color: #DEDEDE;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.LoginFromController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="842.0" layoutX="-7.0" layoutY="-6.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dashboard_pane" width="1280.0" />
-      <Text layoutX="72.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered?">
+      <ImageView fitHeight="750.0" fitWidth="998.0" layoutX="382.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/45.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="671.0" fitWidth="962.0" layoutX="220.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/9109703%201.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="53.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered?">
          <font>
-            <Font name="Arial" size="20.0" />
+            <Font name="Arial" size="14.0" />
          </font>
       </Text>
-      <Text fill="#0066ff" layoutX="217.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an Account">
+      <Text fx:id="txtcreateAccount" accessibleRole="BUTTON" fill="#0066ff" layoutX="152.0" layoutY="41.0" onMouseClicked="#txtcreateAccountOnMouseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an Account">
          <font>
-            <Font name="Arial" size="20.0" />
+            <Font name="Arial" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Text>
-      <Text layoutX="125.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
+      <Text layoutX="86.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
-      <Text fill="#828181" layoutX="71.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please login to your account.">
+      <Text fill="#828181" layoutX="52.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please login to your account.">
          <font>
             <Font size="48.0" />
          </font>
@@ -37,57 +50,38 @@
             <String fx:value="welcome_back" />
          </styleClass>
       </Text>
-      <Text layoutX="71.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="welcome_back" text="User Name">
+      <Text layoutX="52.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="User Name">
          <font>
-            <Font size="48.0" />
+            <Font size="14.0" />
          </font>
       </Text>
-      <TextField layoutX="71.0" layoutY="234.0" prefHeight="63.0" prefWidth="498.0" promptText="Please enter your user name" styleClass="password-field">
+      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="309.0" onAction="#txtUserName" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
             <font>
                 <Font size="24.0" />
             </font>
       </TextField>
 
-      <Text layoutX="71.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="welcome_back" text="Password">
+      <Text layoutX="52.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Password">
          <font>
-            <Font size="48.0" />
+            <Font size="14.0" />
          </font>
       </Text>
-      <TextField layoutX="71.0" layoutY="364.0" prefHeight="63.0" prefWidth="498.0" promptText="Enter password" styleClass="password-field" stylesheets="@../css/style.css" />
-      <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="526.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Icon.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="71.0" layoutY="474.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="494.0" style="-fx-background-color: 0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Login">
+      <Button fx:id="btnlogin" layoutX="53.0" layoutY="562.0" mnemonicParsing="false" onAction="#btnloginOnAction" prefHeight="54.0" prefWidth="359.0" style="-fx-background-color: 0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Login" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Text fill="#0066ff" layoutX="72.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="password-field" text="Forget Password?" />
-      <ImageView fitHeight="38.0" fitWidth="498.0" layoutX="70.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Or%20-%20divider.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="267.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Using">
+      <Text fill="#0066ff" layoutX="53.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget Password?">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="90.0" fitWidth="71.0" layoutX="322.0" layoutY="731.0" pickOnBounds="true" preserveRatio="true">
+            <Font size="11.0" />
+         </font></Text>
+      <PasswordField fx:id="textpassword" layoutX="53.0" layoutY="391.0" onAction="#txtPassword" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
+      <ImageView fitHeight="100.0" fitWidth="96.0" layoutX="162.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/facebook.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="71.0" layoutX="234.0" layoutY="730.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/google%20(1).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="839.0" fitWidth="1118.0" layoutX="162.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/45.png" />
+            <Image url="@../assets/final%20logo%20.png" />
          </image>
       </ImageView>
 

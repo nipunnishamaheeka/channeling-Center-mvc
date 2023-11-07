@@ -11,8 +11,9 @@ public class Launcher extends Application {
     }
 
     public void start(Stage stage) throws Exception{
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/createAccountFrom.fxml"))));
         stage.centerOnScreen();
+       // stage.setFullScreen(true);
         stage.show();
     }
 }
