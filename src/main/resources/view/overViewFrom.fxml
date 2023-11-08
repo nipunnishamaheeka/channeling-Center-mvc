@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="createAccountPane" prefHeight="750.0" prefWidth="1380.0" style="-fx-background-color: #DEDEDE;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
+   <children>
+      <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="7.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/final%20logo%20.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1290.0" styleClass="background_pane" stylesheets="@../css/style.css">
+         <children>
+            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
+            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
+               <children>
+                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/question.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/notification.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="82.0" layoutY="117.0" prefHeight="74.0" prefWidth="209.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+               <children>
+                  <Text layoutX="106.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors" translateX="-16.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="106.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120" translateX="-16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="18.0" layoutY="12.0" prefHeight="51.0" prefWidth="54.0">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/medical-doctor.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="392.0" layoutY="117.0" prefHeight="74.0" prefWidth="209.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+               <children>
+                  <Text layoutX="106.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports" translateX="-16.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="106.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120" translateX="-16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="18.0" layoutY="12.0" prefHeight="51.0" prefWidth="54.0">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/medical-lab.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="702.0" layoutY="117.0" prefHeight="74.0" prefWidth="209.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+               <children>
+                  <Text layoutX="106.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients" translateX="-16.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="106.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120" translateX="-16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="18.0" layoutY="12.0" prefHeight="51.0" prefWidth="54.0">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/delivery-courier.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="1012.0" layoutY="117.0" prefHeight="74.0" prefWidth="209.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+               <children>
+                  <Text layoutX="106.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinemnts" translateX="-16.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="106.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120" translateX="-16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="18.0" layoutY="12.0" prefHeight="51.0" prefWidth="54.0">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons8-timetable-94.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Text layoutX="24.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="24.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinment Request">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Text>
+            <Pane layoutX="24.0" layoutY="237.0" prefHeight="491.0" prefWidth="618.0" styleClass="dashboard_pane" />
+            <Pane layoutX="650.0" layoutY="237.0" prefHeight="491.0" prefWidth="618.0" styleClass="dashboard_pane" />
+         </children></Pane>
+      <Pane fx:id="btnText" layoutX="20.0" layoutY="130.0" onDragEntered="#mouseEnterOnAction" onMouseEntered="#mouseEnterdOnAction" onMouseExited="#mouseExitedOnAction" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane" stylesheets="@../css/style.css">
+         <children>
+            <ImageView fx:id="btnhome" fitHeight="30.0" fitWidth="30.0" layoutX="6.0" layoutY="6.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final%201.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="195.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome1" fitHeight="35.0" fitWidth="35.0" layoutX="3.0" layoutY="3.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="260.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome11" fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="5.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="330.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome12" fitHeight="30.0" fitWidth="30.0" layoutX="6.0" layoutY="5.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final4.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="400.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome121" fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="5.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final5.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="470.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome1211" fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="5.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final6.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="20.0" layoutY="666.0" prefHeight="40.0" prefWidth="150.0" styleClass="button_pane">
+         <children>
+            <ImageView fx:id="btnhome12111" fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="5.0" onDragDetected="#btnhomeOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/final7.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

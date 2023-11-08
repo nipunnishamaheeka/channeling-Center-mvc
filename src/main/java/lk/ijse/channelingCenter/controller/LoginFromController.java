@@ -42,13 +42,14 @@ public class LoginFromController {
         stage.setScene(scene);
 
         //set title and get center on screen stage
-        stage.setTitle("Dashboard");
+        stage.setTitle("OverView");
         stage.centerOnScreen();
 
         //show stage to the crowd
         stage.show();
 
-
+        Stage stage1 = (Stage) loginPane.getScene().getWindow();
+        stage1.close();
 
     }
 
