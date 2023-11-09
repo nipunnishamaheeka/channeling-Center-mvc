@@ -11,7 +11,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateAccountFromController {
-    public AnchorPane createAccountPane;
+   @FXML
+    private AnchorPane createAccountPane;
 
     @FXML
     void txtLoginOnMouseClicked(MouseEvent event) throws IOException {
@@ -39,7 +40,7 @@ public class CreateAccountFromController {
         stage.setScene(scene);
 
         //set title and get center on screen stage
-        stage.setTitle("Login");
+        stage.setTitle("Create Account");
         stage.centerOnScreen();
 
         //show stage to the crowd

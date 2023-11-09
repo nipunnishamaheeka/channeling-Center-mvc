@@ -42,7 +42,7 @@ public class LoginFromController {
         stage.setScene(scene);
 
         //set title and get center on screen stage
-        stage.setTitle("OverView");
+        stage.setTitle("Login From");
         stage.centerOnScreen();
 
         //show stage to the crowd

@@ -1,14 +1,26 @@
 .dashboard_side_pane{
-    -fx-background-color:#3877EF ;
-    -fx-fill: #3877EF;
-    -fx-border-radius:100;
-    -fx-background-radius: 100;
+    -fx-background-color:  rgba(224,233,244,1) ;
+    -fx-fill:   rgba(224,233,244,1);
+    -fx-border-radius:5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgb(158, 166, 176), 15, 0, 0, 0);
 }
 .OverView _pane{
     -fx-background-color: #A2ABB7;
     -fx-fill: #A2ABB7;
     -fx-border-radius:2500;
     -fx-background-radius: 2500;
+}
+.anchor_pane{
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+   -fx-background-color: white;
+}
+.payment_pane{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-color: #ffffff;
 }
 .searchbar{
     -fx-font-family: Inter;
@@ -25,10 +37,11 @@
     -fx-border-color: #3877EF;
 }
 .dashboard_pane{
-    -fx-background-color: #ffffff;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-    -fx-border-color: #ffffff;
+
+    -fx-background: rgb(216,210,252);
+    -fx-background-color: linear-gradient( to right,rgba(216,210,252,1) 0%, rgba(253,226,224,1) 45%, rgba(224,233,244,1) 100%);
 }
 .channeling_center{
     -fx-font-family: Arial;
@@ -79,6 +92,7 @@
 }
 .hbox_pane{
     -fx-background-color: #ffffff;
+
 }
 .hbox_pane:hover{
 
@@ -89,13 +103,13 @@
     -fx-background-radius: 10;
 }
 .button_pane:hover{
-    -fx-background-color: #DEDEDE;
-    -fx-border-color: #DEDEDE;
+    -fx-background-color: #E0E9F4FF;
+    -fx-border-color: #E0E9F4FF;
     -fx-font: 14px "Arial";
     -fx-shadow-color: #DEDEDE;
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
 .text:hover{
-
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
 #DEDEDE

@@ -1,24 +1,49 @@
 package lk.ijse.channelingCenter.controller;
 
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class OverViewFromController {
 
-    public Text customId;
+    @FXML
+    private Pane btnappoinment;
 
     @FXML
-    void btnpaymentOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/payment.fxml"));
+    private Pane btndoctor;
+
+    @FXML
+    private Pane btnemployee;
+
+    @FXML
+    private Pane btnlabReports;
+
+    @FXML
+    private Pane btnlogout;
+
+    @FXML
+    private Pane btnmedicine;
+
+    @FXML
+    private Pane btnoverView;
+
+    @FXML
+    private Pane btnpatient;
+
+   @FXML
+   private AnchorPane overViewPane;
+
+    @FXML
+    void btnappoinmentOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/appoinmentFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);
@@ -28,40 +53,174 @@ public class OverViewFromController {
         stage.setScene(scene);
 
         //set title and get center on screen stage
-        stage.setTitle("Payment");
+        stage.setTitle("Appoinment");
         stage.centerOnScreen();
 
         //show stage to the crowd
         stage.show();
 
-       /* Stage stage1 = (Stage) loginPane.getScene().getWindow();
-        stage1.close();*/
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
 
 
     }
 
     @FXML
-    void btnscheduleOnAction(MouseEvent event) {
+    void btndoctorOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/doctorFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
 
     }
 
-    public void btnhomeOnAction(MouseEvent mouseEvent) {
+    @FXML
+    void btnemployeeOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/emplyeeFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("employeeFrom");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
+
+
     }
 
-    public void mouseExitedOnAction(MouseEvent mouseEvent) {
-        customId.setStyle("-fx-font-size: 20px");
-        customId.setStyle("-fx-font-weight: normal");
-        customId.setStyle("-fx-font-family: 'popins', sans-serif");
-        customId.setStyle("-fx-alignment: center");
-        customId.setStyle("-fx-alignment: middle");
-        customId.setText("");
+    @FXML
+    void btnlabreportsOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/labReportsFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
     }
 
-    public void mouseEnterdOnAction(MouseEvent mouseEvent) {
-        customId.setText("OverView");
+    @FXML
+    void btnlogoutOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
     }
 
-    public void mouseEnterOnAction(DragEvent dragEvent) {
+    @FXML
+    void btnmedicineOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/medicineFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
+    }
+
+    @FXML
+    void btnoverViewOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
+    }
+
+    @FXML
+    void btnpatientOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/patientFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("overView");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+        Stage stage1 = (Stage) overViewPane.getScene().getWindow();
+        stage1.close();
 
     }
+
 }
