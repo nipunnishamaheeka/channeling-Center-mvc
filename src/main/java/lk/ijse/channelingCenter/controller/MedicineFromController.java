@@ -2,6 +2,7 @@ package lk.ijse.channelingCenter.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -62,7 +63,7 @@ public class MedicineFromController {
 
     @FXML
     void btnemployeeOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/emplyeeFrom.fxml"));
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);

@@ -84,6 +84,11 @@
     -fx-border-radius:10;
     -fx-background-radius:10;
 }
+.inter_pane{
+    -fx-background-color: #c5bdef;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
 .tab_pane{
     -fx-background-color: white;
     -fx-background-radius: 1 0;
@@ -101,6 +106,19 @@
 .button_pane{
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+
+}
+.appoinment{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: #1138F7;
+    -fx-font: 13px "Arial";
+    -fx-text-fill: white,bold;
+}
+.appoinment:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+
 }
 .button_pane:hover{
     -fx-background-color: #E0E9F4FF;

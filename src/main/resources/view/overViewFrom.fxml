@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="24.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
+            <Text layoutX="80.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -90,6 +90,8 @@
                   </Text>
                </children>
             </Pane>
+            <Pane layoutX="24.0" layoutY="393.0" prefHeight="331.0" prefWidth="806.0" styleClass="tab_pane" />
+            <Pane layoutX="861.0" layoutY="393.0" prefHeight="331.0" prefWidth="406.0" styleClass="tab_pane" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

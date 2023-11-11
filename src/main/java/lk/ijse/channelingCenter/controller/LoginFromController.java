@@ -14,11 +14,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.channelingCenter.db.DbConnection;
+import lk.ijse.channelingCenter.dto.LoginDto;
+import lk.ijse.channelingCenter.model.LoginModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginFromController {
-
+    public static String fullname;
     public AnchorPane loginPane;
     @FXML
     private Button btnlogin;
@@ -32,37 +35,32 @@ public class LoginFromController {
     @FXML
     void btnloginOnAction(ActionEvent event) throws IOException {
 
+        String userName = txtUsername.getText();
+        String password = textpassword.getText();
+        LoginModel model = new LoginModel();
+        try {
+            boolean isIn= model.searchUser(new LoginDto(null,userName,password));
+            if (!isIn){
+                new Alert(Alert.AlertType.WARNING,"Invalid User Name or Password").show();
+                return;
+            }else  {
+                navigateToMainWindow();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+    private void navigateToMainWindow() throws IOException {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
-
-        //create a new Scene
         Scene scene = new Scene(rootNode);
 
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
+        loginPane.getChildren().clear();
+        Stage primaryStage = (Stage) loginPane.getScene().getWindow();
 
-        //set title and get center on screen stage
-        stage.setTitle("Login From");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) loginPane.getScene().getWindow();
-        stage1.close();
-
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        primaryStage.setTitle("ToDo");
     }
-
-    @FXML
-    void txtPassword(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtUserName(ActionEvent event) {
-
-    }
-
 
     public void txtcreateAccountOnMouseClicked(MouseEvent mouseEvent) throws IOException {
         Stage stage = new Stage();

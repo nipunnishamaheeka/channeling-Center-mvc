@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="24.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment ">
+            <Text layoutX="80.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor ">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

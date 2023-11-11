@@ -52,7 +52,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFullname" layoutX="52.0" layoutY="311.0" onAction="#txtFullName" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your full name" styleClass="promtText-field">
+      <TextField fx:id="txtFullname" layoutX="52.0" layoutY="311.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your full name" styleClass="promtText-field">
             <font>
                 <Font size="24.0" />
             </font>
@@ -63,7 +63,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="btnlogin" layoutX="53.0" layoutY="662.0" mnemonicParsing="false" onAction="#btncreateYourAccountOnAction" prefHeight="54.0" prefWidth="359.0" style="-fx-background-color: 0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Create Your Account" textFill="WHITE">
+      <Button fx:id="btnlogin" layoutX="53.0" layoutY="662.0" mnemonicParsing="false" onAction="#btncreateYourAccountOnAction" prefHeight="54.0" prefWidth="359.0" style="-fx-background-color: #0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Create Your Account" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PasswordField fx:id="txtpassword" layoutX="53.0" layoutY="471.0" onAction="#txtPassword" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
+      <PasswordField fx:id="txtpassword" layoutX="53.0" layoutY="471.0" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
       <ImageView fitHeight="100.0" fitWidth="96.0" layoutX="162.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/final%20logo%20.png" />
@@ -82,13 +82,13 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <PasswordField fx:id="txtConfromPassword" layoutX="53.0" layoutY="551.0" onAction="#txtConfromPassword" prefHeight="44.0" prefWidth="359.0" promptText="Confrom your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
+      <PasswordField fx:id="txtConfromPassword" layoutX="53.0" layoutY="551.0" prefHeight="44.0" prefWidth="359.0" promptText="Confrom your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
       <Text layoutX="52.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="User Name">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="390.0" onAction="#txtUserName" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
+      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="390.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
          <font>
             <Font size="24.0" />
          </font>

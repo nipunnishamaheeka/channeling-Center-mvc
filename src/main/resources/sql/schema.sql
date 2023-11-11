@@ -36,8 +36,8 @@ create table salary
 
 create table login
 (
-    full_name varchar(25) primary key,
-    user_name    varchar(25) not null,
+    full_name varchar(25) not null,
+    user_name    varchar(25) primary key,
     password  varchar(25) not null
 
 );
