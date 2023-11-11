@@ -36,11 +36,10 @@ create table salary
 
 create table login
 (
-    user_name varchar(25) primary key,
-    emp_id    varchar(10) not null,
-    password  varchar(25) not null,
+    full_name varchar(25) primary key,
+    user_name    varchar(25) not null,
+    password  varchar(25) not null
 
-    constraint foreign key (emp_id) references employee (emp_id) on delete cascade on update cascade
 );
 
 create table appoinment

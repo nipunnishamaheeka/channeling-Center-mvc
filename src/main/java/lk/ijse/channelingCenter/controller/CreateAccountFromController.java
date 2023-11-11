@@ -4,15 +4,36 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.channelingCenter.dto.LoginDto;
+import lk.ijse.channelingCenter.model.LoginModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class CreateAccountFromController {
-   @FXML
+    @FXML
     private AnchorPane createAccountPane;
+    @FXML
+    private Button btnlogin;
+
+    @FXML
+    private PasswordField txtConfromPassword;
+
+    @FXML
+    private PasswordField txtpassword;
+
+    @FXML
+    private TextField txtFullname;
+
+    @FXML
+    private TextField txtUsername;
 
     @FXML
     void txtLoginOnMouseClicked(MouseEvent event) throws IOException {
@@ -25,32 +46,26 @@ public class CreateAccountFromController {
     }
 
     @FXML
-    public void txtUserName(ActionEvent actionEvent) {
-    }
-
-    @FXML
     void btncreateYourAccountOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"));
+        String fullname = txtFullname.getText();
+        String username = txtUsername.getText();
+        String password = txtpassword.getText();
 
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
+        LoginModel loginModel = new LoginModel();
+        if (password.equals(txtConfromPassword.getText())) {
 
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
+            try {
+                boolean isSaved = loginModel.saveUser(new LoginDto(fullname, username, password));
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfully").show();
+                    return;
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Password Not Matched").show();
+        }
 
-        //set title and get center on screen stage
-        stage.setTitle("Create Account");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) createAccountPane.getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
-    public void txtPassword(ActionEvent actionEvent) {
     }
 }

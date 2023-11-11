@@ -32,7 +32,7 @@ public class LoginFromController {
     @FXML
     void btnloginOnAction(ActionEvent event) throws IOException {
 
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);
