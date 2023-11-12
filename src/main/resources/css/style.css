@@ -95,6 +95,16 @@
     -fx-border-radius: 10;
     -fx-fill: white;
 }
+.tranparent_pane{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.white_background{
+    -fx-background-color: white;
+}
+.button{
+    -fx-background-radius: 1000;
+    -fx-border-radius: 1000;
+}
 .hbox_pane{
     -fx-background-color: #ffffff;
 

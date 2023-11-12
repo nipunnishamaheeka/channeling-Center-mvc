@@ -28,20 +28,12 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="80.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment ">
+            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Reports">
                <font>
-                  <Font name="Arial Bold" size="24.0" />
+                  <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="97.0" prefHeight="623.0" prefWidth="1254.0" styleClass="payment_pane">
-               <children>
-                  <Text layoutX="23.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Payments">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
+            <Pane layoutX="29.0" layoutY="126.0" prefHeight="601.0" prefWidth="1254.0" styleClass="inter_pane" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

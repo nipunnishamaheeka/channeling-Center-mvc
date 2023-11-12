@@ -163,9 +163,9 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="108.0" layoutY="101.0" prefHeight="637.0" prefWidth="1254.0" styleClass="inter_pane">
+      <Pane layoutX="108.0" layoutY="93.0" prefHeight="660.0" prefWidth="1254.0">
          <children>
-            <TableView layoutY="36.0" prefHeight="603.0" prefWidth="1254.0">
+            <TableView layoutY="58.0" prefHeight="581.0" prefWidth="1254.0">
                <columns>
                   <TableColumn prefWidth="95.0" text="Patient ID" />
                   <TableColumn prefWidth="75.0" text="Patient Name" />
@@ -177,7 +177,7 @@
                   <TableColumn prefWidth="117.0" text="User Action" />
                </columns>
             </TableView>
-            <Pane layoutX="1080.0" layoutY="-13.0" prefHeight="45.0" prefWidth="149.0">
+            <Pane layoutX="1081.0" layoutY="1.0" prefHeight="45.0" prefWidth="149.0">
                <children>
                   <Button alignment="CENTER_RIGHT" layoutX="27.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="113.0" styleClass="appoinment" text="New Patient">
                      <font>
