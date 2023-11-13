@@ -41,7 +41,7 @@ public class AddPatientFromController {
             if (dto != null) {
                 setFields(dto);
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "item not found!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Patient not found!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -88,7 +88,7 @@ public class AddPatientFromController {
         try {
             boolean isSaved = PatientModel.savePatient(itemDto);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
                 clearFields();
             }
         } catch (SQLException e) {
@@ -110,7 +110,8 @@ public class AddPatientFromController {
         try {
             boolean isUpdated = PatientModel.updatePatient(new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Blood));
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item updated").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Patient updated").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -125,7 +126,8 @@ public class AddPatientFromController {
             boolean isDeleted = PatientModel.deletePatient(id);
 
             if(isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Patient deleted!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

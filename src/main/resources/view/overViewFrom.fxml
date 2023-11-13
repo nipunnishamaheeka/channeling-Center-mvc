@@ -33,9 +33,9 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="80.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
+            <Text layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
                <font>
-                  <Font name="Arial Bold" size="24.0" />
+                  <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
             <Pane layoutX="24.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" styleClass="tab_pane">
@@ -79,6 +79,9 @@
                            </font>
                         </Text>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -98,6 +101,9 @@
                            </font>
                         </Text>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -117,6 +123,9 @@
                            </font>
                         </Text>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -136,6 +145,9 @@
                            </font>
                         </Text>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                </children>
             </HBox>

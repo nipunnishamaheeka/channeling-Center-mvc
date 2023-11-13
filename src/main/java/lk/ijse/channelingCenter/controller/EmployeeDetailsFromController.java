@@ -72,6 +72,7 @@ public class EmployeeDetailsFromController {
             boolean isAdded = EmployeeModel.saveEmployee(EmployeeDto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee added").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -86,6 +87,7 @@ public class EmployeeDetailsFromController {
 
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee deleted!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -107,6 +109,7 @@ public class EmployeeDetailsFromController {
             boolean isUpdated = EmployeeModel.updateEmployee(EmployeeDto);
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee updated").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

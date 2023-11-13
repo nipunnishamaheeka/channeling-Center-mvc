@@ -2,6 +2,8 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,37 +14,7 @@
 
 <AnchorPane fx:id="employeePane" prefHeight="750.0" prefWidth="1380.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeFromController">
    <children>
-      <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
-         <children>
-            <Pane fx:id="overViewPane" layoutX="29.0" layoutY="-5.0" prefHeight="733.0" prefWidth="1262.0" styleClass="inter_pane">
-               <children>
-                  <TextField layoutY="20.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-                  <Pane layoutX="980.0" layoutY="20.0" prefHeight="35.0" prefWidth="81.0">
-                     <children>
-                        <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/question.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/notification.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Text layoutX="33.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Over View">
-                     <font>
-                        <Font name="Arial Bold" size="30.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="employee" layoutX="542.0" layoutY="138.0" mnemonicParsing="false" onAction="#btnaddemployeeOnAction" text="Employee Detatils">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-               </children></Pane>
-         </children></Pane>
-      <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
+      <Pane prefHeight="763.0" prefWidth="98.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>
             <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -166,6 +138,51 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="81.0" layoutY="11.0" prefHeight="734.0" prefWidth="1279.0" stylesheets="@../css/style.css">
+         <children>
+            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
+            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
+               <children>
+                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/question.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/notification.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee OverView">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="108.0" layoutY="93.0" prefHeight="660.0" prefWidth="1254.0">
+         <children>
+            <TableView layoutY="58.0" prefHeight="597.0" prefWidth="1254.0">
+               <columns>
+                  <TableColumn prefWidth="95.0" text="Employee ID" />
+                  <TableColumn prefWidth="176.00001525878906" text="Employee Name" />
+                  <TableColumn prefWidth="168.800048828125" text="Mobile Number" />
+                  <TableColumn prefWidth="163.199951171875" text="Job Role" />
+                  <TableColumn prefWidth="172.7999267578125" text="Salary" />
+                  <TableColumn prefWidth="212.800048828125" text="Address" />
+                  <TableColumn prefWidth="150.0" text="Qulification" />
+                  <TableColumn prefWidth="117.0" text="User Action" />
+               </columns>
+            </TableView>
+            <Button fx:id="employee" layoutX="1119.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnaddemployeeOnAction" text="Employee Detatils">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </children>

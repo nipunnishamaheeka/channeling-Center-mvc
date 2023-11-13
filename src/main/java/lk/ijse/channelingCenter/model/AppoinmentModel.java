@@ -48,7 +48,7 @@ public class AppoinmentModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public static AppoinmentDto searchAppoinment(String Appoinment_id) throws SQLException {
+   /* public static AppoinmentDto searchAppoinment(String Appoinment_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment WHERE appoinment_id = ?";
@@ -63,16 +63,16 @@ public class AppoinmentModel {
             String appoinment_id = resultSet.getString(1);
             String time = resultSet.getString(2);
             String date = resultSet.getString(3);
-            String patient_id = resultSet.getString(4);
-            String id = resultSet.getString(5);
+            String patient_name = resultSet.getString(4);
+            String dr_name = resultSet.getString(5);
             String fee_status = resultSet.getString(6);
             String age = resultSet.getString(7);
 
-            dto = new AppoinmentDto(appoinment_id, time, date,patient_id, id,fee_status,age);
+            dto = new AppoinmentDto(appoinment_id, time, date,patient_name, dr_name,fee_status,age);
         }
 
         return dto;
-    }
+    }*/
 
    /* public List<AppoinmentDto> getAllAppoinment() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();

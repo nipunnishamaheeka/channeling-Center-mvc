@@ -50,7 +50,7 @@ public class DoctorFromController {
         try {
             boolean isSaved = DoctorModel.saveDoctor(DoctorDto);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
                 clearFields();
             }
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class DoctorFromController {
         try {
             boolean isUpdated = DoctorModel.updateDoctor(new DoctorDto(id, name, address, email, number, type));
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Doctor updated!").show();
                 clearFields();
             }
         } catch (SQLException e) {
@@ -84,7 +84,7 @@ public class DoctorFromController {
             boolean isDeleted = DoctorModel.deleteDoctor(id);
 
             if(isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Doctor deleted!").show();
                 clearFields();
             }
         } catch (SQLException e) {
@@ -100,7 +100,7 @@ public class DoctorFromController {
             if (dto != null) {
                 setFields(dto);
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "item not found!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Doctor not found!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

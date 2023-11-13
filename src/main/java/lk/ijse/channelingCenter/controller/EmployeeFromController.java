@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class EmployeeFromController {
     @FXML
@@ -192,7 +193,7 @@ public class EmployeeFromController {
     public void btnaddemployeeOnAction(ActionEvent actionEvent) throws IOException {
 
         overViewPane.getChildren().clear();
-        overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml")));
+        overViewPane.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employeeDetails.fxml"))));
 
 //        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml"));
 //

@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -194,5 +195,8 @@ public class MedicineFromController {
         Stage stage1 = (Stage) medicinePane.getScene().getWindow();
         stage1.close();
 
+    }
+
+    public void btnaddMedicineOnAction(ActionEvent actionEvent) {
     }
 }

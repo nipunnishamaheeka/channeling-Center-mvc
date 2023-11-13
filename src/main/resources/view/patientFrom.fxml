@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="patientPane" prefHeight="750.0" prefWidth="1380.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.PatientFromController">
    <children>
-      <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1284.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
             <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
             <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
@@ -31,9 +31,9 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="80.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Details">
+            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Details">
                <font>
-                  <Font name="Arial Bold" size="24.0" />
+                  <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
          </children></Pane>
@@ -165,7 +165,7 @@
       </Pane>
       <Pane layoutX="108.0" layoutY="93.0" prefHeight="660.0" prefWidth="1254.0">
          <children>
-            <TableView layoutY="58.0" prefHeight="581.0" prefWidth="1254.0">
+            <TableView layoutY="58.0" prefHeight="597.0" prefWidth="1254.0">
                <columns>
                   <TableColumn prefWidth="95.0" text="Patient ID" />
                   <TableColumn prefWidth="75.0" text="Patient Name" />
