@@ -14,14 +14,16 @@ public class AppoinmentModel {
     public boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into appoinment values(?,?,?,?,?)";
+        String sql = "insert into appoinment values(?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getPatient_id());
-        pstm.setString(2, dto.getAppoinment_id());
-        pstm.setString(3, dto.getAppoinment_date());
-        pstm.setString(4, dto.getAppoinment_time());
-        pstm.setString(5, dto.getEmp_id());
+        pstm.setString(1, dto.getAppoinment_id());
+        pstm.setString(2, dto.getTime());
+        pstm.setString(3, dto.getDate());
+        pstm.setString(4, dto.getPatient_name());
+        pstm.setString(5, dto.getDr_name());
+        pstm.setString(6, dto.getFee_status());
+        pstm.setString(7, dto.getAge());
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -32,14 +34,16 @@ public class AppoinmentModel {
     public boolean updateAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE appoinment SET patient_id = ?,appoinment_date = ?,appoinment_time = ?,emp_id = ? WHERE  = appoinment_id?";
+        String sql = "UPDATE appoinment SET patient_name = ?,date = ?,time = ?,dr_name = ?,fee_status = ?,age = ? WHERE  = appoinment_id?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getPatient_id());
-        pstm.setString(2, dto.getAppoinment_id());
-        pstm.setString(3, dto.getAppoinment_date());
-        pstm.setString(4, dto.getAppoinment_time());
-        pstm.setString(5, dto.getEmp_id());
+        pstm.setString(1, dto.getAppoinment_id());
+        pstm.setString(2, dto.getTime());
+        pstm.setString(3, dto.getDate());
+        pstm.setString(4, dto.getPatient_name());
+        pstm.setString(5, dto.getDr_name());
+        pstm.setString(6, dto.getFee_status());
+        pstm.setString(7, dto.getAge());
 
         return pstm.executeUpdate() > 0;
     }
@@ -56,13 +60,15 @@ public class AppoinmentModel {
         AppoinmentDto dto = null;
 
         if (resultSet.next()) {
-            String patient_id = resultSet.getString(1);
-            String appoinment_id = resultSet.getString(2);
-            String appoinment_date = resultSet.getString(3);
-            String appoinment_time = resultSet.getString(4);
-            String emp_id = resultSet.getString(5);
+            String appoinment_id = resultSet.getString(1);
+            String time = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            String patient_name = resultSet.getString(4);
+            String dr_name = resultSet.getString(5);
+            String fee_status = resultSet.getString(6);
+            String age = resultSet.getString(7);
 
-            dto = new AppoinmentDto(patient_id, appoinment_id, appoinment_date, appoinment_time, emp_id);
+            dto = new AppoinmentDto(appoinment_id, time, date,patient_name, dr_name,fee_status,age);
         }
 
         return dto;
@@ -79,14 +85,15 @@ public class AppoinmentModel {
         ResultSet resultSet = pstm.executeQuery();
 
         while (resultSet.next()) {
-            String patient_id = resultSet.getString(1);
-            String appoinment_id = resultSet.getString(2);
-            String appoinment_date = resultSet.getString(3);
-            String appoinment_time = resultSet.getString(4);
-            String emp_id = resultSet.getString(5);
+            String appoinment_id = resultSet.getString(1);
+            String time = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            String patient_name = resultSet.getString(4);
+            String dr_name = resultSet.getString(5);
+            String fee_status = resultSet.getString(6);
+            String age = resultSet.getString(7);
 
-
-            var dto = new AppoinmentDto(patient_id, appoinment_id, appoinment_date, appoinment_time, emp_id);
+            var dto = new AppoinmentDto(appoinment_id, time, date,patient_name, dr_name,fee_status,age);
             dtoList.add(dto);
         }
         return dtoList;
@@ -116,7 +123,9 @@ public class AppoinmentModel {
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(5)
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7)
             ));
         }
         return dtoList;

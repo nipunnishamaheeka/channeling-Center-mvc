@@ -65,7 +65,6 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button layoutX="441.0" layoutY="65.0" mnemonicParsing="false" text="Button" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

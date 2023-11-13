@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class DoctorDto {
-    private String doc_id;
-    private String appoinment_id;
-    private String salary_id;
-    private String qualification;
-    private String doc_name;
+    private String id;
+    private String name;
+    private String address;
+    private String email;
+    private String number;
+    private String type;
+
 }

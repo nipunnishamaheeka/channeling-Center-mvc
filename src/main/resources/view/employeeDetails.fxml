@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="733.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EmployeeDetails">
+<AnchorPane prefHeight="733.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
    <children>
       <Pane layoutY="-1.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
@@ -41,17 +40,17 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="38.0" layoutY="48.0" prefHeight="34.0" prefWidth="450.0" promptText="Employee ID" />
-                  <TextField layoutX="38.0" layoutY="108.0" prefHeight="34.0" prefWidth="450.0" promptText="Employee Name" />
-                  <TextField layoutX="38.0" layoutY="168.0" prefHeight="34.0" prefWidth="450.0" promptText="Mobile No" />
-                  <TextField layoutX="38.0" layoutY="228.0" prefHeight="34.0" prefWidth="450.0" promptText="Job Role" />
-                  <TextField layoutX="38.0" layoutY="288.0" prefHeight="34.0" prefWidth="450.0" promptText="Salary " />
-                  <TextField layoutX="38.0" layoutY="348.0" prefHeight="34.0" prefWidth="450.0" promptText="Address" />
-                  <TextField layoutX="38.0" layoutY="408.0" prefHeight="34.0" prefWidth="450.0" promptText="Qulification" />
-                  <Button layoutX="287.0" layoutY="522.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Delete Employee" />
-                  <Button layoutX="14.0" layoutY="522.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Add Employee" />
-                  <Button layoutX="148.0" layoutY="522.0" mnemonicParsing="false" text="Update Employee" />
-                  <Button layoutX="407.0" layoutY="522.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Clear Felids" />
+                  <TextField fx:id="txtId" layoutX="38.0" layoutY="48.0" onAction="#idSearchOnAction" prefHeight="34.0" prefWidth="450.0" promptText="Employee ID" />
+                  <TextField fx:id="txtName" layoutX="38.0" layoutY="108.0" prefHeight="34.0" prefWidth="450.0" promptText="Employee Name" />
+                  <TextField fx:id="txtNumber" layoutX="38.0" layoutY="168.0" prefHeight="34.0" prefWidth="450.0" promptText="Mobile No" />
+                  <TextField fx:id="txtJobRole" layoutX="38.0" layoutY="228.0" prefHeight="34.0" prefWidth="450.0" promptText="Job Role" />
+                  <TextField fx:id="txtSalary" layoutX="38.0" layoutY="288.0" prefHeight="34.0" prefWidth="450.0" promptText="Salary " />
+                  <TextField fx:id="txtAddress" layoutX="38.0" layoutY="348.0" prefHeight="34.0" prefWidth="450.0" promptText="Address" />
+                  <TextField fx:id="txtQulification" layoutX="38.0" layoutY="408.0" prefHeight="34.0" prefWidth="450.0" promptText="Qulification" />
+                  <Button layoutX="287.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="110.0" text="Delete Employee" />
+                  <Button layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="110.0" text="Add Employee" />
+                  <Button layoutX="148.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update Employee" />
+                  <Button layoutX="407.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="110.0" text="Clear Felids" />
                </children>
             </Pane>
             <Pane layoutX="616.0" layoutY="126.0" prefHeight="183.0" prefWidth="500.0" styleClass="inter_pane">

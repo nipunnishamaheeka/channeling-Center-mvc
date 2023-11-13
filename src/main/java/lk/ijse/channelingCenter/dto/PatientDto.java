@@ -17,7 +17,6 @@ public class PatientDto {
     private String email;
     private String blood;
 
-    public PatientDto(String patient_id, String patient_name, String address, String sex, String email, String blood) {
-
+    public PatientDto(String patientId, String patientName, String address, String sex, String email, String blood) {
     }
 }

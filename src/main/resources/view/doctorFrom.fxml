@@ -42,23 +42,19 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="26.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor ID" />
-                  <TextField layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor Name" />
-                  <TextField layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="E-mail Address" />
-                  <TextField layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile No" />
-                  <TextField layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
-                  <TextField layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
-                  <Button layoutX="730.0" layoutY="186.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="88.0" text="Clear Feilds" />
+                  <TextField fx:id="txtId" layoutX="26.0" layoutY="53.0" onAction="#idSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Doctor ID" />
+                  <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor Name" />
+                  <TextField fx:id="txtEmail" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="E-mail Address" />
+                  <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile No" />
+                  <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
+                  <TextField fx:id="txtAddress" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
+                  <Button layoutX="730.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="88.0" text="Clear Feilds" />
                </children>
             </Pane>
-            <ScrollPane layoutX="28.0" layoutY="377.0" prefHeight="350.0" prefWidth="1254.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="1254.0" />
-              </content>
-            </ScrollPane>
-            <Button layoutX="983.0" layoutY="160.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="147.0" text="Add New Doctor" />
-            <Button layoutX="983.0" layoutY="210.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="147.0" text="Update Doctor" />
-            <Button layoutX="983.0" layoutY="260.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="147.0" text="Delete Doctor" />
+            <Button layoutX="983.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" text="Save New Doctor" />
+            <Button layoutX="983.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" text="Update Doctor" />
+            <Button layoutX="983.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" text="Delete Doctor" />
+            <ScrollPane layoutX="29.0" layoutY="372.0" prefHeight="354.0" prefWidth="1248.0" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

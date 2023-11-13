@@ -4,88 +4,94 @@ import com.almasb.fxgl.physics.box2d.dynamics.contacts.Contact;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.model.AppoinmentListModel;
+import lombok.Getter;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class AppoinmentFromController implements Initializable {
+@Getter
+private static AppoinmentFromController controller;
+    public VBox VBox;
+
+    public AppoinmentFromController(){controller = this;}
+
     @FXML
     private AnchorPane appoinmentPane;
     @FXML
     private VBox listLayout;
 
-    private List<AppoinmentListModel> appoinmentList() {
-        List<AppoinmentListModel> ls = new ArrayList<>();
-        AppoinmentListModel appoinmentList = new AppoinmentListModel();
+    public void idOnAction(ActionEvent actionEvent){
+        try{
+            if (AppoinmentListModel.saveAppoinment(new AppoinmentDto(
 
-        appoinmentList.setAppoinment_id("A002");
-        appoinmentList.setTime("10.00");
-        appoinmentList.setDate("2021-08-20");
-        appoinmentList.setPatient_name("Kamal");
-        appoinmentList.setPatient_age("25");
-        appoinmentList.setDoctor("Dr. Perera");
-        appoinmentList.setFee_status("Paid");
-
-        ls.add(appoinmentList);
-
-        appoinmentList = new AppoinmentListModel();
-        appoinmentList.setAppoinment_id("A003");
-        appoinmentList.setTime("11.00");
-        appoinmentList.setDate("2022-09-20");
-        appoinmentList.setPatient_name("Sunimal");
-        appoinmentList.setPatient_age("25");
-        appoinmentList.setDoctor("Dr. Perera");
-        appoinmentList.setFee_status("Non Paid");
-
-        ls.add(appoinmentList);
-
-        appoinmentList = new AppoinmentListModel();
-        appoinmentList.setAppoinment_id("A004");
-        appoinmentList.setTime("12.00");
-        appoinmentList.setDate("2021-10-20");
-        appoinmentList.setPatient_name("Rathne");
-        appoinmentList.setPatient_age("11");
-        appoinmentList.setDoctor("Dr. Lakmal");
-        appoinmentList.setFee_status("Paid");
-
-        ls.add(appoinmentList);
-
-        appoinmentList = new AppoinmentListModel();
-        appoinmentList.setAppoinment_id("A005");
-        appoinmentList.setTime("01.00");
-        appoinmentList.setDate("2021-08-20");
-        appoinmentList.setPatient_name("Ranil");
-        appoinmentList.setPatient_age("25");
-        appoinmentList.setDoctor("Dr. Radeer");
-        appoinmentList.setFee_status("Paid");
-
-        ls.add(appoinmentList);
-
-        appoinmentList = new AppoinmentListModel();
-        appoinmentList.setAppoinment_id("A006");
-        appoinmentList.setTime("10.40");
-        appoinmentList.setDate("2021-08-20");
-        appoinmentList.setPatient_name("Frathi");
-        appoinmentList.setPatient_age("24");
-        appoinmentList.setDoctor("Dr. Perera");
-        appoinmentList.setFee_status("Paid");
-
-        ls.add(appoinmentList);
-        return ls;
+            ))){
+                new Alert(Alert.AlertType.CONFIRMATION,"ok").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR,"error").show();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadData();
+    }
 
+    public void loadData() {
+        listLayout.getChildren().clear();
+        try {
+            List<AppoinmentDto> List = AppoinmentListModel.getAllAppoinment();
+            for (int i = 0; i < List.size(); i++) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(AppoinmentListFromController.class.getResource("/view/appoinmetListFrom.fxml"));
+                    Pane root = loader.load();
+                    AppoinmentListFromController controller = loader.getController();
+                    controller.setData(List.get(i));
+                    listLayout.getChildren().add(root);
+                } catch (IOException e) {
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+public void setSearchData(String text) {
+        listLayout.getChildren().clear();
+        try {
+            List<AppoinmentDto> List = AppoinmentListModel.getAllFilter();//text
+            for (int i = 0; i < List.size(); i++) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(AppoinmentListFromController.class.getResource("/view/appoinmetListFrom.fxml"));
+                    Parent root = loader.load();
+                    AppoinmentListFromController controller = loader.getController();
+                    controller.setData(List.get(i));
+                    listLayout.getChildren().add(root);
+                } catch (IOException e) {
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
     public void btnoverViewOnAction(MouseEvent mouseEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
 
@@ -257,20 +263,18 @@ public class AppoinmentFromController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<AppoinmentListModel> appoinmentList = new ArrayList<>(appoinmentList());
+
+}
+
+/* List<AppoinmentListModel> appoinmentList = new ArrayList<>(appoinmentList());
         for (int i = 0; i < appoinmentList.size(); i++) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/appoinmentListFrom.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/appoinmetListFrom.fxml"));
             try {
                 HBox hBox = fxmlLoader.load();
                 AppoinmentListFromController cic = fxmlLoader.getController();
-                cic.setDate(appoinmentList.get(i));
+                cic.setData(appoinmentList.get(i));
                 listLayout.getChildren().add(hBox);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        }
-    }
-}
+            }*/

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientModel {
-    public boolean savePatient(final PatientDto dto) throws SQLException {
+    public static boolean savePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "insert into patient values(?,?,?,?,?,?,?,?)";
@@ -32,7 +32,7 @@ public class PatientModel {
 
     }
 
-    public boolean updatePatient(final PatientDto dto) throws SQLException {
+    public static boolean updatePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE patient SET patient_name = ?,mobile_number = ?,address = ?,sex = ?,email = ?,blood =? WHERE  = patient_id?";
@@ -44,11 +44,12 @@ public class PatientModel {
         pstm.setString(4, dto.getSex());
         pstm.setString(5, dto.getEmail());
         pstm.setString(6, dto.getBlood());
+        pstm.setString(7, dto.getPatient_id());
 
         return pstm.executeUpdate() > 0;
     }
 
-    public PatientDto searchPatient(String id) throws SQLException {
+    public static PatientDto searchPatient(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM patient WHERE patient_id = ?";
@@ -97,7 +98,7 @@ public class PatientModel {
         return dtoList;
     }
 
-    public boolean deletePatient(String id) throws SQLException {
+    public static boolean deletePatient(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM patient WHERE patient_id = ?";

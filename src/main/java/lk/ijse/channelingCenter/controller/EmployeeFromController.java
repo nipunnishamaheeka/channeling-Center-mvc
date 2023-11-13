@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -183,4 +184,22 @@ public class EmployeeFromController {
 
     }
 
+    public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("employeeFrom");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
+
+    }
 }

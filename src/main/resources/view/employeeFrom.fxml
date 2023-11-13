@@ -35,7 +35,7 @@
                </font>
             </Text>
             <Pane layoutX="29.0" layoutY="126.0" prefHeight="590.0" prefWidth="1254.0" styleClass="inter_pane" />
-            <Button layoutX="1134.0" layoutY="85.0" mnemonicParsing="false" text="Employee Detatils" />
+            <Button fx:id="employee" layoutX="1134.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnEmployeeOnAction" text="Employee Detatils" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

@@ -1,14 +1,11 @@
 package lk.ijse.channelingCenter.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.model.AppoinmentListModel;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class AppoinmentListFromController implements Initializable {
+public class AppoinmentListFromController {
     @FXML
     private Label age;
 
@@ -30,20 +27,15 @@ public class AppoinmentListFromController implements Initializable {
     @FXML
     private Label time;
 
-    public void setDate(AppoinmentListModel appoinmentListModel) {
+    public void setData(AppoinmentDto appoinmentDto) {
 
-        patientName.setText(appoinmentListModel.getPatient_name());
-        age.setText(appoinmentListModel.getPatient_age());
-        appoinmentId.setText(appoinmentListModel.getAppoinment_id());
-        date.setText(appoinmentListModel.getDate());
-        drName.setText(appoinmentListModel.getDoctor());
-        feeStatus.setText(appoinmentListModel.getFee_status());
-        time.setText(appoinmentListModel.getTime());
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+        patientName.setText(appoinmentDto.getPatient_name());
+        age.setText(appoinmentDto.getAge());
+        appoinmentId.setText(appoinmentDto.getAppoinment_id());
+        date.setText(appoinmentDto.getDate());
+        drName.setText(appoinmentDto.getDr_name());
+        feeStatus.setText(appoinmentDto.getFee_status());
+        time.setText(appoinmentDto.getTime());
 
     }
 }

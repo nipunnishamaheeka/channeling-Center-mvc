@@ -43,7 +43,7 @@ public class OverViewFromController {
 
     @FXML
     void btnappoinmentOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/appoinmentFrom.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/apprwFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);
@@ -90,7 +90,7 @@ public class OverViewFromController {
 
     @FXML
     void btnemployeeOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/emplyeeFrom.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);

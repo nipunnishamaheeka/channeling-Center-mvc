@@ -14,4 +14,6 @@ public class EmployeeDto {
     private String emp_address;
     private String email;
     private String qualification;
+    private String job_role;
+    private String salary;
 }

@@ -12,17 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorModel {
-    public boolean saveDoctor(final DoctorDto dto) throws SQLException {
+    public static boolean saveDoctor(DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into doctor values(?,?,?,?,?)";
+        String sql = "insert into doctor values(?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getDoc_id());
-        pstm.setString(2, dto.getAppoinment_id());
-        pstm.setString(3, dto.getSalary_id());
-        pstm.setString(4, dto.getQualification());
-        pstm.setString(5, dto.getDoc_name());
+        pstm.setString(1, dto.getId());
+        pstm.setString(2, dto.getName());
+        pstm.setString(3, dto.getAddress());
+        pstm.setString(4, dto.getEmail());
+        pstm.setString(5, dto.getNumber());
+        pstm.setString(6, dto.getType());
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -30,25 +31,27 @@ public class DoctorModel {
 
     }
 
-    public boolean updateDoctor(final DoctorDto dto) throws SQLException {
+    public static boolean updateDoctor(final DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE doctor SET appoinment_id = ?,salary_id = ?,qulification = ?,doc_name = ? WHERE  = doc_id?";
+        String sql = "UPDATE doctor SET name = ?,address = ?,email = ?,number = ?,type = ? WHERE  id=?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getDoc_id());
-        pstm.setString(2, dto.getAppoinment_id());
-        pstm.setString(3, dto.getSalary_id());
-        pstm.setString(4, dto.getQualification());
-        pstm.setString(5, dto.getDoc_name());
+
+        pstm.setString(1, dto.getName());
+        pstm.setString(2, dto.getAddress());
+        pstm.setString(3, dto.getEmail());
+        pstm.setString(4, dto.getNumber());
+        pstm.setString(5, dto.getType());
+        pstm.setString(6, dto.getId());
 
         return pstm.executeUpdate() > 0;
     }
 
-    public DoctorDto searchDoctor(String Doc_id) throws SQLException {
+    public static DoctorDto searchDoctor(String Doc_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM doctor WHERE doc_id = ?";
+        String sql = "SELECT * FROM doctor WHERE id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, Doc_id);
 
@@ -57,22 +60,23 @@ public class DoctorModel {
         DoctorDto dto = null;
 
         if (resultSet.next()) {
-            String doc_id = resultSet.getString(1);
-            String appoinment_id = resultSet.getString(2);
-            String salary_id = resultSet.getString(3);
-            String qualification = resultSet.getString(4);
-            String doc_name = resultSet.getString(5);
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String email = resultSet.getString(4);
+            String number = resultSet.getString(5);
+            String type = resultSet.getString(6);
 
-            dto = new DoctorDto(doc_id, appoinment_id, salary_id, qualification, doc_name);
+            dto = new DoctorDto(id, name, address, email, number, type);
         }
 
         return dto;
     }
 
-    public boolean deleteDoctor(String doc_id) throws SQLException {
+    public static boolean deleteDoctor(String doc_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "DELETE FROM doctor WHERE doc_id = ?";
+        String sql = "DELETE FROM doctor WHERE id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, doc_id);
 

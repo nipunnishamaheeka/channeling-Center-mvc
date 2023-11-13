@@ -22,7 +22,9 @@ create table employee
     emp_name      varchar(25) not null,
     emp_address   text        not null,
     email         varchar(25) not null,
-    qualification varchar(25) not null
+    job_role      varchar(25) not null,
+    qualification varchar(25),
+    salary        varchar(25)      not null
 );
 
 create table salary
@@ -58,14 +60,12 @@ create table appoinment
 
 create table doctor
 (
-    doc_id        varchar(10) primary key,
-    appoinment_id varchar(10) not null,
-    salary_id     varchar(10) not null,
-    qualification varchar(25) not null,
-    doc_name      varchar(25) not null,
-
-    constraint foreign key (appoinment_id) references appoinment (appoinment_id) on delete cascade on update cascade,
-    constraint foreign key (salary_id) references salary (salary_id) on delete cascade on update cascade
+    id        varchar(10) primary key,
+    name      varchar(25) not null,
+    address   text        not null,
+    email     varchar(25) not null,
+    number varchar(25) not null,
+    type varchar(25) not null
 );
 
 create table lab
@@ -109,12 +109,12 @@ create table medicine
 
 create table medicalReport
 (
-    doc_id       varchar(10),
+    id       varchar(10),
     patient_id   varchar(10) not null,
     patient_name varchar(25) not null,
     date         date        not null,
 
-    constraint foreign key (doc_id) references doctor (doc_id) on delete cascade on update cascade,
+    constraint foreign key (id) references doctor (id) on delete cascade on update cascade,
     constraint foreign key (patient_id) references patient (patient_id) on delete cascade on update cascade
 );
 

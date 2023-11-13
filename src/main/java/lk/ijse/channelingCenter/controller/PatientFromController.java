@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -208,5 +209,24 @@ public class PatientFromController {
 
         Stage stage1 = (Stage) patientPane.getScene().getWindow();
         stage1.close();
+    }
+
+
+    public void btnaddPatientOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addPatientFrom.fxml"));
+
+        //create a new Scene
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = new Stage();
+        //set scene to the primary stage
+        stage.setScene(scene);
+
+        //set title and get center on screen stage
+        stage.setTitle("addPatientFrom");
+        stage.centerOnScreen();
+
+        //show stage to the crowd
+        stage.show();
     }
 }
