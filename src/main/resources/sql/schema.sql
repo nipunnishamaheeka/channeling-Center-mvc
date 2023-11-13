@@ -1,4 +1,5 @@
-drop database if exists channelingCenter;
+drop
+    database if exists channelingCenter;
 create
     database if not exists channelingCenter;
 
@@ -24,7 +25,7 @@ create table employee
     email         varchar(25) not null,
     job_role      varchar(25) not null,
     qualification varchar(25),
-    salary        varchar(25)      not null
+    salary        varchar(25) not null
 );
 
 create table salary
@@ -39,33 +40,33 @@ create table salary
 create table login
 (
     full_name varchar(25) not null,
-    user_name    varchar(25) primary key,
+    user_name varchar(25) primary key,
     password  varchar(25) not null
 
 );
 
+CREATE TABLE doctor
+(
+    id          VARCHAR(10) PRIMARY KEY,
+    doctor_name VARCHAR(25) NOT NULL,
+    address     TEXT NOT NULL,
+    email       VARCHAR(25) NOT NULL,
+    number      VARCHAR(25) NOT NULL,
+    type        VARCHAR(25) NOT NULL
+);
 create table appoinment
 (
-    patient_id      varchar(10) not null,
-    appoinment_id   varchar(10) primary key,
-    appoinment_date date        not null,
-    appoinment_time time        not null,
-    emp_id          varchar(10) not null,
-
+    appoinment_id varchar(10) primary key,
+    patient_id    varchar(25) not null,
+    age           text        not null,
+    id            varchar(10) not null,
+    time          varchar(10) not null,
+    date          varchar(25) not null,
+    fee_status    varchar(25) not null,
 
 
     constraint foreign key (patient_id) references patient (patient_id) on delete cascade on update cascade,
-    constraint foreign key (emp_id) references employee (emp_id) on delete cascade on update cascade
-);
-
-create table doctor
-(
-    id        varchar(10) primary key,
-    name      varchar(25) not null,
-    address   text        not null,
-    email     varchar(25) not null,
-    number varchar(25) not null,
-    type varchar(25) not null
+    constraint foreign key (id) references doctor (id) on delete cascade on update cascade
 );
 
 create table lab
@@ -79,7 +80,7 @@ create table lab
 
 create table payment
 (
-    payment_id varchar(10) primary key,
+    payment_id     varchar(10) primary key,
     payment_email  varchar(25) not null,
     payment_date   date        not null,
     payment_time   time        not null,
@@ -109,7 +110,7 @@ create table medicine
 
 create table medicalReport
 (
-    id       varchar(10),
+    id           varchar(10),
     patient_id   varchar(10) not null,
     patient_name varchar(25) not null,
     date         date        not null,

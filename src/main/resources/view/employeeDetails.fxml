@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="733.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
+<AnchorPane prefHeight="733.0" prefWidth="1262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
    <children>
-      <Pane layoutY="-1.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane layoutY="-1.0" prefHeight="733.0" prefWidth="1262.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
             <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
             <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
@@ -47,13 +48,25 @@
                   <TextField fx:id="txtSalary" layoutX="38.0" layoutY="288.0" prefHeight="34.0" prefWidth="450.0" promptText="Salary " />
                   <TextField fx:id="txtAddress" layoutX="38.0" layoutY="348.0" prefHeight="34.0" prefWidth="450.0" promptText="Address" />
                   <TextField fx:id="txtQulification" layoutX="38.0" layoutY="408.0" prefHeight="34.0" prefWidth="450.0" promptText="Qulification" />
-                  <Button layoutX="287.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="110.0" text="Delete Employee" />
-                  <Button layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="110.0" text="Add Employee" />
-                  <Button layoutX="148.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update Employee" />
-                  <Button layoutX="407.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="110.0" text="Clear Felids" />
+                  <Button layoutX="276.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="132.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button layoutX="8.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="110.0" styleClass="save_button" stylesheets="@../css/button.css" text="Add Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button layoutX="132.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" styleClass="update_button" stylesheets="@../css/button.css" text="Update Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button layoutX="415.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="110.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </Pane>
-            <Pane layoutX="616.0" layoutY="126.0" prefHeight="183.0" prefWidth="500.0" styleClass="inter_pane">
+            <Pane layoutX="583.0" layoutY="126.0" prefHeight="183.0" prefWidth="500.0" styleClass="inter_pane">
                <children>
                   <Text layoutX="22.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Reports">
                      <font>
@@ -64,9 +77,15 @@
                   <TextField layoutX="22.0" layoutY="118.0" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee Name" />
                </children>
             </Pane>
-            <Button layoutX="1178.0" layoutY="210.0" mnemonicParsing="false" text="Genarate Report" />
-            <Button layoutX="1178.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Clear Felids" />
-            <Pane layoutX="616.0" layoutY="333.0" prefHeight="390.0" prefWidth="665.0" styleClass="inter_pane" />
+            <Button layoutX="1145.0" layoutY="210.0" mnemonicParsing="false" text="Genarate Report">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="1145.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Pane layoutX="583.0" layoutY="333.0" prefHeight="390.0" prefWidth="665.0" styleClass="inter_pane" />
          </children>
       </Pane>
    </children>

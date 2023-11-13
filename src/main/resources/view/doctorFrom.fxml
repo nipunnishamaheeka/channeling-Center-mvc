@@ -48,12 +48,24 @@
                   <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile No" />
                   <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
                   <TextField fx:id="txtAddress" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
-                  <Button layoutX="730.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="88.0" text="Clear Feilds" />
+                  <Button layoutX="720.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </Pane>
-            <Button layoutX="983.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" text="Save New Doctor" />
-            <Button layoutX="983.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" text="Update Doctor" />
-            <Button layoutX="983.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" text="Delete Doctor" />
+            <Button layoutX="983.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Doctor">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="983.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="983.0" layoutY="260.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Doctor">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <ScrollPane layoutX="29.0" layoutY="372.0" prefHeight="354.0" prefWidth="1248.0" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">

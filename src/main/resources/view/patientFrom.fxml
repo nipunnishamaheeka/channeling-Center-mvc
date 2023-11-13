@@ -177,12 +177,15 @@
                   <TableColumn prefWidth="117.0" text="User Action" />
                </columns>
             </TableView>
-            <Pane layoutX="1105.0"  prefHeight="45.0" prefWidth="115.0">
+            <Pane layoutX="1105.0" prefHeight="45.0" prefWidth="115.0">
                <children>
                   <Button alignment="CENTER_RIGHT" layoutY="3.0" mnemonicParsing="false" onAction="#btnaddPatientOnAction" prefHeight="40.0" prefWidth="113.0" styleClass="appoinment" text="New Patient">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>

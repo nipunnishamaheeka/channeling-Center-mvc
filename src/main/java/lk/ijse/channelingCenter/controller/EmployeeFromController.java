@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +14,9 @@ import java.io.IOException;
 public class EmployeeFromController {
     @FXML
     private AnchorPane employeePane;
+
+    @FXML
+    private Pane overViewPane;
     public void btnoverViewOnAction(MouseEvent mouseEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
 
@@ -184,22 +188,27 @@ public class EmployeeFromController {
 
     }
 
-    public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml"));
 
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
+    public void btnaddemployeeOnAction(ActionEvent actionEvent) throws IOException {
 
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
+        overViewPane.getChildren().clear();
+        overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml")));
 
-        //set title and get center on screen stage
-        stage.setTitle("employeeFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
+//        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeDetails.fxml"));
+//
+//        //create a new Scene
+//        Scene scene = new Scene(rootNode);
+//
+//        Stage stage = new Stage();
+//        //set scene to the primary stage
+//        stage.setScene(scene);
+//
+//        //set title and get center on screen stage
+//        stage.setTitle("employeeFrom");
+//        stage.centerOnScreen();
+//
+//        //show stage to the crowd
+//        stage.show();
 
     }
 }

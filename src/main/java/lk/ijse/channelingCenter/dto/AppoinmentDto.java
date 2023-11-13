@@ -11,11 +11,11 @@ import lombok.ToString;
 @ToString
 public class AppoinmentDto {
 
-    private String age;
+    private String patient_id;
     private String appoinment_id;
-    private String date;
-    private String dr_name;
-    private String fee_status;
-    private String patient_name;
+    private String age;
+    private String id;
     private String time;
+    private String date;
+    private String fee_status;
 }

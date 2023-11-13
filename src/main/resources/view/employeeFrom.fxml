@@ -14,28 +14,33 @@
    <children>
       <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
-            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
+            <Pane fx:id="overViewPane" layoutX="29.0" layoutY="-5.0" prefHeight="733.0" prefWidth="1262.0" styleClass="inter_pane">
                <children>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/question.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/notification.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Over View">
-               <font>
-                  <Font name="Arial Bold" size="30.0" />
-               </font>
-            </Text>
-            <Pane layoutX="29.0" layoutY="126.0" prefHeight="590.0" prefWidth="1254.0" styleClass="inter_pane" />
-            <Button fx:id="employee" layoutX="1134.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnEmployeeOnAction" text="Employee Detatils" />
+                  <TextField layoutY="20.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
+                  <Pane layoutX="980.0" layoutY="20.0" prefHeight="35.0" prefWidth="81.0">
+                     <children>
+                        <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/question.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/notification.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Text layoutX="33.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Over View">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="employee" layoutX="542.0" layoutY="138.0" mnemonicParsing="false" onAction="#btnaddemployeeOnAction" text="Employee Detatils">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children></Pane>
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

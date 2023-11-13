@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -33,65 +38,118 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="97.0" prefHeight="74.0" prefWidth="228.0" styleClass="payment_pane">
+            <Pane layoutX="24.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" styleClass="tab_pane">
                <children>
-                  <Text layoutX="84.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                  <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="17.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-user-94.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="84.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Today">
+                  <TableView layoutX="2.0" layoutY="45.0" prefHeight="468.0" prefWidth="800.0">
+                    <columns>
+                      <TableColumn prefWidth="55.199981689453125" sortable="false" text="ID" />
+                      <TableColumn prefWidth="76.0" sortable="false" text="Time" />
+                        <TableColumn prefWidth="95.20002746582031" sortable="false" text="Date" />
+                        <TableColumn prefWidth="123.20001220703125" sortable="false" text="Patient Name" />
+                        <TableColumn prefWidth="71.20001220703125" sortable="false" text="Patient Age" />
+                        <TableColumn prefWidth="123.20001220703125" sortable="false" text="Doctor" />
+                        <TableColumn prefWidth="68.7999267578125" sortable="false" text="Diseases" />
+                        <TableColumn prefWidth="76.0001220703125" sortable="false" text="Fee Status" />
+                        <TableColumn prefWidth="80.4000244140625" sortable="false" text="User Action" />
+                    </columns>
+                  </TableView>
+               </children></Pane>
+            <HBox layoutX="64.0" layoutY="117.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
+               <children>
+                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                     <children>
+                        <Text layoutX="81.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons8-user-94.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="81.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Today">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                     <children>
+                        <Text layoutX="75.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons8-paper-plane-94.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="75.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinmet Today">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                     <children>
+                        <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/medical-doctor.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="86.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors Today">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                     <children>
+                        <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/add-item.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="86.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Today">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <Pane layoutX="861.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane">
+               <children>
+                  <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
+                  <ComboBox layoutX="235.0" layoutY="18.0" prefWidth="150.0" promptText="Weekly" />
+                  <PieChart fx:id="pieChart" layoutX="8.0" layoutY="59.0" prefHeight="400.0" prefWidth="392.0" />
                </children>
             </Pane>
-            <Pane layoutX="409.0" layoutY="97.0" prefHeight="74.0" prefWidth="228.0" styleClass="payment_pane">
-               <children>
-                  <Text layoutX="84.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="17.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-user-94.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="84.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Today">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
-            <Pane layoutX="779.0" layoutY="97.0" prefHeight="74.0" prefWidth="228.0" styleClass="payment_pane">
-               <children>
-                  <Text layoutX="84.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="17.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons8-user-94.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="84.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Today">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
-            <Pane layoutX="24.0" layoutY="393.0" prefHeight="331.0" prefWidth="806.0" styleClass="tab_pane" />
-            <Pane layoutX="861.0" layoutY="393.0" prefHeight="331.0" prefWidth="406.0" styleClass="tab_pane" />
          </children></Pane>
       <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
          <children>

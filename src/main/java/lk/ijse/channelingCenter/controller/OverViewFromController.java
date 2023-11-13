@@ -1,19 +1,41 @@
 package lk.ijse.channelingCenter.controller;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class OverViewFromController {
+public class OverViewFromController implements Initializable {
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<PieChart.Data>observableList= FXCollections.observableArrayList(
+        new PieChart.Data("Acetaminophen",10),
+        new PieChart.Data("Adderall",20),
+        new PieChart.Data("Amitriptyline",30),
+        new PieChart.Data("Amlodiphine",40),
+        new PieChart.Data("Amoxicillin",50),
+        new PieChart.Data("Ativan",50)
+
+                );
+pieChart.setData(observableList);
+
+    }
+
+    public PieChart pieChart;
     @FXML
     private Pane btnappoinment;
 
@@ -43,7 +65,7 @@ public class OverViewFromController {
 
     @FXML
     void btnappoinmentOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/apprwFrom.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/appoinmentFrom.fxml"));
 
         //create a new Scene
         Scene scene = new Scene(rootNode);
@@ -222,5 +244,6 @@ public class OverViewFromController {
         stage1.close();
 
     }
+
 
 }

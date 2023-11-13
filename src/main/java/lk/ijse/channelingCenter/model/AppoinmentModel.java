@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppoinmentModel {
-    public boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
+    public static boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "insert into appoinment values(?,?,?,?,?,?,?)";
@@ -20,8 +20,8 @@ public class AppoinmentModel {
         pstm.setString(1, dto.getAppoinment_id());
         pstm.setString(2, dto.getTime());
         pstm.setString(3, dto.getDate());
-        pstm.setString(4, dto.getPatient_name());
-        pstm.setString(5, dto.getDr_name());
+        pstm.setString(4, dto.getId());
+        pstm.setString(5, dto.getPatient_id());
         pstm.setString(6, dto.getFee_status());
         pstm.setString(7, dto.getAge());
 
@@ -31,24 +31,24 @@ public class AppoinmentModel {
 
     }
 
-    public boolean updateAppoinment(final AppoinmentDto dto) throws SQLException {
+    public static boolean updateAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE appoinment SET patient_name = ?,date = ?,time = ?,dr_name = ?,fee_status = ?,age = ? WHERE  = appoinment_id?";
+        String sql = "UPDATE appoinment SET patient_id = ?,date = ?,time = ?,id = ?,fee_status = ?,age = ? WHERE  = appoinment_id?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getAppoinment_id());
         pstm.setString(2, dto.getTime());
         pstm.setString(3, dto.getDate());
-        pstm.setString(4, dto.getPatient_name());
-        pstm.setString(5, dto.getDr_name());
+        pstm.setString(4, dto.getPatient_id());
+        pstm.setString(5, dto.getId());
         pstm.setString(6, dto.getFee_status());
         pstm.setString(7, dto.getAge());
 
         return pstm.executeUpdate() > 0;
     }
 
-    public AppoinmentDto searchAppoinment(String Appoinment_id) throws SQLException {
+    public static AppoinmentDto searchAppoinment(String Appoinment_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment WHERE appoinment_id = ?";
@@ -63,18 +63,18 @@ public class AppoinmentModel {
             String appoinment_id = resultSet.getString(1);
             String time = resultSet.getString(2);
             String date = resultSet.getString(3);
-            String patient_name = resultSet.getString(4);
-            String dr_name = resultSet.getString(5);
+            String patient_id = resultSet.getString(4);
+            String id = resultSet.getString(5);
             String fee_status = resultSet.getString(6);
             String age = resultSet.getString(7);
 
-            dto = new AppoinmentDto(appoinment_id, time, date,patient_name, dr_name,fee_status,age);
+            dto = new AppoinmentDto(appoinment_id, time, date,patient_id, id,fee_status,age);
         }
 
         return dto;
     }
 
-    public List<AppoinmentDto> getAllAppoinment() throws SQLException {
+   /* public List<AppoinmentDto> getAllAppoinment() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment";
@@ -97,9 +97,9 @@ public class AppoinmentModel {
             dtoList.add(dto);
         }
         return dtoList;
-    }
+    }*/
 
-    public boolean deleteAppoiment(String id) throws SQLException {
+    public static boolean deleteAppoinment(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM appoinment WHERE appoinment_id = ?";
@@ -109,7 +109,8 @@ public class AppoinmentModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public List<AppoinmentDto> LoadAllAppoinment() throws SQLException {
+
+   /* public List<AppoinmentDto> LoadAllAppoinment() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment";
@@ -129,5 +130,5 @@ public class AppoinmentModel {
             ));
         }
         return dtoList;
-    }
+    }*/
 }

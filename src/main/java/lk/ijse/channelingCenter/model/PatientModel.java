@@ -15,7 +15,7 @@ public class PatientModel {
     public static boolean savePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into patient values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into patient values(?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getPatient_id());
@@ -63,12 +63,13 @@ public class PatientModel {
         if(resultSet.next()) {
             String Patient_id = resultSet.getString(1);
             String Patient_name = resultSet.getString(2);
-            String Address = resultSet.getString(3);
-            String Sex = resultSet.getString(4);
-            String Email = resultSet.getString(5);
-            String Blood = resultSet.getString(6);
+            String Mobile_number = resultSet.getString(3);
+            String Address = resultSet.getString(4);
+            String Sex = resultSet.getString(5);
+            String Email = resultSet.getString(6);
+            String Blood = resultSet.getString(7);
 
-            dto = new PatientDto(Patient_id,Patient_name,Address,Sex,Email,Blood);
+            dto = new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Blood);
         }
 
         return dto;

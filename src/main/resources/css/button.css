@@ -1,0 +1,44 @@
+.save_button{
+    -fx-background-color: #0067FF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 14px "Arial";
+    -fx-text-fill: white,bold;
+}
+.save_button:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.update_button{
+    -fx-background-color: #02a11c;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 14px "Arial";
+    -fx-text-fill: white,bold;
+}
+.update_button:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.delete_button{
+    -fx-background-color: #FF0000;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 14px "Arial";
+    -fx-text-fill: white,bold;
+}
+.delete_button:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.clear_button{
+    -fx-background-color: #ffa600;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 14px "Arial";
+    -fx-text-fill: white,bold;
+}
+.clear_button:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
