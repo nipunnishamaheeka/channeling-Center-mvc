@@ -14,6 +14,7 @@ create table patient
     address       text        not null,
     sex           varchar(10) not null,
     email         varchar(25) not null,
+    age           varchar(10) not null,
     blood         varchar(10) not null
 );
 

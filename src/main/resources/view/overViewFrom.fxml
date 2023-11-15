@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -11,12 +12,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="overViewPane" prefHeight="750.0" prefWidth="1380.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
+<AnchorPane fx:id="overViewPane" prefHeight="738.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
    <children>
-      <Pane layoutX="81.0" layoutY="11.0" prefHeight="733.0" prefWidth="1290.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane prefHeight="734.0" prefWidth="1266.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
             <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
             <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
@@ -38,7 +40,7 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="24.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" styleClass="tab_pane">
+            <Pane layoutX="13.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" styleClass="tab_pane">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
                      <font>
@@ -59,7 +61,7 @@
                     </columns>
                   </TableView>
                </children></Pane>
-            <HBox layoutX="64.0" layoutY="117.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
+            <HBox layoutX="43.0" layoutY="117.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
                <children>
                   <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -151,7 +153,7 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="861.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane">
+            <Pane layoutX="846.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
@@ -162,132 +164,12 @@
                   <PieChart fx:id="pieChart" layoutX="8.0" layoutY="59.0" prefHeight="400.0" prefWidth="392.0" />
                </children>
             </Pane>
+            <VBox layoutX="746.0" layoutY="6.0" prefHeight="106.0" prefWidth="169.0">
+               <children>
+                  <Label fx:id="lblDate" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" />
+                  <Label fx:id="lblTimeMini" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" />
+               </children>
+            </VBox>
          </children></Pane>
-      <Pane prefHeight="750.0" prefWidth="97.0" styleClass="dashboard_side_pane" stylesheets="@../css/style.css">
-         <children>
-            <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/final%20logo%20.png" />
-               </image>
-            </ImageView>
-            <Pane fx:id="btnoverView" layoutX="23.0" layoutY="134.0" onMouseClicked="#btnoverViewOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane" stylesheets="@../css/style.css">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final%201.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnpatient" layoutX="23.0" layoutY="194.0" onMouseClicked="#btnpatientOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final2.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnappoinment" layoutX="23.0" layoutY="264.0" onMouseClicked="#btnappoinmentOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final3.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btndoctor" layoutX="23.0" layoutY="330.0" onMouseClicked="#btndoctorOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final4.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnlabReports" layoutX="23.0" layoutY="402.0" onMouseClicked="#btnlabreportsOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final5.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnmedicine" layoutX="23.0" layoutY="477.0" onMouseClicked="#btnmedicineOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane" stylesheets="@../css/style.css">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final6.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnlogout" layoutX="23.0" layoutY="673.0" onMouseClicked="#btnlogoutOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/final7.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane fx:id="btnemployee" layoutX="23.0" layoutY="547.0" onMouseClicked="#btnemployeeOnAction" prefHeight="45.0" prefWidth="45.0" styleClass="button_pane" stylesheets="@../css/style.css">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="5.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/baseline-supervisor_account-24px.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

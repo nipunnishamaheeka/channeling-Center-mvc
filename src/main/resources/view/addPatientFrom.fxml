@@ -21,7 +21,7 @@
       <TextField fx:id="txtNumber" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile Number" />
       <TextField fx:id="txtAddress" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
       <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" promptText="Sex" />
-      <TextField fx:id="txtEmail" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Email" />
+      <TextField fx:id="txtEmail" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="147.0" promptText="Email" />
       <Button layoutX="649.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
             <cursor>
                <Cursor fx:constant="HAND" />
@@ -39,6 +39,7 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></Button>
+         <TextField fx:id="txtAge" layoutX="738.0" layoutY="116.0" prefHeight="30.0" prefWidth="82.0" promptText="Age" />
    </children>
 </Pane>
 </AnchorPane>

@@ -74,7 +74,7 @@ public class AppoinmentModel {
         return dto;
     }*/
 
-   /* public List<AppoinmentDto> getAllAppoinment() throws SQLException {
+   public List<AppoinmentDto> getAllAppoinment() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment";
@@ -97,7 +97,7 @@ public class AppoinmentModel {
             dtoList.add(dto);
         }
         return dtoList;
-    }*/
+    }
 
     public static boolean deleteAppoinment(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -108,9 +108,7 @@ public class AppoinmentModel {
 
         return pstm.executeUpdate() > 0;
     }
-
-
-   /* public List<AppoinmentDto> LoadAllAppoinment() throws SQLException {
+    public List<AppoinmentDto> LoadAllAppoinment() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM appoinment";
@@ -130,5 +128,5 @@ public class AppoinmentModel {
             ));
         }
         return dtoList;
-    }*/
+    }
 }

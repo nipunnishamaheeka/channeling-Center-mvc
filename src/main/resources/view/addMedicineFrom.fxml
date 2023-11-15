@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="addPatient" prefHeight="238.0" prefWidth="850.0" style="-fx-background-color: #DEDEDE;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.AddMedicineFromController">
+<Pane prefHeight="238.0" prefWidth="850.0" styleClass="payment_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Details">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtId" layoutX="26.0" layoutY="53.0" onAction="#idSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Medicine Code" />
+      <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Medicine Name" />
+      <TextField fx:id="txtNumber" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Supplier ID" />
+      <TextField fx:id="txtAddress" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
+      <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" />
+      <TextField fx:id="txtEmail" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Email" />
+      <Button layoutX="649.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+      <TextField fx:id="txtblood" layoutX="421.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" />
+      <Button layoutX="124.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Medicine">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+      <Button layoutX="306.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Medicine">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+      <Button layoutX="479.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Medicine">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+   </children>
+</Pane>
+</AnchorPane>

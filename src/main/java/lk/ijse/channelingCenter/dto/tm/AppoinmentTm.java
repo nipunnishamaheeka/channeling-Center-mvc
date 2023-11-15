@@ -9,7 +9,8 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 
-public class AppoinmentTm {
+public class
+AppoinmentTm {
     private String age;
     private String id;
     private String fee_status;

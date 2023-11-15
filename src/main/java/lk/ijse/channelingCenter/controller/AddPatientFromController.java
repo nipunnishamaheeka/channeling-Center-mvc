@@ -1,17 +1,22 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import lk.ijse.channelingCenter.dto.DoctorDto;
+
 import lk.ijse.channelingCenter.dto.PatientDto;
-import lk.ijse.channelingCenter.model.DoctorModel;
+
+import lk.ijse.channelingCenter.dto.tm.PatientTm;
 import lk.ijse.channelingCenter.model.PatientModel;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AddPatientFromController {
+    public TextField txtAge;
     @FXML
     private TextField txtAddress;
 
@@ -57,6 +62,7 @@ public class AddPatientFromController {
         txtType.setText(dto.getSex());
         txtEmail.setText(dto.getEmail());
         txtblood.setText(dto.getBlood());
+        txtAge.setText(dto.getAge());
     }
 
     public void btnClerOnAction(ActionEvent actionEvent) {
@@ -71,6 +77,7 @@ public class AddPatientFromController {
         txtType.setText("");
         txtEmail.setText("");
         txtblood.setText("");
+        txtAge.setText("");
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
@@ -80,10 +87,12 @@ public class AddPatientFromController {
     String address = txtAddress.getText();
     String sex = txtType.getText();
     String email = txtEmail.getText();
+    String age = txtAge.getText();
+
     String blood = txtblood.getText();
 
 
-        var itemDto = new PatientDto(id,name,number,address,sex,email,blood);
+        var itemDto = new PatientDto(id,name,number,address,sex,email,blood,age);
 
         try {
             boolean isSaved = PatientModel.savePatient(itemDto);
@@ -94,9 +103,8 @@ public class AddPatientFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
+
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         String Patient_id = txtId.getText();
@@ -106,9 +114,10 @@ public class AddPatientFromController {
         String Sex = txtType.getText();
         String Email = txtEmail.getText();
         String Blood = txtblood.getText();
-//        var model = new ItemModel();
+        String Age = txtAge.getText();
+
         try {
-            boolean isUpdated = PatientModel.updatePatient(new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Blood));
+            boolean isUpdated = PatientModel.updatePatient(new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Blood,Age));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Patient updated").show();
                 clearFields();

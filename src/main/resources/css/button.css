@@ -10,7 +10,7 @@
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
 .update_button{
-    -fx-background-color: #02a11c;
+    -fx-background-color:  #ffa600;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-font: 14px "Arial";
@@ -32,7 +32,7 @@
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
 .clear_button{
-    -fx-background-color: #ffa600;
+    -fx-background-color: #626262;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-font: 14px "Arial";
@@ -40,5 +40,35 @@
 }
 .clear_button:hover{
     -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.add_button{
+    -fx-background-color: #0067FF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 14px "Arial";
+    -fx-text-fill: white,bold;
+}
+.add_button:hover{
+    -fx-shadow-color: #0A2B9F;
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.time_textfield{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 30px "ATROX";
+    -fx-font-weight: 800;
+    -fx-text-fill: Black,Bold;
+
+}
+.function{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+}
+.function:hover{
+    -fx-background-color: Transparent;
+    -fx-border-color: Transparent;
+    -fx-shadow-color: #FDE2E0FF;
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }

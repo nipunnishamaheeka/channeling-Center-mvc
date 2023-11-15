@@ -39,11 +39,11 @@ public class AddAppoinmentFromController {
 
 
 
+
     @FXML
     void btnClerOnAction(ActionEvent event) {
 
     }
-
     @FXML
     void btnSaveOnAction(ActionEvent event) {
 

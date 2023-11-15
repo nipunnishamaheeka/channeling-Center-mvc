@@ -3,6 +3,7 @@ package lk.ijse.channelingCenter.model;
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.DoctorDto;
+import lk.ijse.channelingCenter.dto.PatientDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class DoctorModel {
     public static boolean updateDoctor(final DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE doctor SET name = ?,address = ?,email = ?,number = ?,type = ? WHERE  id=?";
+        String sql = "UPDATE doctor SET doctor_name = ?,address = ?,email = ?,number = ?,type = ? WHERE  id=?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
 
@@ -81,6 +82,54 @@ public class DoctorModel {
         pstm.setString(1, doc_id);
 
         return pstm.executeUpdate() > 0;
+    }
+    public static List<DoctorDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM doctor";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<DoctorDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new DoctorDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+    public static List<DoctorDto> getAllDoctor() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM doctor";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        List<DoctorDto> dtoList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String email = resultSet.getString(4);
+            String number = resultSet.getString(5);
+            String type = resultSet.getString(6);
+
+            var dto = new DoctorDto(id, name, address, email, number, type);
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
 }

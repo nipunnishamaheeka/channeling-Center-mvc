@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginFromController {
-    public static String fullname;
     public AnchorPane loginPane;
     @FXML
     private Button btnlogin;

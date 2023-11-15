@@ -1,21 +1,47 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import lk.ijse.channelingCenter.dto.DoctorDto;
+import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.DoctorModel;
 
-import java.io.IOException;
+import javax.swing.border.EmptyBorder;
 import java.sql.SQLException;
+import java.util.List;
+
+import static lk.ijse.channelingCenter.model.DoctorModel.deleteDoctor;
 
 public class DoctorFromController {
+    public AnchorPane doctorPane;
+    @FXML
+    private TableColumn<?, ?> tblAddress;
+
+    @FXML
+    private TableColumn<?, ?> tblEmail;
+
+    @FXML
+    private TableColumn<?, ?> tblId;
+
+    @FXML
+    private TableColumn<?, ?> tblName;
+
+    @FXML
+    private TableColumn<?, ?> tblNumber;
+
+    @FXML
+    private TableColumn<?, ?> tblType;
+
+    @FXML
+    private TableView<DoctorTm> tblDoctor;
+
+
     @FXML
     private TextField txtAddress;
 
@@ -34,9 +60,21 @@ public class DoctorFromController {
     @FXML
     private TextField txtType;
 
-    @FXML
-    private AnchorPane doctorPane;
+public void initialize() throws SQLException {
+    setCellValueFactory();
+    loadAllItems();
 
+    }
+    private void setCellValueFactory(){
+        tblId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tblName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
+        tblAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tblEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+       tblNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
+        tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+
+    }
     public void btnSaveOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
         String name = txtName.getText();
@@ -81,7 +119,7 @@ public class DoctorFromController {
         String id = txtId.getText();
 
         try {
-            boolean isDeleted = DoctorModel.deleteDoctor(id);
+            boolean isDeleted = deleteDoctor(id);
 
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor deleted!").show();
@@ -125,190 +163,36 @@ public class DoctorFromController {
         txtNumber.clear();
         txtType.clear();
     }
+    private void loadAllItems() throws SQLException {
+        var model = new DoctorModel();
 
-    @FXML
-    void btnappoinmentOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/appoinmentFrom.fxml"));
+        ObservableList<DoctorTm> obList = FXCollections.observableArrayList();
 
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
+        List<DoctorDto> dtoList = DoctorModel.getAllDoctor();
 
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
+        for(DoctorDto dto : dtoList) {
+            obList.add(
+                    new DoctorTm(
+                            dto.getId(),
+                            dto.getName(),
+                            dto.getAddress(),
+                            dto.getEmail(),
+                            dto.getNumber(),
+                            dto.getType()
+                    )
+            );
+        }
 
-        //set title and get center on screen stage
-        stage.setTitle("Appoinment");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-
-
-    }
-
-    @FXML
-    void btndoctorOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/doctorFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("doctorFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-
-    }
-
-    @FXML
-    void btnemployeeOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/employeeFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("employeeFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
+        tblDoctor.setItems(obList);
 
 
     }
-
-    @FXML
-    void btnlabreportsOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/labReportsFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("labReportsFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
-    void btnlogoutOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("loginFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
-    void btnmedicineOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/medicineFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("medicineFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
-    void btnoverViewOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("overView");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-    }
-
-    @FXML
-    void btnpatientOnAction(MouseEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/patientFrom.fxml"));
-
-        //create a new Scene
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = new Stage();
-        //set scene to the primary stage
-        stage.setScene(scene);
-
-        //set title and get center on screen stage
-        stage.setTitle("patientFrom");
-        stage.centerOnScreen();
-
-        //show stage to the crowd
-        stage.show();
-
-        Stage stage1 = (Stage) doctorPane.getScene().getWindow();
-        stage1.close();
-
-    }
-
     public void btnClerOnAction(ActionEvent actionEvent) {
         clearFields();
+    }
+
+
+    public void btnRefershOnAction(MouseEvent mouseEvent) throws SQLException {
+    loadAllItems();
     }
 }
