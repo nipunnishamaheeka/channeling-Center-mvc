@@ -69,7 +69,7 @@ public void initialize() throws SQLException {
         tblId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tblName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
         tblAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        tblEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tblEmail.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
        tblNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
         tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
@@ -90,10 +90,12 @@ public void initialize() throws SQLException {
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
                 clearFields();
+                loadAllItems();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {

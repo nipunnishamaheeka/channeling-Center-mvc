@@ -55,7 +55,7 @@ private void setCellValueFactory(){
     patientID.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
     patientName.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
     number.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
-    email.setCellValueFactory(new PropertyValueFactory<>("email"));
+    email.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
     bloodGroup.setCellValueFactory(new PropertyValueFactory<>("blood"));
     sex.setCellValueFactory(new PropertyValueFactory<>("sex"));
     Age.setCellValueFactory(new PropertyValueFactory<>("age"));

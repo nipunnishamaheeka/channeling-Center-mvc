@@ -12,7 +12,7 @@ public class EmployeeDto {
     private String emp_id;
     private String emp_name;
     private String emp_address;
-    private String email;
+    private String mobile_number;
     private String qualification;
     private String job_role;
     private String salary;

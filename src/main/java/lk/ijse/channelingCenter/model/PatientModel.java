@@ -3,6 +3,7 @@ package lk.ijse.channelingCenter.model;
 
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.PatientDto;
+import lk.ijse.channelingCenter.dto.tm.EmployeeTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -114,4 +115,5 @@ public class PatientModel {
         }
         return dtoList;
     }
+
 }

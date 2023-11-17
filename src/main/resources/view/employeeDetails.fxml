@@ -10,12 +10,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="733.0" prefWidth="1262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
+<AnchorPane fx:id="employeeDetailsPane" prefHeight="733.0" prefWidth="1262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
    <children>
       <Pane layoutY="-1.0" prefHeight="733.0" prefWidth="1262.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
             <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
+            <Pane layoutX="1065.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
                <children>
                   <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -86,6 +86,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Pane layoutX="583.0" layoutY="333.0" prefHeight="390.0" prefWidth="665.0" styleClass="inter_pane" />
+            <Pane fx:id="backbutton" layoutX="1197.0" layoutY="14.0" onMouseClicked="#btnBackButtonOnAction" prefHeight="35.0" prefWidth="37.0" styleClass="function" stylesheets="@../css/button.css">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/arrow-undo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
