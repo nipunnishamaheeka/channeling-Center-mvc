@@ -57,8 +57,7 @@
                   <TableColumn fx:id="colPatientName" prefWidth="250.0" text="Patient Name" />
                   <TableColumn fx:id="colPatientAge" prefWidth="100.0" text="Patient Age" />
                   <TableColumn fx:id="colDoctor" prefWidth="250.0" text="Dr.Name" />
-                  <TableColumn prefWidth="136.800048828125" text="Fee Status" />
-                  <TableColumn fx:id="colAction" prefWidth="174.4000244140625" text="User Action" />
+                  <TableColumn fx:id="colAction" prefWidth="74.39996337890625" text="User Action" />
               </columns>
             </TableView>
          </children></Pane>

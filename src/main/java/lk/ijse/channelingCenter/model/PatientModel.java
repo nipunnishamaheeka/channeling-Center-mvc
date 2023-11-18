@@ -3,7 +3,6 @@ package lk.ijse.channelingCenter.model;
 
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.PatientDto;
-import lk.ijse.channelingCenter.dto.tm.EmployeeTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientModel {
-    public static boolean savePatient(final PatientDto dto) throws SQLException {
+    public boolean savePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "insert into patient values(?,?,?,?,?,?,?,?)";
@@ -34,7 +33,7 @@ public class PatientModel {
 
     }
 
-    public static boolean updatePatient(final PatientDto dto) throws SQLException {
+    public boolean updatePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE patient SET patient_name = ?,mobile_number = ?,address = ?,sex = ?,email = ?,age = ?,blood =? WHERE   patient_id=?";
@@ -52,7 +51,7 @@ public class PatientModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public static PatientDto searchPatient(String id) throws SQLException {
+    public PatientDto searchPatient(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM patient WHERE patient_id = ?";
@@ -63,7 +62,7 @@ public class PatientModel {
 
         PatientDto dto = null;
 
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             String Patient_id = resultSet.getString(1);
             String Patient_name = resultSet.getString(2);
             String Mobile_number = resultSet.getString(3);
@@ -73,13 +72,13 @@ public class PatientModel {
             String Age = resultSet.getString(7);
             String Blood = resultSet.getString(8);
 
-            dto = new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Age,Blood);
+            dto = new PatientDto(Patient_id, Patient_name, Mobile_number, Address, Sex, Email, Age, Blood);
         }
 
         return dto;
     }
 
-    public static boolean deletePatient(String id) throws SQLException {
+    public boolean deletePatient(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM patient WHERE patient_id = ?";
@@ -89,7 +88,7 @@ public class PatientModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public static List<PatientDto> getAllPatient() throws SQLException {
+    public List<PatientDto> getAllPatient() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM patient";
@@ -110,10 +109,52 @@ public class PatientModel {
             String Blood = resultSet.getString(8);
 
 
-            var dto = new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Age,Blood);
+            var dto = new PatientDto(Patient_id, Patient_name, Mobile_number, Address, Sex, Email, Age, Blood);
             dtoList.add(dto);
         }
         return dtoList;
     }
 
+    public String autoGenaratePatientId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM patient ORDER BY patient_id DESC LIMIT 1").executeQuery();
+        String current = null;
+        while (resultSet.next()) {
+            current = resultSet.getString(1);
+            System.out.println(current);
+            return splitId(current);
+        }
+
+        return splitId(null);
+    }
+
+    private String splitId(String current) {
+
+        if (current != null) {
+            String[] tempArray = current.split("P");
+            int id = Integer.parseInt(tempArray[1]);
+            id++;
+            if (9 > id && id > 0) return "P00" + id;
+            else if (99 > id && id > 9) return "P0" + id;
+            else return "P" + id;
+        }
+        return "P001";
+    }
+
+
+    public String getPatientName(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(2);
+        } return null;
+
+    }
 }

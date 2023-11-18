@@ -1,22 +1,22 @@
 package lk.ijse.channelingCenter.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import lk.ijse.channelingCenter.dto.PatientDto;
 
-import lk.ijse.channelingCenter.dto.tm.PatientTm;
 import lk.ijse.channelingCenter.model.PatientModel;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddPatientFromController {
     public TextField txtAge;
+    public Label lblPatientId;
     @FXML
     private TextField txtAddress;
 
@@ -37,12 +37,17 @@ public class AddPatientFromController {
 
     @FXML
     private TextField txtblood;
+    PatientModel patientModel = new PatientModel();
 
-    public void idSearchOnAction(ActionEvent actionEvent) {
+    public void initialize() throws SQLException {
+        setPatientID();
+    }
+
+    public void nameSearchOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
         try {
-            PatientDto dto = PatientModel.searchPatient(id);
+            PatientDto dto = patientModel.searchPatient(id);
             if (dto != null) {
                 setFields(dto);
             } else {
@@ -55,7 +60,7 @@ public class AddPatientFromController {
     }
 
     private void setFields(PatientDto dto) {
-        txtId.setText(dto.getPatient_id());
+        lblPatientId.setText(dto.getPatient_id());
         txtName.setText(dto.getPatient_name());
         txtNumber.setText(dto.getMobile_number());
         txtAddress.setText(dto.getAddress());
@@ -70,7 +75,7 @@ public class AddPatientFromController {
     }
 
     private void clearFields() {
-        txtId.setText("");
+        lblPatientId.setText("");
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");
@@ -80,22 +85,23 @@ public class AddPatientFromController {
         txtAge.setText("");
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
-    String id = txtId.getText();
-    String name = txtName.getText();
-    String number = txtNumber.getText();
-    String address = txtAddress.getText();
-    String sex = txtType.getText();
-    String email = txtEmail.getText();
-    String age = txtAge.getText();
 
-    String blood = txtblood.getText();
+   /* public void btnSaveOnAction(ActionEvent actionEvent) {
+        String id = lblPatientId.getText();
+        String name = txtName.getText();
+        String number = txtNumber.getText();
+        String address = txtAddress.getText();
+        String sex = txtType.getText();
+        String email = txtEmail.getText();
+        String age = txtAge.getText();
+
+        String blood = txtblood.getText();
 
 
-        var itemDto = new PatientDto(id,name,number,address,sex,email,blood,age);
+        var itemDto = new PatientDto(id, name, number, address, sex, email, blood, age);
 
         try {
-            boolean isSaved = PatientModel.savePatient(itemDto);
+            boolean isSaved = patientModel.savePatient(itemDto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
                 clearFields();
@@ -103,6 +109,97 @@ public class AddPatientFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }*/
+
+    public void btnSaveOnAction(ActionEvent actionEvent) {
+        boolean isPatientValid = validatePatinet();
+
+        if(isPatientValid) {
+            String id = lblPatientId.getText();
+            String name = txtName.getText();
+            String number = txtNumber.getText();
+            String address = txtAddress.getText();
+            String sex = txtType.getText();
+            String email = txtEmail.getText();
+            String age = txtAge.getText();
+            String blood = txtblood.getText();
+
+            PatientDto itemDto = new PatientDto(id, name, number, address, sex, email, blood, age);
+
+            try {
+                PatientModel patientModel = new PatientModel();
+                boolean isSaved = patientModel.savePatient(itemDto);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
+                    clearFields();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+//        }else if(!txtType.getText().isEmpty()){
+//            new Alert(Alert.AlertType.ERROR,"Invalid Patient Gender").show();
+//            txtType.requestFocus();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Invalid Patient Details").show();
+            lblPatientId.requestFocus();
+        }
+
+
+
+
+
+        /*try {
+            boolean isSaved = patientModel.savePatient(itemDto);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
+                clearFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }*/
+    }
+
+    private boolean validatePatinet() {
+        String patinetIdText = lblPatientId.getText();
+        Pattern compile = Pattern.compile("[P][0-9]{2,}");
+        Matcher matcher = compile.matcher(patinetIdText);
+        boolean matches = matcher.matches();
+
+        if (!matches) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Patient ID").show();
+            return false;
+        }
+        String nameText = txtName.getText();
+        boolean isNameValid = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        if (!isNameValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Patient Name").show();
+            return false;
+        }
+        String gender_title = txtType.getText();
+        Pattern compile1 = Pattern.compile("Male|Female");
+        Matcher matcher1 = compile1.matcher(gender_title);
+        boolean isTitelValid = matcher1.matches();
+
+        if (!isTitelValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Gender").show();
+            return false;
+        }
+        String numberText = txtNumber.getText();
+        boolean isNumberValid = Pattern.compile("[07]\\d{9}").matcher(numberText).matches();
+        if (!isNumberValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Patient Number").show();
+            return false;
+        }
+//        String ageText = txtAge.getText();
+//        boolean isAgeValid = Pattern.compile("\\d{2}").matcher(ageText).matches();
+//        if (!isAgeValid) {
+//            new Alert(Alert.AlertType.ERROR, "Invalid Patient Age").show();
+//            return false;
+//        }
+        return matches;
     }
 
 
@@ -117,7 +214,7 @@ public class AddPatientFromController {
         String Age = txtAge.getText();
 
         try {
-            boolean isUpdated = PatientModel.updatePatient(new PatientDto(Patient_id,Patient_name,Mobile_number,Address,Sex,Email,Blood,Age));
+            boolean isUpdated = patientModel.updatePatient(new PatientDto(Patient_id, Patient_name, Mobile_number, Address, Sex, Email, Blood, Age));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Patient updated").show();
                 clearFields();
@@ -132,9 +229,9 @@ public class AddPatientFromController {
         String id = txtId.getText();
 
         try {
-            boolean isDeleted = PatientModel.deletePatient(id);
+            boolean isDeleted = patientModel.deletePatient(id);
 
-            if(isDeleted) {
+            if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Patient deleted!").show();
                 clearFields();
             }
@@ -142,4 +239,13 @@ public class AddPatientFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
+    private void setPatientID() {
+        try {
+            lblPatientId.setText(new PatientModel().autoGenaratePatientId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

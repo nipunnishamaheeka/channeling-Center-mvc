@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.dto.tm;
 
+import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,6 @@ public class PatientTm {
     private String email;
     private String age;
     private String blood;
+    private Button deleteButton;
+    private Button updateButton;
 }

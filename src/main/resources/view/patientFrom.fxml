@@ -39,14 +39,15 @@
                <children>
                   <TableView fx:id="tblPatient" prefHeight="546.0" prefWidth="1239.0">
                      <columns>
-                        <TableColumn fx:id="patientID" prefWidth="95.0" text="Patient ID" />
-                        <TableColumn fx:id="patientName" prefWidth="126.4000244140625" text="Patient Name" />
-                        <TableColumn fx:id="sex" prefWidth="79.199951171875" text="Sex" />
-                        <TableColumn fx:id="bloodGroup" prefWidth="300.0" text="Blood Group " />
-                        <TableColumn fx:id="Age" prefWidth="85.0" text="Age" />
-                        <TableColumn fx:id="number" prefWidth="300.0" text="Mobile Number" />
-                        <TableColumn fx:id="email" prefWidth="150.0" text="Email" />
-                        <TableColumn fx:id="action" prefWidth="117.0" text="User Action" />
+                        <TableColumn fx:id="colPatientID" prefWidth="95.0" text="Patient ID" />
+                        <TableColumn fx:id="colPatientName" prefWidth="126.4000244140625" text="Patient Name" />
+                        <TableColumn fx:id="colSex" prefWidth="79.199951171875" text="Sex" />
+                        <TableColumn fx:id="colBloodGroup" prefWidth="300.0" text="Blood Group " />
+                        <TableColumn fx:id="colAge" prefWidth="85.0" text="Age" />
+                        <TableColumn fx:id="colNumber" prefWidth="300.0" text="Mobile Number" />
+                        <TableColumn fx:id="colEmail" prefWidth="150.0" text="Email" />
+                        <TableColumn fx:id="colUpdate" prefWidth="45.5999755859375" text="Action" />
+                        <TableColumn fx:id="colDelete" prefWidth="45.5999755859375" text="Action" />
                      </columns>
                   </TableView>
                </children>

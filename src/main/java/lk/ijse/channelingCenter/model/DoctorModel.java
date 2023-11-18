@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorModel {
-    public static boolean saveDoctor(DoctorDto dto) throws SQLException {
+    public boolean saveDoctor(DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "insert into doctor values(?,?,?,?,?,?)";
@@ -32,7 +32,7 @@ public class DoctorModel {
 
     }
 
-    public static boolean updateDoctor(final DoctorDto dto) throws SQLException {
+    public boolean updateDoctor(final DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE doctor SET doctor_name = ?,address = ?,email = ?,number = ?,type = ? WHERE  id=?";
@@ -49,7 +49,7 @@ public class DoctorModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public static DoctorDto searchDoctor(String Doc_id) throws SQLException {
+    public DoctorDto searchDoctor(String Doc_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM doctor WHERE id = ?";
@@ -74,7 +74,7 @@ public class DoctorModel {
         return dto;
     }
 
-    public static boolean deleteDoctor(String doc_id) throws SQLException {
+    public boolean deleteDoctor(String doc_id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM doctor WHERE id = ?";
@@ -83,7 +83,7 @@ public class DoctorModel {
 
         return pstm.executeUpdate() > 0;
     }
-    public static List<DoctorDto> loadAllItems() throws SQLException {
+    public List<DoctorDto> loadAllItems() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM doctor";
@@ -108,7 +108,7 @@ public class DoctorModel {
 
         return dtoList;
     }
-    public static List<DoctorDto> getAllDoctor() throws SQLException {
+    public List<DoctorDto> getAllDoctor() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM doctor";
@@ -130,6 +130,32 @@ public class DoctorModel {
             dtoList.add(dto);
         }
         return dtoList;
+    }
+    public String autoGenarateDoctorId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM doctor ORDER BY id DESC LIMIT 1").executeQuery();
+        String current = null;
+        while (resultSet.next()) {
+            current = resultSet.getString(1);
+            System.out.println(current);
+            return splitId(current);
+        }
+
+        return splitId(null);
+    }
+
+    private String splitId(String current) {
+
+        if (current != null) {
+            String[] tempArray = current.split("D");
+            int id = Integer.parseInt(tempArray[1]);
+            id++;
+            if (9 > id && id > 0) return "D00" + id;
+            else if (99 > id && id > 9) return "D0" + id;
+            else return "D" + id;
+        }
+        return "D001";
     }
 
 }

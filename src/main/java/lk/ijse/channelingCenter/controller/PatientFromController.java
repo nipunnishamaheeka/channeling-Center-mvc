@@ -1,12 +1,14 @@
 package lk.ijse.channelingCenter.controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,6 +21,7 @@ import lk.ijse.channelingCenter.model.PatientModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class PatientFromController{
 
@@ -28,37 +31,43 @@ public class PatientFromController{
     private TableView<PatientTm> tblPatient;
 
     @FXML
-    private TableColumn<?,?> Age;
+    private TableColumn<?,?> colAge;
 
     @FXML
-    private TableColumn<?,?> action;
+    private TableColumn<?, ?> colDelete;
 
     @FXML
-    private TableColumn<?,?> bloodGroup;
+    private TableColumn<?, ?> colUpdate;
 
     @FXML
-    private TableColumn<?,?> email;
+    private TableColumn<?,?> colBloodGroup;
 
     @FXML
-    private TableColumn<?,?> number;
+    private TableColumn<?,?> colEmail;
 
     @FXML
-    private TableColumn<?,?> patientID;
+    private TableColumn<?,?> colNumber;
 
     @FXML
-    private TableColumn<?,?> patientName;
+    private TableColumn<?,?> colPatientID;
 
     @FXML
-    private TableColumn<?,?> sex;
+    private TableColumn<?,?> colPatientName;
 
+    @FXML
+    private TableColumn<?,?> colSex;
+
+    PatientModel patientModel = new PatientModel();
 private void setCellValueFactory(){
-    patientID.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
-    patientName.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
-    number.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
-    email.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
-    bloodGroup.setCellValueFactory(new PropertyValueFactory<>("blood"));
-    sex.setCellValueFactory(new PropertyValueFactory<>("sex"));
-    Age.setCellValueFactory(new PropertyValueFactory<>("age"));
+    colPatientID.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
+    colPatientName.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
+    colNumber.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
+    colEmail.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
+    colBloodGroup.setCellValueFactory(new PropertyValueFactory<>("blood"));
+    colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+    colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+    colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
+    colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
 
 }
 
@@ -67,16 +76,56 @@ private void setCellValueFactory(){
         loadAllPatients();
 
     }
+    private void setFontAwesomeIcons() {
+        tblPatient.getItems().forEach(item -> {
+            Button deleteButton = item.getDeleteButton();
+            Button updateButton = item.getUpdateButton();
 
-    private void loadAllPatients() {
-        var model = new PatientModel();
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+            FontAwesomeIconView updateIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
 
+            deleteButton.setGraphic(deleteIcon);
+            updateButton.setGraphic(updateIcon);
+        });
+    }
+
+
+    public  void loadAllPatients() {
         ObservableList<PatientTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<PatientDto> dtoList = PatientModel.getAllPatient();
+            List<PatientDto> dtoList = new PatientModel().getAllPatient();
 
             for(PatientDto dto : dtoList) {
+                Button deleteButton = new Button();
+                Button updateButton = new Button();
+
+                deleteButton.setCursor(Cursor.HAND);
+                updateButton.setCursor(Cursor.HAND);
+
+                deleteButton.setOnAction((e)->{
+                    ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete this Patient?", yes, no).showAndWait();
+                    if (result.orElse(no) == yes){
+                        int selectedIndex = tblPatient.getSelectionModel().getSelectedIndex();
+                        String code = (String) colPatientID.getCellData(selectedIndex);
+                        deletePatient(code);
+                        obList.remove(selectedIndex);
+                        tblPatient.refresh();
+                    }
+                });
+                updateButton.setOnAction((e)->{
+                    int selectedIndex = tblPatient.getSelectionModel().getSelectedIndex();
+                    String code = (String) colPatientID.getCellData(selectedIndex);
+                    System.out.println(code);
+                    try{
+                        patientPane.getChildren().clear();
+                        //patientPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/updatePatientFrom.fxml")));
+                    }catch (Exception e1){
+                    }
+                });
                 obList.add(
                         new PatientTm(
                               dto.getPatient_id(),
@@ -86,17 +135,30 @@ private void setCellValueFactory(){
                                     dto.getSex(),
                                     dto.getEmail(),
                                     dto.getAge(),
-                                    dto.getBlood()
+                                    dto.getBlood(),
+                                    deleteButton,
+                                    updateButton
                         )
                 );
             }
 
             tblPatient.setItems(obList);
+            setFontAwesomeIcons();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+    private void deletePatient(String code) {
+        try {
+            boolean b = patientModel.deletePatient(code);
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION,"Deleted").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
 
+    }
     @FXML
     void btnaddPatientOnAction(MouseEvent event) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addPatientFrom.fxml"));
@@ -113,4 +175,5 @@ private void setCellValueFactory(){
     public void btnRefershOnAction(MouseEvent mouseEvent) {
         loadAllPatients();
     }
+
 }

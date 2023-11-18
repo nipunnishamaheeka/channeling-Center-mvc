@@ -36,9 +36,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text layoutX="86.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
+      <Text layoutX="14.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Channelling Center ">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Text>
       <Text fill="#828181" layoutX="52.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please login to your account.">
@@ -55,7 +55,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="309.0"  prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
+      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="309.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
             <font>
                 <Font size="24.0" />
             </font>

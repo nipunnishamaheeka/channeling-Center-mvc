@@ -1,9 +1,13 @@
 package lk.ijse.channelingCenter.controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -11,15 +15,20 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.channelingCenter.dto.DoctorDto;
 import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.DoctorModel;
+import lk.ijse.channelingCenter.model.PatientModel;
 
-import javax.swing.border.EmptyBorder;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
-import static lk.ijse.channelingCenter.model.DoctorModel.deleteDoctor;
 
 public class DoctorFromController {
     public AnchorPane doctorPane;
+    public Label lblDoctorId;
+    @FXML
+    private TableColumn<?, ?> colUpdate;
+    @FXML
+    private TableColumn<?, ?> colDelete;
     @FXML
     private TableColumn<?, ?> tblAddress;
 
@@ -59,24 +68,29 @@ public class DoctorFromController {
 
     @FXML
     private TextField txtType;
-
-public void initialize() throws SQLException {
-    setCellValueFactory();
-    loadAllItems();
+    DoctorModel doctorModel = new DoctorModel();
+    public void initialize() throws SQLException {
+        setCellValueFactory();
+        loadAllItems();
+        setDoctorID();
 
     }
-    private void setCellValueFactory(){
+
+    private void setCellValueFactory() {
         tblId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tblName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
         tblAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        tblEmail.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
-       tblNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
+        tblEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tblNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
         tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
+        colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
 
 
     }
+
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
+        String id = lblDoctorId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
@@ -86,11 +100,12 @@ public void initialize() throws SQLException {
         var DoctorDto = new DoctorDto(id, name, address, email, number, type);
 
         try {
-            boolean isSaved = DoctorModel.saveDoctor(DoctorDto);
+            boolean isSaved = doctorModel.saveDoctor(DoctorDto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
                 clearFields();
                 loadAllItems();
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -99,7 +114,7 @@ public void initialize() throws SQLException {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
+        String id = lblDoctorId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
@@ -107,36 +122,38 @@ public void initialize() throws SQLException {
         String type = txtType.getText();
 
         try {
-            boolean isUpdated = DoctorModel.updateDoctor(new DoctorDto(id, name, address, email, number, type));
+            boolean isUpdated = doctorModel.updateDoctor(new DoctorDto(id, name, address, email, number, type));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor updated!").show();
                 clearFields();
+                loadAllItems();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
-    public void btnDeleteOnAction(ActionEvent actionEvent) {
+    /*public void btnDeleteOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
         try {
-            boolean isDeleted = deleteDoctor(id);
+            boolean isDeleted = doctorModel.deleteDoctor(id);
 
-            if(isDeleted) {
+            if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor deleted!").show();
                 clearFields();
+                loadAllItems();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-    }
+    }*/
 
-    public void idSearchOnAction(ActionEvent actionEvent) {
+   /* public void idSearchOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
         try {
-            DoctorDto dto = DoctorModel.searchDoctor(id);
+            DoctorDto dto = doctorModel.searchDoctor(id);
             if (dto != null) {
                 setFields(dto);
             } else {
@@ -146,10 +163,10 @@ public void initialize() throws SQLException {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-    }
+    }*/
 
     private void setFields(DoctorDto dto) {
-        txtId.setText(dto.getId());
+        lblDoctorId.setText(dto.getId());
         txtName.setText(dto.getName());
         txtAddress.setText(dto.getAddress());
         txtEmail.setText(dto.getEmail());
@@ -158,43 +175,101 @@ public void initialize() throws SQLException {
     }
 
     private void clearFields() {
-        txtId.clear();
+        lblDoctorId.setText("");
         txtName.clear();
         txtAddress.clear();
         txtEmail.clear();
         txtNumber.clear();
         txtType.clear();
     }
+    private void setFontAwesomeIcons() {
+
+        tblDoctor.getItems().forEach(item -> {
+            Button deleteButton = item.getDeleteButton();
+            Button updateButton = item.getUpdateButton();
+
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+            FontAwesomeIconView updateIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+
+            deleteButton.setGraphic(deleteIcon);
+            updateButton.setGraphic(updateIcon);
+        });
+    }
+
     private void loadAllItems() throws SQLException {
-        var model = new DoctorModel();
 
         ObservableList<DoctorTm> obList = FXCollections.observableArrayList();
 
-        List<DoctorDto> dtoList = DoctorModel.getAllDoctor();
+        try {
+            List<DoctorDto> dtoList = doctorModel.getAllDoctor();
+            for (DoctorDto dto : dtoList) {
+                Button deleteButton = new Button();
+                Button updateButton = new Button();
 
-        for(DoctorDto dto : dtoList) {
-            obList.add(
-                    new DoctorTm(
-                            dto.getId(),
-                            dto.getName(),
-                            dto.getAddress(),
-                            dto.getEmail(),
-                            dto.getNumber(),
-                            dto.getType()
-                    )
-            );
+                deleteButton.setCursor(Cursor.HAND);
+                updateButton.setCursor(Cursor.HAND);
+
+                deleteButton.setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete this doctor?", yes, no).showAndWait();
+                    if (result.orElse(no) == yes) {
+                        int selectedIndex = tblDoctor.getSelectionModel().getSelectedIndex();
+                        System.out.println("badu hari");
+                        String code = (String) tblId.getCellData(selectedIndex);
+                        System.out.println(code);
+                        obList.remove(selectedIndex);
+                        tblDoctor.refresh();
+                    }
+                });
+                updateButton.setOnAction((e) -> {
+                    int selectedIndex = tblDoctor.getSelectionModel().getSelectedIndex();
+                    String code = (String) tblId.getCellData(selectedIndex);
+                    System.out.println(code);
+                    try {
+                        doctorPane.getChildren().clear();
+                        //doctorPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/doctorDetails.fxml")));
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                });
+                obList.add(
+                        new DoctorTm(
+                               dto.getId(),
+                                dto.getName(),
+                                dto.getAddress(),
+                                dto.getEmail(),
+                                dto.getNumber(),
+                                dto.getType(),
+                                deleteButton,
+                                updateButton
+                        )
+                );
+            }
+            tblDoctor.setItems(obList);
+            setFontAwesomeIcons();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
-        tblDoctor.setItems(obList);
-
-
     }
+
+
     public void btnClerOnAction(ActionEvent actionEvent) {
         clearFields();
     }
 
 
     public void btnRefershOnAction(MouseEvent mouseEvent) throws SQLException {
-    loadAllItems();
+        loadAllItems();
+    }
+
+    private void setDoctorID(){
+        try{
+            lblDoctorId.setText(new DoctorModel().autoGenarateDoctorId());
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

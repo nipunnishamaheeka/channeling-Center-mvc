@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,8 +17,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtId" layoutX="26.0" layoutY="53.0" onAction="#idSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Patient ID" />
-      <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Patient Name" />
+      <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" onAction="#nameSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Patient Name" />
       <TextField fx:id="txtNumber" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile Number" />
       <TextField fx:id="txtAddress" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
       <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" promptText="Sex" />
@@ -40,6 +40,16 @@
                <Cursor fx:constant="HAND" />
             </cursor></Button>
          <TextField fx:id="txtAge" layoutX="738.0" layoutY="116.0" prefHeight="30.0" prefWidth="82.0" promptText="Age" />
+         <Text layoutX="26.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID :">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Text>
+         <Label fx:id="lblPatientId" layoutX="136.0" layoutY="54.0" text="ID">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
    </children>
 </Pane>
 </AnchorPane>

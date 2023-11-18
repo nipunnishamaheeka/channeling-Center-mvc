@@ -9,13 +9,18 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 //import lk.ijse.channelingCenter.model.AppoinmentListModel;
+import lk.ijse.channelingCenter.db.DbConnection;
 import lombok.Getter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class  AppoinmentFromController {
-@Getter
-private static AppoinmentFromController controller;
+public class AppoinmentFromController {
+    @Getter
+    private static AppoinmentFromController controller;
+
     /*public void idOnAction(ActionEvent actionEvent){
         try{
             if (AppoinmentListModel.saveAppoinment(new AppoinmentDto(
@@ -29,11 +34,12 @@ private static AppoinmentFromController controller;
             throwables.printStackTrace();
         }
 
-    }
-   /* @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadData();
     }*/
+
+    public void initialize() {
+//        loadData();
+
+    }
 
    /* public void loadData() {
         listLayout.getChildren().clear();

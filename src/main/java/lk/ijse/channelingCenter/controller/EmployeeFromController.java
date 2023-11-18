@@ -56,7 +56,7 @@ public class EmployeeFromController {
       EmployeeModel employeeModel = new EmployeeModel();
 
 
-    public void btnaddemployeeOnAction(MouseEvent mouseEvent) throws IOException {
+    public void btnaddemployeeOnAction() throws IOException {
         employeePane.getChildren().clear();
         employeePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/employeeDetails.fxml")
         ));
@@ -64,6 +64,7 @@ public class EmployeeFromController {
 public void initialize() {
     setCellValueFactory();
     loadAllEmployees();
+    setFontAwesomeIcons();
 }
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
@@ -89,6 +90,7 @@ public void initialize() {
             updateButton.setGraphic(updateIcon);
         });
     }
+
     private void loadAllEmployees() {
 
 
@@ -98,12 +100,12 @@ public void initialize() {
             List<EmployeeDto> dtoList = employeeModel.getAllEmployee();
 
             for(EmployeeDto dto : dtoList) {
-                Button deleteButton = new Button("Delete");
-                Button updateButton = new Button("Update");
+                Button deleteButton = new Button();
+                Button updateButton = new Button();
 
                 deleteButton.setCursor(Cursor.HAND);
                 updateButton.setCursor(Cursor.HAND);
-
+                //setFontAwesomeIcons();
 
                 deleteButton.setOnAction((e) -> {
                     ButtonType yes= new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
@@ -149,6 +151,7 @@ public void initialize() {
 
 
             tblEmployeeView.setItems(obList);
+            setFontAwesomeIcons();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
