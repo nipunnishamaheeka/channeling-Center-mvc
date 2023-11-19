@@ -45,7 +45,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor Name" />
-                  <TextField fx:id="txtEmail" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="E-mail Address" />
+                  <TextField fx:id="txtEmail" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="john.doe@example.com" />
                   <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile No" />
                   <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
                   <TextField fx:id="txtAddress" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
@@ -58,9 +58,9 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblDoctorId" layoutX="133.0" layoutY="60.0" text="D001">
+                  <Label fx:id="lblDoctorId" layoutX="133.0" layoutY="57.0" text="D001">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
                </children>

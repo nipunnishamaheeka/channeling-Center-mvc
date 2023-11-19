@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,9 +15,11 @@ import lk.ijse.channelingCenter.model.EmployeeModel;
 import javax.naming.ldap.PagedResultsControl;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class EmployeeDetailsFromController {
     public AnchorPane employeeDetailsPane;
+    public Label lblEmpId;
     @FXML
     private TextField txtAddress;
 
@@ -36,10 +40,22 @@ public class EmployeeDetailsFromController {
 
     @FXML
     private TextField txtSalary;
+    EmployeeModel employeeModel = new EmployeeModel();
 
-    private final EmployeeModel employeeModel = new EmployeeModel();
+    public void initialize() throws SQLException {
+        setEmployeeID();
+        // validateEmployee();
+    }
 
-    public void idSearchOnAction(ActionEvent actionEvent) {
+    private void setEmployeeID() {
+        try {
+            lblEmpId.setText(new EmployeeModel().autoGenarateEmployeeId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+   /* public void idSearchOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
         try {
@@ -53,10 +69,27 @@ public class EmployeeDetailsFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+    }*/
+
+    private boolean validateEmployee() {
+        String nameText = txtName.getText();
+        boolean isNameValid = nameText.matches("[A-Za-z][A-Za-z. ]{3,}");
+        if (!isNameValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Name").show();
+            return false;
+        }
+        String numberText = txtNumber.getText();
+        boolean isNumberValid = Pattern.compile("[07]\\d{9}").matcher(numberText).matches();
+        if (!isNumberValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Number").show();
+            return false;
+        }
+        return true;
     }
 
+
     private void setFields(EmployeeDto dto) {
-        txtId.setText(dto.getEmp_id());
+        lblEmpId.setText(dto.getEmp_id());
         txtName.setText(dto.getEmp_name());
         txtNumber.setText(dto.getEmp_address());
         txtAddress.setText(dto.getMobile_number());
@@ -64,9 +97,39 @@ public class EmployeeDetailsFromController {
         txtQulification.setText(dto.getQualification());
         txtSalary.setText(dto.getSalary());
     }
+public void btnAddOnAction(ActionEvent actionEvent) {
+    boolean isEmployeeValid = validateEmployee();
 
-    public void btnAddOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
+    if(isEmployeeValid) {
+        String id = lblEmpId.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String number = txtNumber.getText();
+        String jobRole = txtJobRole.getText();
+        String qualification = txtQulification.getText();
+        String salary = txtSalary.getText();
+
+        EmployeeDto itemDto = new EmployeeDto(id, name, address, number, jobRole, qualification, salary);
+
+        try {
+            EmployeeModel employeeModel = new EmployeeModel();
+            boolean isAdded = employeeModel.saveEmployee(itemDto);
+            if (isAdded) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee added",ButtonType.OK).show();
+                clearFields();
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Employee not added",ButtonType.OK).show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }else{
+        new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
+    }
+}
+    /*public void btnAddOnAction(ActionEvent actionEvent) {
+
+        String id = lblEmpId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String number = txtNumber.getText();
@@ -85,7 +148,7 @@ public class EmployeeDetailsFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-    }
+    }*/
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
@@ -103,7 +166,7 @@ public class EmployeeDetailsFromController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
+        String id = lblEmpId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String number = txtNumber.getText();
@@ -130,7 +193,7 @@ public class EmployeeDetailsFromController {
     }
 
     private void clearFields() {
-        txtId.setText("");
+        lblEmpId.setText("");
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");

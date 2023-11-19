@@ -56,10 +56,16 @@
 .time_textfield{
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-font: 30px "ATROX";
+    -fx-font: 25px "ATROX";
     -fx-font-weight: 800;
     -fx-text-fill: Black,Bold;
-
+}
+.date_textfield{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font: 15px "ATROX";
+    -fx-font-weight: 800;
+    -fx-text-fill: Black,Bold;
 }
 .function{
     -fx-border-radius: 10;

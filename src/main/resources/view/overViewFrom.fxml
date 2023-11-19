@@ -40,7 +40,7 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="13.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" styleClass="tab_pane">
+            <Pane layoutX="13.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
                      <font>
@@ -153,7 +153,7 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="846.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane">
+            <Pane layoutX="846.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
@@ -164,10 +164,18 @@
                   <PieChart fx:id="pieChart" layoutX="8.0" layoutY="59.0" prefHeight="400.0" prefWidth="392.0" />
                </children>
             </Pane>
-            <VBox layoutX="746.0" layoutY="6.0" prefHeight="106.0" prefWidth="169.0">
+            <VBox alignment="CENTER" layoutX="995.0" layoutY="5.0" prefHeight="55.0" prefWidth="170.0">
                <children>
-                  <Label fx:id="lblDate" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" />
-                  <Label fx:id="lblTimeMini" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" />
+                  <Label fx:id="lblTimeMini" alignment="CENTER" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" text="00">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDate" alignment="CENTER" prefHeight="55.0" prefWidth="170.0" styleClass="date_textfield" stylesheets="@../css/button.css" text="0">
+                     <font>
+                        <Font size="5.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children></Pane>

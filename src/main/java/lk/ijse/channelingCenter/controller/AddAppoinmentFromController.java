@@ -55,7 +55,7 @@ public class AddAppoinmentFromController {
         //setPatientID();
         loadPatientsIds();
         loadDoctorIds();
-        loadAPatientIds();
+        //loadAPatientIds();
 
     }
 
@@ -138,7 +138,7 @@ public class AddAppoinmentFromController {
             throw new RuntimeException(e);
         }
     }
-   private void loadAPatientIds() {
+   /*private void loadAPatientIds() {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
@@ -152,7 +152,7 @@ public class AddAppoinmentFromController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
     public void btnaddOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addAppoinmentPatinetDetials.fxml"));
         Scene scene = new Scene(rootNode);

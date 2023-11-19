@@ -17,9 +17,11 @@ import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.DoctorModel;
 import lk.ijse.channelingCenter.model.PatientModel;
 
+import javax.swing.tree.AbstractLayoutCache;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 
 public class DoctorFromController {
@@ -69,10 +71,12 @@ public class DoctorFromController {
     @FXML
     private TextField txtType;
     DoctorModel doctorModel = new DoctorModel();
+
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadAllItems();
         setDoctorID();
+
 
     }
 
@@ -89,28 +93,59 @@ public class DoctorFromController {
 
     }
 
+    /* public void btnSaveOnAction(ActionEvent actionEvent) {
+         String id = lblDoctorId.getText();
+         String name = txtName.getText();
+         String address = txtAddress.getText();
+         String email = txtEmail.getText();
+         String number = txtNumber.getText();
+         String type = txtType.getText();
+
+         var DoctorDto = new DoctorDto(id, name, address, email, number, type);
+
+         try {
+             boolean isSaved = doctorModel.saveDoctor(DoctorDto);
+             if (isSaved) {
+                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
+                 clearFields();
+                 loadAllItems();
+
+             }
+         } catch (SQLException e) {
+             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+         }
+
+     }*/
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        String id = lblDoctorId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        String number = txtNumber.getText();
-        String type = txtType.getText();
+        boolean isDoctorValid = validateDoctor();
+        if (isDoctorValid) {
+            String id = lblDoctorId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            String number = txtNumber.getText();
+            String type = txtType.getText();
 
-        var DoctorDto = new DoctorDto(id, name, address, email, number, type);
+            DoctorDto itemDto = new DoctorDto(id, name, address, email, number, type);
 
-        try {
-            boolean isSaved = doctorModel.saveDoctor(DoctorDto);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
-                clearFields();
-                loadAllItems();
+            try {
+                DoctorModel doctorModel = new DoctorModel();
+                boolean isSaved = doctorModel.saveDoctor(itemDto);
 
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Doctor Saved!", ButtonType.OK).show();
+                    clearFields();
+                    loadAllItems();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Doctor Not Saved!", ButtonType.OK).show();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
         }
-
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -149,15 +184,15 @@ public class DoctorFromController {
         }
     }*/
 
-   /* public void idSearchOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
+    /*public void idSearchOnAction(ActionEvent actionEvent) {
+        String id = txtName.getText();
 
         try {
             DoctorDto dto = doctorModel.searchDoctor(id);
             if (dto != null) {
                 setFields(dto);
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "Doctor not found!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Doctor Name not found!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -175,13 +210,14 @@ public class DoctorFromController {
     }
 
     private void clearFields() {
-        lblDoctorId.setText("");
+       // lblDoctorId.setText("");
         txtName.clear();
         txtAddress.clear();
         txtEmail.clear();
         txtNumber.clear();
         txtType.clear();
     }
+
     private void setFontAwesomeIcons() {
 
         tblDoctor.getItems().forEach(item -> {
@@ -236,7 +272,7 @@ public class DoctorFromController {
                 });
                 obList.add(
                         new DoctorTm(
-                               dto.getId(),
+                                dto.getId(),
                                 dto.getName(),
                                 dto.getAddress(),
                                 dto.getEmail(),
@@ -249,6 +285,7 @@ public class DoctorFromController {
             }
             tblDoctor.setItems(obList);
             setFontAwesomeIcons();
+            setDoctorID();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -262,14 +299,38 @@ public class DoctorFromController {
 
 
     public void btnRefershOnAction(MouseEvent mouseEvent) throws SQLException {
+        setDoctorID();
         loadAllItems();
     }
 
-    private void setDoctorID(){
-        try{
+    private void setDoctorID() {
+        try {
             lblDoctorId.setText(new DoctorModel().autoGenarateDoctorId());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private boolean validateDoctor() {
+        String nameText = txtName.getText();
+        boolean isNameValid = nameText.matches("[A-Za-z][A-Za-z. ]{3,}");
+        if (!isNameValid) {
+            new Alert((Alert.AlertType.ERROR), "Invalid Name").show();
+            return false;
+        }
+        String emailText = txtEmail.getText();
+        boolean isEmailValid = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}").matcher(emailText).matches();
+        if (!isEmailValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Email").show();
+            return false;
+        }
+        String numberText = txtNumber.getText();
+        boolean isNumberValid = Pattern.compile("[07]\\d{9}").matcher(numberText).matches();
+        if (!isNumberValid) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Number").show();
+            return false;
+        }
+        return true;
+
     }
 }

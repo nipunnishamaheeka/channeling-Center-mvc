@@ -90,11 +90,17 @@
     -fx-border-radius: 10;
 }
 .tab_pane{
-    -fx-background-color: white;
+    -fx-background-color:white;
+    -fx-opacity: 0.5;
     -fx-background-radius: 1 0;
     -fx-border-radius: 10;
     -fx-fill: white;
 }
+/* Set the transparency of an element */
+.transparent-element {
+    opacity: 80; /* 0 is fully transparent, 1 is fully opaque */
+}
+
 .tranparent_pane{
     -fx-background-color: rgba(0,0,0,0);
 }

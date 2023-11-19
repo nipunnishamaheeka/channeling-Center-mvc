@@ -19,4 +19,6 @@ public class PatientDto {
     private String blood;
 
 
+
+
 }

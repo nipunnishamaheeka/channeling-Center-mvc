@@ -157,4 +157,18 @@ public class PatientModel {
         } return null;
 
     }
+    public String getBloodGroup(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE blood = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(2);
+        } return null;
+
+    }
 }

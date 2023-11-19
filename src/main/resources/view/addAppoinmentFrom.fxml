@@ -78,16 +78,6 @@
                <Font name="Arial Bold" size="18.0" />
             </font>
          </Label>
-         <Label layoutX="27.0" layoutY="103.0" text="Patient ID : ">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Label>
-         <Label fx:id="lblPatientId" layoutX="144.0" layoutY="102.0" text="P001">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Label>
    </children>
 </Pane>
 </AnchorPane>
