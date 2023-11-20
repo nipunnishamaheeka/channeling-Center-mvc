@@ -36,7 +36,6 @@
             <TableView fx:id="tblAppointment" layoutX="14.0" layoutY="113.0" prefHeight="571.0" prefWidth="1236.0">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="100.0" text="Appoinment ID" />
-                <TableColumn fx:id="colTime" prefWidth="75.0" text="Time" />
                   <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
                   <TableColumn fx:id="colPatientName" prefWidth="250.0" text="Patient Name" />
                   <TableColumn fx:id="colPatientAge" prefWidth="100.0" text="Patient Age" />

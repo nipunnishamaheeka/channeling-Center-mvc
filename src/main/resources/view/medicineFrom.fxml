@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,25 +19,12 @@
    <children>
       <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
          <children>
-            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine">
+            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Stock">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-         </children>
-      </Pane>
-      <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
-         <children>
-            <TableView layoutX="10.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
-               <columns>
-                  <TableColumn prefWidth="95.0" text="Medi Code" />
-                  <TableColumn prefWidth="150.3999786376953" text="Medicine Name" />
-                  <TableColumn prefWidth="297.5998840332031" text="Supplier Name" />
-                  <TableColumn prefWidth="104.79998779296875" text="Stock Count" />
-                  <TableColumn prefWidth="214.39996337890625" text="User Action" />
-               </columns>
-            </TableView>
-            <Pane layoutX="1080.0" prefHeight="45.0" prefWidth="140.0">
+            <Pane layoutX="998.0" layoutY="9.0" prefHeight="45.0" prefWidth="140.0">
                <children>
                   <Button alignment="CENTER_RIGHT" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnaddMedicineOnAction" prefHeight="40.0" prefWidth="128.0" styleClass="appoinment" text="Add Medicine">
                      <font>
@@ -55,65 +43,159 @@
             </Pane>
          </children>
       </Pane>
-      <HBox layoutX="46.0" layoutY="79.0" prefHeight="81.0" prefWidth="726.0" spacing="50.0" style="-fx-background-color: #F3F3F3;">
+      <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+            <TableView layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
+               <columns>
+                  <TableColumn prefWidth="95.0" text="Medi Code" />
+                  <TableColumn prefWidth="150.3999786376953" text="Medicine Name" />
+                  <TableColumn prefWidth="297.5998840332031" text="Supplier Name" />
+                  <TableColumn prefWidth="104.79998779296875" text="Stock Count" />
+                  <TableColumn prefWidth="214.39996337890625" text="User Action" />
+               </columns>
+            </TableView>
+            <HBox layoutX="305.0" layoutY="38.0" prefHeight="82.0" prefWidth="639.0" spacing="60.0" style="-fx-background-color: #F3F3F3;">
                <children>
-                  <Label contentDisplay="CENTER" text="2000" textFill="#25bcb7">
-                     <font>
-                        <Font name="Arial Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" text="Total Orders">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Label>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                     <children>
+                        <Label contentDisplay="CENTER" text="2000" textFill="#25bcb7">
+                           <font>
+                              <Font name="Arial Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" text="Total Orders">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                     <children>
+                        <Label contentDisplay="CENTER" text="2000" textFill="#166f6f">
+                           <font>
+                              <Font name="Arial Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" text="Total Delivered">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                     <children>
+                        <Label contentDisplay="CENTER" text="2000">
+                           <font>
+                              <Font name="Arial Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" text="Pending Orders">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                     <children>
+                        <Label contentDisplay="CENTER" text="2000">
+                           <font>
+                              <Font name="Arial Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="CENTER" text="Orders on Hold">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+            </HBox>
+            <Pane layoutX="6.0" layoutY="150.0" prefHeight="474.0" prefWidth="356.0" style="-fx-background-color: white;">
                <children>
-                  <Label contentDisplay="CENTER" text="2000" textFill="#166f6f">
+                  <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Add Stock">
                      <font>
-                        <Font name="Arial Bold" size="26.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" text="Total Delivered">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Label>
+                  </Text>
+                  <VBox layoutX="8.0" layoutY="66.0" prefHeight="244.0" prefWidth="336.0" spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Code :">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="lblCode" text="Label">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Name : ">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtMedicineName" prefHeight="26.0" prefWidth="216.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name :">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtSupplierName" prefHeight="26.0" prefWidth="216.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Count">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtStock" prefHeight="26.0" prefWidth="216.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutX="8.0" layoutY="421.0" prefHeight="40.0" prefWidth="336.0" spacing="40.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="save_button" stylesheets="@../css/button.css" text="Add">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
-               <children>
-                  <Label contentDisplay="CENTER" text="2000">
-                     <font>
-                        <Font name="Arial Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" text="Pending Orders">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
-               <children>
-                  <Label contentDisplay="CENTER" text="2000">
-                     <font>
-                        <Font name="Arial Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="CENTER" text="Orders on Hold">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
+            </Pane>
+            <Button layoutX="20.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Medicine">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
-      </HBox>
+      </Pane>
    </children>
 </AnchorPane>

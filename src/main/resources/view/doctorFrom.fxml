@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -58,7 +59,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1025.0">
+            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1025.0" stylesheets="@../css/newTable.css">
               <columns>
                 <TableColumn fx:id="tblId" prefWidth="75.0" text="Doctor ID" />
                 <TableColumn fx:id="tblName" prefWidth="163.2000274658203" text="Doctor Name" />
@@ -69,6 +70,14 @@
                   <TableColumn fx:id="colUpdate" prefWidth="64.0" text="Action" />
                   <TableColumn fx:id="colDelete" prefWidth="64.0" text="Action" />
               </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="column-header-background" />
+                  <String fx:value="label" />
+                  <String fx:value="table-cell" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
             </TableView>
             <Pane fx:id="refresh" layoutX="849.0" layoutY="38.0" onMouseClicked="#btnRefershOnAction" prefHeight="30.0" prefWidth="30.0" styleClass="function" stylesheets="@../css/button.css">
                <children>

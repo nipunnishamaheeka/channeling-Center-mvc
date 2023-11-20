@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -14,7 +19,78 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="68.0" prefHeight="605.0" prefWidth="1218.0" styleClass="inter_pane" />
+            <Pane layoutX="29.0" layoutY="68.0" prefHeight="222.0" prefWidth="831.0" styleClass="inter_pane">
+               <children>
+                  <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Details">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report ID :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="lblReportId" layoutX="118.0" layoutY="78.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="254.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Name :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="524.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor : ">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="254.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="lblPatientName" layoutX="398.0" layoutY="78.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblDoctorName" layoutX="608.0" layoutY="78.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblGender" layoutX="348.0" layoutY="148.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAge" layoutX="78.0" layoutY="148.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <DatePicker layoutX="635.0" layoutY="33.0" promptText="Report Date" />
+                  <Button fx:id="btnSave" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
+                  <Button fx:id="btnUpdate" layoutX="180.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" />
+                  <Button fx:id="btnClear" layoutX="270.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnClearOnAction" text="Clear" />
+               </children></Pane>
+            <TableView fx:id="tblReport" layoutX="29.0" layoutY="321.0" prefHeight="361.0" prefWidth="637.0">
+              <columns>
+                <TableColumn fx:id="colReportId" prefWidth="75.0" text="Report ID" />
+                <TableColumn fx:id="colPatientId" prefWidth="111.20001220703125" text="Patient Name" />
+                  <TableColumn fx:id="colDoctorName" prefWidth="111.20001220703125" text="Doctor" />
+                  <TableColumn fx:id="colAge" prefWidth="111.20001220703125" text="Age" />
+                  <TableColumn fx:id="colGender" prefWidth="111.20001220703125" text="Gender" />
+                  <TableColumn prefWidth="111.20001220703125" text="User Action" />
+              </columns>
+            </TableView>
          </children></Pane>
    </children>
 </AnchorPane>

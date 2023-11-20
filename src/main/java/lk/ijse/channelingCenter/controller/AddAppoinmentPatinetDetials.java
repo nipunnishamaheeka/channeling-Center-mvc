@@ -29,14 +29,10 @@ public class AddAppoinmentPatinetDetials {
     public void initialize() throws SQLException {
 
         setPatientID();
-        setCellValueFactory();
        // loadPatientsBloodGroup();
     }
 
-    private void setCellValueFactory() {
 
-
-    }
 
    public void btnOkOnAction(ActionEvent actionEvent) {
        boolean isPatientValid = validatePatinet();
@@ -60,6 +56,7 @@ public class AddAppoinmentPatinetDetials {
                if (isSaved) {
                    new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
                    clearFields();
+
                } else {
                    new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();
                }

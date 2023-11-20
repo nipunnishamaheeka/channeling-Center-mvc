@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -25,7 +26,7 @@
             </Text>
             <Pane layoutX="62.0" layoutY="358.0" prefHeight="313.0" prefWidth="1072.0">
                <children>
-                  <TableView fx:id="tblPatient" prefHeight="313.0" prefWidth="1072.0">
+                  <TableView fx:id="tblPatient" prefHeight="313.0" prefWidth="1072.0" stylesheets="@../css/table.css">
                      <columns>
                         <TableColumn fx:id="colPatientID" prefWidth="95.0" text="Patient ID" />
                         <TableColumn fx:id="colPatientName" prefWidth="126.4000244140625" text="Patient Name" />
@@ -38,6 +39,12 @@
                         <TableColumn fx:id="colUpdate" minWidth="0.79998779296875" prefWidth="48.80010986328125" text="Action" />
                         <TableColumn fx:id="colDelete" prefWidth="46.4000244140625" text="Action" />
                      </columns>
+                     <styleClass>
+                        <String fx:value="column-header" />
+                        <String fx:value="column-header-background" />
+                        <String fx:value="table-row-cell" />
+                        <String fx:value="table-view" />
+                     </styleClass>
                   </TableView>
                </children>
             </Pane>

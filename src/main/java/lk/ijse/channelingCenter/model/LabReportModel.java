@@ -60,4 +60,31 @@ public class LabReportModel {
 
         }
     }*/
+
+    public String autoGenarateLabReportId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM labreport ORDER BY patient_id DESC LIMIT 1").executeQuery();
+        String current = null;
+        while (resultSet.next()) {
+            current = resultSet.getString(1);
+            System.out.println(current);
+            return splitId(current);
+        }
+
+        return splitId(null);
+    }
+
+    private String splitId(String current) {
+
+        if (current != null) {
+            String[] tempArray = current.split("LR");
+            int id = Integer.parseInt(tempArray[1]);
+            id++;
+            if (9 >= id && id > 0) return "LR00" + id;
+            else if (99 >= id && id > 9) return "LR0" + id;
+            else return "LR" + id;
+        }
+        return "LR001";
+    }
 }
