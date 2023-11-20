@@ -58,8 +58,7 @@ public class EmployeeFromController {
 
     public void btnaddemployeeOnAction() throws IOException {
         employeePane.getChildren().clear();
-        employeePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/employeeDetails.fxml")
-        ));
+        employeePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/employeeDetails.fxml")));
     }
 public void initialize() {
     setCellValueFactory();
@@ -69,7 +68,7 @@ public void initialize() {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("emp_id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("emp_name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("emp_address"));
+        //colAddress.setCellValueFactory(new PropertyValueFactory<>("emp_address"));
         colNumber.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
         colQulification.setCellValueFactory(new PropertyValueFactory<>("qualification"));
         colJob.setCellValueFactory(new PropertyValueFactory<>("job_role"));

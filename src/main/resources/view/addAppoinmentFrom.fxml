@@ -72,8 +72,18 @@
                <Font name="Arial Bold" size="18.0" />
             </font>
          </Label>
-         <JFXComboBox fx:id="cmbDoctorId" layoutX="319.0" layoutY="198.0" onAction="#cmbPatientOnAction" prefHeight="25.0" prefWidth="130.0" />
-         <Label fx:id="lblAppoinmentId1" layoutX="86.0" layoutY="200.0" text="25">
+         <JFXComboBox fx:id="cmbDoctorId" layoutX="319.0" layoutY="198.0" onAction="#cmbDoctorOnAction" prefHeight="25.0" prefWidth="130.0" />
+         <Label fx:id="lblAge" layoutX="86.0" layoutY="200.0" text="25">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="535.0" layoutY="203.0" text="Doctor Name : ">
+            <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblDoctorName" layoutX="682.0" layoutY="203.0" text="Maheeka">
             <font>
                <Font name="Arial Bold" size="18.0" />
             </font>

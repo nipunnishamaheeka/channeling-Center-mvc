@@ -135,8 +135,8 @@ public class PatientModel {
             String[] tempArray = current.split("P");
             int id = Integer.parseInt(tempArray[1]);
             id++;
-            if (9 > id && id > 0) return "P00" + id;
-            else if (99 > id && id > 9) return "P0" + id;
+            if (9 >= id && id > 0) return "P00" + id;
+            else if (99 >= id && id > 9) return "P0" + id;
             else return "P" + id;
         }
         return "P001";
@@ -154,6 +154,21 @@ public class PatientModel {
 
         if(resultSet.next()){
             return resultSet.getString(2);
+        } return null;
+
+    }
+
+    public String getPatientAge(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(7);
         } return null;
 
     }

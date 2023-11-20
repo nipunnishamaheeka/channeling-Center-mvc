@@ -76,10 +76,7 @@ public class DoctorFromController {
         setCellValueFactory();
         loadAllItems();
         setDoctorID();
-
-
     }
-
     private void setCellValueFactory() {
         tblId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tblName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
@@ -89,33 +86,7 @@ public class DoctorFromController {
         tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
-
-
     }
-
-    /* public void btnSaveOnAction(ActionEvent actionEvent) {
-         String id = lblDoctorId.getText();
-         String name = txtName.getText();
-         String address = txtAddress.getText();
-         String email = txtEmail.getText();
-         String number = txtNumber.getText();
-         String type = txtType.getText();
-
-         var DoctorDto = new DoctorDto(id, name, address, email, number, type);
-
-         try {
-             boolean isSaved = doctorModel.saveDoctor(DoctorDto);
-             if (isSaved) {
-                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor saved!").show();
-                 clearFields();
-                 loadAllItems();
-
-             }
-         } catch (SQLException e) {
-             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-         }
-
-     }*/
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isDoctorValid = validateDoctor();
         if (isDoctorValid) {
@@ -149,6 +120,7 @@ public class DoctorFromController {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+        //boolean isDoctorValid = validateDoctor();
         String id = lblDoctorId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
@@ -167,39 +139,6 @@ public class DoctorFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
-    /*public void btnDeleteOnAction(ActionEvent actionEvent) {
-        String id = txtId.getText();
-
-        try {
-            boolean isDeleted = doctorModel.deleteDoctor(id);
-
-            if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Doctor deleted!").show();
-                clearFields();
-                loadAllItems();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-    }*/
-
-    /*public void idSearchOnAction(ActionEvent actionEvent) {
-        String id = txtName.getText();
-
-        try {
-            DoctorDto dto = doctorModel.searchDoctor(id);
-            if (dto != null) {
-                setFields(dto);
-            } else {
-                new Alert(Alert.AlertType.INFORMATION, "Doctor Name not found!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-
-    }*/
-
     private void setFields(DoctorDto dto) {
         lblDoctorId.setText(dto.getId());
         txtName.setText(dto.getName());
@@ -255,6 +194,11 @@ public class DoctorFromController {
                         System.out.println("badu hari");
                         String code = (String) tblId.getCellData(selectedIndex);
                         System.out.println(code);
+                        try {
+                            doctorModel.deleteDoctor(code);
+                        } catch (SQLException ex) {
+                            System.out.println(ex.getMessage());
+                        }
                         obList.remove(selectedIndex);
                         tblDoctor.refresh();
                     }
@@ -291,12 +235,9 @@ public class DoctorFromController {
         }
 
     }
-
-
     public void btnClerOnAction(ActionEvent actionEvent) {
         clearFields();
     }
-
 
     public void btnRefershOnAction(MouseEvent mouseEvent) throws SQLException {
         setDoctorID();

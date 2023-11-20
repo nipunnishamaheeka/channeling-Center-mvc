@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,40 +9,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="employeePane" prefHeight="738.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeFromController">
+<AnchorPane fx:id="employeePane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeFromController">
    <children>
-      <Pane prefHeight="738.0" prefWidth="1264.0" stylesheets="@../css/style.css">
+      <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
          <children>
-            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-            <Pane layoutX="1065.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/question.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/notification.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee OverView">
+            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee OverView">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="10.0" layoutY="60.0" prefHeight="671.0" prefWidth="1242.0">
+            <Pane layoutX="10.0" layoutY="50.0" prefHeight="632.0" prefWidth="1242.0">
                <children>
-                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="47.0" prefHeight="611.0" prefWidth="1236.0">
+                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="95.0" text="Employee ID" />
                         <TableColumn fx:id="colName" prefWidth="176.00001525878906" text="Employee Name" />
                         <TableColumn fx:id="colNumber" prefWidth="168.800048828125" text="Mobile Number" />
-                        <TableColumn fx:id="colJob" prefWidth="163.199951171875" text="Job Role" />
+                        <TableColumn fx:id="colJob" prefWidth="163.199951171875" text="Role" />
                         <TableColumn fx:id="colSalary" prefWidth="172.7999267578125" text="Salary" />
-                        <TableColumn fx:id="colAddress" prefWidth="212.800048828125" text="Address" />
                         <TableColumn fx:id="colQulification" prefWidth="150.0" text="Qulification" />
                         <TableColumn fx:id="colDelete" prefWidth="52.7999267578125" text="Action" />
                         <TableColumn fx:id="colUpdate" prefWidth="52.7999267578125" text="Action" />

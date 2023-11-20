@@ -15,7 +15,7 @@ create table patient
     sex           varchar(10) not null,
     email         varchar(25) not null,
     age           varchar(10) not null,
-    blood         varchar(10) not null
+    blood         varchar(25) not null
 );
 
 create table employee

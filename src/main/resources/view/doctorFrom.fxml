@@ -13,31 +13,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="doctorPane" prefHeight="738.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.DoctorFromController">
+<AnchorPane fx:id="doctorPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.DoctorFromController">
    <children>
-      <Pane prefHeight="738.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
-            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/question.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/notification.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Text layoutX="76.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor OverView">
+            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor OverView">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="117.0" prefHeight="238.0" prefWidth="850.0" styleClass="payment_pane">
+            <Pane layoutX="29.0" layoutY="70.0" prefHeight="238.0" prefWidth="850.0" styleClass="payment_pane">
                <children>
                   <Text layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Details">
                      <font>
@@ -65,15 +50,15 @@
                   </Label>
                </children>
             </Pane>
-            <Button layoutX="983.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Doctor">
+            <Button layoutX="983.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Doctor">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="983.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">
+            <Button layoutX="983.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="369.0" prefHeight="200.0" prefWidth="1064.0">
+            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1025.0">
               <columns>
                 <TableColumn fx:id="tblId" prefWidth="75.0" text="Doctor ID" />
                 <TableColumn fx:id="tblName" prefWidth="163.2000274658203" text="Doctor Name" />
@@ -85,7 +70,7 @@
                   <TableColumn fx:id="colDelete" prefWidth="64.0" text="Action" />
               </columns>
             </TableView>
-            <Pane fx:id="refresh" layoutX="849.0" layoutY="85.0" onMouseClicked="#btnRefershOnAction" prefHeight="30.0" prefWidth="30.0" styleClass="function" stylesheets="@../css/button.css">
+            <Pane fx:id="refresh" layoutX="849.0" layoutY="38.0" onMouseClicked="#btnRefershOnAction" prefHeight="30.0" prefWidth="30.0" styleClass="function" stylesheets="@../css/button.css">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="23.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" scaleZ="0.0">
                      <image>

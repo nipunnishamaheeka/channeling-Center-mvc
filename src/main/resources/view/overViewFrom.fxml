@@ -3,44 +3,26 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="overViewPane" prefHeight="738.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
+<AnchorPane fx:id="overViewPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
    <children>
-      <Pane prefHeight="734.0" prefWidth="1266.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane prefHeight="694.0" prefWidth="1266.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
-            <TextField layoutX="35.0" layoutY="14.0" prefHeight="35.0" prefWidth="392.0" promptText="Search Here" styleClass="searchbar" />
-            <Pane layoutX="1166.0" layoutY="14.0" prefHeight="35.0" prefWidth="81.0">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/question.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="74.0" fitWidth="30.0" layoutX="48.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/notification.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Text layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
+            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="13.0" layoutY="207.0" prefHeight="517.0" prefWidth="806.0" stylesheets="@../css/style.css">
+            <Pane layoutX="13.0" layoutY="167.0" prefHeight="517.0" prefWidth="806.0" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
                      <font>
@@ -61,7 +43,7 @@
                     </columns>
                   </TableView>
                </children></Pane>
-            <HBox layoutX="43.0" layoutY="117.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
+            <HBox layoutX="43.0" layoutY="69.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
                <children>
                   <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -153,7 +135,7 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="846.0" layoutY="207.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane" stylesheets="@../css/style.css">
+            <Pane layoutX="846.0" layoutY="167.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
@@ -164,20 +146,6 @@
                   <PieChart fx:id="pieChart" layoutX="8.0" layoutY="59.0" prefHeight="400.0" prefWidth="392.0" />
                </children>
             </Pane>
-            <VBox alignment="CENTER" layoutX="995.0" layoutY="5.0" prefHeight="55.0" prefWidth="170.0">
-               <children>
-                  <Label fx:id="lblTimeMini" alignment="CENTER" prefHeight="55.0" prefWidth="170.0" styleClass="time_textfield" stylesheets="@../css/button.css" text="00">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblDate" alignment="CENTER" prefHeight="55.0" prefWidth="170.0" styleClass="date_textfield" stylesheets="@../css/button.css" text="0">
-                     <font>
-                        <Font size="5.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
          </children></Pane>
    </children>
 </AnchorPane>

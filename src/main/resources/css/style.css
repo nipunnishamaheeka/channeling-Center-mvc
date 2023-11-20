@@ -1,8 +1,7 @@
 .dashboard_side_pane{
     -fx-background-color:  rgba(224,233,244,1) ;
     -fx-fill:   rgba(224,233,244,1);
-    -fx-border-radius:5;
-    -fx-background-radius: 5;
+
     -fx-effect: dropshadow(gaussian, rgb(158, 166, 176), 15, 0, 0, 0);
 }
 .OverView _pane{

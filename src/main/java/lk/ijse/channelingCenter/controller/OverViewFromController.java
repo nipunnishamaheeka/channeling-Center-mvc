@@ -35,36 +35,18 @@ public class OverViewFromController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        generateRealTime();
-        ObservableList<PieChart.Data>observableList= FXCollections.observableArrayList(
-        new PieChart.Data("Acetaminophen",10),
-        new PieChart.Data("Adderall",20),
-        new PieChart.Data("Amitriptyline",30),
-        new PieChart.Data("Amlodiphine",40),
-        new PieChart.Data("Amoxicillin",50),
-        new PieChart.Data("Ativan",200)
 
-                );
-pieChart.setData(observableList);
+        ObservableList<PieChart.Data> observableList = FXCollections.observableArrayList(
+                new PieChart.Data("Acetaminophen", 10),
+                new PieChart.Data("Adderall", 20),
+                new PieChart.Data("Amitriptyline", 30),
+                new PieChart.Data("Amlodiphine", 40),
+                new PieChart.Data("Amoxicillin", 50),
+                new PieChart.Data("Ativan", 100)
+
+        );
+        pieChart.setData(observableList);
 
     }
-    /*-----DATE AND TIME GENERATE------*/
-    public String timeNow() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
-        //System.out.println(dateFormat.format(new Date()));
-        return dateFormat.format(new Date()) ;
-    }
-  private void generateRealTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-        lblDate.setText(LocalDate.now().toString());
-        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
 
-            lblTimeMini.setText(timeNow());
-           // lblTime.setText(LocalDateTime.now().format(formatter));
-
-        }),
-                new KeyFrame(Duration.seconds(1)));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
 }

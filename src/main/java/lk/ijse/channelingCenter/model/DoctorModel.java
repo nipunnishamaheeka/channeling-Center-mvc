@@ -151,11 +151,19 @@ public class DoctorModel {
             String[] tempArray = current.split("D");
             int id = Integer.parseInt(tempArray[1]);
             id++;
-            if (9 > id && id > 0) return "D00" + id;
-            else if (99 > id && id > 9) return "D0" + id;
+            if (9 >= id && id > 0) return "D00" + id;
+            else if (99 >= id && id > 9) return "D0" + id;
             else return "D" + id;
         }
         return "D001";
     }
 
+    public String getname(String value) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT doctor_name FROM doctor WHERE id=?");
+        pstm.setString(1,value);
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next())return resultSet.getString(1);
+        return null;
+    }
 }

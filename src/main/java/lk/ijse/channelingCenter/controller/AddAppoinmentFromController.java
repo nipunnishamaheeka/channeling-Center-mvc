@@ -27,6 +27,8 @@ import java.util.List;
 
 public class AddAppoinmentFromController {
     public Label lblPatientId;
+    public Label lblDoctorName;
+    public Label lblAge;
     @FXML
     private AnchorPane addPatient;
 
@@ -99,6 +101,9 @@ public class AddAppoinmentFromController {
         try {
             String name = new PatientModel().getPatientName(cmbPatientId.getValue());
             lblPatientName.setText(name);
+            String age = new PatientModel().getPatientAge(cmbPatientId.getValue());
+            lblAge.setText((age));
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -163,4 +168,15 @@ public class AddAppoinmentFromController {
         stage.centerOnScreen();
         stage.show();
     }
+@FXML
+    public void cmbDoctorOnAction(ActionEvent actionEvent) {
+        try {
+            String name = new DoctorModel().getname(cmbDoctorId.getValue());
+            lblDoctorName.setText(name);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
