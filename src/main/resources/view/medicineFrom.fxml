@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -45,13 +46,14 @@
       </Pane>
       <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
          <children>
-            <TableView layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
+            <TableView fx:id="tblMedicine" layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
                <columns>
-                  <TableColumn prefWidth="95.0" text="Medi Code" />
-                  <TableColumn prefWidth="150.3999786376953" text="Medicine Name" />
-                  <TableColumn prefWidth="297.5998840332031" text="Supplier Name" />
-                  <TableColumn prefWidth="104.79998779296875" text="Stock Count" />
-                  <TableColumn prefWidth="214.39996337890625" text="User Action" />
+                  <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Medi Code" />
+                  <TableColumn fx:id="colMedicineName" prefWidth="150.3999786376953" text="Medicine Name" />
+                  <TableColumn fx:id="colSupplierId" prefWidth="87.20001220703125" text="Supplier ID" />
+                  <TableColumn fx:id="colSupplierName" prefWidth="104.79998779296875" text="Supplier Name" />
+                  <TableColumn fx:id="colStock" prefWidth="92.0" text="Stock Count" />
+                  <TableColumn prefWidth="324.80010986328125" text="User Action" />
                </columns>
             </TableView>
             <HBox layoutX="305.0" layoutY="38.0" prefHeight="82.0" prefWidth="639.0" spacing="60.0" style="-fx-background-color: #F3F3F3;">
@@ -147,14 +149,14 @@
                               <TextField fx:id="txtMedicineName" prefHeight="26.0" prefWidth="216.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="20.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name :">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtSupplierName" prefHeight="26.0" prefWidth="216.0" />
+                              <ComboBox fx:id="cmbSupplierName" prefHeight="26.0" prefWidth="178.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">

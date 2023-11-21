@@ -7,11 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.channelingCenter.db.DbConnection;
+import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.DoctorDto;
 import lk.ijse.channelingCenter.dto.PatientDto;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
@@ -93,8 +96,38 @@ public class AddAppoinmentFromController {
         setAppoinmentId();
        // setPatientID();
 
+            String id = lblPatientId.getText();
+            String doctorName = lblDoctorName.getText();
+            String appoinmentId = lblAppoinmentId.getText();
+            String patinetName = lblPatientName.getText();
+            String date = lblOrderDate.getText();
+            String orderId = lblOrderId.getText();
 
+            AppoinmentDto itemDto = new AppoinmentDto(id, doctorName, appoinmentId, patinetName, date, orderId);
+
+            try {
+                DoctorModel doctorModel = new DoctorModel();
+                boolean isSaved = doctorModel.saveDoctor(itemDto);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Doctor Saved!", ButtonType.OK).show();
+                    clearFields();
+                    loadAllItems();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Doctor Not Saved!", ButtonType.OK).show();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
+        }
     }
+
+
+
+}
 
     @FXML
     void cmbPatientOnAction(ActionEvent event) {

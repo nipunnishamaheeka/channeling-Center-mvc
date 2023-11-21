@@ -56,6 +56,8 @@ public class AddAppoinmentPatinetDetials {
                if (isSaved) {
                    new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
                    clearFields();
+//                   AddAppoinmentFromController addAppoinmentFromController = new AddAppoinmentFromController();
+//                     addAppoinmentFromController.initialize();
 
                } else {
                    new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();

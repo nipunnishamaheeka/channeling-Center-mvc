@@ -44,7 +44,7 @@ public class AddPatientFromController {
 
     public void initialize() throws SQLException {
         setPatientID();
-        loadPatientsBloodGroup();
+        //loadPatientsBloodGroup();
     }
 
     public void nameSearchOnAction(ActionEvent actionEvent) {
@@ -114,13 +114,13 @@ public class AddPatientFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }*/
-   private void loadPatientsBloodGroup() {
-       ObservableList<String> obList = FXCollections.observableArrayList();
-
-       // Add "Male" and "Female" options
-       obList.addAll("A_POSITIVE (A+)","A_NEGATIVE (A-)","B_POSITIVE (B+)", "B_NEGATIVE (B-)", "AB_POSITIVE (AB+)", "AB_NEGATIVE (AB-)", "O_POSITIVE (O+)", "O_NEGATIVE (O-)");
-       cmbBlood.setItems(obList);
-   }
+//   private void loadPatientsBloodGroup() {
+//       ObservableList<String> obList = FXCollections.observableArrayList();
+//
+//       // Add "Male" and "Female" options
+//       obList.addAll("A_POSITIVE (A+)","A_NEGATIVE (A-)","B_POSITIVE (B+)", "B_NEGATIVE (B-)", "AB_POSITIVE (AB+)", "AB_NEGATIVE (AB-)", "O_POSITIVE (O+)", "O_NEGATIVE (O-)");
+//       cmbBlood.setItems(obList);
+//   }
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) {

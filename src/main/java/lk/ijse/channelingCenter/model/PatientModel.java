@@ -14,7 +14,7 @@ import java.util.List;
 public class PatientModel {
     public boolean savePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-
+        System.out.println(dto);
         String sql = "insert into patient values(?,?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
