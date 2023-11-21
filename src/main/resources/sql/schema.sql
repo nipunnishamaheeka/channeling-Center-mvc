@@ -58,12 +58,11 @@ CREATE TABLE doctor
 create table appoinment
 (
     appoinment_id varchar(10) primary key,
-    patient_id    varchar(25) not null,
-    age           text        not null,
+    date          date        not null,
+    patient_id    varchar(10) not null,
+    age           varchar(10) not null,
     id            varchar(10) not null,
-    time          varchar(10) not null,
-    date          varchar(25) not null,
-    fee_status    varchar(25) not null,
+
 
 
     constraint foreign key (patient_id) references patient (patient_id) on delete cascade on update cascade,

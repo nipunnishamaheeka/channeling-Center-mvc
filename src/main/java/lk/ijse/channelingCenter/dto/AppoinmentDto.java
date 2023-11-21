@@ -15,12 +15,13 @@ import java.util.List;
 @ToString
 public class AppoinmentDto {
 
-    private String patient_id;
     private String appoinment_id;
-    private String time;
     private String date;
-    private String id;
+    private String patinet_id;
+    private String patinetName;
     private String age;
-    private String fee_status;
+    private String id;
+    private String doctor_name;
+
 
 }

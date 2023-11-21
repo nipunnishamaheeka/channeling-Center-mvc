@@ -61,7 +61,7 @@
                <Font name="Arial Bold" size="18.0" />
             </font>
          </Label>
-         <Label fx:id="lblAppoinmentDate" layoutX="674.0" layoutY="66.0" text="2023/2/6">
+         <Label fx:id="lblAppointmentDate" layoutX="674.0" layoutY="66.0" text="2023/2/6">
             <font>
                <Font name="Arial Bold" size="18.0" />
             </font>

@@ -11,19 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppoinmentModel {
-    public static boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
+    public boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "insert into appoinment values(?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getAppoinment_id());
-        pstm.setString(2, dto.getTime());
-        pstm.setString(3, dto.getDate());
-        pstm.setString(4, dto.getId());
-        pstm.setString(5, dto.getPatient_id());
-        pstm.setString(6, dto.getFee_status());
-        pstm.setString(7, dto.getAge());
+        pstm.setString(2, dto.getDate());
+        pstm.setString(3, dto.getPatinet_id());
+        pstm.setString(5, dto.getAge());
+        pstm.setString(6, dto.getId());
+        pstm.setString(7, dto.getDoctor_name());
+        pstm.setString(4, dto.getPatinetName());
+
+
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -31,19 +33,19 @@ public class AppoinmentModel {
 
     }
 
-    public static boolean updateAppoinment(final AppoinmentDto dto) throws SQLException {
+    public boolean updateAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "UPDATE appoinment SET patient_id = ?,date = ?,time = ?,id = ?,fee_status = ?,age = ? WHERE  = appoinment_id?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getAppoinment_id());
-        pstm.setString(2, dto.getTime());
-        pstm.setString(3, dto.getDate());
-        pstm.setString(4, dto.getPatient_id());
-        pstm.setString(5, dto.getId());
-        pstm.setString(6, dto.getFee_status());
-        pstm.setString(7, dto.getAge());
+        pstm.setString(2, dto.getDate());
+        pstm.setString(3, dto.getPatinet_id());
+        pstm.setString(4, dto.getPatinetName());
+        pstm.setString(5, dto.getAge());
+        pstm.setString(6, dto.getId());
+        pstm.setString(7, dto.getDoctor_name());
 
         return pstm.executeUpdate() > 0;
     }
@@ -86,20 +88,20 @@ public class AppoinmentModel {
 
         while (resultSet.next()) {
             String appoinment_id = resultSet.getString(1);
-            String time = resultSet.getString(2);
-            String date = resultSet.getString(3);
-            String patient_name = resultSet.getString(4);
-            String dr_name = resultSet.getString(5);
-            String fee_status = resultSet.getString(6);
-            String age = resultSet.getString(7);
+            String date = resultSet.getString(2);
+            String patient_id = resultSet.getString(3);
+            String age = resultSet.getString(4);
+            String id = resultSet.getString(5);
+            String doctor_name = resultSet.getString(6);
+            String patientName = resultSet.getString(7);
 
-            var dto = new AppoinmentDto(appoinment_id, time, date,patient_name, dr_name,fee_status,age);
+            var dto = new AppoinmentDto(appoinment_id, date, patient_id, age, id, doctor_name, patientName);
             dtoList.add(dto);
         }
         return dtoList;
     }
 
-    public static boolean deleteAppoinment(String id) throws SQLException {
+    public boolean deleteAppoinment(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "DELETE FROM appoinment WHERE appoinment_id = ?";

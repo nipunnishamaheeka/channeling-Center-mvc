@@ -6,32 +6,33 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.DoctorDto;
 import lk.ijse.channelingCenter.dto.PatientDto;
+import lk.ijse.channelingCenter.dto.tm.AppoinmentTm;
+import lk.ijse.channelingCenter.dto.tm.PatientTm;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
 import lk.ijse.channelingCenter.model.DoctorModel;
 import lk.ijse.channelingCenter.model.PatientModel;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 public class AddAppoinmentFromController {
     public Label lblPatientId;
     public Label lblDoctorName;
     public Label lblAge;
+    public Label lblAppointmentDate;
     @FXML
     private AnchorPane addPatient;
 
@@ -51,7 +52,7 @@ public class AddAppoinmentFromController {
     private Label lblPatientName;
     @FXML
     private Label lblAppoinmentId;
-
+AppoinmentModel appoinmentModel = new AppoinmentModel();
     @FXML
     private TextField txtAge;
 
@@ -61,6 +62,8 @@ public class AddAppoinmentFromController {
         loadPatientsIds();
         loadDoctorIds();
         //loadAPatientIds();
+        //generateRealTime();
+        this.lblAppointmentDate.setText(generateRealTime());
 
     }
 
@@ -93,42 +96,54 @@ public class AddAppoinmentFromController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        setAppoinmentId();
-       // setPatientID();
+        // setAppoinmentId();
+        // setPatientID();
+        String appoinmentId = lblAppoinmentId.getText();
+        String date = generateRealTime();
+        String id = cmbPatientId.getValue();
+        String age = lblAge.getText();
+        String doctorId = cmbDoctorId.getValue();
+        String doctorName = lblDoctorName.getText();
+        String patinetName = lblPatientName.getText();
 
-            String id = lblPatientId.getText();
-            String doctorName = lblDoctorName.getText();
-            String appoinmentId = lblAppoinmentId.getText();
-            String patinetName = lblPatientName.getText();
-            String date = lblOrderDate.getText();
-            String orderId = lblOrderId.getText();
 
-            AppoinmentDto itemDto = new AppoinmentDto(id, doctorName, appoinmentId, patinetName, date, orderId);
 
-            try {
-                DoctorModel doctorModel = new DoctorModel();
-                boolean isSaved = doctorModel.saveDoctor(itemDto);
 
-                if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Doctor Saved!", ButtonType.OK).show();
-                    clearFields();
-                    loadAllItems();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Doctor Not Saved!", ButtonType.OK).show();
-                }
+        AppoinmentDto itemDto = new AppoinmentDto(appoinmentId,date,id,age,doctorId,doctorName,patinetName);
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+        try {
+            AppoinmentModel appoinmentModel = new AppoinmentModel();
+            boolean isSaved = appoinmentModel.saveAppoinment(itemDto);
+
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Appoinment Saved!", ButtonType.OK).show();
+                clearFields();
+                loadAllItems();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Appoinment Not Saved!", ButtonType.OK).show();
             }
-        }else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
+    private void loadAllItems() {
+ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
+        try {
+            List<AppoinmentDto> appoinmentDtoList = appoinmentModel.getAllAppoinment();
+            for (AppoinmentDto dto : appoinmentDtoList) {
+                obList.add(dto);
+            }
+            //tblAppoinment.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    private void clearFields() {
 
-}
-
+    }
     @FXML
     void cmbPatientOnAction(ActionEvent event) {
         try {
@@ -210,6 +225,12 @@ public class AddAppoinmentFromController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String generateRealTime() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String format = simpleDateFormat.format(new Date());
+    return format;
     }
 
 }

@@ -145,6 +145,7 @@ public class AddPatientFromController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
                     clearFields();
+
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();
                 }
