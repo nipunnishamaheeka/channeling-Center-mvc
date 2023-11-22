@@ -70,15 +70,15 @@
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="22.0" layoutY="58.0" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee ID" />
-                  <TextField layoutX="22.0" layoutY="118.0" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee Name" />
+                  <TextField fx:id="txtemployeeId" layoutX="22.0" layoutY="58.0" onAction="#btnSearchEmpIdOnAction" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee ID" />
+                  <TextField fx:id="txtEmpName" layoutX="22.0" layoutY="118.0" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee Name" />
                </children>
             </Pane>
-            <Button layoutX="1144.0" layoutY="167.0" mnemonicParsing="false" text="Genarate Report">
+            <Button fx:id="btnReport" layoutX="1144.0" layoutY="167.0" mnemonicParsing="false" onAction="#btnGenarateReportOnAction" text="Genarate Report">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="1144.0" layoutY="127.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
+            <Button fx:id="clear" layoutX="1144.0" layoutY="127.0" mnemonicParsing="false" onAction="#btnClearReportOnAction" prefHeight="25.0" prefWidth="103.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

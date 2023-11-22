@@ -60,5 +60,10 @@
             <artifactId>materialfx</artifactId>
             <version>11.17.0</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.6</version>
+        </dependency>
     </dependencies>
 </project>

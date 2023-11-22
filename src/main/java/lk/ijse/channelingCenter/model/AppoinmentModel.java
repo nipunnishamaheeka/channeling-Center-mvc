@@ -95,7 +95,7 @@ public class AppoinmentModel {
             String doctor_name = resultSet.getString(6);
             String patientName = resultSet.getString(7);
 
-            var dto = new AppoinmentDto(appoinment_id, date, patient_id, age, id, doctor_name, patientName);
+            var dto = new AppoinmentDto(appoinment_id, date, patient_id,patientName,age,id,doctor_name);
             dtoList.add(dto);
         }
         return dtoList;

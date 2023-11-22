@@ -3,15 +3,24 @@ package lk.ijse.channelingCenter.controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.channelingCenter.dto.PatientDto;
+import lk.ijse.channelingCenter.model.PatientModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,10 +31,18 @@ public class NavigationPannelFromController implements Initializable {
     public AnchorPane navigationPane;
     public Label lblDate;
     public Label lblTimeMini;
+    public TextField idSearch;
 
-@Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         generateRealTime();
+        navigationPane.getChildren().clear();
+        try {
+            navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/overViewFrom.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
         public void btnoverViewOnAction(MouseEvent mouseEvent) throws IOException {
@@ -62,7 +79,16 @@ public class NavigationPannelFromController implements Initializable {
 
     }
 
-    public void btnlogoutOnAction(MouseEvent mouseEvent) {
+    public void btnlogoutOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/loginFrom.fxml"));
+        Scene scene = new Scene(rootNode);
+
+        navigationPane.getChildren().clear();
+        Stage primaryStage = (Stage) navigationPane.getScene().getWindow();
+
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        primaryStage.setTitle("ToDo");
 
     }
 
@@ -90,5 +116,26 @@ public class NavigationPannelFromController implements Initializable {
                 new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
+        String id = idSearch.getText();
+
+        var model = new PatientModel();
+        try {
+            PatientDto dto = model.searchPatient(id);
+
+            if(dto != null) {
+                fillFields(dto);
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void fillFields(PatientDto dto) {
+        
     }
 }

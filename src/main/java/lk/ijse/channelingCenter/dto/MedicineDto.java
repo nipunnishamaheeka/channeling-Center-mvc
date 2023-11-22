@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 
 public class MedicineDto {
     private String medi_code;
-    private String stock;
-    private String supplier_id;
-    private String location;
+    private String medicine_name;
+    private String description;
+    private String qty;
+    private String unit_price;
+
+
+
 }

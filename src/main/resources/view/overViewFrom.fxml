@@ -45,7 +45,7 @@
                </children></Pane>
             <HBox layoutX="43.0" layoutY="69.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
                <children>
-                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                  <Pane onMouseClicked="#btnPatientOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
                         <Text layoutX="81.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
                            <font>
@@ -67,7 +67,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                  <Pane onMouseClicked="#btnAppoinmentOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
                         <Text layoutX="75.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
                            <font>
@@ -89,7 +89,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                  <Pane onMouseClicked="#btnDoctorOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
                         <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
                            <font>
@@ -111,7 +111,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <Pane prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
+                  <Pane onMouseClicked="#btnMedicineOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
                         <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
                            <font>

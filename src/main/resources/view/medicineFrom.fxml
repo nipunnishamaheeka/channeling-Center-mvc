@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -25,9 +25,9 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="998.0" layoutY="9.0" prefHeight="45.0" prefWidth="140.0">
+            <Pane layoutX="1120.0" layoutY="34.0" prefHeight="40.0" prefWidth="119.0">
                <children>
-                  <Button alignment="CENTER_RIGHT" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnaddMedicineOnAction" prefHeight="40.0" prefWidth="128.0" styleClass="appoinment" text="Add Medicine">
+                  <Button alignment="CENTER_RIGHT" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="31.0" prefWidth="110.0" styleClass="appoinment" text="Place Order">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -35,7 +35,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/add.png" />
                      </image>
@@ -46,17 +46,24 @@
       </Pane>
       <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
          <children>
-            <TableView fx:id="tblMedicine" layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
+            <TableView fx:id="tblMedicine" layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0" stylesheets="@../css/table.css">
                <columns>
                   <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Medi Code" />
                   <TableColumn fx:id="colMedicineName" prefWidth="150.3999786376953" text="Medicine Name" />
-                  <TableColumn fx:id="colSupplierId" prefWidth="87.20001220703125" text="Supplier ID" />
-                  <TableColumn fx:id="colSupplierName" prefWidth="104.79998779296875" text="Supplier Name" />
-                  <TableColumn fx:id="colStock" prefWidth="92.0" text="Stock Count" />
-                  <TableColumn prefWidth="324.80010986328125" text="User Action" />
+                  <TableColumn fx:id="colDescription" prefWidth="245.60003662109375" text="Description" />
+                  <TableColumn fx:id="colQty" prefWidth="93.60003662109375" text="QTY" />
+                  <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="111.20001220703125" text="Unit Price" />
+                  <TableColumn fx:id="colUpdate" prefWidth="76.7999267578125" text="User Action" />
+                  <TableColumn fx:id="ColDelete" prefWidth="76.7999267578125" text="User Action" />
                </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="column-header-background" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
             </TableView>
-            <HBox layoutX="305.0" layoutY="38.0" prefHeight="82.0" prefWidth="639.0" spacing="60.0" style="-fx-background-color: #F3F3F3;">
+            <HBox layoutX="305.0" layoutY="38.0" prefHeight="82.0" prefWidth="639.0" spacing="80.0" style="-fx-background-color: Tranprent;">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
                      <children>
@@ -146,27 +153,37 @@
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtMedicineName" prefHeight="26.0" prefWidth="216.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="20.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name :">
-                                 <font>
-                                    <Font name="Arial Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                              <ComboBox fx:id="cmbSupplierName" prefHeight="26.0" prefWidth="178.0" />
+                              <TextField fx:id="txtMedicineName" prefHeight="26.0" prefWidth="174.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Count">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Qty On Hand : ">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtStock" prefHeight="26.0" prefWidth="216.0" />
+                              <TextField fx:id="txtQty" prefHeight="26.0" prefWidth="191.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtDescription" prefHeight="26.0" prefWidth="216.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price :">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtUniPrice" prefHeight="26.0" prefWidth="216.0" />
                            </children>
                         </HBox>
                      </children>

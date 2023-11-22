@@ -1,0 +1,43 @@
+/* styles.css */
+
+/* Table Background */
+.table-view {
+    -fx-background-color: #f5f5f5; /* Light gray background color */
+}
+
+/* Table Header Background */
+.table-view .column-header-background {
+    -fx-background-color: #333; /* Dark gray background color for headers */
+}
+
+/* Table Header Text */
+.table-view .column-header,
+.table-view .column-header .label {
+    -fx-text-fill: white; /* White text color for headers */
+}
+
+/* Table Rows */
+.table-row-cell {
+    -fx-background-color: #ffffff; /* White background color for rows */
+}
+
+/* Alternate Row Color */
+.table-row-cell:odd {
+    -fx-background-color: #f2f2f2; /* Light gray background color for odd rows */
+}
+
+/* Table Cell Text Alignment */
+.table-cell {
+    -fx-alignment: center; /* Center-align content in cells */
+}
+
+/* Hover Effect for Rows */
+.table-row-cell:hover {
+    -fx-background-color: #e0e0e0; /* Lighter gray background on hover */
+}
+
+/* Selected Row Color */
+.table-row-cell:selected {
+    -fx-background-color: #a0a0a0; /* Light gray background color for selected rows */
+    -fx-text-fill: black; /* Black text color for selected rows */
+}

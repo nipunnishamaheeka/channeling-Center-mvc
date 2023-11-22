@@ -1,0 +1,38 @@
+/* Styles for TableView */
+.table-view {
+    -fx-table-cell-border-color: derive(-fx-control-inner-background, -10%);
+}
+
+.table-row-cell {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    -fx-border-color: derive(-fx-control-inner-background, -10%);
+    -fx-table-cell-border-color: derive(-fx-control-inner-background, -10%);
+}
+
+/* Styles for TableView Header */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #B4C6E7, #7C8BCA);
+    -fx-border-color: derive(-fx-control-inner-background, -10%);
+}
+
+.table-view .column-header {
+    -fx-background-color: linear-gradient(to bottom, #B4C6E7, #7C8BCA);
+    -fx-border-color: derive(-fx-control-inner-background, -10%);
+    -fx-text-fill: white;
+}
+
+/* Styles for alternating rows */
+.table-row-cell:odd {
+    -fx-background-color: linear-gradient(to bottom, #F2F2F2, #E6E6E6);
+}
+
+/* Styles for selected rows */
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(to bottom, #0093ff, #005aa7);
+    -fx-text-fill: white;
+}
+
+/* Styles for hover effect */
+.table-row-cell:hover {
+    -fx-background-color: linear-gradient(to bottom, #E1EFFF, #BDD7EE);
+}

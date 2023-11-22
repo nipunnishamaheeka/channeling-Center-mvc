@@ -9,19 +9,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.EmployeeDto;
 import lk.ijse.channelingCenter.model.EmployeeModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.naming.ldap.PagedResultsControl;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 public class EmployeeDetailsFromController {
     public AnchorPane employeeDetailsPane;
     public Label lblEmpId;
+    public TextField employeeId;
+    public TextField txtEmpName;
+    public TextField txtemployeeId;
     @FXML
     private TextField txtAddress;
+
+
 
     @FXML
     private TextField txtId;
@@ -79,7 +91,7 @@ public class EmployeeDetailsFromController {
             return false;
         }
         String numberText = txtNumber.getText();
-        boolean isNumberValid = Pattern.compile("[07]\\d{9}").matcher(numberText).matches();
+        boolean isNumberValid = Pattern.compile("[(07)]\\d{9}|[+]\\d{11}").matcher(numberText).matches();
         if (!isNumberValid) {
             new Alert(Alert.AlertType.ERROR, "Invalid Doctor Number").show();
             return false;
@@ -127,29 +139,6 @@ public void btnAddOnAction(ActionEvent actionEvent) {
         new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
     }
 }
-    /*public void btnAddOnAction(ActionEvent actionEvent) {
-
-        String id = lblEmpId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String number = txtNumber.getText();
-        String jobRole = txtJobRole.getText();
-        String qualification = txtQulification.getText();
-        String salary = txtSalary.getText();
-
-       var EmployeeDto = new EmployeeDto(id, name, address, number, jobRole, qualification, salary);
-
-        try {
-            boolean isAdded = employeeModel.saveEmployee(EmployeeDto);
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee added").show();
-                clearFields();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-    }*/
-
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
@@ -193,7 +182,9 @@ public void btnAddOnAction(ActionEvent actionEvent) {
     }
 
     private void clearFields() {
-        lblEmpId.setText("");
+        //lblEmpId.setText("");
+        txtEmpName.setText("");
+        txtemployeeId.setText("");
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");
@@ -206,5 +197,54 @@ public void btnAddOnAction(ActionEvent actionEvent) {
         employeeDetailsPane.getChildren().clear();
         employeeDetailsPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/employeeFrom.fxml")));
 
+    }
+    void ReportbtnOnActhion() throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/channelingCenterReport.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT * FROM employee WHERE emp_id = "+"\""+txtemployeeId.getText()+"\"");
+        load.setQuery(jrDesignQuery);
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
+    }
+    public void btnGenarateReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+ReportbtnOnActhion();
+
+    }
+
+    public void btnSearchEmpIdOnAction(ActionEvent actionEvent) {
+        String id = txtemployeeId.getText();
+
+        var model = new EmployeeModel();
+        try {
+            EmployeeDto dto = model.searchEmployee(id);
+
+            if(dto != null) {
+                fillFields(dto);
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Employee not found!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void fillFields(EmployeeDto dto) {
+        lblEmpId.setText(dto.getEmp_id());
+        txtEmpName.setText(dto.getEmp_name());
+        txtName.setText(dto.getEmp_name());
+        txtAddress.setText(dto.getEmp_address());
+        txtNumber.setText(dto.getMobile_number());
+        txtJobRole.setText(dto.getJob_role());
+        txtQulification.setText(dto.getQualification());
+        txtSalary.setText(dto.getSalary());
+
+
+    }
+
+    public void btnClearReportOnAction(ActionEvent actionEvent) {
+        clearFields();
     }
 }

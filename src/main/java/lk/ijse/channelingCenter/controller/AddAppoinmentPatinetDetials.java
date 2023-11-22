@@ -45,9 +45,9 @@ public class AddAppoinmentPatinetDetials {
            String sex = txtType.getText();
            String email = txtEmail.getText();
            String age = txtAge.getText();
-           String blood = cmbBlood.getItems().toString();
+           String blood = (String) cmbBlood.getValue();
 
-           PatientDto itemDto = new PatientDto(id, name, number, address, sex, email, blood, age);
+           PatientDto itemDto = new PatientDto(id, name, number, address, sex, email, age,blood);
 
            try {
                PatientModel patientModel = new PatientModel();
@@ -125,7 +125,7 @@ public class AddAppoinmentPatinetDetials {
             return false;
         }
         String numberText = txtNumber.getText();
-        boolean isNumberValid = Pattern.compile("[07]\\d{8}").matcher(numberText).matches();
+        boolean isNumberValid = Pattern.compile("[(07)]\\d{9}|[+]\\d{11}").matcher(numberText).matches();
         if (!isNumberValid) {
             new Alert(Alert.AlertType.ERROR, "Invalid Patient Number").show();
             return false;

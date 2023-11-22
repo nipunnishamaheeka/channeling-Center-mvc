@@ -17,13 +17,14 @@ public class MedicineModel {
     public boolean saveMedicine(final MedicineDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into medicine values(?,?,?,?)";
+        String sql = "insert into medicine values(?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getMedi_code());
-        pstm.setString(2, dto.getStock());
-        pstm.setString(3, dto.getSupplier_id());
-        pstm.setString(4, dto.getLocation());
+        pstm.setString(2, dto.getMedicine_name());
+        pstm.setString(3, dto.getDescription());
+        pstm.setString(4, dto.getQty());
+        pstm.setString(5, dto.getUnit_price());
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -34,13 +35,15 @@ public class MedicineModel {
     public boolean updateMedicine(final MedicineDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE medicine SET stock = ?,supplier_id = ?,location = ? WHERE  = medi_code?";
+        String sql = "UPDATE medicine SET medicine_name = ?,description = ?,qty = ?, unit_price =? WHERE  = medi_code?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getMedi_code());
-        pstm.setString(2, dto.getStock());
-        pstm.setString(3, dto.getSupplier_id());
-        pstm.setString(4, dto.getLocation());
+        pstm.setString(2, dto.getMedicine_name());
+        pstm.setString(3, dto.getDescription());
+        pstm.setString(4, dto.getQty());
+        pstm.setString(5, dto.getUnit_price());
+
 
         return pstm.executeUpdate() > 0;
     }
@@ -58,11 +61,13 @@ public class MedicineModel {
 
         if (resultSet.next()) {
             String medi_code = resultSet.getString(1);
-            String stock = resultSet.getString(2);
-            String supplier_id = resultSet.getString(3);
-            String location = resultSet.getString(4);
+            String medicine_name = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String qty = resultSet.getString(4);
+            String unit_price = resultSet.getString(5);
 
-            dto = new MedicineDto(medi_code, stock, supplier_id, location);
+
+            dto = new MedicineDto(medi_code, medicine_name, description, qty, unit_price);
         }
 
         return dto;
@@ -106,33 +111,55 @@ public class MedicineModel {
     }
 
     public List<MedicineDto> getAllMedicine() throws SQLException {
-            Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DbConnection.getInstance().getConnection();
 
-            String sql = "SELECT * FROM medicine";
-            PreparedStatement pstm = connection.prepareStatement(sql);
+        String sql = "SELECT * FROM medicine";
+        PreparedStatement pstm = connection.prepareStatement(sql);
 
-            List<MedicineDto> dtoList = new ArrayList<>();
+        List<MedicineDto> dtoList = new ArrayList<>();
 
-            ResultSet resultSet = pstm.executeQuery();
+        ResultSet resultSet = pstm.executeQuery();
 
-            while (resultSet.next()) {
-                String medi_code = resultSet.getString(1);
-                String stock = resultSet.getString(2);
-                String supplier_id = resultSet.getString(3);
-                String location = resultSet.getString(4);
+        while (resultSet.next()) {
+            String medi_code = resultSet.getString(1);
+            String medicine_name = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String qty = resultSet.getString(4);
+            String unit_price = resultSet.getString(5);
 
-
-                var dto = new MedicineDto(medi_code, stock, supplier_id, location);
-                dtoList.add(dto);
-            }
-            return dtoList;
+            var dto = new MedicineDto(medi_code, medicine_name, description, qty, unit_price);
+            dtoList.add(dto);
         }
+        return dtoList;
+    }
+    public String getMedicineDescription(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
 
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(3);
+        } return null;
 
     }
 
+    public String getMedicinePrice(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
 
-//    public ObservableList getAllMedicine() {
-//
-//    }
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(5);
+        } return null;
+
+    }
+}
 

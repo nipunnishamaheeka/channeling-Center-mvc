@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class MedicineTm {
     private String medi_code;
-    private String stock;
-    private String supplier_id;
-    private String location;
-    private Button deleteButton;
-    private Button updateButton;
+    private String medicine_name;
+    private String description;
+    private String qty;
+    private String unit_price;
+//    private Button deleteButton;
+//    private Button updateButton;
+
 }

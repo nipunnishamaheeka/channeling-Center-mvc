@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -36,12 +37,12 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
-                  <Text layoutX="254.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Name :">
+                  <Text layoutX="444.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Name :">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="524.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor : ">
+                  <Text layoutX="674.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor : ">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -56,12 +57,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblPatientName" layoutX="398.0" layoutY="78.0" text="Label">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblDoctorName" layoutX="608.0" layoutY="78.0" text="Label">
+                  <Label fx:id="lblPatientName" layoutX="588.0" layoutY="78.0" text="Label">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
@@ -80,6 +76,13 @@
                   <Button fx:id="btnSave" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
                   <Button fx:id="btnUpdate" layoutX="180.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" />
                   <Button fx:id="btnClear" layoutX="270.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnClearOnAction" text="Clear" />
+                  <Text layoutX="224.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Id :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <JFXComboBox fx:id="cmboPationId" layoutX="332.0" layoutY="76.0" onAction="#cmbPatientIdOnAction" prefHeight="25.0" prefWidth="74.0" />
+                  <JFXComboBox fx:id="cmbDoctor" layoutX="752.0" layoutY="76.0" onAction="#cmbDoctorIdOnAction" prefHeight="25.0" prefWidth="74.0" />
                </children></Pane>
             <TableView fx:id="tblReport" layoutX="29.0" layoutY="321.0" prefHeight="361.0" prefWidth="637.0">
               <columns>

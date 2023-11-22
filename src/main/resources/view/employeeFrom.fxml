@@ -18,9 +18,9 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="10.0" layoutY="50.0" prefHeight="632.0" prefWidth="1242.0">
+            <Pane layoutX="10.0" layoutY="50.0" prefHeight="632.0" prefWidth="1242.0" stylesheets="@../css/table.css">
                <children>
-                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0">
+                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0" stylesheets="@../css/table.css">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="95.0" text="Employee ID" />
                         <TableColumn fx:id="colName" prefWidth="176.00001525878906" text="Employee Name" />

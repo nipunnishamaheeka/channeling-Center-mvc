@@ -7,13 +7,16 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -49,4 +52,26 @@ public class OverViewFromController implements Initializable {
 
     }
 
+    public void btnPatientOnAction(MouseEvent mouseEvent) throws IOException {
+        overViewPane.getChildren().clear();
+        overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/patientFrom.fxml")));
+
+    }
+
+    public void btnAppoinmentOnAction(MouseEvent mouseEvent) throws IOException {
+        overViewPane.getChildren().clear();
+        overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/appoinmentFrom.fxml")));
+
+    }
+
+    public void btnDoctorOnAction(MouseEvent mouseEvent) throws IOException {
+       overViewPane.getChildren().clear();
+       overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/doctorFrom.fxml")));
+    }
+
+    public void btnMedicineOnAction(MouseEvent mouseEvent) throws IOException {
+        overViewPane.getChildren().clear();
+        overViewPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/medicineFrom.fxml")));
+
+    }
 }

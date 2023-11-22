@@ -50,7 +50,7 @@ public class LoginFromController {
         }
     }
     private void navigateToMainWindow() throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/overViewFrom.fxml"));
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/navigationPannelFrom.fxml"));
         Scene scene = new Scene(rootNode);
 
         loginPane.getChildren().clear();

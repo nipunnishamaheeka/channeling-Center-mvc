@@ -10,6 +10,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 //import lk.ijse.channelingCenter.model.AppoinmentListModel;
@@ -203,10 +204,6 @@ public class AppoinmentFromController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-//    private void setCellValueFactory(){
-//        IDClom.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        NameColm.setCellValueFactory(new PropertyValueFactory<>("UserName"));
-//    }
     /*private void deleteAppoinment(String code) {
         try {
             boolean b = appoinmentmodel.deleteAppoinment(code);
@@ -222,26 +219,17 @@ public class AppoinmentFromController {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("appoinment_id"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colPatientId.setCellValueFactory(new PropertyValueFactory<>("patinet_id"));
-        colAge.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
-        colDoctorId.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        colPatientId.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+        colDoctorId.setCellValueFactory(new PropertyValueFactory<>("id"));
         System.out.println("badu hri ");
-        colDoctor.setCellValueFactory(new PropertyValueFactory<>("age"));
-        System.out.println("paka");
-        colPatientName.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDoctor.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
+        colPatientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         System.out.println("awa");
 
     }
+
+    public void btnrefershonAction(MouseEvent mouseEvent) throws SQLException {
+        loadAllAppoinments();
+    }
 }
-/* List<AppoinmentListModel> appoinmentList = new ArrayList<>(appoinmentList());
-        for (int i = 0; i < appoinmentList.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/appoinmetListFrom.fxml"));
-            try {
-                HBox hBox = fxmlLoader.load();
-                AppoinmentListFromController cic = fxmlLoader.getController();
-                cic.setData(appoinmentList.get(i));
-                listLayout.getChildren().add(hBox);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/

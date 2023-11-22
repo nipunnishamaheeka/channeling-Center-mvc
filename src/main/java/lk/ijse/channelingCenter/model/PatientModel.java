@@ -14,23 +14,19 @@ import java.util.List;
 public class PatientModel {
     public boolean savePatient(final PatientDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        System.out.println(dto);
-        String sql = "insert into patient values(?,?,?,?,?,?,?,?)";
-        PreparedStatement pstm = connection.prepareStatement(sql);
+        String sql = "INSERT INTO patient VALUES(?,?,?,?,?,?,?,?)";
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, dto.getPatient_id());
+            pstm.setString(2, dto.getPatient_name());
+            pstm.setString(3, dto.getMobile_number());
+            pstm.setString(4, dto.getAddress());
+            pstm.setString(5, dto.getSex());
+            pstm.setString(6, dto.getEmail());
+            pstm.setString(7, dto.getAge());
+            pstm.setString(8, dto.getBlood());
 
-        pstm.setString(1, dto.getPatient_id());
-        pstm.setString(2, dto.getPatient_name());
-        pstm.setString(3, dto.getMobile_number());
-        pstm.setString(4, dto.getAddress());
-        pstm.setString(5, dto.getSex());
-        pstm.setString(6, dto.getEmail());
-        pstm.setString(7, dto.getAge());
-        pstm.setString(8, dto.getBlood());
-
-        boolean isSaved = pstm.executeUpdate() > 0;
-
-        return isSaved;
-
+            return pstm.executeUpdate() > 0;
+        }
     }
 
     public boolean updatePatient(final PatientDto dto) throws SQLException {
@@ -101,8 +97,8 @@ public class PatientModel {
         while (resultSet.next()) {
             String Patient_id = resultSet.getString(1);
             String Patient_name = resultSet.getString(2);
-            String Address = resultSet.getString(3);
-            String Mobile_number = resultSet.getString(4);
+            String Mobile_number = resultSet.getString(3);
+            String Address = resultSet.getString(4);
             String Sex = resultSet.getString(5);
             String Email = resultSet.getString(6);
             String Age = resultSet.getString(7);
@@ -183,6 +179,21 @@ public class PatientModel {
 
         if(resultSet.next()){
             return resultSet.getString(2);
+        } return null;
+
+    }
+
+    public String getPatientGender(String value) throws SQLException {
+        DbConnection dbConnection = DbConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, value);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            return resultSet.getString(5);
         } return null;
 
     }

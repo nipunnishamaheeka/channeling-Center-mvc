@@ -59,7 +59,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1025.0" stylesheets="@../css/newTable.css">
+            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1025.0" stylesheets="@../css/table.css">
               <columns>
                 <TableColumn fx:id="tblId" prefWidth="75.0" text="Doctor ID" />
                 <TableColumn fx:id="tblName" prefWidth="163.2000274658203" text="Doctor Name" />
@@ -73,10 +73,8 @@
                <styleClass>
                   <String fx:value="column-header" />
                   <String fx:value="column-header-background" />
-                  <String fx:value="label" />
                   <String fx:value="table-cell" />
                   <String fx:value="table-row-cell" />
-                  <String fx:value="table-view" />
                </styleClass>
             </TableView>
             <Pane fx:id="refresh" layoutX="849.0" layoutY="38.0" onMouseClicked="#btnRefershOnAction" prefHeight="30.0" prefWidth="30.0" styleClass="function" stylesheets="@../css/button.css">
