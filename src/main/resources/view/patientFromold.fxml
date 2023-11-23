@@ -49,20 +49,21 @@
                      </font>
                   </Text>
                   <TextField fx:id="txtName" layoutX="254.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Patient Name" />
-                  <TextField fx:id="txtNumber" layoutX="531.0" layoutY="53.0" onAction="#numberSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Search Number" />
+                  <TextField fx:id="txtNumber" layoutX="531.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="0763825296" />
                   <TextField fx:id="txtAddress" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="209.0" promptText="Address" />
+                  <TextField fx:id="txtType" layoutX="254.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" promptText="Sex" />
                   <TextField fx:id="txtEmail" layoutX="531.0" layoutY="116.0" prefHeight="30.0" prefWidth="177.0" promptText="john.doe@example.com" />
                   <Button layoutX="649.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="282.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Patient">
+                  <Button layoutX="124.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Patient">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="466.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Patient">
+                  <Button layoutX="306.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Patient">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -73,14 +74,14 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="cmbBlood" layoutX="379.0" layoutY="116.0" onAction="#cmbBloodGroupOnAction" prefHeight="30.0" prefWidth="116.0" promptText="Blood Group" />
-                  <OnPressedEditableTableCell layoutX="56.0" layoutY="190.0" />
-                  <ComboBox fx:id="cmbGender" layoutX="255.0" layoutY="116.0" prefHeight="30.0" prefWidth="116.0" promptText="Gender" />
-                  <Label fx:id="lblPatientId" layoutX="131.0" layoutY="58.0" text="Label">
+                  <Label fx:id="lblPatientId" layoutX="136.0" layoutY="54.0" text="ID">
                      <font>
-                        <Font name="Arial Bold" size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <ComboBox fx:id="cmbBlood" layoutX="379.0" layoutY="116.0" onAction="#cmbBloodGroupOnAction" prefHeight="30.0" prefWidth="116.0" promptText="Blood Group" />
+                  <TextField fx:id="txtID" layoutX="734.0" layoutY="5.0" prefHeight="30.0" prefWidth="88.0" promptText="Enter ID" />
+                  <OnPressedEditableTableCell layoutX="56.0" layoutY="190.0" />
                </children>
             </Pane>
          </children></Pane>

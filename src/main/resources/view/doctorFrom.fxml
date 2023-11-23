@@ -32,7 +32,7 @@
                   </Text>
                   <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor Name" />
                   <TextField fx:id="txtEmail" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="john.doe@example.com" />
-                  <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Mobile No" />
+                  <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" onAction="#mobileNumberSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Search Mobile No" />
                   <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
                   <TextField fx:id="txtAddress" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
                   <Button layoutX="720.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
@@ -44,7 +44,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblDoctorId" layoutX="133.0" layoutY="57.0" text="D001">
+                  <Label fx:id="lblDoctorId" layoutX="133.0" layoutY="57.0" text="Label">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>

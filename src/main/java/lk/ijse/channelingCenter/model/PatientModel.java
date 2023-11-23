@@ -197,4 +197,31 @@ public class PatientModel {
         } return null;
 
     }
+
+    public PatientDto searchNumber(String number) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM patient WHERE mobile_number = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, number);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        PatientDto dto = null;
+
+        if (resultSet.next()) {
+            String Patient_id = resultSet.getString(1);
+            String Patient_name = resultSet.getString(2);
+            String Mobile_number = resultSet.getString(3);
+            String Address = resultSet.getString(4);
+            String Sex = resultSet.getString(5);
+            String Email = resultSet.getString(6);
+            String Age = resultSet.getString(7);
+            String Blood = resultSet.getString(8);
+
+            dto = new PatientDto(Patient_id, Patient_name, Mobile_number, Address, Sex, Email, Age, Blood);
+        }
+
+        return dto;
+    }
 }

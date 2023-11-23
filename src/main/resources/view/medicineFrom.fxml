@@ -153,7 +153,7 @@
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtMedicineName" prefHeight="26.0" prefWidth="174.0" />
+                              <TextField fx:id="txtMedicineName" onAction="#medicineSearchOnAction" prefHeight="26.0" prefWidth="174.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
@@ -200,7 +200,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear">
+                        <Button mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

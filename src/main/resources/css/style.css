@@ -20,6 +20,9 @@
     -fx-background-radius: 25;
     -fx-border-radius: 25;
     -fx-border-color: #ffffff;
+
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+
 }
 .searchbar{
     -fx-font-family: Inter;

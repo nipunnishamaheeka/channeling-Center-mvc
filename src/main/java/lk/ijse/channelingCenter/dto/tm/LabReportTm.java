@@ -1,14 +1,13 @@
-package lk.ijse.channelingCenter.dto;
+package lk.ijse.channelingCenter.dto.tm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-
-public class LabReportDto {
+@AllArgsConstructor
+@Data
+public class LabReportTm {
     private String lab_reportid;
     private String patient_id;
     private String date;

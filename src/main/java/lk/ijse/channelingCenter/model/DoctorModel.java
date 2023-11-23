@@ -166,4 +166,29 @@ public class DoctorModel {
         if (resultSet.next())return resultSet.getString(1);
         return null;
     }
+
+    public DoctorDto searchDoctorByNumber(String number) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM doctor WHERE number = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, number);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        DoctorDto dto = null;
+
+        if (resultSet.next()) {
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String email = resultSet.getString(4);
+            String mobileNumber = resultSet.getString(5);
+            String type = resultSet.getString(6);
+
+            dto = new DoctorDto(id, name, address, email, mobileNumber, type);
+        }
+
+        return dto;
+    }
 }

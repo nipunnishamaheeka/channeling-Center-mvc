@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LabReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5967e482-cd91-4e30-bd40-b5af93f02c37">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<queryString language="SQL">
+		<![CDATA[select * from labreport where lab_reportId ="LR001"]]>
+	</queryString>
+	<field name="lab_reportId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lab_reportId"/>
+		<property name="com.jaspersoft.studio.field.label" value="lab_reportId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="patient_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="doctor_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="doctor_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="doctor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="age" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="age"/>
+		<property name="com.jaspersoft.studio.field.label" value="age"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gender"/>
+		<property name="com.jaspersoft.studio.field.label" value="gender"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="test_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="test_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="test_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="test_result" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="test_result"/>
+		<property name="com.jaspersoft.studio.field.label" value="test_result"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="units" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="units"/>
+		<property name="com.jaspersoft.studio.field.label" value="units"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<field name="others" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="others"/>
+		<property name="com.jaspersoft.studio.field.label" value="others"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="labreport"/>
+	</field>
+	<group name="lab_reportId">
+		<groupExpression><![CDATA[$F{lab_reportId}]]></groupExpression>
+	</group>
+	<group name="patient_id">
+		<groupExpression><![CDATA[$F{patient_id}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<group name="doctor_id">
+		<groupExpression><![CDATA[$F{doctor_id}]]></groupExpression>
+	</group>
+	<group name="age">
+		<groupExpression><![CDATA[$F{age}]]></groupExpression>
+	</group>
+	<group name="gender">
+		<groupExpression><![CDATA[$F{gender}]]></groupExpression>
+	</group>
+	<group name="patient_name">
+		<groupExpression><![CDATA[$F{patient_name}]]></groupExpression>
+	</group>
+	<group name="test_name">
+		<groupExpression><![CDATA[$F{test_name}]]></groupExpression>
+	</group>
+	<group name="test_result">
+		<groupExpression><![CDATA[$F{test_result}]]></groupExpression>
+	</group>
+	<group name="units">
+		<groupExpression><![CDATA[$F{units}]]></groupExpression>
+	</group>
+	<group name="others">
+		<groupExpression><![CDATA[$F{others}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="3" width="328" height="37" uuid="830a0b6f-2dae-4099-9a8e-597bf45d7d49"/>
+				<textElement markup="styled">
+					<font fontName="Arial Black" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LABORATORY REPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="36" width="210" height="30" uuid="c6386dce-3878-4c9d-87db-80e5366199fd"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ayuwarna Channeling Center]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="3" width="90" height="70" uuid="cafce085-2b67-4d3d-80f4-7dfa4a05370c"/>
+				<imageExpression><![CDATA["G:/Final Project Semster/channelingCenter/src/main/resources/assets/final logo .png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="-20" y="87" width="595" height="1" uuid="d03edece-e81a-458e-9eed-228d460cb266"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<detail>
+		<band height="571" splitType="Stretch">
+			<textField>
+				<reportElement x="179" y="57" width="120" height="22" uuid="78b023a5-dc11-4bfb-b61d-b8a9f533b5bd"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patient_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="57" width="200" height="19" uuid="7967156d-be64-4288-aff6-2fe1068831fb"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Patient Register ID   :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="179" y="87" width="120" height="30" uuid="1b1cc069-3be8-461f-8fc5-47b0e501c460"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="87" width="200" height="19" uuid="ad15b2ff-d167-4933-a093-0e15089f6ef7"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[patient_name           :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="451" y="29" width="122" height="30" uuid="3e7caa2d-1b59-41ab-b9be-19839e424411"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctor_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="383" y="6" width="180" height="23" uuid="d45c2d99-291b-43c0-8159-7d46c8edfbd4"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Channeling Doctor Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="179" y="117" width="100" height="19" uuid="944c1869-97b1-42d4-b64a-5ed258101da2"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="117" width="190" height="19" uuid="c10b8593-0681-4516-83e7-ab8b0ef521ed"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[age                           :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="179" y="147" width="100" height="30" uuid="0ff04f22-11bb-484b-94e2-459b9f433006"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="147" width="151" height="30" uuid="1edaea65-fd7b-4802-9885-4065bb503345"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[gender                      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="-21" width="135" height="22" uuid="0a11d5db-2a56-4201-a3f6-3389872fcee4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="-21" width="120" height="23" uuid="14f58a84-705c-4283-80e1-89f2889211f6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Ready Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="205" width="400" height="30" uuid="743d9de4-3d02-481e-884f-0f28bee44fc7"/>
+				<textElement>
+					<font size="15" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CULTURE AND ABST, URINE (Testing Records)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="253" width="100" height="30" uuid="23949ffe-656f-4bdf-8e68-3598739b30e1"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{test_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="253" width="100" height="30" uuid="28ab45e9-0050-4d7b-84ff-f0230fa90ad5"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Test Name    :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="283" width="100" height="30" uuid="40cc2151-49d9-424b-83a7-a0fe0f4a7732"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{test_result}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="283" width="100" height="30" uuid="202f785f-a9a2-41d4-9642-2b44f154cf3d"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[test_result     :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="313" width="100" height="30" uuid="9229ea21-ba75-4ee4-b9a9-e453f1d48cf2"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{units}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="313" width="100" height="30" uuid="850aa86a-867e-48d2-be1c-e59d9219d7d3"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[units              :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="343" width="100" height="30" uuid="c1db57c9-eac0-49c6-94bb-1ff810c50fb4"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{others}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="341" width="100" height="30" uuid="7247f729-3f7f-4104-8b04-be5b49559068"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[others            :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="26" width="140" height="30" uuid="095d91a3-194a-4779-b472-993ed262eaf7"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lab_reportId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="26" width="156" height="30" uuid="17f2233e-c9ca-42a9-b821-b7ab706e637a"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Report ID                 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="440" width="74" height="30" uuid="4cc1e440-c298-4e3d-8764-bf1b64b50c8f"/>
+				<text><![CDATA[-End Of Report-]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

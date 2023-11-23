@@ -110,13 +110,13 @@ public class MedicineFromController {
                 throw new RuntimeException(e);
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Medicine Details").show();
+           // new Alert(Alert.AlertType.ERROR, "Invalid Medicine Details").show();
             lblCode.requestFocus();
         }
     }
 
     private void clearFields() {
-        //lblCode.setText("");
+        lblCode.setText("");
         txtMedicineName.setText("");
         txtDescription.setText("");
         txtQty.setText("");
@@ -126,23 +126,24 @@ public class MedicineFromController {
 
     private boolean validateMedicine() {
         String nameText = txtMedicineName.getText();
-        boolean isNameValid = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValid = Pattern.compile("^[A-Za-z0-9\\s\\-()&,.]+$").matcher(nameText).matches();
         if (!isNameValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Medicine Name").show();
+         txtMedicineName.setStyle("-fx-border-color: red");
+            //new Alert(Alert.AlertType.ERROR, "Invalid Medicine Name").show();
             return false;
         }
-//        String supplierText = txtSupplierName.getText();
-//        boolean isSupplierNameValid = Pattern.compile("[A-Za-z]{3,}").matcher(supplierText).matches();
-//        if (!isSupplierNameValid) {
-//            new Alert(Alert.AlertType.ERROR, "Invalid Supplier Name").show();
-//            return false;
-//        }
-//        String stockText = txtStock.getText();
-//        boolean isStockValid = Pattern.compile("^[0-9]+$").matcher(stockText).matches();
-//        if (!isStockValid) {
-//            new Alert(Alert.AlertType.ERROR, "Invalid Stock Count").show();
-//            return false;
-//        }
+        String QTY = txtQty.getText();
+        boolean isQTYValid = Pattern.compile("^\\d+(\\.\\d+)?$").matcher(QTY).matches();
+        if (!isQTYValid) {
+            txtQty.setStyle("-fx-border-color: red");
+            return false;
+        }
+        String unitPrice = txtUniPrice.getText();
+        boolean isPriceValid = Pattern.compile("^\\d+(\\.\\d{1,2})?$").matcher(unitPrice).matches();
+        if (!isPriceValid) {
+            txtUniPrice.setStyle("-fx-border-color: red");
+            return false;
+        }
         return true;
     }
 
@@ -297,6 +298,29 @@ public class MedicineFromController {
         medicinePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/MedicinePlaceOrder.fxml")));
 
 
+    }
+
+    public void medicineSearchOnAction(ActionEvent actionEvent) {
+        String medicine = txtMedicineName.getText();
+
+        try {
+            MedicineDto dto = medicineModel.searchMedicine(medicine);
+            if (dto != null) {
+                setFields(dto);
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Medicine not found!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void setFields(MedicineDto dto) {
+        lblCode.setText(dto.getMedi_code());
+        txtMedicineName.setText(dto.getMedicine_name());
+        txtDescription.setText(dto.getDescription());
+        txtQty.setText(dto.getQty());
+        txtUniPrice.setText(dto.getUnit_price());
     }
 }
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -20,7 +22,20 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="68.0" prefHeight="222.0" prefWidth="831.0" styleClass="inter_pane">
+            <TableView fx:id="tblReport" layoutX="29.0" layoutY="461.0" prefHeight="221.0" prefWidth="1213.0">
+              <columns>
+                <TableColumn fx:id="colReportId" prefWidth="95.19997787475586" text="Report ID" />
+                  <TableColumn fx:id="colDate" prefWidth="115.199951171875" text="Report Date" />
+                <TableColumn fx:id="colPatientName" prefWidth="247.99998474121094" text="Patient Name" />
+                  <TableColumn fx:id="colLabRecord" prefWidth="288.0000305175781" text="Patient Lab Record" />
+                  <TableColumn fx:id="colDoctorName" prefWidth="215.99993896484375" text="Doctor" />
+                  <TableColumn fx:id="colGender" prefWidth="73.60003662109375" text="Gender" />
+                  <TableColumn fx:id="colAge" minWidth="0.0" prefWidth="55.2000732421875" text="Age" />
+                  <TableColumn prefWidth="62.39990234375" text="Action" />
+                  <TableColumn prefWidth="62.39990234375" text="Action" />
+              </columns>
+            </TableView>
+            <Pane layoutX="29.0" layoutY="68.0" prefHeight="374.0" prefWidth="912.0" styleClass="payment_pane">
                <children>
                   <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports Details">
                      <font>
@@ -34,15 +49,15 @@
                   </Text>
                   <Label fx:id="lblReportId" layoutX="118.0" layoutY="78.0" text="Label">
                      <font>
-                        <Font name="Arial" size="18.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Text layoutX="444.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Name :">
+                  <Text layoutX="604.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Name :">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="674.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor : ">
+                  <Text layoutX="604.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor : ">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -52,48 +67,82 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="254.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+                  <Text layoutX="274.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblPatientName" layoutX="588.0" layoutY="78.0" text="Label">
+                  <Label fx:id="lblPatientName" layoutX="748.0" layoutY="148.0" text="Label">
                      <font>
-                        <Font name="Arial" size="18.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblGender" layoutX="348.0" layoutY="148.0" text="Label">
+                  <Label fx:id="lblGender" layoutX="368.0" layoutY="148.0" text="Label">
                      <font>
-                        <Font name="Arial" size="18.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="lblAge" layoutX="78.0" layoutY="148.0" text="Label">
                      <font>
-                        <Font name="Arial" size="18.0" />
+                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker layoutX="635.0" layoutY="33.0" promptText="Report Date" />
-                  <Button fx:id="btnSave" layoutX="60.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save" />
-                  <Button fx:id="btnUpdate" layoutX="180.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" />
-                  <Button fx:id="btnClear" layoutX="270.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnClearOnAction" text="Clear" />
-                  <Text layoutX="224.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Id :">
+                  <DatePicker fx:id="datefelid" layoutX="723.0" layoutY="30.0" promptText="Report Date" />
+                  <Button fx:id="btnSave" layoutX="131.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnSaveOnAction" styleClass="add_button" stylesheets="@../css/button.css" text="Save" />
+                  <Button fx:id="btnUpdate" layoutX="251.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" styleClass="update_button" stylesheets="@../css/button.css" text="Update" />
+                  <Button fx:id="btnClear" layoutX="381.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnClearOnAction" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear" />
+                  <Text layoutX="274.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Id :">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <JFXComboBox fx:id="cmboPationId" layoutX="332.0" layoutY="76.0" onAction="#cmbPatientIdOnAction" prefHeight="25.0" prefWidth="74.0" />
-                  <JFXComboBox fx:id="cmbDoctor" layoutX="752.0" layoutY="76.0" onAction="#cmbDoctorIdOnAction" prefHeight="25.0" prefWidth="74.0" />
+                  <JFXComboBox fx:id="cmboPationId" layoutX="382.0" layoutY="76.0" onAction="#cmbPatientIdOnAction" prefHeight="25.0" prefWidth="125.0" />
+                  <JFXComboBox fx:id="cmbDoctor" layoutX="682.0" layoutY="76.0" onAction="#cmbDoctorIdOnAction" prefHeight="25.0" prefWidth="125.0" />
+                  <Text layoutX="14.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patinet Lab Report Details :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <JFXTextArea layoutX="15.0" layoutY="233.0" prefHeight="26.0" prefWidth="535.0" />
+                  <Text layoutX="604.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Name :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="604.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Result : ">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="604.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="604.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Others :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtReportName" layoutX="717.0" layoutY="206.0" prefHeight="25.0" prefWidth="164.0" />
+                  <TextField fx:id="txtReportResult" layoutX="717.0" layoutY="246.0" prefHeight="25.0" prefWidth="164.0" />
+                  <TextField fx:id="txtUnits" layoutX="684.0" layoutY="286.0" prefHeight="25.0" prefWidth="197.0" />
+                  <TextField fx:id="txtOthers" layoutX="684.0" layoutY="326.0" prefHeight="25.0" prefWidth="197.0" />
+                  <Text layoutX="604.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Name : ">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="lblDoctorName" layoutX="748.0" layoutY="118.0" text="Label">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children></Pane>
-            <TableView fx:id="tblReport" layoutX="29.0" layoutY="321.0" prefHeight="361.0" prefWidth="637.0">
-              <columns>
-                <TableColumn fx:id="colReportId" prefWidth="75.0" text="Report ID" />
-                <TableColumn fx:id="colPatientId" prefWidth="111.20001220703125" text="Patient Name" />
-                  <TableColumn fx:id="colDoctorName" prefWidth="111.20001220703125" text="Doctor" />
-                  <TableColumn fx:id="colAge" prefWidth="111.20001220703125" text="Age" />
-                  <TableColumn fx:id="colGender" prefWidth="111.20001220703125" text="Gender" />
-                  <TableColumn prefWidth="111.20001220703125" text="User Action" />
-              </columns>
-            </TableView>
+            <TextField fx:id="txtSearchId" layoutX="1008.0" layoutY="92.0" onAction="#btnSearchIdOnAction" prefHeight="34.0" prefWidth="197.0" promptText="Search Your Report ID" />
+            <TextField fx:id="txtPatientName" layoutX="1008.0" layoutY="142.0" prefHeight="34.0" prefWidth="197.0" promptText="Patient Name" />
+            <Button layoutX="1056.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnPrintReportOnAction" text="Print Lab Report" />
+            <Button layoutX="1056.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnEmailOnAction" text="EmailLab Report" />
          </children></Pane>
    </children>
 </AnchorPane>

@@ -149,7 +149,7 @@ public class DoctorFromController {
     }
 
     private void clearFields() {
-       // lblDoctorId.setText("");
+        lblDoctorId.setText("");
         txtName.clear();
         txtAddress.clear();
         txtEmail.clear();
@@ -272,6 +272,17 @@ public class DoctorFromController {
             return false;
         }
         return true;
+
+    }
+
+    public void mobileNumberSearchOnAction(ActionEvent actionEvent) {
+String number = txtNumber.getText();
+        try {
+            DoctorDto dto = doctorModel.searchDoctorByNumber(number);
+            setFields(dto);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
