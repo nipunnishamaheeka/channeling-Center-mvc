@@ -20,9 +20,9 @@
     -fx-background-radius: 25;
     -fx-border-radius: 25;
     -fx-border-color: #ffffff;
-
+    }
+.payment_pane:hover{
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
-
 }
 .searchbar{
     -fx-font-family: Inter;
@@ -32,8 +32,15 @@
     -fx-border-radius: 5;
     -fx-border-color:non;
 }
-.searchbar:hover{
-    -fx-background-color: #DEDEDE;
+.hboxSearchbar{
+    -fx-font-family: Inter;
+    -fx-font-size: 14;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color:non;
+}
+.hboxSearchbar:hover{
     -fx-background-radius: 5;
     -fx-border-radius: 5;
     -fx-border-color: #3877EF;

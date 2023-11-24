@@ -2,9 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,37 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="overViewPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
+<AnchorPane fx:id="overViewPane" prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
    <children>
-      <Pane prefHeight="694.0" prefWidth="1266.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane prefHeight="694.0" prefWidth="1266.0" stylesheets="@../css/style.css">
          <children>
-            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OverView">
-               <font>
-                  <Font name="Arial Bold" size="30.0" />
-               </font>
-            </Text>
-            <Pane layoutX="13.0" layoutY="167.0" prefHeight="517.0" prefWidth="806.0" stylesheets="@../css/style.css">
-               <children>
-                  <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
-                  <TableView layoutX="2.0" layoutY="45.0" prefHeight="468.0" prefWidth="800.0">
-                    <columns>
-                      <TableColumn prefWidth="55.199981689453125" sortable="false" text="ID" />
-                      <TableColumn prefWidth="76.0" sortable="false" text="Time" />
-                        <TableColumn prefWidth="95.20002746582031" sortable="false" text="Date" />
-                        <TableColumn prefWidth="123.20001220703125" sortable="false" text="Patient Name" />
-                        <TableColumn prefWidth="71.20001220703125" sortable="false" text="Patient Age" />
-                        <TableColumn prefWidth="123.20001220703125" sortable="false" text="Doctor" />
-                        <TableColumn prefWidth="68.7999267578125" sortable="false" text="Diseases" />
-                        <TableColumn prefWidth="76.0001220703125" sortable="false" text="Fee Status" />
-                        <TableColumn prefWidth="80.4000244140625" sortable="false" text="User Action" />
-                    </columns>
-                  </TableView>
-               </children></Pane>
-            <HBox layoutX="43.0" layoutY="69.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
+            <HBox layoutX="43.0" layoutY="103.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
                <children>
                   <Pane onMouseClicked="#btnPatientOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
@@ -135,15 +107,79 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="846.0" layoutY="167.0" prefHeight="517.0" prefWidth="406.0" styleClass="tab_pane" stylesheets="@../css/style.css">
+            <Pane layoutX="14.0" layoutY="204.0" prefHeight="223.0" prefWidth="545.0" styleClass="card_pane" stylesheets="@../css/overViewPAne.css">
                <children>
-                  <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
+                  <ImageView fitHeight="259.0" fitWidth="198.0" layoutX="370.0" layoutY="-36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/portrait-doctor-removebg-preview%20(2).png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visits For Today">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <ComboBox layoutX="235.0" layoutY="18.0" prefWidth="150.0" promptText="Weekly" />
-                  <PieChart fx:id="pieChart" layoutX="8.0" layoutY="59.0" prefHeight="400.0" prefWidth="392.0" />
+                  <Label layoutX="46.0" layoutY="42.0" text="102">
+                     <font>
+                        <Font name="Arial Black" size="30.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="14.0" layoutY="130.0" prefHeight="80.0" prefWidth="164.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
+                     <children>
+                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Patients">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="194.0" layoutY="130.0" prefHeight="80.0" prefWidth="164.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
+                     <children>
+                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Patients">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="122.0" layoutY="443.0" prefHeight="241.0" prefWidth="280.0" styleClass="tab_pane" stylesheets="@../css/style.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <PieChart fx:id="pieChart" layoutX="25.0" layoutY="24.0" prefHeight="208.0" prefWidth="241.0" />
+               </children>
+            </Pane>
+            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, Ayuwarna Channeling Center">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="76.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have a nice day at great work">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Pane layoutX="940.0" layoutY="204.0" prefHeight="483.0" prefWidth="298.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="24.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor List">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="590.0" layoutY="204.0" prefHeight="483.0" prefWidth="321.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children></Pane>

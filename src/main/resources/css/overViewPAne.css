@@ -1,0 +1,22 @@
+
+.card_pane{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background: rgb(216,210,252);
+    -fx-background-color: linear-gradient( to right, rgb(186, 233, 250) 0%, rgb(113, 151, 255) 100%, rgba(224,233,244,1) 100%);
+    -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
+}
+.card_inter{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background: rgb(216,210,252);
+    -fx-background-color: linear-gradient( to right, rgb(230, 248, 255) 0%, rgb(216, 223, 238) 100%, rgb(233, 238, 245) 100%);
+}
+.card_inter:hover{
+   -fx-background-color: #ebf5ff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-shadow-color: #3b3b3b;
+    -fx-effect: dropshadow(gaussian, #fffdfd, 0.5, 0, 0, 0);
+    -fx-animated: true;
+}
