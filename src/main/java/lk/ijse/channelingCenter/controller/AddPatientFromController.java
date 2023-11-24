@@ -60,7 +60,6 @@ public class AddPatientFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
 
     private void setFields(PatientDto dto) {
@@ -70,7 +69,7 @@ public class AddPatientFromController {
         txtAddress.setText(dto.getAddress());
         txtType.setText(dto.getSex());
         txtEmail.setText(dto.getEmail());
-       // cmbBlood.setItems(dto.getBlood());
+        // cmbBlood.setItems(dto.getBlood());
         txtAge.setText(dto.getAge());
     }
 

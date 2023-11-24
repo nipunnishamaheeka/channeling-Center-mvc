@@ -119,6 +119,18 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
+                  <Pane fx:id="btnPayment" onMouseClicked="#btnPaymentOnAction" prefHeight="40.0" prefWidth="50.0" styleClass="button_pane" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/wallet.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
                   <Pane fx:id="btnlogout" onMouseClicked="#btnlogoutOnAction" prefHeight="40.0" prefWidth="50.0" styleClass="button_pane" translateY="80.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">

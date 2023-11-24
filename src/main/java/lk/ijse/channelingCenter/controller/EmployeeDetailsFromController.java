@@ -87,27 +87,40 @@ public class EmployeeDetailsFromController {
         String nameText = txtName.getText();
         boolean isNameValid = nameText.matches("[A-Za-z][A-Za-z. ]{3,}");
         if (!isNameValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Name").show();
+            txtName.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtName).play();
             return false;
+        }else {
+            txtName.setStyle("-fx-border-color: green");
         }
         String numberText = txtNumber.getText();
         boolean isNumberValid = Pattern.compile("[(07)]\\d{9}|[+]\\d{11}").matcher(numberText).matches();
         if (!isNumberValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Number").show();
+            txtNumber.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtNumber).play();
             return false;
+        }else{
+                txtNumber.setStyle("-fx-border-color: green");
+        }
+        String salaryText =txtSalary.getText();
+        boolean isSalaryValid = salaryText.matches("^\\p{Sc}?\\d+(\\.\\d+)?$");
+        if (!isSalaryValid) {
+            txtSalary.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtSalary).play();
+            return false;
+        }else {
+            txtSalary.setStyle("-fx-border-color: green");
+        }
+        String qulificationText =txtQulification.getText();
+        boolean isQulificationValid = qulificationText.matches("^[A-Za-z0-9\\s.,-]+$");
+        if (!isQulificationValid) {
+            txtSalary.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtQulification).play();
+            return false;
+        }else {
+            txtSalary.setStyle("-fx-border-color: green");
         }
         return true;
-    }
-
-
-    private void setFields(EmployeeDto dto) {
-        lblEmpId.setText(dto.getEmp_id());
-        txtName.setText(dto.getEmp_name());
-        txtNumber.setText(dto.getEmp_address());
-        txtAddress.setText(dto.getMobile_number());
-        txtJobRole.setText(dto.getJob_role());
-        txtQulification.setText(dto.getQualification());
-        txtSalary.setText(dto.getSalary());
     }
 public void btnAddOnAction(ActionEvent actionEvent) {
     boolean isEmployeeValid = validateEmployee();
@@ -136,7 +149,7 @@ public void btnAddOnAction(ActionEvent actionEvent) {
             throw new RuntimeException(e);
         }
     }else{
-        new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
+        //new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
     }
 }
     public void btnDeleteOnAction(ActionEvent actionEvent) {
@@ -148,6 +161,7 @@ public void btnAddOnAction(ActionEvent actionEvent) {
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee deleted!").show();
                 clearFields();
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

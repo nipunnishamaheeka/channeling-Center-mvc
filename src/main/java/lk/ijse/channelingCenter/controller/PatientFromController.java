@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.controller;
 
+import animatefx.animation.Shake;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -151,7 +152,7 @@ public class PatientFromController {
                     System.out.println(code);
                     try {
                         // patientPane.getChildren().clear();
-                        patientPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/addAppoinmentPatinetDetials.fxml")));
+                        patientPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/patientFromold.fxml")));
                     } catch (Exception e1) {
                     }
                 });
@@ -183,7 +184,7 @@ public class PatientFromController {
         try {
             boolean b = patientModel.deletePatient(code);
             if (b) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted");
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -199,59 +200,36 @@ public class PatientFromController {
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");
-        cmbGender.setItems(null);
+        //cmbGender.setItems(null);
         txtEmail.setText("");
         txtAge.setText("");
-        cmbBlood.setItems(null);
+        //cmbBlood.setItems(null);
 
     }
+    private boolean validateTextField(TextField textField, String patternRegex) {
+        String text = textField.getText();
+        boolean isValid = Pattern.compile(patternRegex).matcher(text).matches();
 
+        if (!isValid) {
+            textField.setStyle("-fx-border-color: red");
+            new Shake(textField).play();
+            return false;
+        } else {
+            textField.setStyle("-fx-border-color: green");
+            return true;
+        }
+    }
 
-    private boolean validatePatinet() {
-        String patinetIdText = lblPatientId.getText();
-        Pattern compile = Pattern.compile("[P][0-9]{3,}");
-        Matcher matcher = compile.matcher(patinetIdText);
-        boolean matches = matcher.matches();
-
-        if (!matches) {
-            lblPatientId.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Patient ID").show();
-            return false;
-        }
-        String nameText = txtName.getText();
-        boolean isNameValid = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        if (!isNameValid) {
-            txtName.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Patient Name").show();
-            return false;
-        }
-        String numberText = txtNumber.getText();
-        boolean isNumberValid = Pattern.compile("[(07)]\\d{9}|[+]\\d{11}").matcher(numberText).matches();
-        if (!isNumberValid) {
-            txtNumber.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Patient Number").show();
-            return false;
-        }
-        String ageText = txtAge.getText();
-        boolean isAgeValid = Pattern.compile("\\d{2}").matcher(ageText).matches();
-        if (!isAgeValid) {
-            txtAge.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Patient Age").show();
-            return false;
-        }
-        //^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
-        String emailText = txtEmail.getText();
-        boolean isEmailValid = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}").matcher(emailText).matches();
-        if (!isEmailValid) {
-            txtEmail.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Patient Email").show();
-            return false;
-        }
-        return true;
+    private boolean validatePatient() {
+        return validateTextField(txtName, "[A-Za-z]{3,}")
+                && validateTextField(txtNumber, "[(07)]\\d{9}|[+]\\d{11}")
+                && validateTextField(txtAge, "\\d{2}")
+                && validateTextField(txtEmail, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}")
+                && validateTextField(txtAddress, "[A-Za-z0-9]{3,}");
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        boolean isPatientValid = validatePatinet();
+        boolean isPatientValid = validatePatient();
 
         if (isPatientValid) {
             try {
@@ -280,7 +258,6 @@ public class PatientFromController {
                 throw new RuntimeException(e);
             }
         } else {
-            // new Alert(Alert.AlertType.ERROR, "Invalid Patient Details").show();
             lblPatientId.requestFocus();
         }
     }
@@ -307,7 +284,7 @@ public class PatientFromController {
         txtName.setText(dto.getPatient_name());
         txtNumber.setText(dto.getMobile_number());
         txtAddress.setText(dto.getAddress());
-        //cmbGender.setItems(dto.getSex());
+        //cmbGender.getItems().addAll(dto.getSex());
         txtEmail.setText(dto.getEmail());
         //cmbBlood.setItems(dto.getBlood());
         txtAge.setText(dto.getAge());
@@ -328,37 +305,9 @@ public class PatientFromController {
         cmbGender.setItems(obList);
     }
 
-    //    public void btnUpdateOnAction(ActionEvent actionEvent) {
-//        PatientTm selectedPatient = tblPatient.getSelectionModel().getSelectedItem();
-//
-//        if (selectedPatient != null) {
-//            String patientId = selectedPatient.getPatient_id();
-//            String patientName = selectedPatient.getPatient_name();
-//            String mobileNumber = selectedPatient.getMobile_number();
-//            String address = selectedPatient.getAddress();
-//            String sex = selectedPatient.getSex();
-//            String email = selectedPatient.getEmail();
-//            String age = selectedPatient.getAge();
-//            String blood = selectedPatient.getBlood();
-//
-//            PatientDto updatedPatient = new PatientDto(patientId, patientName, mobileNumber, address, sex, email, age, blood);
-//
-//            try {
-//                boolean isUpdated = patientModel.updatePatient(updatedPatient);
-//
-//                if (isUpdated) {
-//                    new Alert(Alert.AlertType.CONFIRMATION, "Patient updated").show();
-//                    clearFields();
-//                    loadAllPatients();  // Refresh the TableView
-//                }
-//            } catch (SQLException e) {
-//                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-//            }
-//        }
-    //}
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         //boolean isPatientValid = validatePatinet();
-        if (validatePatinet()) {
+        if (validatePatient()) {
             String Patient_id = lblPatientId.getText();
             String Patient_name = txtName.getText();
             String Mobile_number = txtNumber.getText();
@@ -381,21 +330,6 @@ public class PatientFromController {
 
         }
     }
-
-//    public void btnDeleteOnAction(ActionEvent actionEvent) {
-//        String id = txtId.getText();
-//
-//        try {
-//            boolean isDeleted = patientModel.deletePatient(id);
-//
-//            if (isDeleted) {
-//                new Alert(Alert.AlertType.CONFIRMATION, "Patient deleted!").show();
-//                clearFields();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-//        }
-//    }
 
     private void setPatientID() {
         try {

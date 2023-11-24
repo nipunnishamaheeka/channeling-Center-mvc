@@ -1,10 +1,13 @@
 package lk.ijse.channelingCenter.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -12,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.*;
 import lk.ijse.channelingCenter.dto.tm.LabReportTm;
+import lk.ijse.channelingCenter.dto.tm.MedicineTm;
 import lk.ijse.channelingCenter.email.Email;
 import lk.ijse.channelingCenter.model.*;
 import net.sf.jasperreports.engine.*;
@@ -26,6 +30,7 @@ import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class LabReportsFromController {
@@ -44,6 +49,7 @@ public class LabReportsFromController {
     public TextField txtReportResult;
     public TextField txtUnits;
     public TextField txtOthers;
+    public TableColumn colDelete;
     @FXML
     private DatePicker datefelid;
     @FXML
@@ -75,39 +81,73 @@ LabReportModel labReportModel =new LabReportModel();
         setCellValueFactory();
         loadAllReports();
     }
-
-    void loadAllReports() throws SQLException {
-        var model = new LabReportModel();
-
-        ObservableList<LabReportTm> list = FXCollections.observableArrayList();
-
+    private void loadAllReports() throws SQLException {
         try {
-            List<LabReportDto> dtos = model.getAllReports();
+            List<LabReportDto> dtoList = labReportModel.getAllReports();
 
-            for (LabReportDto dto : dtos) {
-                list.add(
-                        new LabReportTm(
-                                dto.getLab_reportid(),
-                                dto.getPatient_id(),
-                                dto.getDate(),
-                                dto.getDoctor_id(),
-                                dto.getDoctor_name(),
-                                dto.getAge(),
-                                dto.getGender(),
-                                dto.getPatient_name(),
-                                dto.getTest_name(),
-                                dto.getTest_result(),
-                                dto.getUnits(),
-                                dto.getOthers()
-                        ));
+            ObservableList<LabReportTm> obList = FXCollections.observableArrayList();
 
+            for (LabReportDto dto : dtoList) {
+                Button deleteButton = new Button("");
+                FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                deleteButton.setGraphic(deleteIcon);
+                deleteButton.setCursor(Cursor.HAND);
+
+                deleteButton.setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if (type.orElse(no) == yes) {
+                        int selectedIndex = tblReport.getSelectionModel().getSelectedIndex();
+                        String code = dto.getLab_reportid(); // Use the code directly from the DTO
+
+                        deleteItem(code);   // Delete item from the database
+
+                        obList.remove(selectedIndex);   // Delete item from the JFX-Table
+                    }
+                });
+
+                var tm = new LabReportTm(
+                        dto.getLab_reportid(),
+                        dto.getPatient_id(),
+                        dto.getDate(),
+                        dto.getDoctor_id(),
+                        dto.getDoctor_name(),
+                        dto.getAge(),
+                        dto.getGender(),
+                        dto.getPatient_name(),
+                        dto.getTest_name(),
+                        dto.getTest_result(),
+                        dto.getUnits(),
+                        dto.getOthers(),
+                        deleteButton
+                );
+                obList.add(tm);
             }
-            tblReport.setItems(list);
+
+            tblReport.setItems(obList);
+            setFontAwesomeIcons();
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new RuntimeException(e);
         }
     }
-
+    private void setFontAwesomeIcons() {
+        tblReport.getItems().forEach(item -> {
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+        });
+    }
+    private void deleteItem(String code) {
+        try {
+            boolean isDeleted = labReportModel.deleteReports(code);
+            if (isDeleted) {
+                //new Alert(Alert.AlertType.CONFIRMATION, "Medicine item deleted!").show();
+            }
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+        }
+    }
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isReportValid = validateLabReport();
 
@@ -325,11 +365,11 @@ LabReportModel labReportModel =new LabReportModel();
         colReportId.setCellValueFactory(new PropertyValueFactory<>("lab_reportid"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colPatientName.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
-        colLabRecord.setCellValueFactory(new PropertyValueFactory<>("lab_record"));
         colDoctorName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
         colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         colDoctorName.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
+        colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
 
 
     }

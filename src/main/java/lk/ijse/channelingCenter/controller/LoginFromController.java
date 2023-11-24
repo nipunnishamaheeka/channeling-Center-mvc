@@ -40,7 +40,10 @@ public class LoginFromController {
         try {
             boolean isIn= model.searchUser(new LoginDto(null,userName,password));
             if (!isIn){
-                new Alert(Alert.AlertType.WARNING,"Invalid User Name or Password").show();
+                new Alert(Alert.AlertType.WARNING,"Invalid User Name or Password");
+                textpassword.setStyle("-fx-border-color: red");
+                new animatefx.animation.Shake(textpassword).play();;
+
                 return;
             }else  {
                 navigateToMainWindow();

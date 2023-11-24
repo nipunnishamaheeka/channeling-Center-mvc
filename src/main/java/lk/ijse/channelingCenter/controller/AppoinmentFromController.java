@@ -15,8 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 //import lk.ijse.channelingCenter.model.AppoinmentListModel;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
+import lk.ijse.channelingCenter.dto.MedicineDto;
 import lk.ijse.channelingCenter.dto.PatientDto;
 import lk.ijse.channelingCenter.dto.tm.AppoinmentTm;
+import lk.ijse.channelingCenter.dto.tm.MedicineTm;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
 import lk.ijse.channelingCenter.model.PatientModel;
 import lombok.Getter;
@@ -29,7 +31,7 @@ import java.util.Optional;
 
 public class AppoinmentFromController {
     @Getter
-    private static AppoinmentFromController controller;
+
     public AnchorPane appoinmentPane;
     public TableView tblAppointment;
     public TableColumn colId;
@@ -45,21 +47,6 @@ public class AppoinmentFromController {
     public TableColumn colDelete;
 
     AppoinmentModel appoinmentmodel = new AppoinmentModel();
-    /*public void idOnAction(ActionEvent actionEvent){
-        try{
-            if (AppoinmentListModel.saveAppoinment(new AppoinmentDto(
-
-            ))){
-                new Alert(Alert.AlertType.CONFIRMATION,"ok").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR,"error").show();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-    }*/
-
     @SneakyThrows
     public void initialize() {
         setCellValueFactory();
@@ -68,153 +55,81 @@ public class AppoinmentFromController {
 
     }
 
-/*public void setSearchData(String text) {
-        listLayout.getChildren().clear();
-        try {
-            List<AppoinmentDto> List = AppoinmentListModel.getAllFilter();//text
-            for (int i = 0; i < List.size(); i++) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(AppoinmentListFromController.class.getResource("/view/appoinmetListFrom.fxml"));
-                    Parent root = loader.load();
-                    AppoinmentListFromController controller = loader.getController();
-                    controller.setData(List.get(i));
-                    listLayout.getChildren().add(root);
-                } catch (IOException e) {
-                }
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }*/
-
-
     public void btnaddAppoinmentOnAction(ActionEvent mouseEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addAppoinmentFrom.fxml"));
 
-        //create a new Scene
         Scene scene = new Scene(rootNode);
-
         Stage stage = new Stage();
-        //set scene to the primary stage
         stage.setScene(scene);
-
-        //set title and get center on screen stage
         stage.setTitle("addAppoinmentFrom");
         stage.centerOnScreen();
-
-        //show stage to the crowd
         stage.show();
 
     }
+    private void setFontAwesomeIcons() {
+        tblAppointment.getItems().forEach(item -> {
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+        });
+    }
 
-   /* public void loadAllAppoinments() {
-        ObservableList<AppoinmentTm> obList = FXCollections.observableArrayList();
-
+    private void loadAllAppoinments() throws SQLException {
         try {
-            List<AppoinmentDto> dtoList = new AppoinmentModel().getAllAppoinment();
+            List<AppoinmentDto> dtoList = appoinmentmodel.getAllAppoinment();
+
+            ObservableList<AppoinmentTm> obList = FXCollections.observableArrayList();
 
             for (AppoinmentDto dto : dtoList) {
-                Button deleteButton = new Button();
-                Button updateButton = new Button();
-
+                Button deleteButton = new Button("");
+                FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                deleteButton.setGraphic(deleteIcon);
                 deleteButton.setCursor(Cursor.HAND);
-                updateButton.setCursor(Cursor.HAND);
 
                 deleteButton.setOnAction((e) -> {
-                    ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-                    ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                    Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete this Patient?", yes, no).showAndWait();
-                    if (result.orElse(no) == yes) {
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if (type.orElse(no) == yes) {
                         int selectedIndex = tblAppointment.getSelectionModel().getSelectedIndex();
-                        String code = (String) colId.getCellData(selectedIndex);
-                        deleteAppoinment(code);
-                        obList.remove(selectedIndex);
-                        tblAppointment.refresh();
-                    }
-                });
-                updateButton.setOnAction((e) -> {
-                    int selectedIndex = tblAppointment.getSelectionModel().getSelectedIndex();
-                    String code = (String) colId.getCellData(selectedIndex);
-                    System.out.println(code);
-                    try {
-                        appoinmentPane.getChildren().clear();
-                        //patientPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/updatePatientFrom.fxml")));
-                    } catch (Exception e1) {
+                        String code = dto.getAppoinment_id(); // Use the code directly from the DTO
+
+                        deleteItem(code);   // Delete item from the database
+
+                        obList.remove(selectedIndex);   // Delete item from the JFX-Table
                     }
                 });
 
-                obList.add(
-                        new AppoinmentTm(
-                                dto.getAppoinment_id(),
-                                dto.getDate(),
-                                dto.getPatinet_id(),
-                                dto.getAge(),
-                                dto.getId(),
-                                dto.getDoctor_name(),
-                                dto.getPatinetName(),
-                                deleteButton,
-                                updateButton
-                        )
+                var tm = new AppoinmentTm(
+                        dto.getAppoinment_id(),
+                        dto.getDate(),
+                        dto.getPatinet_id(),
+                        dto.getAge(),
+                        dto.getId(),
+                        dto.getDoctor_name(),
+                        dto.getPatinetName(),
+                        deleteButton
                 );
+                obList.add(tm);
             }
 
             tblAppointment.setItems(obList);
-            //setFontAwesomeIcons();
+            setFontAwesomeIcons();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }*/
+    }
 
-    /*private void setFontAwesomeIcons() {
-        tblAppointment.getItems().forEach(item -> {
-            Button deleteButton = item.getDeleteButton();
-            Button updateButton = item.getUpdateButton();
-
-            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-            FontAwesomeIconView updateIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
-
-            deleteButton.setGraphic(deleteIcon);
-            updateButton.setGraphic(updateIcon);
-        });
-    }*/
-    void loadAllAppoinments() throws SQLException {
-        var model = new AppoinmentModel();
-
-        ObservableList<AppoinmentTm> list = FXCollections.observableArrayList();
-
+    private void deleteItem(String code) {
         try {
-            List<AppoinmentDto> dtos = model.getAllAppoinment();
-
-            for (AppoinmentDto dto : dtos) {
-                list.add(
-                        new AppoinmentTm(
-                                dto.getAppoinment_id(),
-                                dto.getDate(),
-                                dto.getPatinet_id(),
-                                dto.getAge(),
-                                dto.getId(),
-                                dto.getDoctor_name(),
-                                dto.getPatinetName()
-                        ));
-
+            boolean isDeleted = appoinmentmodel.deleteAppoinment(code);
+            if (isDeleted) {
+                //new Alert(Alert.AlertType.CONFIRMATION, "Medicine item deleted!").show();
             }
-            tblAppointment.setItems(list);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
-    /*private void deleteAppoinment(String code) {
-        try {
-            boolean b = appoinmentmodel.deleteAppoinment(code);
-            if (b) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-
-    }*/
 
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("appoinment_id"));
@@ -226,6 +141,7 @@ public class AppoinmentFromController {
         colDoctor.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
         colPatientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         System.out.println("awa");
+        colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
 
     }
 

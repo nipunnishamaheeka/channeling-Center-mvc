@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.controller;
 
+import animatefx.animation.Shake;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -82,6 +83,7 @@ public class MedicineFromController {
             System.out.println(e.getMessage());
         }
     }
+
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isMedicineValid = validateMedicine();
 
@@ -110,7 +112,7 @@ public class MedicineFromController {
                 throw new RuntimeException(e);
             }
         } else {
-           // new Alert(Alert.AlertType.ERROR, "Invalid Medicine Details").show();
+            // new Alert(Alert.AlertType.ERROR, "Invalid Medicine Details").show();
             lblCode.requestFocus();
         }
     }
@@ -124,27 +126,22 @@ public class MedicineFromController {
 
     }
 
+    private boolean validateTextField(TextField textField, String patternRegex) {
+        String text = textField.getText();
+        boolean isValid = Pattern.compile(patternRegex).matcher(text).matches();
+        if (!isValid) {
+            textField.setStyle("-fx-border-color: red");
+            new Shake(textField).play();
+        } else {
+            textField.setStyle("-fx-border-color: green");
+        }
+        return isValid;
+    }
+
     private boolean validateMedicine() {
-        String nameText = txtMedicineName.getText();
-        boolean isNameValid = Pattern.compile("^[A-Za-z0-9\\s\\-()&,.]+$").matcher(nameText).matches();
-        if (!isNameValid) {
-         txtMedicineName.setStyle("-fx-border-color: red");
-            //new Alert(Alert.AlertType.ERROR, "Invalid Medicine Name").show();
-            return false;
-        }
-        String QTY = txtQty.getText();
-        boolean isQTYValid = Pattern.compile("^\\d+(\\.\\d+)?$").matcher(QTY).matches();
-        if (!isQTYValid) {
-            txtQty.setStyle("-fx-border-color: red");
-            return false;
-        }
-        String unitPrice = txtUniPrice.getText();
-        boolean isPriceValid = Pattern.compile("^\\d+(\\.\\d{1,2})?$").matcher(unitPrice).matches();
-        if (!isPriceValid) {
-            txtUniPrice.setStyle("-fx-border-color: red");
-            return false;
-        }
-        return true;
+        return validateTextField(txtMedicineName, "^[A-Za-z0-9\\s\\-()&,.]+$")
+                && validateTextField(txtQty, "^\\d+(\\.\\d+)?$")
+                && validateTextField(txtUniPrice, "^\\d+(\\.\\d{1,2})?$");
     }
 
 
@@ -160,96 +157,36 @@ public class MedicineFromController {
 
 
     private void setCellValueFactory() {
-//        tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
 
         colMediCode.setCellValueFactory(new PropertyValueFactory<>("medi_code"));
         colMedicineName.setCellValueFactory(new PropertyValueFactory<>("medicine_name"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("unit_price"));
-
-//        ColDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
-//        colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
+        ColDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
 
     }
 
-    /*public void loadAllMedicine() {
-        ObservableList<MedicineTm> obList = FXCollections.observableArrayList();
-
-        try {
-            List<MedicineDto> dtoList = new MedicineModel().getAllMedicine();
-
-            for (MedicineDto dto : dtoList) {
-                Button deleteButton = new Button();
-                Button updateButton = new Button();
-
-                deleteButton.setCursor(Cursor.HAND);
-                updateButton.setCursor(Cursor.HAND);
-
-                deleteButton.setOnAction((e) -> {
-                    ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-                    ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-                    Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete this Patient?", yes, no).showAndWait();
-                    if (result.orElse(no) == yes) {
-                        int selectedIndex = tblMedicine.getSelectionModel().getSelectedIndex();
-                        String code = (String) colMediCode.getCellData(selectedIndex);
-                        deleteMedicine(code);
-                        obList.remove(selectedIndex);
-                        tblMedicine.refresh();
-                    }
-                });
-                updateButton.setOnAction((e) -> {
-                    int selectedIndex = tblMedicine.getSelectionModel().getSelectedIndex();
-                    String code = (String) colMediCode.getCellData(selectedIndex);
-                    System.out.println(code);
-                    try {
-                        medicinePane.getChildren().clear();
-                        //patientPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/updatePatientFrom.fxml")));
-                    } catch (Exception e1) {
-                    }
-                });
-                obList.add(
-                        new MedicineTm(
-                                dto.getMedi_code(),
-                                dto.getMedicine_name(),
-                                dto.getDescription(),
-                                dto.getQty(),
-                                dto.getUnit_price(),
-                                deleteButton,
-                                updateButton
-                        )
-                );
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    private void setFontAwesomeIcons() {
+        tblMedicine.getItems().forEach(item -> {
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+        });
     }
-
-    private void deleteMedicine(String code) {
-        try {
-            boolean b = medicineModel.deleteMedicine(code);
-            if (b) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-
-    }*/
 
     private void loadAllMedicine() throws SQLException {
-
         try {
             List<MedicineDto> dtoList = medicineModel.getAllMedicine();
 
             ObservableList<MedicineTm> obList = FXCollections.observableArrayList();
 
             for (MedicineDto dto : dtoList) {
-                Button btn = new Button("remove");
-                btn.setCursor(Cursor.HAND);
+                Button deleteButton = new Button("");
+                FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                deleteButton.setGraphic(deleteIcon);
+                deleteButton.setCursor(Cursor.HAND);
 
-                btn.setOnAction((e) -> {
+                deleteButton.setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
@@ -257,12 +194,11 @@ public class MedicineFromController {
 
                     if (type.orElse(no) == yes) {
                         int selectedIndex = tblMedicine.getSelectionModel().getSelectedIndex();
-                        String code = (String) colMediCode.getCellData(selectedIndex);
+                        String code = dto.getMedi_code(); // Use the code directly from the DTO
 
-                        deleteItem(code);   //delete item from the database
+                        deleteItem(code);   // Delete item from the database
 
-                        obList.remove(selectedIndex);   //delete item from the JFX-Table
-                        tblMedicine.refresh();
+                        obList.remove(selectedIndex);   // Delete item from the JFX-Table
                     }
                 });
 
@@ -271,28 +207,31 @@ public class MedicineFromController {
                         dto.getMedicine_name(),
                         dto.getDescription(),
                         dto.getQty(),
-                        dto.getUnit_price()
-
+                        dto.getUnit_price(),
+                        deleteButton
                 );
                 obList.add(tm);
             }
+
             tblMedicine.setItems(obList);
+            setFontAwesomeIcons();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private void deleteItem(String code) {
         try {
             boolean isDeleted = medicineModel.deleteMedicine(code);
-            if (isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "medicine Item deleted!").show();
+            if (isDeleted) {
+                //new Alert(Alert.AlertType.CONFIRMATION, "Medicine item deleted!").show();
+            }
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
-//public AnchorPane medicinePane;
+
+    //public AnchorPane medicinePane;
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
         medicinePane.getChildren().clear();
         medicinePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/MedicinePlaceOrder.fxml")));
@@ -321,6 +260,9 @@ public class MedicineFromController {
         txtDescription.setText(dto.getDescription());
         txtQty.setText(dto.getQty());
         txtUniPrice.setText(dto.getUnit_price());
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) {
     }
 }
 

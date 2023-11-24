@@ -22,17 +22,15 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="tblReport" layoutX="29.0" layoutY="461.0" prefHeight="221.0" prefWidth="1213.0">
+            <TableView fx:id="tblReport" layoutX="196.0" layoutY="459.0" prefHeight="221.0" prefWidth="866.0">
               <columns>
                 <TableColumn fx:id="colReportId" prefWidth="95.19997787475586" text="Report ID" />
                   <TableColumn fx:id="colDate" prefWidth="115.199951171875" text="Report Date" />
                 <TableColumn fx:id="colPatientName" prefWidth="247.99998474121094" text="Patient Name" />
-                  <TableColumn fx:id="colLabRecord" prefWidth="288.0000305175781" text="Patient Lab Record" />
                   <TableColumn fx:id="colDoctorName" prefWidth="215.99993896484375" text="Doctor" />
                   <TableColumn fx:id="colGender" prefWidth="73.60003662109375" text="Gender" />
                   <TableColumn fx:id="colAge" minWidth="0.0" prefWidth="55.2000732421875" text="Age" />
-                  <TableColumn prefWidth="62.39990234375" text="Action" />
-                  <TableColumn prefWidth="62.39990234375" text="Action" />
+                  <TableColumn fx:id="colDelete" prefWidth="62.39990234375" text="Action" />
               </columns>
             </TableView>
             <Pane layoutX="29.0" layoutY="68.0" prefHeight="374.0" prefWidth="912.0" styleClass="payment_pane">
@@ -141,7 +139,7 @@
                </children></Pane>
             <TextField fx:id="txtSearchId" layoutX="1008.0" layoutY="92.0" onAction="#btnSearchIdOnAction" prefHeight="34.0" prefWidth="197.0" promptText="Search Your Report ID" />
             <TextField fx:id="txtPatientName" layoutX="1008.0" layoutY="142.0" prefHeight="34.0" prefWidth="197.0" promptText="Patient Name" />
-            <Button layoutX="1056.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnPrintReportOnAction" text="Print Lab Report" />
+            <Button layoutX="1056.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnPrintReportOnAction" text="Print Lab Report" />
             <Button layoutX="1056.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnEmailOnAction" text="EmailLab Report" />
          </children></Pane>
    </children>

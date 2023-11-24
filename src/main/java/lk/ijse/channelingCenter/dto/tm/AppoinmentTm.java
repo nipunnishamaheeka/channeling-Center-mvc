@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.dto.tm;
 
+import javafx.scene.control.Button;
 import lombok.*;
 
 import java.awt.*;
@@ -19,6 +20,8 @@ public class AppoinmentTm {
     private String id;
     private String doctor_name;
     private String patientName;
+    private Button deleteButton;
+
 //    private javafx.scene.control.Button deleteButton;
 //    private javafx.scene.control.Button updateButton;
 

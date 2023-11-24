@@ -14,6 +14,8 @@ public class MedicineTm {
     private String description;
     private String qty;
     private String unit_price;
+    private Button deleteButton;
+    //private Button updateButton;
 //    private Button deleteButton;
 //    private Button updateButton;
 

@@ -187,4 +187,14 @@ public class LabReportModel {
         return pstm.executeUpdate() > 0;
 
     }
+
+    public boolean deleteReports(String code) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM labreport WHERE lab_reportId = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, code);
+
+        return pstm.executeUpdate() > 0;
+    }
 }

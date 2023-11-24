@@ -98,6 +98,11 @@ public class NavigationPannelFromController implements Initializable {
 
     }
 
+    public void btnPaymentOnAction(MouseEvent mouseEvent) throws IOException {
+        navigationPane.getChildren().clear();
+        navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/paymentFrom.fxml")));
+
+    }
     /*-----DATE AND TIME GENERATE------*/
     public String timeNow() {
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
@@ -138,4 +143,6 @@ public class NavigationPannelFromController implements Initializable {
     private void fillFields(PatientDto dto) {
         
     }
+
+
 }
