@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="medicinePlaceOrderPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.AddPaymentAppoinmentFromController">
+    <children>
+        <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
+            <children>
+                <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine PlaceOrder">
+                    <font>
+                        <Font name="Arial Bold" size="30.0" />
+                    </font>
+                </Text>
+                <Pane layoutX="1193.0" layoutY="22.0" onMouseClicked="#btnBackOnAction" prefHeight="30.0" prefWidth="33.0">
+                    <children>
+                        <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/arrow-undo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
+            <children>
+                <TableView fx:id="tblMedicine" layoutX="107.0" layoutY="228.0" prefHeight="366.0" prefWidth="802.0">
+                    <columns>
+                        <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Medi Code" />
+                        <TableColumn fx:id="colDescription" prefWidth="245.60003662109375" text="Medicine Details" />
+                        <TableColumn fx:id="colQty" prefWidth="93.60003662109375" text="QTY" />
+                        <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="111.20001220703125" text="Unit Price" />
+                        <TableColumn fx:id="colTotal" prefWidth="151.199951171875" text="total" />
+                        <TableColumn fx:id="colAction" prefWidth="99.199951171875" text="User Action" />
+                    </columns>
+                </TableView>
+                <Pane layoutX="114.0" layoutY="23.0" prefHeight="54.0" prefWidth="1009.0">
+                    <children>
+                        <Text layoutX="6.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinment ID :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="txtAppointmentID" layoutX="152.0" layoutY="18.0" onAction="#btnSearchAppoinmentIDOnAction" />
+                    </children>
+                </Pane>
+                <Pane fx:id="visiblePane" layoutX="114.0" layoutY="77.0" prefHeight="145.0" prefWidth="1078.0" visible="false">
+                    <children>
+                        <Text layoutX="5.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Id : ">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="lblOrderId" layoutX="104.0" layoutY="15.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Text layoutX="365.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Date :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="lblDate" layoutX="484.0" layoutY="15.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Text layoutX="5.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Name : ">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="5.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Code :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <ComboBox fx:id="cmbMedicineId" layoutX="162.0" layoutY="113.0" onAction="#cmbMedicineOnAction" prefWidth="150.0" />
+                        <Text layoutX="365.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Details :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="685.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tablets :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="685.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="txtQty" layoutX="866.0" layoutY="113.0" prefHeight="25.0" prefWidth="67.0" />
+                        <Label fx:id="lblDescription" layoutX="534.0" layoutY="115.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblUnitPrice" layoutX="831.0" layoutY="67.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblDoctorName" layoutX="144.0" layoutY="65.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Text layoutX="365.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name :">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="lblPatientName" layoutX="504.0" layoutY="65.0" text="Label">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="791.0" layoutY="67.0" text="RS :">
+                            <font>
+                                <Font name="Arial Bold" size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            <Pane fx:id="cartPane" layoutX="974.0" layoutY="222.0" prefHeight="265.0" prefWidth="200.0" visible="false">
+               <children>
+                      <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#AddbtnOnActhion" prefHeight="32.0" prefWidth="173.0" styleClass="AddCart" stylesheets="@../css/button.css" text="Add To Cart">
+                          <cursor>
+                              <Cursor fx:constant="HAND" />
+                          </cursor>
+                      </Button>
+                  <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="140.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/cart-plus-fill.png" />
+                     </image>
+                  </ImageView>
+                      <Label fx:id="lblTotal" contentDisplay="CENTER" layoutX="36.0" layoutY="122.0" prefHeight="34.0" prefWidth="130.0">
+                          <font>
+                              <Font name="Arial Bold" size="20.0" />
+                          </font>
+                      </Label>
+                      <Text layoutX="61.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Net Total">
+                          <font>
+                              <Font name="Arial Bold" size="18.0" />
+                          </font>
+                      </Text>
+                  <Pane fx:id="placeOrder" layoutX="-1.0" layoutY="215.0" visible="false">
+                     <children>
+                            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="41.0" prefWidth="200.0" styleClass="placeOrder" stylesheets="@../css/button.css" text=" Place Order">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Button>
+                        <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="130.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/arrow-right.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

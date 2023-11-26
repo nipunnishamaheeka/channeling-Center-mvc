@@ -15,6 +15,6 @@ public class DoctorTm {
     private String email;
     private String number;
     private String type;
+    private String drFee;
     private Button deleteButton;
-    private Button updateButton;
 }

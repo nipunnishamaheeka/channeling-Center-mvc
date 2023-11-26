@@ -15,5 +15,6 @@ public class DoctorDto {
     private String email;
     private String number;
     private String type;
+    private double drFee;
 
 }

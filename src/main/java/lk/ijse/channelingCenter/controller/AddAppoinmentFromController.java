@@ -52,7 +52,7 @@ public class AddAppoinmentFromController {
     private Label lblPatientName;
     @FXML
     private Label lblAppoinmentId;
-AppoinmentModel appoinmentModel = new AppoinmentModel();
+    AppoinmentModel appoinmentModel = new AppoinmentModel();
     @FXML
     private TextField txtAge;
 
@@ -105,11 +105,12 @@ AppoinmentModel appoinmentModel = new AppoinmentModel();
         String doctorId = cmbDoctorId.getValue();
         String doctorName = lblDoctorName.getText();
         String patinetName = lblPatientName.getText();
+        String status = "pending";
 
 
 
 
-        AppoinmentDto itemDto = new AppoinmentDto(appoinmentId,date,id,age,doctorId,doctorName,patinetName);
+        AppoinmentDto itemDto = new AppoinmentDto(appoinmentId,date,id,age,doctorId,doctorName,patinetName,status);
 
         try {
             AppoinmentModel appoinmentModel = new AppoinmentModel();
@@ -129,7 +130,7 @@ AppoinmentModel appoinmentModel = new AppoinmentModel();
     }
 
     private void loadAllItems() {
-ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
+        ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
         try {
             List<AppoinmentDto> appoinmentDtoList = appoinmentModel.getAllAppoinment();
             for (AppoinmentDto dto : appoinmentDtoList) {
@@ -191,21 +192,21 @@ ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
             throw new RuntimeException(e);
         }
     }
-   /*private void loadAPatientIds() {
+    /*private void loadAPatientIds() {
 
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<PatientDto> cusList = new PatientModel().getAllPatient();
+         ObservableList<String> obList = FXCollections.observableArrayList();
+         try {
+             List<PatientDto> cusList = new PatientModel().getAllPatient();
 
-            for (PatientDto dto : cusList) {
-                obList.add(dto.getPatient_id());
-            }
+             for (PatientDto dto : cusList) {
+                 obList.add(dto.getPatient_id());
+             }
 
-            lblPatientId.setId(obList.toString());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
+             lblPatientId.setId(obList.toString());
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+     }*/
     public void btnaddOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/addAppoinmentPatinetDetials.fxml"));
         Scene scene = new Scene(rootNode);
@@ -216,7 +217,7 @@ ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
         stage.centerOnScreen();
         stage.show();
     }
-@FXML
+    @FXML
     public void cmbDoctorOnAction(ActionEvent actionEvent) {
         try {
             String name = new DoctorModel().getname(cmbDoctorId.getValue());
@@ -230,7 +231,7 @@ ObservableList<AppoinmentDto> obList = FXCollections.observableArrayList();
     private String generateRealTime() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String format = simpleDateFormat.format(new Date());
-    return format;
+        return format;
     }
 
 }

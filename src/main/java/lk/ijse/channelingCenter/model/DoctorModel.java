@@ -16,7 +16,7 @@ public class DoctorModel {
     public boolean saveDoctor(DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into doctor values(?,?,?,?,?,?)";
+        String sql = "insert into doctor values(?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
@@ -25,6 +25,7 @@ public class DoctorModel {
         pstm.setString(4, dto.getEmail());
         pstm.setString(5, dto.getNumber());
         pstm.setString(6, dto.getType());
+        pstm.setDouble(7, dto.getDrFee());
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -35,7 +36,7 @@ public class DoctorModel {
     public boolean updateDoctor(final DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE doctor SET doctor_name = ?,address = ?,email = ?,number = ?,type = ? WHERE  id=?";
+        String sql = "UPDATE doctor SET doctor_name = ?,address = ?,email = ?,number = ?,type = ?, drFee =? WHERE  id=?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
 
@@ -45,6 +46,7 @@ public class DoctorModel {
         pstm.setString(4, dto.getNumber());
         pstm.setString(5, dto.getType());
         pstm.setString(6, dto.getId());
+        pstm.setObject(7, dto.getDrFee());
 
         return pstm.executeUpdate() > 0;
     }
@@ -67,8 +69,9 @@ public class DoctorModel {
             String email = resultSet.getString(4);
             String number = resultSet.getString(5);
             String type = resultSet.getString(6);
+            double fee = resultSet.getDouble(7);
 
-            dto = new DoctorDto(id, name, address, email, number, type);
+            dto = new DoctorDto(id, name, address, email, number, type,fee);
         }
 
         return dto;
@@ -100,7 +103,8 @@ public class DoctorModel {
                     resultSet.getString(3),
                     resultSet.getString(4),
                     resultSet.getString(5),
-                    resultSet.getString(6)
+                    resultSet.getString(6),
+                    resultSet.getDouble(7)
             );
 
             dtoList.add(dto);
@@ -125,8 +129,9 @@ public class DoctorModel {
             String email = resultSet.getString(4);
             String number = resultSet.getString(5);
             String type = resultSet.getString(6);
+            double fee = resultSet.getDouble(7);
 
-            var dto = new DoctorDto(id, name, address, email, number, type);
+            var dto = new DoctorDto(id, name, address, email, number, type,fee);
             dtoList.add(dto);
         }
         return dtoList;
@@ -185,10 +190,20 @@ public class DoctorModel {
             String email = resultSet.getString(4);
             String mobileNumber = resultSet.getString(5);
             String type = resultSet.getString(6);
+            double fee = resultSet.getDouble(7);
 
-            dto = new DoctorDto(id, name, address, email, mobileNumber, type);
+            dto = new DoctorDto(id, name, address, email, mobileNumber, type,fee);
         }
 
         return dto;
+    }
+
+    public double getfee(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT drFee FROM doctor WHERE id=?");
+        pstm.setString(1,id);
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next())return resultSet.getDouble(1);
+        return 0;
     }
 }

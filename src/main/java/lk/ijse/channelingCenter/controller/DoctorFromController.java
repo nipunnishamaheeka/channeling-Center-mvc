@@ -27,6 +27,8 @@ import java.util.regex.Pattern;
 public class DoctorFromController {
     public AnchorPane doctorPane;
     public Label lblDoctorId;
+    public TextField txtFee;
+    public TableColumn tblDrFee;
     @FXML
     private TableColumn<?, ?> colUpdate;
     @FXML
@@ -84,8 +86,10 @@ public class DoctorFromController {
         tblEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tblNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
         tblType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
+        tblDrFee.setCellValueFactory(new PropertyValueFactory<>("drFee"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
+        //colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
+
     }
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isDoctorValid = validateDoctor();
@@ -96,8 +100,9 @@ public class DoctorFromController {
             String email = txtEmail.getText();
             String number = txtNumber.getText();
             String type = txtType.getText();
+            double fee = Double.parseDouble(txtFee.getText());
 
-            DoctorDto itemDto = new DoctorDto(id, name, address, email, number, type);
+            DoctorDto itemDto = new DoctorDto(id, name, address, email, number, type,fee);
 
             try {
                 DoctorModel doctorModel = new DoctorModel();
@@ -118,18 +123,18 @@ public class DoctorFromController {
             new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
         }
     }
-
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        //boolean isDoctorValid = validateDoctor();
+        boolean isDoctorValid = validateDoctor();
         String id = lblDoctorId.getText();
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String number = txtNumber.getText();
         String type = txtType.getText();
+        double fee = Double.parseDouble(txtFee.getText());
 
         try {
-            boolean isUpdated = doctorModel.updateDoctor(new DoctorDto(id, name, address, email, number, type));
+            boolean isUpdated = doctorModel.updateDoctor(new DoctorDto(id, name, address, email, number, type, fee));
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Doctor updated!").show();
                 clearFields();
@@ -146,6 +151,7 @@ public class DoctorFromController {
         txtEmail.setText(dto.getEmail());
         txtNumber.setText(dto.getNumber());
         txtType.setText(dto.getType());
+        txtFee.setText(String.valueOf(dto.getDrFee()));
     }
 
     private void clearFields() {
@@ -155,19 +161,18 @@ public class DoctorFromController {
         txtEmail.clear();
         txtNumber.clear();
         txtType.clear();
+        txtFee.clear();
     }
 
     private void setFontAwesomeIcons() {
 
         tblDoctor.getItems().forEach(item -> {
             Button deleteButton = item.getDeleteButton();
-            Button updateButton = item.getUpdateButton();
 
             FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-            FontAwesomeIconView updateIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
 
             deleteButton.setGraphic(deleteIcon);
-            updateButton.setGraphic(updateIcon);
+
         });
     }
 
@@ -203,17 +208,17 @@ public class DoctorFromController {
                         tblDoctor.refresh();
                     }
                 });
-                updateButton.setOnAction((e) -> {
-                    int selectedIndex = tblDoctor.getSelectionModel().getSelectedIndex();
-                    String code = (String) tblId.getCellData(selectedIndex);
-                    System.out.println(code);
-                    try {
-                        doctorPane.getChildren().clear();
-                        //doctorPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/doctorDetails.fxml")));
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                });
+//                updateButton.setOnAction((e) -> {
+//                    int selectedIndex = tblDoctor.getSelectionModel().getSelectedIndex();
+//                    String code = (String) tblId.getCellData(selectedIndex);
+//                    System.out.println(code);
+//                    try {
+//                        doctorPane.getChildren().clear();
+//                        //doctorPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/doctorDetails.fxml")));
+//                    } catch (Exception exception) {
+//                        exception.printStackTrace();
+//                    }
+//                });
                 obList.add(
                         new DoctorTm(
                                 dto.getId(),
@@ -222,8 +227,8 @@ public class DoctorFromController {
                                 dto.getEmail(),
                                 dto.getNumber(),
                                 dto.getType(),
-                                deleteButton,
-                                updateButton
+                                String.valueOf(dto.getDrFee()),
+                                deleteButton
                         )
                 );
             }
@@ -276,7 +281,7 @@ public class DoctorFromController {
     }
 
     public void mobileNumberSearchOnAction(ActionEvent actionEvent) {
-String number = txtNumber.getText();
+        String number = txtNumber.getText();
         try {
             DoctorDto dto = doctorModel.searchDoctorByNumber(number);
             setFields(dto);

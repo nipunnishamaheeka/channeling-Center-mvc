@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.sql.Time;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class PaymentDto {
     private String payment_id;
-    private String payment_email;
-    private String payment_date;
-    private String payment_time;
-    private String amount;
-    private String payment_method;
-    private String patient_id;
+    private Date payment_date;
+    private Time payment_time;
+    private double amount;
     private String appoinment_id;
 }

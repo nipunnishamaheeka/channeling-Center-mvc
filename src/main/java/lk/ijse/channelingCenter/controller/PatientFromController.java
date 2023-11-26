@@ -312,9 +312,9 @@ public class PatientFromController {
             String Patient_name = txtName.getText();
             String Mobile_number = txtNumber.getText();
             String Address = txtAddress.getText();
-            String Gender = cmbGender.getItems().toString();
+            String Gender = cmbGender.getValue();
             String Email = txtEmail.getText();
-            String Blood = cmbBlood.getItems().toString();
+            String Blood = cmbBlood.getValue();
             String Age = txtAge.getText();
 
             try {

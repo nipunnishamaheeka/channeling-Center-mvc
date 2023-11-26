@@ -35,8 +35,8 @@ public class NavigationPannelFromController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        generateRealTime();
-        navigationPane.getChildren().clear();
+     generateRealTime();
+     navigationPane.getChildren().clear();
         try {
             navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/overViewFrom.fxml")));
         } catch (IOException e) {
@@ -45,7 +45,7 @@ public class NavigationPannelFromController implements Initializable {
 
     }
 
-        public void btnoverViewOnAction(MouseEvent mouseEvent) throws IOException {
+    public void btnoverViewOnAction(MouseEvent mouseEvent) throws IOException {
         navigationPane.getChildren().clear();
         navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/overViewFrom.fxml")));
     }
@@ -141,7 +141,7 @@ public class NavigationPannelFromController implements Initializable {
     }
 
     private void fillFields(PatientDto dto) {
-        
+
     }
 
 

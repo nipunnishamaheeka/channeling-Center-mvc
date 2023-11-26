@@ -5,26 +5,20 @@ import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.DoctorDto;
 import lk.ijse.channelingCenter.dto.PaymentDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class PaymentModel {
     public boolean savePayment(final PaymentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "insert into doctor values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into payment values(?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getPayment_id());
-        pstm.setString(2, dto.getPayment_email());
-        pstm.setString(3, dto.getPayment_date());
-        pstm.setString(4, dto.getPayment_time());
-        pstm.setString(5, dto.getPayment_method());
-        pstm.setString(6, dto.getAmount());
-        pstm.setString(7, dto.getPatient_id());
-        pstm.setString(8, dto.getAppoinment_id());
+        pstm.setDate(2, dto.getPayment_date());
+        pstm.setTime(3, dto.getPayment_time());
+        pstm.setDouble(4, dto.getAmount());
+        pstm.setString(5, dto.getAppoinment_id());
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -35,17 +29,14 @@ public class PaymentModel {
     public boolean updatePayment(final PaymentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE payment SET payment_id = ?,payment_email = ?,payment_email = ?,payment_date = ?,payment_time = ?,amount = ?,payment_method = ?,patient_id= ?,appointment_id = ?  WHERE  = payment_id?";
+        String sql = "UPDATE payment SET payment_id = ?,payment_date = ?,payment_time = ?,amount = ?,appointment_id = ?  WHERE  = payment_id?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getPayment_id());
-        pstm.setString(1, dto.getPayment_email());
-        pstm.setString(1, dto.getPayment_date());
-        pstm.setString(1, dto.getPayment_time());
-        pstm.setString(1, dto.getAmount());
-        pstm.setString(1, dto.getPayment_method());
-        pstm.setString(1, dto.getPatient_id());
-        pstm.setString(1, dto.getAppoinment_id());
+        pstm.setDate(2, dto.getPayment_date());
+        pstm.setTime(3, dto.getPayment_time());
+        pstm.setDouble(4, dto.getAmount());
+        pstm.setString(5, dto.getAppoinment_id());
 
         return pstm.executeUpdate() > 0;
     }
@@ -63,16 +54,13 @@ public class PaymentModel {
 
         if (resultSet.next()) {
             String payment_id = resultSet.getString(1);
-            String payment_email = resultSet.getString(2);
-            String payment_date = resultSet.getString(3);
-            String payment_time = resultSet.getString(4);
-            String amount = resultSet.getString(6);
-            String payment_method = resultSet.getString(7);
-            String patient_id = resultSet.getString(8);
-            String appoinment_id = resultSet.getString(9);
+            Date payment_date = resultSet.getDate(2);
+            Time payment_time = resultSet.getTime(3);
+            Double amount = resultSet.getDouble(4);
+            String appoinment_id = resultSet.getString(5);
 
 
-            dto = new PaymentDto(payment_id,payment_email,payment_date,payment_time,amount,payment_method,patient_id,appoinment_id);
+            dto = new PaymentDto(payment_id,payment_date,payment_time,amount,appoinment_id);
         }
 
         return dto;
@@ -87,5 +75,32 @@ public class PaymentModel {
 
         return pstm.executeUpdate() > 0;
     }
+    public String autoGenaratePatientId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM payment ORDER BY payment_id DESC LIMIT 1").executeQuery();
+        String current = null;
+        while (resultSet.next()) {
+            current = resultSet.getString(1);
+            System.out.println(current);
+            return splitId(current);
+        }
+
+        return splitId(null);
+    }
+
+    private String splitId(String current) {
+
+        if (current != null) {
+            String[] tempArray = current.split("PA");
+            int id = Integer.parseInt(tempArray[1]);
+            id++;
+            if (9 >= id && id > 0) return "PA00" + id;
+            else if (99 >= id && id > 9) return "PA0" + id;
+            else return "PA" + id;
+        }
+        return "PA001";
+    }
+
 
 }

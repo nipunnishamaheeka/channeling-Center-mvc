@@ -29,46 +29,46 @@ public class AddAppoinmentPatinetDetials {
     public void initialize() throws SQLException {
 
         setPatientID();
-       // loadPatientsBloodGroup();
+        // loadPatientsBloodGroup();
     }
 
 
 
-   public void btnOkOnAction(ActionEvent actionEvent) {
-       boolean isPatientValid = validatePatinet();
+    public void btnOkOnAction(ActionEvent actionEvent) {
+        boolean isPatientValid = validatePatinet();
 
-       if (isPatientValid) {
-           String id = lblPatientId.getText();
-           String name = txtName.getText();
-           String number = txtNumber.getText();
-           String address = txtAddress.getText();
-           String sex = txtType.getText();
-           String email = txtEmail.getText();
-           String age = txtAge.getText();
-           String blood = (String) cmbBlood.getValue();
+        if (isPatientValid) {
+            String id = lblPatientId.getText();
+            String name = txtName.getText();
+            String number = txtNumber.getText();
+            String address = txtAddress.getText();
+            String sex = txtType.getText();
+            String email = txtEmail.getText();
+            String age = txtAge.getText();
+            String blood = (String) cmbBlood.getValue();
 
-           PatientDto itemDto = new PatientDto(id, name, number, address, sex, email, age,blood);
+            PatientDto itemDto = new PatientDto(id, name, number, address, sex, email, age,blood);
 
-           try {
-               PatientModel patientModel = new PatientModel();
-               boolean isSaved = patientModel.savePatient(itemDto);
+            try {
+                PatientModel patientModel = new PatientModel();
+                boolean isSaved = patientModel.savePatient(itemDto);
 
-               if (isSaved) {
-                   new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
-                   clearFields();
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Patient saved!").show();
+                    clearFields();
 //                   AddAppoinmentFromController addAppoinmentFromController = new AddAppoinmentFromController();
 //                     addAppoinmentFromController.initialize();
 
-               } else {
-                   new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();
-               }
-           } catch (SQLException e) {
-               throw new RuntimeException(e);
-           }
-       } else {
-           new Alert(Alert.AlertType.ERROR, "Invalid Patient Details").show();
-           lblPatientId.requestFocus();
-       }
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Patient not saved!").show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Invalid Patient Details").show();
+            lblPatientId.requestFocus();
+        }
 
     }
 

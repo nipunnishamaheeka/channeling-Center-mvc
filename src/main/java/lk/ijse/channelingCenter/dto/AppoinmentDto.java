@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class AppoinmentDto {
-
     private String appoinment_id;
     private String date;
     private String patinet_id;
@@ -22,6 +21,7 @@ public class AppoinmentDto {
     private String age;
     private String id;
     private String doctor_name;
+    private String status;
 
 
 }

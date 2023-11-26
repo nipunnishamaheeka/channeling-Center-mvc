@@ -5,6 +5,7 @@ import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.EmployeeDto;
 import lk.ijse.channelingCenter.dto.MedicineDto;
 import lk.ijse.channelingCenter.dto.PatientDto;
+import lk.ijse.channelingCenter.dto.tm.CartTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -160,6 +161,26 @@ public class MedicineModel {
             return resultSet.getString(5);
         } return null;
 
+    }
+
+    public boolean updateMedicineQty(List<CartTm> tmlist) throws SQLException {
+        for(CartTm tm: tmlist){
+            if (!updateQty(tm)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean updateQty(CartTm tm) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE medicine SET qty=qty-? WHERE  medi_code=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setInt(1, (int) tm.getQty());
+        pstm.setString(2, tm.getM_Code());
+
+        return pstm.executeUpdate()>0;
     }
 }
 

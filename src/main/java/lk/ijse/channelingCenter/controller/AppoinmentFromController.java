@@ -45,6 +45,7 @@ public class AppoinmentFromController {
     public TableColumn colDoctorId;
     public TableColumn colUpdate;
     public TableColumn colDelete;
+    public TableColumn colStatus;
 
     AppoinmentModel appoinmentmodel = new AppoinmentModel();
     @SneakyThrows
@@ -108,7 +109,9 @@ public class AppoinmentFromController {
                         dto.getId(),
                         dto.getDoctor_name(),
                         dto.getPatinetName(),
+                        dto.getStatus(),
                         deleteButton
+
                 );
                 obList.add(tm);
             }
@@ -142,6 +145,7 @@ public class AppoinmentFromController {
         colPatientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         System.out.println("awa");
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
     }
 

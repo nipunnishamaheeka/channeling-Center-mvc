@@ -90,14 +90,13 @@ public class MedicinePlaceOrderFromController {
     private TextField txtQty;
 
 
-
-    public void initialize(){
-    setOrderId();
-    this.lblDate.setText(generateRealTime());
-    loadPatientsIds();
+    public void initialize() {
+        setOrderId();
+        this.lblDate.setText(generateRealTime());
+        loadPatientsIds();
         loadMedicineIds();
         setCellValuefactory();
-}
+    }
 
     private void setCellValuefactory() {
 
@@ -114,17 +113,20 @@ public class MedicinePlaceOrderFromController {
         String format = simpleDateFormat.format(new Date());
         return format;
     }
+
     public void btnBackOnAction(MouseEvent mouseEvent) throws IOException {
         medicinePlaceOrderPane.getChildren().clear();
-       medicinePlaceOrderPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/medicineFrom.fxml")));
+        medicinePlaceOrderPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/medicineFrom.fxml")));
     }
+
     private void setOrderId() {
-        try {
-            lblOrderId.setText(new PlaceOrderModel().autoGenaratePatientId());
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            lblOrderId.setText(new PlaceOrderModel().autoGenaratePatientId());
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
+
     private void loadPatientsIds() {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -140,6 +142,7 @@ public class MedicinePlaceOrderFromController {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void cmbPatientOnAction(ActionEvent event) {
         try {
@@ -150,21 +153,22 @@ public class MedicinePlaceOrderFromController {
         }
     }
 
-        private void loadMedicineIds() {
+    private void loadMedicineIds() {
 
-            ObservableList<String> obList = FXCollections.observableArrayList();
-            try {
-                List<MedicineDto> cusList = new MedicineModel().getAllMedicine();
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<MedicineDto> cusList = new MedicineModel().getAllMedicine();
 
-                for (MedicineDto dto : cusList) {
-                    obList.add(dto.getMedi_code());
-                }
-                cmbMedicineId.setItems(obList);
-                //cmbPatientId.setItems(obList);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            for (MedicineDto dto : cusList) {
+                obList.add(dto.getMedi_code());
             }
+            cmbMedicineId.setItems(obList);
+            //cmbPatientId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+    }
+
     @FXML
     void cmbMedicineOnAction(ActionEvent event) {
         try {
@@ -269,13 +273,20 @@ public class MedicinePlaceOrderFromController {
         txtQty.clear();
     }
 
+
+
     private void calculateNetTotal() {
         double total = 0;
         for (int i = 0; i < tblMedicine.getItems().size(); i++) {
             total += (double) colTotal.getCellData(i);
+
         }
 
         lblTotal.setText(String.valueOf(total));
+    }
+
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+
     }
 }
 

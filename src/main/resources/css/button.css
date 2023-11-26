@@ -78,3 +78,46 @@
     -fx-shadow-color: #FDE2E0FF;
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
+/* styles.css */
+
+.next-button {
+    -fx-background-color: #3f6ade; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font-size: 14px;          /* Font size */
+    -fx-padding: 10px 20px;        /* Padding */
+    -fx-border-radius: 2px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+}
+
+.next-button:hover {
+    -fx-background-color:#305cd2; /* Darker green on hover */
+}
+/* styles.css */
+
+.placeOrder {
+    -fx-background-color: #4CAF50; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 14px "Arial Black";
+    -fx-padding: 10px 20px;       /* Padding */
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 10px;          /* Add letter spacing */
+}
+
+.placeOrder:hover {
+    -fx-background-color: #45a049; /* Darker green on hover */
+}
+
+.AddCart {
+    -fx-background-color: #f8a200; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 14px "Arial Black";
+    -fx-padding: 10px 20px;       /* Padding */
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 10px;          /* Add letter spacing */
+}
+
+.AddCart:hover {
+    -fx-background-color: #ea9303; /* Darker green on hover */
+}

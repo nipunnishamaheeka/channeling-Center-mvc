@@ -20,6 +20,7 @@ public class AppoinmentTm {
     private String id;
     private String doctor_name;
     private String patientName;
+    private String status;
     private Button deleteButton;
 
 //    private javafx.scene.control.Button deleteButton;
