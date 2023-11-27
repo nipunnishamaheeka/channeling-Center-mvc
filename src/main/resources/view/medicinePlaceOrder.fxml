@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="medicinePlaceOrderPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.AddPaymentAppoinmentFromController">
+<AnchorPane fx:id="medicinePlaceOrderPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.MedicinePlaceOrderFromController">
     <children>
         <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
             <children>

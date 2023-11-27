@@ -11,6 +11,6 @@ public class PaymentFromController {
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
         paymentPane.getChildren().clear();
-        paymentPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/AddPaymentFrom.fxml")));
+        paymentPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/medicinePlaceOrder.fxml")));
     }
 }

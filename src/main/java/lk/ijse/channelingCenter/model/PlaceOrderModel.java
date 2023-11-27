@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class  PlaceOrderModel {
+public class PlaceOrderModel {
 
 //    public String autoGenaratePatientId() throws SQLException {
 //            Connection connection = DbConnection.getInstance().getConnection();
@@ -40,34 +40,37 @@ public class  PlaceOrderModel {
     public boolean placeOrder(PlaceOrderDto dto) throws SQLException {
         boolean result = false;
         Connection connection = null;
-        try{
-            connection= DbConnection.getInstance().getConnection();
+        try {
+            connection = DbConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
             System.out.println("connection false ");
             System.out.println(dto.getAppoinment_id());
             boolean isAppoinmentUpdated = new AppoinmentModel().updateAppoinmentStatus(dto.getAppoinment_id());
-            if(isAppoinmentUpdated){
+            if (isAppoinmentUpdated) {
                 System.out.println("appoinmentUpdated");
                 String payId = new PaymentModel().autoGenaratePatientId();
-                boolean isPaid=new PaymentModel().savePayment(new PaymentDto(payId,dto.getDate(),dto.getTime(),dto.getAmount(),dto.getAppoinment_id()));
+                boolean isPaid = new PaymentModel().savePayment(new PaymentDto(payId, dto.getDate(), dto.getTime(), dto.getAmount(), dto.getAppoinment_id()));
                 if (isPaid) {
                     System.out.println("paymentUpdated");
                     if (!dto.getTmlist().isEmpty()) {
-                        boolean isMediUpdate=new MedicineModel().updateMedicineQty(dto.getTmlist());
-                        if(isMediUpdate){
+                        boolean isMediUpdate = new MedicineModel().updateMedicineQty(dto.getTmlist());
+                        if (isMediUpdate) {
+                            boolean isOrderSave = new completeOrderModel().saveOrder(dto.getAppoinment_id(), dto.getTmlist());
+                            if (isOrderSave) {
+                                connection.commit();
+                                result = true;
+                            }
+                        } else {
                             connection.commit();
-                            result=true;
+                            result = true;
                         }
-                    }else{
-                        connection.commit();
-                        result=true;
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
             connection.rollback();
-        }finally {
+        } finally {
             connection.setAutoCommit(true);
         }
         return result;

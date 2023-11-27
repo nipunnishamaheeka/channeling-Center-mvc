@@ -1,6 +1,8 @@
 package lk.ijse.channelingCenter.controller;
 
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,148 +11,104 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.MedicineDto;
-import lk.ijse.channelingCenter.dto.PatientDto;
+import lk.ijse.channelingCenter.dto.PlaceOrderDto;
 import lk.ijse.channelingCenter.dto.tm.CartTm;
+import lk.ijse.channelingCenter.model.AppoinmentModel;
+import lk.ijse.channelingCenter.model.DoctorModel;
 import lk.ijse.channelingCenter.model.MedicineModel;
-import lk.ijse.channelingCenter.model.PatientModel;
 import lk.ijse.channelingCenter.model.PlaceOrderModel;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class MedicinePlaceOrderFromController {
+
+    public AnchorPane medicinePlaceOrderPane;
+    public Label lblAppointmentName;
+    public TextField txtAppointmentID;
+    public AnchorPane setOtherOption;
+    public AnchorPane PaneOtherOption;
+    public Label lblOrderId;
+    public Label lblDate;
+    public ComboBox cmbPatientId;
+    public ComboBox<String> cmbMedicineId;
+    public TextField txtQty;
+    public Label lblDescription;
+    public Label lblUnitPrice;
+    public Label lblPatientName;
+    public Pane visiblePane;
+    public Label lblDoctorName;
+    public Label lblTotal;
+    public TableView tblMedicine;
+    public TableColumn colMediCode;
+    public TableColumn colDescription;
+    public TableColumn colQty;
+    public TableColumn colPrice;
     public TableColumn colTotal;
     public TableColumn colAction;
-    public Label lblTotal;
-//    public AnchorPane medicinePlaceOrderPane;
-//    public Label lblOrderId;
-//    public Label lblDate;
-//    public ComboBox<String> cmbPatientId;
-//    public Label lblPatientName;
-//    public ComboBox <String> cmbMedicineId;
-//    public Label lblDescription;
-//    public TextField txtQty;
-//    public Label lblUnitPrice;
-//    @FXML
-//    private TableView<?> tblMedicine;
-
-    @FXML
-    private TableColumn<?, ?> ColDelete;
-
-    @FXML
-    private ComboBox<String> cmbMedicineId;
-
-    @FXML
-    private ComboBox<String> cmbPatientId;
-
-    @FXML
-    private TableColumn<?, ?> colDiscription;
-
-    @FXML
-    private TableColumn<?, ?> colMediCode;
-
-    @FXML
-    private TableColumn<?, ?> colMedicineName;
-
-    @FXML
-    private TableColumn<?, ?> colPrice;
-
-    @FXML
-    private TableColumn<?, ?> colQty;
-
-    @FXML
-    private Label lblDate;
-
-    @FXML
-    private Label lblDescription;
-
-    @FXML
-    private Label lblOrderId;
-
-    @FXML
-    private Label lblPatientName;
-
-    @FXML
-    private Label lblUnitPrice;
-
-    @FXML
-    private AnchorPane medicinePlaceOrderPane;
-
-    @FXML
-    private TableView<CartTm> tblMedicine;
-
-    @FXML
-    private TextField txtQty;
-
+    public Pane cartPane;
+    public Pane placeOrder;
+    AppoinmentModel appoinmentModel = new AppoinmentModel();
 
     public void initialize() {
         setOrderId();
         this.lblDate.setText(generateRealTime());
-        loadPatientsIds();
         loadMedicineIds();
         setCellValuefactory();
     }
 
-    private void setCellValuefactory() {
-
-        colMediCode.setCellValueFactory(new PropertyValueFactory<>("M_Code"));
-        colDiscription.setCellValueFactory(new PropertyValueFactory<>("Dis"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<>("U_price"));
-        colTotal.setCellValueFactory(new PropertyValueFactory<>("tot"));
-        colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
-    }
-
     private String generateRealTime() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String format = simpleDateFormat.format(new Date());
+        String format = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         return format;
     }
 
-    public void btnBackOnAction(MouseEvent mouseEvent) throws IOException {
-        medicinePlaceOrderPane.getChildren().clear();
-        medicinePlaceOrderPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/medicineFrom.fxml")));
-    }
-
     private void setOrderId() {
-//        try {
-//            lblOrderId.setText(new PlaceOrderModel().autoGenaratePatientId());
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
+       /* try {
+            lblOrderId.setText(new PlaceOrderModel().autoGenaratePatientId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }*/
     }
 
-    private void loadPatientsIds() {
+    public void btnSearchAppoinmentIDOnAction(ActionEvent actionEvent) {
+        String id = txtAppointmentID.getText();
 
-        ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<PatientDto> cusList = new PatientModel().getAllPatient();
-
-            for (PatientDto dto : cusList) {
-                obList.add(dto.getPatient_id());
+            AppoinmentDto dto = appoinmentModel.searchAppoinmentID(id);
+            if (dto != null) {
+                setFields(dto);
+                visiblePane.setVisible(true);
+                cartPane.setVisible(true);
+                lblPatientName.setText(dto.getPatinetName());
+                lblDoctorName.setText(dto.getDoctor_name());
+                value = new DoctorModel().getfee(dto.getId());
+                calculateNetTotal();
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Appoinemnt ID not found!").show();
             }
-            cmbPatientId.setItems(obList);
-            //cmbPatientId.setItems(obList);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
-    @FXML
-    void cmbPatientOnAction(ActionEvent event) {
-        try {
-            String name = new PatientModel().getPatientName(cmbPatientId.getValue());
-            lblPatientName.setText(name);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    private void setFields(AppoinmentDto dto) {
+        txtAppointmentID.setText(dto.getAppoinment_id());
+        // lblAppointmentName.setText(dto.getPatinetName());
+
     }
 
     private void loadMedicineIds() {
@@ -184,41 +142,7 @@ public class MedicinePlaceOrderFromController {
 
     private final ObservableList<CartTm> obList = FXCollections.observableArrayList();
 
-    public void AddbtnOnActhion(ActionEvent actionEvent) {
-        /*Button btn = new Button("remove");
-        btn.setCursor(Cursor.HAND);
-
-        btn.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
-
-            if (type.orElse(no) == yes) {
-                int index = tblMedicine.getSelectionModel().getSelectedIndex();
-                obList.remove(index);
-                tblMedicine.refresh();
-            }
-        });
-        int qty = Integer.parseInt(this.txtQty.getText());
-        for (int i = 0; i < tblMedicine.getItems().size(); i++) {
-            if (colMediCode.equals(colMediCode.getCellData(i))) {
-                qty += (int) colQty.getCellData(i);
-
-                obList.get(i).setQty(String.valueOf(qty));
-                tblMedicine.refresh();
-                return;
-            }
-        }
-        String code = cmbMedicineId.getValue();
-        String Qty = String.valueOf(qty);
-        obList.add(new CartTm(code, lblDescription.getText(), Qty, lblUnitPrice.getText(), btn));
-
-        tblMedicine.setItems(obList);
-        //calculateNetTotal();
-        txtQty.clear();
-
-         */
+    public void AddbtnOnActhion(ActionEvent actionEvent) throws SQLException {
 
         String code = (String) cmbMedicineId.getValue();
         String description = lblDescription.getText();
@@ -226,67 +150,125 @@ public class MedicinePlaceOrderFromController {
         double unitPrice = Double.parseDouble(lblUnitPrice.getText());
         double total = qty * unitPrice;
 
+        int qtyOnHand = new MedicineModel().getQty(code);
 
-        JFXButton btn = new JFXButton("remove");
-        btn.setCursor(Cursor.HAND);
+        if (qty < qtyOnHand) {
 
-        btn.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+            JFXButton btn = new JFXButton("Remove");
+            FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+            btn.setGraphic(deleteIcon);
+            btn.setCursor(Cursor.HAND);
 
-            if (type.orElse(no) == yes) {
-                int index = tblMedicine.getSelectionModel().getSelectedIndex();
-                obList.remove(index);
-                tblMedicine.refresh();
+            btn.setOnAction((e) -> {
+                ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                calculateNetTotal();
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                if (type.orElse(no) == yes) {
+                    int index = tblMedicine.getSelectionModel().getSelectedIndex();
+                    obList.remove(index);
+                    tblMedicine.refresh();
+
+                    calculateNetTotal();
+                }
+            });
+
+            for (int i = 0; i < tblMedicine.getItems().size(); i++) {
+                if (code.equals(colMediCode.getCellData(i))) {
+                    qty += (int) colQty.getCellData(i);
+                    total = qty * unitPrice;
+
+                    obList.get(i).setQty(qty);
+                    obList.get(i).setTot(total);
+
+                    tblMedicine.refresh();
+                    calculateNetTotal();
+                    return;
+                }
             }
-        });
 
-        for (int i = 0; i < tblMedicine.getItems().size(); i++) {
-            if (code.equals(colMediCode.getCellData(i))) {
-                qty += (int) colQty.getCellData(i);
-                total = qty * unitPrice;
+            obList.add(new CartTm(
+                    code,
+                    description,
+                    qty,
+                    unitPrice,
+                    total,
+                    btn
+            ));
 
-                obList.get(i).setQty(qty);
-                obList.get(i).setTot(total);
-
-                tblMedicine.refresh();
-                calculateNetTotal();
-                return;
-            }
+            tblMedicine.setItems(obList);
+            placeOrder.setVisible(true);
+            calculateNetTotal();
+            //txtQty.clear();
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Low Qty Check Your Stock!").show();
         }
-
-        obList.add(new CartTm(
-                code,
-                description,
-                qty,
-                unitPrice,
-                total,
-                btn
-        ));
-
-        tblMedicine.setItems(obList);
-        calculateNetTotal();
-        txtQty.clear();
     }
 
-
+    private double value = 0;
+    private double netTotal = 0;
 
     private void calculateNetTotal() {
-        double total = 0;
         for (int i = 0; i < tblMedicine.getItems().size(); i++) {
-            total += (double) colTotal.getCellData(i);
+            netTotal += (double) colTotal.getCellData(i);
+        }
+        netTotal += value;
+        lblTotal.setText("Rs. " + netTotal + "0");
+    }
 
+    private String calculateNetTotalforTable() {
+        for (int i = 0; i < tblMedicine.getItems().size(); i++) {
+            netTotal += (double) colTotal.getCellData(i);
+        }
+        netTotal += value;
+        return "Rs. " + netTotal + "0";
+
+    }
+
+    private void setCellValuefactory() {
+
+        colMediCode.setCellValueFactory(new PropertyValueFactory<>("M_Code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("Dis"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("U_price"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("tot"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
+    }
+
+    @FXML
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException {
+        String orderId = lblOrderId.getText();
+        String appoinmentId = txtAppointmentID.getText();
+        Date date = Date.valueOf(LocalDate.now());
+        Time time = Time.valueOf(LocalTime.now());
+
+        List<CartTm> tmList = new ArrayList<>();
+
+        for (CartTm tm : obList) {
+            tmList.add(tm);
         }
 
-        lblTotal.setText(String.valueOf(total));
+        PlaceOrderDto placeOrderDto = new PlaceOrderDto(appoinmentId, orderId, date, time, netTotal, tmList);
+
+        var placeOrderModel = new PlaceOrderModel();
+        boolean isPlaced = placeOrderModel.placeOrder(placeOrderDto);
+
+        if (isPlaced) {
+
+            new Alert(Alert.AlertType.INFORMATION, "Order Placed Successfully").show();
+            //completeOrder();
+
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "Order Placed Failed").show();
+        }
     }
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-
+    public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
+        medicinePlaceOrderPane.getChildren().clear();
+        medicinePlaceOrderPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/medicinePlaceOrder.fxml")));
     }
+
 }
 

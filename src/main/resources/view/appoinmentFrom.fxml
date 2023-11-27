@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,52 +11,47 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="appoinmentPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.AppoinmentFromController">
-   <children>
-      <Pane prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
-         <children>
-            <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinment">
-               <font>
-                  <Font name="Arial Bold" size="30.0" />
-               </font>
-            </Text>
-            <Pane layoutX="995.0" layoutY="58.0" prefHeight="52.0" prefWidth="142.0">
-               <children>
-                  <Button alignment="CENTER_RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#btnaddAppoinmentOnAction" prefHeight="40.0" prefWidth="140.0" styleClass="appoinment" text="New Appoinment">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="1.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/add.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <TableView fx:id="tblAppointment" layoutX="14.0" layoutY="113.0" prefHeight="571.0" prefWidth="1236.0" stylesheets="@../css/table.css">
-              <columns>
-                <TableColumn fx:id="colId" prefWidth="100.0" text="Appoinment ID" />
-                  <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
-                  <TableColumn fx:id="colPatientId" prefWidth="150.0" text="Patient_ID" />
-                  <TableColumn fx:id="colAge" prefWidth="150.0" text="Age" />
-                  <TableColumn fx:id="colDoctorId" prefWidth="84.0" text="Dr.Id" />
-                  <TableColumn fx:id="colDoctor" prefWidth="193.60003662109375" text="Dr.Name" />
-                  <TableColumn fx:id="colPatientName" prefWidth="150.39996337890625" text="Patient Name" />
-                  <TableColumn fx:id="colUpdate" prefWidth="80.79998779296875" text="User Action" />
-                  <TableColumn fx:id="colDelete" prefWidth="80.79998779296875" text="User Action" />
-              </columns>
-               <styleClass>
-                  <String fx:value="column-header" />
-                  <String fx:value="column-header-background" />
-                  <String fx:value="table-row-cell" />
-                  <String fx:value="table-view" />
-               </styleClass>
-            </TableView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1189.0" layoutY="69.0" onMouseClicked="#btnrefershonAction" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Icon.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
-   </children>
+    <children>
+        <Pane prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+            <children>
+                <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinment">
+                    <font>
+                        <Font name="Arial Bold" size="30.0" />
+                    </font>
+                </Text>
+                <Pane layoutX="995.0" layoutY="58.0" prefHeight="52.0" prefWidth="142.0">
+                    <children>
+                        <Button alignment="CENTER_RIGHT" layoutY="6.0" mnemonicParsing="false" onAction="#btnaddAppoinmentOnAction" prefHeight="40.0" prefWidth="140.0" styleClass="appoinment" text="New Appoinment">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="1.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/add.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <TableView fx:id="tblAppointment" layoutX="14.0" layoutY="113.0" prefHeight="571.0" prefWidth="1236.0">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="100.0" text="Appoinment ID" />
+                        <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
+                        <TableColumn fx:id="colPatientId" prefWidth="150.0" text="Patient_ID" />
+                        <TableColumn fx:id="colAge" prefWidth="150.0" text="Age" />
+                        <TableColumn fx:id="colDoctorId" prefWidth="84.0" text="Dr.Id" />
+                        <TableColumn fx:id="colDoctor" prefWidth="193.60003662109375" text="Dr.Name" />
+                        <TableColumn fx:id="colPatientName" prefWidth="150.39996337890625" text="Patient Name" />
+                        <TableColumn fx:id="colUpdate" prefWidth="80.79998779296875" text="User Action" />
+                        <TableColumn fx:id="colDelete" prefWidth="80.79998779296875" text="User Action" />
+                        <TableColumn fx:id="colStatus" prefWidth="80.79998779296875" text="Status" />
+                    </columns>
+                </TableView>
+                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1189.0" layoutY="69.0" onMouseClicked="#btnrefershonAction" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/Icon.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+    </children>
 </AnchorPane>

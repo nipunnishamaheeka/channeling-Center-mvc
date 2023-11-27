@@ -32,7 +32,7 @@
                   <TableColumn prefWidth="117.0" text="User Action" />
                </columns>
             </TableView>
-            <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="1097.0" layoutY="54.0" minHeight="35.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="119.0" styleClass="next-button" stylesheets="@../css/button.css" text="Add Pay" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+            <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="1097.0" layoutY="54.0" minHeight="35.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="119.0" styleClass="add_button" stylesheets="@../css/button.css" text="Add Pay" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>

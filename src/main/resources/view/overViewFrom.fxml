@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,6 +17,23 @@
    <children>
       <Pane prefHeight="694.0" prefWidth="1266.0" stylesheets="@../css/style.css">
          <children>
+            <Pane layoutX="570.0" layoutY="204.0" prefHeight="483.0" prefWidth="319.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="tblBookedAppoinment" layoutX="5.0" layoutY="42.0" prefHeight="432.0" prefWidth="310.0">
+                     <columns>
+                        <TableColumn fx:id="colAppointmentId" prefWidth="69.5999755859375" text="AP ID" />
+                        <TableColumn fx:id="colPatientName" prefWidth="120.00006103515625" text="Patient Name" />
+                        <TableColumn fx:id="colDate" prefWidth="76.0" text="Date" />
+                        <TableColumn fx:id="colAction" prefWidth="43.199951171875" text="Action" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
             <HBox layoutX="43.0" layoutY="103.0" prefHeight="70.0" prefWidth="1180.0" spacing="90.0">
                <children>
                   <Pane onMouseClicked="#btnPatientOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
@@ -107,9 +126,9 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="14.0" layoutY="204.0" prefHeight="223.0" prefWidth="545.0" styleClass="card_pane" stylesheets="@../css/overViewPAne.css">
+            <Pane layoutX="14.0" layoutY="221.0" prefHeight="223.0" prefWidth="545.0" styleClass="card_pane" stylesheets="@../css/overViewPAne.css">
                <children>
-                  <ImageView fitHeight="259.0" fitWidth="198.0" layoutX="370.0" layoutY="-36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="277.0" fitWidth="215.0" layoutX="383.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/portrait-doctor-removebg-preview%20(2).png" />
                      </image>
@@ -144,7 +163,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane layoutX="122.0" layoutY="443.0" prefHeight="241.0" prefWidth="280.0" styleClass="tab_pane" stylesheets="@../css/style.css">
+            <Pane layoutX="122.0" layoutY="452.0" prefHeight="236.0" prefWidth="280.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
@@ -164,22 +183,20 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Pane layoutX="940.0" layoutY="204.0" prefHeight="483.0" prefWidth="298.0" style="-fx-background-color: white;">
+            <Pane layoutX="911.0" layoutY="204.0" prefHeight="483.0" prefWidth="327.0" style="-fx-background-color: white;">
                <children>
                   <Text layoutX="24.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor List">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-               </children>
-            </Pane>
-            <Pane layoutX="590.0" layoutY="204.0" prefHeight="483.0" prefWidth="321.0" style="-fx-background-color: white;">
-               <children>
-                  <Text layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Text>
+                  <TableView fx:id="tblDoctorList" layoutX="4.0" layoutY="48.0" prefHeight="432.0" prefWidth="319.0">
+                     <columns>
+                        <TableColumn fx:id="colDrId" prefWidth="109.5999755859375" text="DR ID" />
+                        <TableColumn fx:id="colDrName" prefWidth="164.00006103515625" text="Doctor Name" />
+                        <TableColumn fx:id="colStatus" prefWidth="45.5999755859375" text="Status" />
+                     </columns>
+                  </TableView>
                </children>
             </Pane>
          </children></Pane>

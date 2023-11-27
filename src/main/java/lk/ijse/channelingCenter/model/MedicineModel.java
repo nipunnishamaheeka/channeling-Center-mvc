@@ -1,10 +1,7 @@
 package lk.ijse.channelingCenter.model;
 
-import javafx.collections.ObservableList;
 import lk.ijse.channelingCenter.db.DbConnection;
-import lk.ijse.channelingCenter.dto.EmployeeDto;
 import lk.ijse.channelingCenter.dto.MedicineDto;
-import lk.ijse.channelingCenter.dto.PatientDto;
 import lk.ijse.channelingCenter.dto.tm.CartTm;
 
 import java.sql.Connection;
@@ -181,6 +178,36 @@ public class MedicineModel {
         pstm.setString(2, tm.getM_Code());
 
         return pstm.executeUpdate()>0;
+    }
+
+    public boolean saveToTable(String code, String description, String qty, double unitPrice, String total) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        System.out.println(code);
+        System.out.println(description);
+        System.out.println(qty);
+        System.out.println(unitPrice);
+        System.out.println(total);
+        String sql = "INSERT INTO completeorders VALUES(?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, code);
+        preparedStatement.setString(2, description);
+        preparedStatement.setString(3, qty);
+        preparedStatement.setString(4, String.valueOf(unitPrice));
+        double totals = Double.parseDouble(qty)*Double.parseDouble(String.valueOf(unitPrice));
+        preparedStatement.setDouble(5, totals);
+        return preparedStatement.executeUpdate()>0;
+    }
+
+    public int getQty(String code) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT qty FROM medicine WHERE medi_code = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, code);
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }return  0;
     }
 }
 

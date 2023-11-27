@@ -231,14 +231,6 @@ public class MedicineFromController {
         }
     }
 
-    //public AnchorPane medicinePane;
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
-        medicinePane.getChildren().clear();
-        medicinePane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/MedicinePlaceOrder.fxml")));
-
-
-    }
-
     public void medicineSearchOnAction(ActionEvent actionEvent) {
         String medicine = txtMedicineName.getText();
 
@@ -263,6 +255,18 @@ public class MedicineFromController {
     }
 
     public void btnClearOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnCompleteOrdersOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/completeOrdersFrom.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("addAppoinmentFrom");
+        stage.centerOnScreen();
+        stage.show();
+
     }
 }
 

@@ -13,14 +13,15 @@
 .anchor_pane{
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-   -fx-background-color: white;
+    -fx-background-color: white;
 }
 .payment_pane{
     -fx-background-color: #ffffff;
     -fx-background-radius: 25;
     -fx-border-radius: 25;
     -fx-border-color: #ffffff;
-    }
+
+}
 .payment_pane:hover{
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
