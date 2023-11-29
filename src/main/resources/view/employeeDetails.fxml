@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="employeeDetailsPane" prefHeight="694.0" prefWidth="1262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
    <children>
-      <Pane layoutY="-1.0" prefHeight="694.0" prefWidth="1262.0" styleClass="dashboard_pane">
+      <Pane layoutY="-1.0" prefHeight="694.0" prefWidth="1262.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
          <children>
             <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Detials ">
                <font>
@@ -74,7 +74,7 @@
                   <TextField fx:id="txtEmpName" layoutX="22.0" layoutY="118.0" prefHeight="34.0" prefWidth="450.0" promptText="Enter Employee Name" />
                </children>
             </Pane>
-            <Button fx:id="btnReport" layoutX="1144.0" layoutY="167.0" mnemonicParsing="false" onAction="#btnGenarateReportOnAction" text="Genarate Report">
+            <Button fx:id="btnReport" alignment="CENTER_RIGHT" layoutX="1104.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnGenarateReportOnAction" prefHeight="42.0" prefWidth="147.0" styleClass="prinet_button" stylesheets="@../css/button.css" text="Print Report">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -105,6 +105,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="1124.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/gh.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

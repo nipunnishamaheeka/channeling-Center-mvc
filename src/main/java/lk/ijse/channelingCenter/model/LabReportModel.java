@@ -132,6 +132,27 @@ public class LabReportModel {
         return dto;
     }
 
+    public String getEmail(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT p.email " +
+                "from patient p " +
+                "join labreport l on p.patient_id = l.patient_id " +
+                "where l.lab_reportId = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        String email = null;
+
+        if (resultSet.next()) {
+            email = resultSet.getString(1);
+        }
+
+        return email;
+    }
+
     public List<LabReportDto> getAllReports() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 

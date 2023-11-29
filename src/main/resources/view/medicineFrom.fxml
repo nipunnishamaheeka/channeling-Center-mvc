@@ -104,14 +104,14 @@
                   </VBox>
                </children>
             </HBox>
-            <Pane layoutX="6.0" layoutY="150.0" prefHeight="474.0" prefWidth="356.0" style="-fx-background-color: white;">
+            <Pane layoutX="6.0" layoutY="150.0" prefHeight="474.0" prefWidth="356.0" styleClass="payment_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Add Stock">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <VBox layoutX="8.0" layoutY="66.0" prefHeight="244.0" prefWidth="336.0" spacing="20.0">
+                  <VBox layoutX="8.0" layoutY="66.0" prefHeight="244.0" prefWidth="336.0" spacing="45.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="336.0" spacing="40.0">
                            <children>
@@ -137,39 +137,39 @@
                               <TextField fx:id="txtMedicineName" onAction="#medicineSearchOnAction" prefHeight="26.0" prefWidth="174.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="60.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Qty On Hand : ">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtQty" prefHeight="26.0" prefWidth="191.0" />
+                              <TextField fx:id="txtQty" prefHeight="26.0" prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="73.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtDescription" prefHeight="26.0" prefWidth="216.0" />
+                              <TextField fx:id="txtDescription" prefHeight="26.0" prefWidth="152.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="40.0">
+                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="336.0" spacing="90.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price :">
                                  <font>
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="txtUniPrice" prefHeight="26.0" prefWidth="216.0" />
+                              <TextField fx:id="txtUniPrice" prefHeight="26.0" prefWidth="160.0" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" layoutX="8.0" layoutY="421.0" prefHeight="40.0" prefWidth="336.0" spacing="40.0">
+                  <HBox alignment="CENTER" layoutX="8.0" layoutY="411.0" prefHeight="40.0" prefWidth="336.0" spacing="40.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="67.0" styleClass="save_button" stylesheets="@../css/button.css" text="Add">
                            <cursor>
@@ -190,11 +190,6 @@
                   </HBox>
                </children>
             </Pane>
-            <Button layoutX="20.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Medicine">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
       </Pane>
    </children>

@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,9 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.channelingCenter.dto.DoctorDto;
 import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.DoctorModel;
-import lk.ijse.channelingCenter.model.PatientModel;
 
-import javax.swing.tree.AbstractLayoutCache;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -244,11 +241,32 @@ public class DoctorFromController {
             }
             tblDoctor.setItems(obList);
             setFontAwesomeIcons();
+
+            // Add a click event listener to the table rows
+            tblDoctor.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1) { // Check for a single click
+                    int selectedIndex = tblDoctor.getSelectionModel().getSelectedIndex();
+                    if (selectedIndex != -1) {
+                        // Assuming that you have a method to set the data to text fields
+                        setDoctorDataToFields(selectedIndex);
+                    }
+                }
+            });
             setDoctorID();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+    }
+    // Add a method to set the data to text fields
+    private void setDoctorDataToFields(int selectedIndex) {
+        lblDoctorId.setText(tblId.getCellData(selectedIndex).toString());
+        txtName.setText(tblName.getCellData(selectedIndex).toString());
+        txtAddress.setText(tblAddress.getCellData(selectedIndex).toString());
+        txtEmail.setText(tblEmail.getCellData(selectedIndex).toString());
+        txtNumber.setText(tblNumber.getCellData(selectedIndex).toString());
+        cmbDoctorType.setValue(tblType.getCellData(selectedIndex));
+        txtFee.setText(tblDrFee.getCellData(selectedIndex).toString());
     }
     public void btnClerOnAction(ActionEvent actionEvent) {
         clearFields();

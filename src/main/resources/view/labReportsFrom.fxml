@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -139,8 +141,14 @@
                </children></Pane>
             <TextField fx:id="txtSearchId" layoutX="1008.0" layoutY="92.0" onAction="#btnSearchIdOnAction" prefHeight="34.0" prefWidth="197.0" promptText="Search Your Report ID" />
             <TextField fx:id="txtPatientName" layoutX="1008.0" layoutY="142.0" prefHeight="34.0" prefWidth="197.0" promptText="Patient Name" />
-            <Button layoutX="1056.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnPrintReportOnAction" text="Print Lab Report" />
-            <Button layoutX="1056.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnEmailOnAction" text="EmailLab Report" />
+            <Button alignment="CENTER_RIGHT" layoutX="1045.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnPrintReportOnAction" prefHeight="35.0" prefWidth="125.0" styleClass="prinet_button" stylesheets="@../css/button.css" text="Lab Report" />
+            <Button layoutX="1041.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnEmailOnAction" prefHeight="35.0" prefWidth="139.0" styleClass="email_button" stylesheets="@../css/button.css" text="Email Lab Report" />
+            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="1050.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/gh.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtEmail" layoutX="1008.0" layoutY="302.0" prefHeight="34.0" prefWidth="197.0" promptText="Email" />
          </children></Pane>
    </children>
 </AnchorPane>

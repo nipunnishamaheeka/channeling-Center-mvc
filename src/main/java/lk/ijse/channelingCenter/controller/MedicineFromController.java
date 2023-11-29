@@ -215,6 +215,27 @@ public class MedicineFromController {
 
             tblMedicine.setItems(obList);
             setFontAwesomeIcons();
+
+            // Add a click event listener to the table rows
+            tblMedicine.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1) { // Check for a single click
+                    int selectedIndex = tblMedicine.getSelectionModel().getSelectedIndex();
+                    if (selectedIndex != -1) {
+                        MedicineTm selectedMedicine = obList.get(selectedIndex);
+
+                        // Set the data to your text fields using the DTO
+                        setFields(new MedicineDto(
+                                selectedMedicine.getMedi_code(),
+                                selectedMedicine.getMedicine_name(),
+                                selectedMedicine.getDescription(),
+                                selectedMedicine.getQty(),
+                                selectedMedicine.getUnit_price()
+                        ));
+                    }
+                }
+            });
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

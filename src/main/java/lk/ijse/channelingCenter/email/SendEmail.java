@@ -1,5 +1,6 @@
 package lk.ijse.channelingCenter.email;
 
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -28,11 +29,11 @@ import java.security.GeneralSecurityException;
 import java.util.Properties;
 import java.util.Set;
 
-public class Email {
+public class SendEmail {
     public static  String TEST_MAIL;
     private Gmail service;
 
-    public Email() throws GeneralSecurityException, IOException {
+    public SendEmail() throws GeneralSecurityException, IOException {
         NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory gsonFactory=GsonFactory.getDefaultInstance();
         service = new Gmail.Builder(HTTP_TRANSPORT, gsonFactory, getCredentials(HTTP_TRANSPORT,gsonFactory))
@@ -44,14 +45,38 @@ public class Email {
             throws IOException {
         // Load client secrets.
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(gsonFactory,
-                new InputStreamReader(Email.class.getResourceAsStream
-                        ("/api/client_secret_697004834084-cauqm6tjjbi8u2jhms133o9cu875l3mq.apps.googleusercontent.com (1).json"))); // enter your credential
-        // Build flow and trigger user authorization request.
+                new InputStreamReader(SendEmail.class.getResourceAsStream("/api/client_secret_697004834084-cauqm6tjjbi8u2jhms133o9cu875l3mq.apps.googleusercontent.com (1).json")));
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, gsonFactory, clientSecrets, Set.of(GmailScopes.GMAIL_SEND))
                 .setDataStoreFactory(new FileDataStoreFactory(Paths.get("tokens").toFile()))
                 .setAccessType("offline")
-                .build();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 .build();
 
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
@@ -60,6 +85,8 @@ public class Email {
     }
     public void sendMail(String subject, String massage,String TEST_MAIL) throws  IOException, MessagingException {
         this.TEST_MAIL=TEST_MAIL;
+
+        System.out.println(subject+" "+massage+" "+TEST_MAIL);
 
         // Encode as MIME message
         Properties props = new Properties();

@@ -175,6 +175,37 @@ public class PatientFromController {
 
             tblPatient.setItems(obList);
             setFontAwesomeIcons();
+
+//            modify area
+            tblPatient.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1) { // Check for a single click
+                    int selectedIndex = tblPatient.getSelectionModel().getSelectedIndex();
+                    if (selectedIndex != -1) {
+                        PatientTm selectedPatient = obList.get(selectedIndex);
+
+                        // Set the data to your text fields
+                        lblPatientId.setText(selectedPatient.getPatient_id());
+                        txtName.setText(selectedPatient.getPatient_name());
+                        txtNumber.setText(selectedPatient.getMobile_number());
+                        txtAddress.setText(selectedPatient.getAddress());
+                        cmbGender.setValue(selectedPatient.getSex());
+                        txtEmail.setText(selectedPatient.getEmail());
+                        txtAge.setText(selectedPatient.getAge());
+                        cmbBlood.setValue(selectedPatient.getBlood());
+                    }
+                }
+            });
+
+//            modify area
+
+
+
+
+
+
+
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

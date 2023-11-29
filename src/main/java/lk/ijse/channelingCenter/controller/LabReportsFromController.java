@@ -16,7 +16,7 @@ import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.*;
 import lk.ijse.channelingCenter.dto.tm.LabReportTm;
 import lk.ijse.channelingCenter.dto.tm.MedicineTm;
-import lk.ijse.channelingCenter.email.Email;
+import lk.ijse.channelingCenter.email.SendEmail;
 import lk.ijse.channelingCenter.model.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -36,6 +37,8 @@ import java.util.regex.Pattern;
 public class LabReportsFromController {
     public AnchorPane labReportsPane;
     public Label lblReportId;
+    @FXML
+    private TextField txtEmail;
     public Label lblPatientName;
     public Label lblDoctorName;
     public Label lblGender;
@@ -129,9 +132,34 @@ LabReportModel labReportModel =new LabReportModel();
 
             tblReport.setItems(obList);
             setFontAwesomeIcons();
+            // Add a click event listener to the table rows
+            tblReport.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1) { // Check for a single click
+                    int selectedIndex = tblReport.getSelectionModel().getSelectedIndex();
+                    if (selectedIndex != -1) {
+                        LabReportTm selectedReport = obList.get(selectedIndex);
+
+                        // Set the data to your text fields using the DTO
+                        setReportDataToFields(selectedReport);
+                    }
+                }
+            });
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    // Add a method to set the data to text fields
+    private void setReportDataToFields(LabReportTm selectedReport) {
+        lblReportId.setText(selectedReport.getLab_reportid());
+        datefelid.setValue(LocalDate.parse(selectedReport.getDate()));
+        lblDoctorName.setText(selectedReport.getDoctor_name());
+        lblAge.setText(selectedReport.getAge());
+        lblGender.setText(selectedReport.getGender());
+        lblPatientName.setText(selectedReport.getPatient_name());
+        txtReportName.setText(selectedReport.getTest_name());
+        txtReportResult.setText(selectedReport.getTest_result());
+        txtUnits.setText(selectedReport.getUnits());
+        txtOthers.setText(selectedReport.getOthers());
     }
     private void setFontAwesomeIcons() {
         tblReport.getItems().forEach(item -> {
@@ -189,7 +217,7 @@ LabReportModel labReportModel =new LabReportModel();
         datefelid.setValue(null);
         lblDoctorName.setText("");
         lblAge.setText("");
-        //lblGender.setText("");
+        lblGender.setText("");
         lblPatientName.setText("");
         txtReportName.setText("");
         txtReportResult.setText("");
@@ -357,8 +385,10 @@ LabReportModel labReportModel =new LabReportModel();
         }
     }
 
-    private void fillFields(LabReportDto dto) {
+
+    private void fillFields(LabReportDto dto) throws SQLException {
         txtPatientName.setText(dto.getPatient_name());
+        txtEmail.setText(labReportModel.getEmail(dto.getLab_reportid()));
     }
 
     private void setCellValueFactory() {
@@ -373,17 +403,26 @@ LabReportModel labReportModel =new LabReportModel();
 
 
     }
+//
+//    public void btnEmailOnAction(MouseEvent mouseEvent) throws SQLException {
+//        //loadAllReports();
+//        String title = "Lab Report";
+//        sendMail("Thank you for choosing our service !", "Your Order Is Successfully.", "ashannvn@gmail.com");
+//
+//    }
 
-    public void btnEmailOnAction(MouseEvent mouseEvent) throws SQLException {
-        //loadAllReports();
+    @FXML
+    void btnEmailOnAction(ActionEvent event) {
+        String email = txtEmail.getText();
         String title = "Lab Report";
-        sendMail("Thank you for choosing our service !", "Your Order Is Successfully.", "ashannvn@gmail.com");
-
+        sendMail("Thank you for choosing our service !", "Thank you for choosing our service !.", email);
     }
 
-    private boolean sendMail(String title, String message, String gmail) {
+    private boolean sendMail(String title,String message,String gmail){
+
+        System.out.println(title+" "+message+" "+gmail);
         try {
-            new Email().sendMail(title, message, gmail);
+            new SendEmail().sendMail(title,message,gmail);
             return true;
         } catch (IOException | MessagingException | GeneralSecurityException e) {
             e.printStackTrace();

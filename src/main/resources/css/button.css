@@ -121,3 +121,29 @@
 .AddCart:hover {
     -fx-background-color: #ea9303; /* Darker green on hover */
 }
+.prinet_button{
+    -fx-background-color: #f8a200; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 12px "Arial Black";
+     /* Padding */
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 2px;          /* Add letter spacing */
+}
+
+.prinet_button:hover {
+    -fx-background-color: #ea9303; /* Darker green on hover */
+}
+.email_button{
+    -fx-background-color: #59f80e; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 12px "Arial Black";
+    /* Padding */
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 2px;          /* Add letter spacing */
+}
+
+.email_button:hover {
+    -fx-background-color: #04e35d; /* Darker green on hover */
+}
