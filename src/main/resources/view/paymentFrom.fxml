@@ -12,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="paymentPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.PaymentFromController">
+<AnchorPane fx:id="paymentPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.PaymentFromController">
    <children>
-      <Pane layoutX="6.0" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane layoutX="6.0" prefHeight="694.0" prefWidth="1264.0">
          <children>
             <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment ">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <TableView layoutX="144.0" layoutY="188.0" prefHeight="486.0" prefWidth="968.0">
+            <TableView layoutX="114.0" layoutY="128.0" prefHeight="486.0" prefWidth="968.0">
                <columns>
                   <TableColumn fx:id="colPaymentId" editable="false" prefWidth="95.0" sortable="false" text="Payment ID" />
                   <TableColumn fx:id="colTime" prefWidth="75.0" text="Time" />
@@ -48,6 +48,18 @@
                   <Image url="@../assets/pricetags.png" />
                </image>
             </ImageView>
+            <Pane layoutX="1111.0" layoutY="612.0" prefHeight="40.0" prefWidth="119.0">
+               <children>
+                  <Button alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnCompleteOrdersOnAction" prefHeight="31.0" prefWidth="119.0" styleClass="appoinment" text="Complete Orders">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
          </children></Pane>
    </children>
 </AnchorPane>

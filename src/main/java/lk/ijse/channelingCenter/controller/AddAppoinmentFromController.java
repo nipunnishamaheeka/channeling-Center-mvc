@@ -91,7 +91,7 @@ public class AddAppoinmentFromController {
 
     @FXML
     void btnClerOnAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -107,9 +107,6 @@ public class AddAppoinmentFromController {
         String patinetName = lblPatientName.getText();
         String status = "pending";
 
-
-
-
         AppoinmentDto itemDto = new AppoinmentDto(appoinmentId,date,id,age,doctorId,doctorName,patinetName,status);
 
         try {
@@ -118,7 +115,7 @@ public class AddAppoinmentFromController {
 
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Appoinment Saved!", ButtonType.OK).show();
-                clearFields();
+                //clearFields();
                 loadAllItems();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Appoinment Not Saved!", ButtonType.OK).show();
@@ -143,24 +140,17 @@ public class AddAppoinmentFromController {
     }
 
     private void clearFields() {
+        //lblAppoinmentId.setText("");
+        lblPatientId.setText("");
+        lblDoctorName.setText("");
+        lblAge.setText("");
+        lblPatientName.setText("");
+        lblAppointmentDate.setText("");
+        cmbPatientId.setValue("");
+        cmbDoctorId.setValue("");
+        txtAge.setText("");
 
     }
-    @FXML
-    void cmbPatientOnAction(ActionEvent event) {
-        try {
-            String name = new PatientModel().getPatientName(cmbPatientId.getValue());
-            lblPatientName.setText(name);
-            String age = new PatientModel().getPatientAge(cmbPatientId.getValue());
-            lblAge.setText((age));
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-    }
-
     private void loadPatientsIds() {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -222,6 +212,19 @@ public class AddAppoinmentFromController {
         try {
             String name = new DoctorModel().getname(cmbDoctorId.getValue());
             lblDoctorName.setText(name);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    void cmbPatientOnAction(ActionEvent event) {
+        try {
+            String name = new PatientModel().getPatientName(cmbPatientId.getValue());
+            lblPatientName.setText(name);
+            String age = new PatientModel().getPatientAge(cmbPatientId.getValue());
+            lblAge.setText((age));
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

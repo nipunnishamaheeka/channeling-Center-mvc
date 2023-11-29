@@ -66,13 +66,20 @@ public class OverViewFromController implements Initializable {
                 new PieChart.Data("Amlodiphine", 40),
                 new PieChart.Data("Amoxicillin", 50),
                 new PieChart.Data("Ativan", 100)
-
         );
+
+        // Set colors for each category
+//        observableList.get(0).getNode().setStyle("-fx-pie-color: #1f77b4;");  // Acetaminophen - Blue
+//        observableList.get(1).getNode().setStyle("-fx-pie-color: #ff7f0e;");  // Adderall - Orange
+//        observableList.get(2).getNode().setStyle("-fx-pie-color: #2ca02c;");  // Amitriptyline - Green
+//        observableList.get(3).getNode().setStyle("-fx-pie-color: #d62728;");  // Amlodiphine - Red
+//        observableList.get(4).getNode().setStyle("-fx-pie-color: #9467bd;");  // Amoxicillin - Purple
+//        observableList.get(5).getNode().setStyle("-fx-pie-color: #8c564b;");  // Ativan - Brown
+
         pieChart.setData(observableList);
         loadAllAppoinments();
         setCellValueFactory();
         loadAllItems();
-
     }
 
     private void loadAllItems() throws SQLException {

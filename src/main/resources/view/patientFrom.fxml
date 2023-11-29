@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="patientPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.PatientFromController">
+<AnchorPane fx:id="patientPane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.PatientFromController">
    <children>
       <Pane prefHeight="694.0" prefWidth="1264.0">
          <children>
@@ -30,9 +30,8 @@
                         <TableColumn fx:id="colPatientName" prefWidth="126.4000244140625" text="Patient Name" />
                         <TableColumn fx:id="colNumber" prefWidth="120.800048828125" text="Mobile Number" />
                         <TableColumn fx:id="colAddress" prefWidth="132.79995727539062" text="Address" />
-                        <TableColumn fx:id="colSex" prefWidth="100.79998779296875" text="Gender" />
-                        <TableColumn fx:id="colAge" prefWidth="88.800048828125" text="Age" />
-                        <TableColumn fx:id="colBloodGroup2" prefWidth="37.5999755859375" text="Patient Type" />
+                        <TableColumn fx:id="colSex" prefWidth="118.39996337890625" text="Gender" />
+                        <TableColumn fx:id="colAge" prefWidth="72.0" text="Age" />
                         <TableColumn fx:id="colEmail" prefWidth="191.20001220703125" text="Email" />
                         <TableColumn fx:id="colBloodGroup" prefWidth="167.2000732421875" text="Blood Group " />
                         <TableColumn fx:id="colUpdate" minWidth="0.79998779296875" prefWidth="59.199951171875" text="Action" />

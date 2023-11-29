@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -32,7 +33,6 @@
                   <TextField fx:id="txtName" layoutX="296.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="Doctor Name" />
                   <TextField fx:id="txtEmail" layoutX="573.0" layoutY="53.0" prefHeight="30.0" prefWidth="241.0" promptText="john.doe@example.com" />
                   <TextField fx:id="txtNumber" layoutX="26.0" layoutY="116.0" onAction="#mobileNumberSearchOnAction" prefHeight="30.0" prefWidth="241.0" promptText="Search Mobile No" />
-                  <TextField fx:id="txtType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
                   <TextField fx:id="txtAddress" layoutX="573.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Address" />
                   <Button layoutX="720.0" layoutY="186.0" mnemonicParsing="false" onAction="#btnClerOnAction" prefHeight="30.0" prefWidth="98.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Feilds">
                      <cursor>
@@ -54,6 +54,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
+                  <ComboBox fx:id="cmbDoctorType" layoutX="296.0" layoutY="116.0" prefHeight="30.0" prefWidth="241.0" promptText="Specification Type" />
                </children>
             </Pane>
             <Button layoutX="983.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="save_button" stylesheets="@../css/button.css" text="Save New Doctor">
@@ -63,14 +64,13 @@
             <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1151.0">
                <columns>
                   <TableColumn fx:id="tblId" prefWidth="75.0" text="Doctor ID" />
-                  <TableColumn fx:id="tblName" prefWidth="163.2000274658203" text="Doctor Name" />
-                  <TableColumn fx:id="tblEmail" prefWidth="163.2000274658203" text="Email Address" />
-                  <TableColumn fx:id="tblNumber" prefWidth="163.2000274658203" text="Mobile No " />
-                  <TableColumn fx:id="tblType" prefWidth="163.2000274658203" text="Type" />
-                  <TableColumn fx:id="tblAddress" prefWidth="163.2000274658203" text="Address" />
-                  <TableColumn fx:id="tblDrFee" prefWidth="86.39984130859375" text="DR Fee" />
-                  <TableColumn fx:id="colUpdate" prefWidth="141.60015869140625" text="Action" />
-                  <TableColumn fx:id="colDelete" prefWidth="64.0" text="Action" />
+                  <TableColumn fx:id="tblName" prefWidth="195.1999969482422" text="Doctor Name" />
+                  <TableColumn fx:id="tblEmail" prefWidth="187.20001220703125" text="Email Address" />
+                  <TableColumn fx:id="tblNumber" prefWidth="168.800048828125" text="Mobile No " />
+                  <TableColumn fx:id="tblType" prefWidth="177.5999755859375" text="Type" />
+                  <TableColumn fx:id="tblAddress" prefWidth="177.60003662109375" text="Address" />
+                  <TableColumn fx:id="tblDrFee" prefWidth="92.0" text="DR Fee" />
+                  <TableColumn fx:id="colDelete" prefWidth="76.00006103515625" text="Action" />
                </columns>
             </TableView>
             <Button layoutX="983.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">

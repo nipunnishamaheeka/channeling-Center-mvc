@@ -257,16 +257,6 @@ public class MedicineFromController {
     public void btnClearOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnCompleteOrdersOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/completeOrdersFrom.fxml"));
 
-        Scene scene = new Scene(rootNode);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("addAppoinmentFrom");
-        stage.centerOnScreen();
-        stage.show();
-
-    }
 }
 

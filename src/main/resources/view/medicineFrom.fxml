@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="medicinePane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.MedicineFromController">
+<AnchorPane fx:id="medicinePane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.MedicineFromController">
    <children>
       <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
          <children>
@@ -23,18 +23,6 @@
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="1120.0" layoutY="34.0" prefHeight="40.0" prefWidth="119.0">
-               <children>
-                  <Button alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnCompleteOrdersOnAction" prefHeight="31.0" prefWidth="119.0" styleClass="appoinment" text="Complete Orders">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
          </children>
       </Pane>
       <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">

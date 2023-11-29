@@ -16,21 +16,12 @@
                         <Font name="Arial Bold" size="30.0" />
                     </font>
                 </Text>
-            <TableView fx:id="tblMedicine" layoutX="-2.0" layoutY="67.0" prefHeight="311.0" prefWidth="950.0">
+            <TableView fx:id="tblMedicine" layoutX="16.0" layoutY="67.0" prefHeight="311.0" prefWidth="882.0">
                <columns>
-                  <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Appoinment ID " />
-                  <TableColumn fx:id="colDescription" prefWidth="164.0000762939453" text="Patient Name" />
-                  <TableColumn fx:id="colQty" prefWidth="177.5999755859375" text="Doctor Name" />
-                  <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="87.19998168945312" text="Medicine Variation">
-                     <columns>
-                        <TableColumn fx:id="colAction1" minWidth="0.0" prefWidth="71.99996948242188" text="1" />
-                        <TableColumn fx:id="colAction2" minWidth="0.0" prefWidth="82.39996337890625" text="2" />
-                        <TableColumn fx:id="colAction3" minWidth="0.0" prefWidth="92.800048828125" text="3" />
-                        <TableColumn fx:id="colAction4" minWidth="0.0" prefWidth="92.800048828125" text="4" />
-                        <TableColumn fx:id="colAction5" minWidth="0.0" prefWidth="92.800048828125" text="5" />
-                     </columns>
-                  </TableColumn>
-                  <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="74.39990234375" text="User Action" />
+                  <TableColumn fx:id="colAppoinment_id" prefWidth="119.19998741149902" text="Appoinment ID " />
+                  <TableColumn fx:id="colPatientName" prefWidth="260.8000183105469" text="Patient Name" />
+                  <TableColumn fx:id="colDocName" prefWidth="310.3999328613281" text="Doctor Name" />
+                  <TableColumn fx:id="colAction" prefWidth="191.2000732421875" text="Action" />
                </columns>
             </TableView>
             </children></Pane>

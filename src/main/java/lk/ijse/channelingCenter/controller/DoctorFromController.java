@@ -29,6 +29,7 @@ public class DoctorFromController {
     public Label lblDoctorId;
     public TextField txtFee;
     public TableColumn tblDrFee;
+    public ComboBox cmbDoctorType;
     @FXML
     private TableColumn<?, ?> colUpdate;
     @FXML
@@ -78,6 +79,7 @@ public class DoctorFromController {
         setCellValueFactory();
         loadAllItems();
         setDoctorID();
+        loadDoctorTypes();
     }
     private void setCellValueFactory() {
         tblId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -91,6 +93,14 @@ public class DoctorFromController {
         //colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
 
     }
+
+    private void loadDoctorTypes() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        // Add "Dr Types" options
+        obList.addAll("General Practitioner", "Cardiologist", "Dermatologist", "Endocrinologist", "Gastroenterologist", "Orthopedic Surgeon", "Neurologist", "Obstetrician/Gynecologist (OB/GYN)","Ophthalmologist", "Pediatrician","Psychiatrist","Urologist","Allergist/Immunologist","Anesthesiologist","Colon and Rectal Surgeon","Emergency Medicine Specialist","Hematologist","Infectious Disease Specialist","Medical Geneticist","Nephrologist","Otolaryngologist","Pathologist","Plastic Surgeon","Radiologist","Rheumatologist","Thoracic Surgeon","Urologist","Vascular Surgeon");
+        cmbDoctorType.setItems(obList);
+    }
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isDoctorValid = validateDoctor();
         if (isDoctorValid) {
@@ -99,7 +109,7 @@ public class DoctorFromController {
             String address = txtAddress.getText();
             String email = txtEmail.getText();
             String number = txtNumber.getText();
-            String type = txtType.getText();
+            String type = String.valueOf(cmbDoctorType.getValue());
             double fee = Double.parseDouble(txtFee.getText());
 
             DoctorDto itemDto = new DoctorDto(id, name, address, email, number, type,fee);
@@ -130,7 +140,7 @@ public class DoctorFromController {
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String number = txtNumber.getText();
-        String type = txtType.getText();
+        String type = String.valueOf(cmbDoctorType.getValue());
         double fee = Double.parseDouble(txtFee.getText());
 
         try {
@@ -150,7 +160,7 @@ public class DoctorFromController {
         txtAddress.setText(dto.getAddress());
         txtEmail.setText(dto.getEmail());
         txtNumber.setText(dto.getNumber());
-        txtType.setText(dto.getType());
+        cmbDoctorType.setValue(dto.getType());
         txtFee.setText(String.valueOf(dto.getDrFee()));
     }
 
@@ -160,7 +170,7 @@ public class DoctorFromController {
         txtAddress.clear();
         txtEmail.clear();
         txtNumber.clear();
-        txtType.clear();
+        cmbDoctorType.setValue(null);
         txtFee.clear();
     }
 

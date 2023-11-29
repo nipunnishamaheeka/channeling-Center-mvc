@@ -45,8 +45,8 @@ public class DoctorModel {
         pstm.setString(3, dto.getEmail());
         pstm.setString(4, dto.getNumber());
         pstm.setString(5, dto.getType());
-        pstm.setString(6, dto.getId());
-        pstm.setObject(7, dto.getDrFee());
+        pstm.setObject(6, dto.getDrFee());
+        pstm.setString(7, dto.getId());
 
         return pstm.executeUpdate() > 0;
     }

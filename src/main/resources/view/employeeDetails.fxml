@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="employeeDetailsPane" prefHeight="694.0" prefWidth="1262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeDetailsFromController">
    <children>
-      <Pane layoutY="-1.0" prefHeight="694.0" prefWidth="1262.0" styleClass="dashboard_pane" stylesheets="@../css/style.css">
+      <Pane layoutY="-1.0" prefHeight="694.0" prefWidth="1262.0" styleClass="dashboard_pane">
          <children>
             <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Detials ">
                <font>

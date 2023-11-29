@@ -142,7 +142,7 @@ public class PatientModel {
     public String getPatientName(String value) throws SQLException {
         DbConnection dbConnection = DbConnection.getInstance();
         Connection connection = dbConnection.getConnection();
-        String sql = "SELECT * FROM patient WHERE patient_name = ?";
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, value);

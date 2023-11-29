@@ -22,8 +22,9 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
 	</field>
 	<field name="email" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="email"/>
-		<property name="com.jaspersoft.studio.field.label" value="email"/>
+<!--		<property name="com.jaspersoft.studio..field.name" value="email"/>-->
+		<property name="com.jaspersoft.studio.fiel
+		d.label" value="email"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
 	</field>
 	<field name="job_role" class="java.lang.String">

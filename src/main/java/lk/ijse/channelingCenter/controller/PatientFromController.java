@@ -35,7 +35,7 @@ public class PatientFromController {
     public TableColumn colAddress;
     public TextField txtID;
     public TextField txtPatientId;
-    public ComboBox<String> cmbGender;
+    public ComboBox<String>  cmbGender;
     @FXML
     private TextField txtAddress;
     @FXML
@@ -200,10 +200,10 @@ public class PatientFromController {
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");
-        //cmbGender.setItems(null);
+        cmbGender.setItems(null);
         txtEmail.setText("");
         txtAge.setText("");
-        //cmbBlood.setItems(null);
+        cmbBlood.setItems(null);
 
     }
     private boolean validateTextField(TextField textField, String patternRegex) {
@@ -284,9 +284,9 @@ public class PatientFromController {
         txtName.setText(dto.getPatient_name());
         txtNumber.setText(dto.getMobile_number());
         txtAddress.setText(dto.getAddress());
-        //cmbGender.getItems().addAll(dto.getSex());
+        cmbGender.setValue(dto.getSex());
         txtEmail.setText(dto.getEmail());
-        //cmbBlood.setItems(dto.getBlood());
+       cmbBlood.setValue(dto.getBlood());
         txtAge.setText(dto.getAge());
     }
 
