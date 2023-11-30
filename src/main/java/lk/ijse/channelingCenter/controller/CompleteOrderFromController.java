@@ -2,6 +2,7 @@ package lk.ijse.channelingCenter.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
@@ -10,12 +11,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.tm.CompleteOrdersTm;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CompleteOrderFromController {
     @FXML
@@ -47,7 +57,6 @@ public class CompleteOrderFromController {
         colDocName.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
     }
-
     private void loadCompleteOrders() {
         AppoinmentModel appoinmentModel = new AppoinmentModel();
         try {
@@ -60,18 +69,49 @@ public class CompleteOrderFromController {
 
                     btn.setOnAction(event -> {
                         try {
-                            new Alert(Alert.AlertType.CONFIRMATION, "Report Generate").show();
+                            // New: Pass the appoinment_id to the report generation method
+                            ReportbtnOnActhion(dto.getAppoinment_id());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     });
                     list.add(new CompleteOrdersTm(dto.getAppoinment_id(), dto.getPatinetName(), dto.getDoctor_name(), btn));
                 }
-                tblMedicine.setItems(list);
             }
+            tblMedicine.setItems(list);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // New: Accept appoinment_id as a parameter
+    void ReportbtnOnActhion(String appoinmentId) throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/CompleteOrders.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT\n" +
+                "    appoinment.appoinment_id,\n" +
+                "    appoinment.date,\n" +
+                "    appoinment.doctor_name,\n" +
+                "    appoinment.patient_name,\n" +
+                "    completeorders.qty,\n" +
+                "    medicine.medi_code,\n" +
+                "    medicine.medicine_name,\n" +
+                "    medicine.description,\n" +
+                "    medicine.unit_price\n" +
+                "FROM\n" +
+                "    appoinment\n" +
+                "        JOIN\n" +
+                "    completeorders ON appoinment.appoinment_id = completeorders.appoinment_id\n" +
+                "        JOIN\n" +
+                "    medicine ON completeorders.medi_code = medicine.medi_code\n" +
+                "WHERE\n" +
+                "    appoinment.appoinment_id = '" + appoinmentId + "'");
+        load.setQuery(jrDesignQuery);
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
 }

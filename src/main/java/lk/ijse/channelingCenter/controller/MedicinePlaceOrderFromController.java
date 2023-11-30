@@ -9,10 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.MedicineDto;
 import lk.ijse.channelingCenter.dto.PlaceOrderDto;
@@ -64,7 +66,7 @@ public class MedicinePlaceOrderFromController {
     AppoinmentModel appoinmentModel = new AppoinmentModel();
 
     public void initialize() {
-        setOrderId();
+        //setOrderId();
         this.lblDate.setText(generateRealTime());
         loadMedicineIds();
         setCellValuefactory();
@@ -218,14 +220,6 @@ public class MedicinePlaceOrderFromController {
         lblTotal.setText("Rs. " + netTotal + "0");
     }
 
-    private String calculateNetTotalforTable() {
-        for (int i = 0; i < tblMedicine.getItems().size(); i++) {
-            netTotal += (double) colTotal.getCellData(i);
-        }
-        netTotal += value;
-        return "Rs. " + netTotal + "0";
-
-    }
 
     private void setCellValuefactory() {
 
@@ -270,5 +264,17 @@ public class MedicinePlaceOrderFromController {
         medicinePlaceOrderPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/view/medicinePlaceOrder.fxml")));
     }
 
+    public void btnCompleteOrdersOnAction(ActionEvent actionEvent) throws IOException {
+
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/completeOrdersFrom.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage  = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("addAppoinmentFrom");
+        stage.centerOnScreen();
+        stage.show();
+
+    }
 }
 

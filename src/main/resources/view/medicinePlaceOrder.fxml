@@ -175,6 +175,18 @@
                   </Pane>
                </children>
             </Pane>
+            <Pane layoutX="1101.0" layoutY="33.0" prefHeight="40.0" prefWidth="119.0">
+               <children>
+                  <Button alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnCompleteOrdersOnAction" prefHeight="31.0" prefWidth="119.0" styleClass="appoinment" text="Complete Orders">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
             </children>
         </Pane>
     </children>
