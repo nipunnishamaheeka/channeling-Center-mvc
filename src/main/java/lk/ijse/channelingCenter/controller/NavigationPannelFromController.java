@@ -100,7 +100,7 @@ public class NavigationPannelFromController implements Initializable {
 
     public void btnPaymentOnAction(MouseEvent mouseEvent) throws IOException {
         navigationPane.getChildren().clear();
-        navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/paymentFrom.fxml")));
+        navigationPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/medicinePlaceOrder.fxml")));
 
     }
     /*-----DATE AND TIME GENERATE------*/

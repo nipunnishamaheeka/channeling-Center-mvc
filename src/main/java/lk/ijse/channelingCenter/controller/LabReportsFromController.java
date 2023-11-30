@@ -24,9 +24,18 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-import javax.mail.MessagingException;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -75,7 +84,7 @@ public class LabReportsFromController {
 
     @FXML
     private TableColumn<?, ?> colReportId;
-LabReportModel labReportModel =new LabReportModel();
+    LabReportModel labReportModel = new LabReportModel();
 
     public void initialize() throws SQLException {
         setLabReportsID();
@@ -84,6 +93,7 @@ LabReportModel labReportModel =new LabReportModel();
         setCellValueFactory();
         loadAllReports();
     }
+
     private void loadAllReports() throws SQLException {
         try {
             List<LabReportDto> dtoList = labReportModel.getAllReports();
@@ -148,6 +158,7 @@ LabReportModel labReportModel =new LabReportModel();
             throw new RuntimeException(e);
         }
     }
+
     // Add a method to set the data to text fields
     private void setReportDataToFields(LabReportTm selectedReport) {
         lblReportId.setText(selectedReport.getLab_reportid());
@@ -161,11 +172,13 @@ LabReportModel labReportModel =new LabReportModel();
         txtUnits.setText(selectedReport.getUnits());
         txtOthers.setText(selectedReport.getOthers());
     }
+
     private void setFontAwesomeIcons() {
         tblReport.getItems().forEach(item -> {
             FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
         });
     }
+
     private void deleteItem(String code) {
         try {
             boolean isDeleted = labReportModel.deleteReports(code);
@@ -176,6 +189,7 @@ LabReportModel labReportModel =new LabReportModel();
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
+
     public void btnSaveOnAction(ActionEvent actionEvent) {
         boolean isReportValid = validateLabReport();
 
@@ -326,7 +340,7 @@ LabReportModel labReportModel =new LabReportModel();
             String Units = txtUnits.getText();
             String Others = txtOthers.getText();
             try {
-                boolean isUpdated = labReportModel.updateLabReport(new LabReportDto(id,PatientId,Date,DId,DName,Age,Gender,PName,TestName,TestResult,Units,Others));
+                boolean isUpdated = labReportModel.updateLabReport(new LabReportDto(id, PatientId, Date, DId, DName, Age, Gender, PName, TestName, TestResult, Units, Others));
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Patient updated").show();
                     clearFields();
@@ -350,22 +364,6 @@ LabReportModel labReportModel =new LabReportModel();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    void ReportbtnOnActhion() throws JRException, SQLException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
-        JasperDesign load = JRXmlLoader.load(resourceAsStream);
-        JRDesignQuery jrDesignQuery = new JRDesignQuery();
-        jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
-        load.setQuery(jrDesignQuery);
-
-        JasperReport jasperReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint, false);
-    }
-
-    public void btnPrintReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-        ReportbtnOnActhion();
     }
 
     public void btnSearchIdOnAction(ActionEvent actionEvent) {
@@ -403,31 +401,216 @@ LabReportModel labReportModel =new LabReportModel();
 
 
     }
+
+
+        void ReportbtnOnActhion() throws JRException, SQLException {
+            InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JRDesignQuery jrDesignQuery = new JRDesignQuery();
+            jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
+            load.setQuery(jrDesignQuery);
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+
+            // Optionally, export to PDF after viewing the report
+            exportReportToPDF(jasperPrint, "output.pdf");
+        }
+
+        public void btnPrintReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+            ReportbtnOnActhion();
+        }
+        private void exportReportToPDF(JasperPrint jasperPrint, String outputFileName) throws JRException {
+            JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
+            System.out.println("Report exported to PDF: " + outputFileName);
+        }
+
+
+        @FXML
+        void btnEmailOnAction(ActionEvent event) {
+            String email = txtEmail.getText();
+            String title = "Lab Report";
+            sendMail("Thank you for choosing our service !", "Thank you for choosing our service !.", email);
+        }
+
+        private boolean sendMail(String title,String message,String gmail){
+
+            System.out.println(title+" "+message+" "+gmail);
+            try {
+                new SendEmail().sendMail(title,message,gmail);
+                return true;
+            } catch (IOException | MessagingException | GeneralSecurityException e) {
+                e.printStackTrace();
+                return false;
+            }
+      }
+//void ReportbtnOnActhion() throws JRException, SQLException {
+//    InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
+//    JasperDesign load = JRXmlLoader.load(resourceAsStream);
+//    JRDesignQuery jrDesignQuery = new JRDesignQuery();
+//    jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
+//    load.setQuery(jrDesignQuery);
 //
-//    public void btnEmailOnAction(MouseEvent mouseEvent) throws SQLException {
-//        //loadAllReports();
+//    JasperReport jasperReport = JasperCompileManager.compileReport(load);
+//    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+//
+//    // Optionally, export to PDF after viewing the report
+//    String outputFileName = "output.pdf";
+//    exportReportToPDF(jasperPrint, outputFileName);
+//
+//    // Send email with the attached PDF
+//    String email = txtEmail.getText();
+//    String title = "Lab Report";
+//    String message = "Thank you for choosing our service!";
+//
+//    if (sendMailWithAttachment(title, message, email, outputFileName)) {
+//        System.out.println("Email sent successfully.");
+//    } else {
+//        System.out.println("Failed to send email.");
+//    }
+//
+//    JasperViewer.viewReport(jasperPrint, false);
+//}
+//
+//    public void btnPrintReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+//        ReportbtnOnActhion();
+//    }
+//
+//    private void exportReportToPDF(JasperPrint jasperPrint, String outputFileName) throws JRException {
+//        JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
+//        System.out.println("Report exported to PDF: " + outputFileName);
+//    }
+//
+//    private boolean sendMailWithAttachment(String subject, String body, String toEmail, String attachmentPath) {
+//        try {
+//            // Setup mail server properties
+//            java.util.Properties properties = new java.util.Properties();
+//            properties.put("mail.smtp.host", "your_smtp_server");
+//            properties.put("mail.smtp.port", "your_smtp_port");
+//            properties.put("mail.smtp.auth", "true");
+//            properties.put("mail.smtp.starttls.enable", "true");
+//
+//            // Get the Session object
+//            Session session = Session.getInstance(properties, new Authenticator() {
+//                protected PasswordAuthentication getPasswordAuthentication() {
+//                    return new PasswordAuthentication("your_email@gmail.com", "your_email_ password");
+//                }
+//            });
+//
+//            // Create a default MimeMessage object
+//            MimeMessage message = new MimeMessage(session);
+//
+//            // Set From: header field
+//            message.setFrom(new InternetAddress("your_email@gmail.com"));
+//
+//            // Set To: header field
+//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+//
+//            // Set Subject: header field
+//            message.setSubject(subject);
+//
+//            // Create the message part
+//            BodyPart messageBodyPart = new MimeBodyPart();
+//
+//            // Set the actual message
+//            messageBodyPart.setText(body);
+//
+//            // Create a multipart message
+//            Multipart multipart = new MimeMultipart();
+//
+//            // Attach the message part
+//            multipart.addBodyPart(messageBodyPart);
+//
+//            // Attach the file as dataHandler
+//            messageBodyPart = new MimeBodyPart();
+//            DataSource source = (DataSource) new FileDataSource(attachmentPath);
+//            messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
+//            messageBodyPart.setFileName("LabReport.pdf");  // Set the filename for the attachment
+//            multipart.addBodyPart(messageBodyPart);
+//
+//            // Set the complete message parts
+//            message.setContent(multipart);
+//
+//            // Send the message
+//            Transport.send(message);
+//
+//            return true;
+//
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
+//    void ReportbtnOnActhion() throws JRException, SQLException {
+//        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
+//        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+//        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+//        jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
+//        load.setQuery(jrDesignQuery);
+//
+//        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+//
+//        // Optionally, export to PDF after viewing the report
+//        String outputFileName = "output.pdf";
+//        exportReportToPDF(jasperPrint, outputFileName);
+//
+//        // Send email with the attached PDF
+//        String email = txtEmail.getText();
 //        String title = "Lab Report";
-//        sendMail("Thank you for choosing our service !", "Your Order Is Successfully.", "ashannvn@gmail.com");
+//        String message = "Thank you for choosing our service!";
+//
+//        if (sendMailWithAttachment(title, message, email, outputFileName,  message)) {
+//            System.out.println("Email sent successfully.");
+//        } else {
+//            System.out.println("Failed to send email.");
+//        }
 //
 //    }
+//
+//    private void exportReportToPDF(JasperPrint jasperPrint, String outputFileName) throws JRException {
+//        JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
+//        System.out.println("Report exported to PDF: " + outputFileName);
+//    }
+//
+//    @FXML
+//    void btnEmailOnAction(ActionEvent event) {
+//        try {
+//            ReportbtnOnActhion();
+//        } catch (JRException | SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    private boolean sendMailWithAttachment(String subject, String body, String toEmail, String attachmentPath, MimeMessage message) {
+//        try {
+//            // ... your existing code ...
+//
+//            // Create the message part for attachment
+//            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+//            FileDataSource source = new FileDataSource(attachmentPath);
+//            attachmentBodyPart.setDataHandler(new DataHandler(source));
+//            attachmentBodyPart.setFileName("LabReport.pdf");  // Set the filename for the attachment
+//
+//            // Create a multipart message for the email body and attachment
+//            Multipart multipart = new MimeMultipart();
+//            multipart.addBodyPart(attachmentBodyPart);
+//
+//            // Set the complete message parts
+//            message.setContent(multipart);
+//
+//            // Send the message
+//            Transport.send(message);
+//
+//            return true;
+//
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
-    @FXML
-    void btnEmailOnAction(ActionEvent event) {
-        String email = txtEmail.getText();
-        String title = "Lab Report";
-        sendMail("Thank you for choosing our service !", "Thank you for choosing our service !.", email);
-    }
 
-    private boolean sendMail(String title,String message,String gmail){
-
-        System.out.println(title+" "+message+" "+gmail);
-        try {
-            new SendEmail().sendMail(title,message,gmail);
-            return true;
-        } catch (IOException | MessagingException | GeneralSecurityException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }
 

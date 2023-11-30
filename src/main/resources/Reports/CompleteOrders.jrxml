@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CompleteOrders" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="17d3b8f1-905c-44fa-bece-da3dc3be4fdc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    appoinment.appoinment_id,
+    appoinment.date,
+    appoinment.doctor_name,
+    appoinment.patient_name,
+    completeorders.qty,
+    medicine.medi_code,
+    medicine.medicine_name,
+    medicine.description,
+    medicine.unit_price
+FROM
+    appoinment
+        JOIN
+    completeorders ON appoinment.appoinment_id = completeorders.appoinment_id
+        JOIN
+    medicine ON completeorders.medi_code = medicine.medi_code
+WHERE
+        appoinment.appoinment_id = 'A001';]]>
+	</queryString>
+	<field name="appoinment_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="appoinment_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="appoinment_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appoinment"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appoinment"/>
+	</field>
+	<field name="doctor_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="doctor_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="doctor_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appoinment"/>
+	</field>
+	<field name="patient_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appoinment"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="completeorders"/>
+	</field>
+	<field name="medi_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="medi_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="medi_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medicine"/>
+	</field>
+	<field name="medicine_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="medicine_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="medicine_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medicine"/>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medicine"/>
+	</field>
+	<field name="unit_price" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="unit_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="medicine"/>
+	</field>
+	<group name="appoinment_id">
+		<groupExpression><![CDATA[$F{appoinment_id}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<group name="doctor_name">
+		<groupExpression><![CDATA[$F{doctor_name}]]></groupExpression>
+	</group>
+	<group name="patient_name">
+		<groupExpression><![CDATA[$F{patient_name}]]></groupExpression>
+	</group>
+	<group name="qty">
+		<groupExpression><![CDATA[$F{qty}]]></groupExpression>
+	</group>
+	<group name="medi_code">
+		<groupExpression><![CDATA[$F{medi_code}]]></groupExpression>
+	</group>
+	<group name="medicine_name">
+		<groupExpression><![CDATA[$F{medicine_name}]]></groupExpression>
+	</group>
+	<group name="description">
+		<groupExpression><![CDATA[$F{description}]]></groupExpression>
+	</group>
+	<group name="unit_price">
+		<groupExpression><![CDATA[$F{unit_price}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="3" width="358" height="37" uuid="b08d9f44-34e2-4e18-b1a2-ca072fd611ae"/>
+				<textElement markup="styled">
+					<font fontName="Arial Black" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Order's Details]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="3" width="90" height="70" uuid="f5f7e19d-23a7-484b-8889-062312df2d9f"/>
+				<imageExpression><![CDATA["G:/Final Project Semster/channelingCenter/src/main/resources/assets/final logo .png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="172" y="36" width="210" height="30" uuid="883d9550-3843-468c-9a05-a532794ec406"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ayuwarna Channeling Center]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-20" y="87" width="595" height="1" uuid="bcb2f7bc-6bdf-4245-bf18-2ec82cbdc512"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<detail>
+		<band height="495" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="18" width="160" height="30" uuid="3ab1fa9a-c1ec-49f6-9077-0fa9e3e9b663"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appoinment_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="18" width="100" height="30" uuid="53e3a13c-6a79-4682-9445-839b39fce316"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Appoinment ID ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="474" y="0" width="100" height="30" uuid="b1383c60-6b0e-44b0-a38e-ef0ee75d1722"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="0" width="100" height="30" uuid="c6dd1d68-4902-4a68-b9cc-494e2627809d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="48" width="160" height="30" uuid="ac7c7a41-77c7-4ce6-b04c-835690d27857"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patient_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="48" width="100" height="30" uuid="5d60226b-fc65-40da-a9dc-ae6d7fab88a1"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="78" width="160" height="30" uuid="a673e225-636c-45a1-bc70-501bf9474a32"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doctor_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="78" width="130" height="30" uuid="5ef848f9-2a7a-48f1-9676-acc4b15e99e0"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Channeling Doctor Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="240" width="149" height="30" uuid="712c68eb-bf3e-46a2-941e-f64b928f82c5"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="240" width="136" height="30" uuid="d875a407-f945-49e7-821d-cf31e5428cb2"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Number Of Tablets]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="180" width="149" height="30" uuid="8062af06-b9df-4095-9918-8b60e6c441d6"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medi_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="180" width="136" height="30" uuid="aa0a5547-9d83-4f8d-bece-b336a808204c"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Medicine Code]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="211" width="149" height="30" uuid="3c17c16a-5066-469f-9bd0-c4d5a1f1cc7f"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicine_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="211" width="136" height="30" uuid="0a4e9a71-d218-4ec1-9d43-25613d7ac57b"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="270" width="149" height="30" uuid="57b8cfd9-1b48-4425-813c-354d41231e2f"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="270" width="136" height="30" uuid="e6d038ec-e3ca-4130-b8c8-52f8863786a6"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Medicine Description]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="312" width="149" height="30" uuid="7d820364-8f13-4778-a3b4-271a55bccc6c"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="312" width="136" height="30" uuid="527c6e20-cfcc-4cb2-a4bb-94f6799e3e26"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Price Of Tablets]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="180" height="30" uuid="d322ee20-5ef0-48d8-ab52-3c77726b6d5d"/>
+				<textElement>
+					<font size="20" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="460" width="100" height="30" uuid="1df50dfd-dc07-41cb-b6e8-fbc6ed2234e4"/>
+				<textElement textAlignment="Center">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[- End -]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
