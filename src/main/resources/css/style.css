@@ -155,3 +155,35 @@
 .text:hover{
     -fx-effect: dropshadow(gaussian, #6586A3, 15, 0, 0, 0);
 }
+.part1_pane{
+    -fx-background-color: #ffffff;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+}
+.part1_pane:hover{
+    -fx-background-color: #809BCE;
+}
+.part2_pane{
+    -fx-background-color: #ffffff;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+}
+.part2_pane:hover{
+    -fx-background-color: #B8E0D2;
+}
+.part3_pane{
+    -fx-background-color: #ffffff;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+}
+.part3_pane:hover{
+    -fx-background-color: #D6EADF;
+}
+.part4_pane{
+    -fx-background-color: #ffffff;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+}
+.part4_pane:hover{
+    -fx-background-color: #EAC4D5;
+}

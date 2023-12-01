@@ -403,48 +403,48 @@ public class LabReportsFromController {
     }
 
 
-        void ReportbtnOnActhion() throws JRException, SQLException {
-            InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
-            JasperDesign load = JRXmlLoader.load(resourceAsStream);
-            JRDesignQuery jrDesignQuery = new JRDesignQuery();
-            jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
-            load.setQuery(jrDesignQuery);
+    void ReportbtnOnActhion() throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT * FROM labreport WHERE lab_reportId = " + "\"" + txtSearchId.getText() + "\"");
+        load.setQuery(jrDesignQuery);
 
-            JasperReport jasperReport = JasperCompileManager.compileReport(load);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
-            JasperViewer.viewReport(jasperPrint, false);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
 
-            // Optionally, export to PDF after viewing the report
-            exportReportToPDF(jasperPrint, "output.pdf");
+        // Optionally, export to PDF after viewing the report
+        exportReportToPDF(jasperPrint, "output.pdf");
+    }
+
+    public void btnPrintReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        ReportbtnOnActhion();
+    }
+    private void exportReportToPDF(JasperPrint jasperPrint, String outputFileName) throws JRException {
+        JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
+        System.out.println("Report exported to PDF: " + outputFileName);
+    }
+
+
+    @FXML
+    void btnEmailOnAction(ActionEvent event) {
+        String email = txtEmail.getText();
+        String title = "Lab Report";
+        sendMail("Thank you for choosing our service !", "Thank you for choosing our service !.", email);
+    }
+
+    private boolean sendMail(String title,String message,String gmail){
+
+        System.out.println(title+" "+message+" "+gmail);
+        try {
+            new SendEmail().sendMail(title,message,gmail);
+            return true;
+        } catch (IOException | MessagingException | GeneralSecurityException e) {
+            e.printStackTrace();
+            return false;
         }
-
-        public void btnPrintReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-            ReportbtnOnActhion();
-        }
-        private void exportReportToPDF(JasperPrint jasperPrint, String outputFileName) throws JRException {
-            JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
-            System.out.println("Report exported to PDF: " + outputFileName);
-        }
-
-
-        @FXML
-        void btnEmailOnAction(ActionEvent event) {
-            String email = txtEmail.getText();
-            String title = "Lab Report";
-            sendMail("Thank you for choosing our service !", "Thank you for choosing our service !.", email);
-        }
-
-        private boolean sendMail(String title,String message,String gmail){
-
-            System.out.println(title+" "+message+" "+gmail);
-            try {
-                new SendEmail().sendMail(title,message,gmail);
-                return true;
-            } catch (IOException | MessagingException | GeneralSecurityException e) {
-                e.printStackTrace();
-                return false;
-            }
-      }
+    }
 //void ReportbtnOnActhion() throws JRException, SQLException {
 //    InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/LabReport.jrxml");
 //    JasperDesign load = JRXmlLoader.load(resourceAsStream);
@@ -613,4 +613,3 @@ public class LabReportsFromController {
 
 
 }
-

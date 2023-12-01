@@ -12,6 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedicineModel {
+    public static String getAll() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT COUNT(*) FROM medicine";
+        try (PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean saveMedicine(final MedicineDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -33,7 +47,7 @@ public class MedicineModel {
     public boolean updateMedicine(final MedicineDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE medicine SET medicine_name = ?,description = ?,qty = ?, unit_price =? WHERE  = medi_code?";
+        String sql = "UPDATE medicine SET medicine_name = ?,description = ?,qty = ?, unit_price =? WHERE medi_code = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getMedi_code());

@@ -270,7 +270,7 @@ public class ForgotPasswordApp {
     }
 
     public static void setEmailCom(String email, int randNum) throws Exception {
-        new ForgotPasswordApp().sendMail("Your, Agent account reset OTP", generateHtmlContent(email, randNum), email);
+        new ForgotPasswordApp().sendMail("Your, User account reset OTP", generateHtmlContent(email, randNum), email);
     }
 
     private static String generateHtmlContent(String email, int randNum) {
@@ -294,7 +294,7 @@ public class ForgotPasswordApp {
                 "</head>\n" +
                 "<body>\n" +
                 "    <div class=\"container\">\n" +
-                "        <h1>Here's your Agent OTP code, @" + email + "!</h1>\n" +
+                "        <h1>Here's your Forgot Password OTP code, @" + email + "!</h1>\n" +
                 "        <h2>Your One-Time Password (OTP) is: <strong>" + randNum + "</strong></h2>\n" +
                 "    </div>\n" +
                 "</body>\n" +
@@ -351,7 +351,6 @@ public class ForgotPasswordApp {
     }
 
     public void verifyOTP(ActionEvent actionEvent) {
-        // TODO: Implement OTP verification logic
         boolean isOTPValid = validateOTP();
         String enteredOTP = getEnteredOTP(); // Get the entered OTP from the user
         int expectedOTP = getGeneratedOTP(); // Replace with the actual OTP you generated or sent
@@ -368,12 +367,10 @@ if (isOTPValid) {
     }
 
     private String getEnteredOTP() {
-        // TODO: Replace this with actual user input
         return "123456"; // Assuming you have a TextField named otpTextField for user input
     }
 
     private int getGeneratedOTP() {
-        // TODO: Replace this with the actual OTP you generated or sent
         return true ? 123456 : 0; // Assuming you have a TextField named otpTextField for user input
     }
 

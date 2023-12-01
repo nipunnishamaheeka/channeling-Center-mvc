@@ -10,18 +10,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="employeePane" prefHeight="694.0" prefWidth="1264.0" styleClass="dashboard_pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeFromController">
+<AnchorPane fx:id="employeePane" prefHeight="694.0" prefWidth="1264.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.EmployeeFromController">
    <children>
-      <Pane prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css">
+      <Pane prefHeight="694.0" prefWidth="1264.0">
          <children>
             <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee OverView">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Text>
-            <Pane layoutX="10.0" layoutY="50.0" prefHeight="632.0" prefWidth="1242.0" stylesheets="@../css/table.css">
+            <Pane layoutX="10.0" layoutY="50.0" prefHeight="632.0" prefWidth="1242.0" stylesheets="@../css/mix.css">
                <children>
-                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0" stylesheets="@../css/table.css">
+                  <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0" stylesheets="@../css/mix.css">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="95.0" text="Employee ID" />
                         <TableColumn fx:id="colName" prefWidth="258.4000244140625" text="Employee Name" />

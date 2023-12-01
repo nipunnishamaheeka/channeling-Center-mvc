@@ -166,11 +166,13 @@ public class EmployeeDetailsFromController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee deleted!").show();
                 clearFields();
 
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         String id = lblEmpId.getText();

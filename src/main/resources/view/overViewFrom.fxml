@@ -17,14 +17,14 @@
    <children>
       <Pane layoutX="-15.0" prefHeight="694.0" prefWidth="1266.0" stylesheets="@../css/style.css">
          <children>
-            <Pane layoutX="570.0" layoutY="204.0" prefHeight="483.0" prefWidth="319.0" style="-fx-background-color: white;">
+            <Pane layoutX="570.0" layoutY="204.0" prefHeight="483.0" prefWidth="319.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booked Appoinment">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="tblBookedAppoinment" layoutX="5.0" layoutY="42.0" prefHeight="432.0" prefWidth="310.0">
+                  <TableView fx:id="tblBookedAppoinment" layoutX="5.0" layoutY="42.0" prefHeight="432.0" prefWidth="310.0" stylesheets="@../css/mix.css">
                      <columns>
                         <TableColumn fx:id="colAppointmentId" prefWidth="69.5999755859375" text="AP ID" />
                         <TableColumn fx:id="colPatientName" prefWidth="120.00006103515625" text="Patient Name" />
@@ -104,7 +104,7 @@
                   </Pane>
                   <Pane onMouseClicked="#btnMedicineOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
-                        <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                        <Text fx:id="medicineStock" layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -138,27 +138,37 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <Label layoutX="46.0" layoutY="42.0" text="102">
+                  <Label fx:id="ApoinemntToday" layoutX="46.0" layoutY="42.0" text="102">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
                   <Pane layoutX="14.0" layoutY="130.0" prefHeight="70.0" prefWidth="150.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
                      <children>
-                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Patients">
+                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Appoinments">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </Text>
+                        <Label fx:id="AllAppoinments" layoutX="51.0" layoutY="27.0" prefHeight="44.0" prefWidth="48.0" text="102">
+                           <font>
+                              <Font name="Arial Black" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Pane layoutX="194.0" layoutY="130.0" prefHeight="70.0" prefWidth="150.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
                      <children>
-                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Patients">
+                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </Text>
+                        <Label fx:id="AllDoctors" layoutX="58.0" layoutY="27.0" prefHeight="44.0" prefWidth="48.0" text="102">
+                           <font>
+                              <Font name="Arial Black" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
@@ -183,14 +193,14 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Pane layoutX="911.0" layoutY="204.0" prefHeight="483.0" prefWidth="327.0" style="-fx-background-color: white;">
+            <Pane layoutX="911.0" layoutY="204.0" prefHeight="483.0" prefWidth="327.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="24.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor List">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="tblDoctorList" layoutX="4.0" layoutY="48.0" prefHeight="432.0" prefWidth="319.0">
+                  <TableView fx:id="tblDoctorList" layoutX="4.0" layoutY="48.0" prefHeight="432.0" prefWidth="319.0" stylesheets="@../css/mix.css">
                      <columns>
                         <TableColumn fx:id="colDrId" prefWidth="109.5999755859375" text="DR ID" />
                         <TableColumn fx:id="colDrName" prefWidth="164.00006103515625" text="Doctor Name" />

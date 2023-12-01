@@ -160,7 +160,7 @@ public void initialize() {
         try {
             boolean b = employeeModel.deleteEmployee(code);
             if (b){
-                new Alert(Alert.AlertType.CONFIRMATION,"Deleted").show();
+//                new Alert(Alert.AlertType.CONFIRMATION,"Deleted").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

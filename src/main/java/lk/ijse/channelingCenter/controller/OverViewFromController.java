@@ -26,6 +26,7 @@ import lk.ijse.channelingCenter.dto.tm.AppoinmentTm;
 import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
 import lk.ijse.channelingCenter.model.DoctorModel;
+import lk.ijse.channelingCenter.model.MedicineModel;
 import lk.ijse.channelingCenter.model.PatientModel;
 import lombok.SneakyThrows;
 
@@ -62,6 +63,17 @@ public class OverViewFromController implements Initializable {
 
     @FXML
     private Text doctorToday;
+
+    @FXML
+    private Text medicineStock;
+    @FXML
+    private Label ApoinemntToday;
+
+    @FXML
+    private Label AllAppoinments;
+    @FXML
+    private Label AllDoctors;
+
     AppoinmentModel appoinmentModel = new AppoinmentModel();
     DoctorModel doctorModel = new DoctorModel();
 
@@ -72,6 +84,11 @@ public class OverViewFromController implements Initializable {
         ApoToday.setText(AppoinmentModel.getToday());
         patientToday.setText(PatientModel.getAll());
         doctorToday.setText(DoctorModel.getAll());
+        medicineStock.setText(MedicineModel.getAll());
+        ApoinemntToday.setText(AppoinmentModel.getToday());
+        AllAppoinments.setText(AppoinmentModel.getAll());
+        AllDoctors.setText(DoctorModel.getAll());
+
         ObservableList<PieChart.Data> observableList = FXCollections.observableArrayList(
                 new PieChart.Data("Acetaminophen", 10),
                 new PieChart.Data("Adderall", 20),

@@ -21,9 +21,7 @@ import lk.ijse.channelingCenter.dto.*;
 import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.dto.tm.MedicineTm;
 import lk.ijse.channelingCenter.dto.tm.PatientTm;
-import lk.ijse.channelingCenter.model.MedicineModel;
-import lk.ijse.channelingCenter.model.PatientModel;
-import lk.ijse.channelingCenter.model.SupplierModel;
+import lk.ijse.channelingCenter.model.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,13 +51,30 @@ public class MedicineFromController {
     public TextField txtUniPrice;
     public TextField txtQty;
     public ComboBox cmbMedicineName;
+
+
+    @FXML
+    private Label completeOrders;
+    @FXML
+    private Label pendingOrders;
+    @FXML
+    private Label totalOrders;
+
+    @FXML
+    private Label totalStock;
     MedicineModel medicineModel = new MedicineModel();
 
+CompleteOrderModel completeOrderModel = new CompleteOrderModel();
     public void initialize() throws SQLException {
+        completeOrders.setText(completeOrderModel.getAllOrders());
+        pendingOrders.setText(AppoinmentModel.getPendingOrders());
+        totalStock.setText(MedicineModel.getAll());
+        totalOrders.setText(AppoinmentModel.getAll());
         loadAllMedicine();
         setMedicineCode();
         setCellValueFactory();
         loadMedicineTypes();
+
     }
 
 //    private void loadSupplierNames() {
@@ -181,6 +196,27 @@ private void loadMedicineTypes() {
 
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+        String id = lblCode.getText();
+        String medicineName = String.valueOf(cmbMedicineName.getValue());
+        String description = txtDescription.getText();
+        String qty = txtQty.getText();
+        String unitPrice = txtUniPrice.getText();
+
+        MedicineDto itemDto = new MedicineDto(id, medicineName, description, qty, unitPrice);
+
+        try {
+            MedicineModel medicineModel = new MedicineModel();
+            boolean isUpdated = medicineModel.updateMedicine(itemDto);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Medicine updated!").show();
+                clearFields();
+                loadAllMedicine();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Medicine not updated!").show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

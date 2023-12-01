@@ -5,7 +5,6 @@ import lk.ijse.channelingCenter.dto.PaymentDto;
 import lk.ijse.channelingCenter.dto.PlaceOrderDto;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlaceOrderModel {
@@ -55,7 +54,7 @@ public class PlaceOrderModel {
                     if (!dto.getTmlist().isEmpty()) {
                         boolean isMediUpdate = new MedicineModel().updateMedicineQty(dto.getTmlist());
                         if (isMediUpdate) {
-                            boolean isOrderSave = new completeOrderModel().saveOrder(dto.getAppoinment_id(), dto.getTmlist());
+                            boolean isOrderSave = new CompleteOrderModel().saveOrder(dto.getAppoinment_id(), dto.getTmlist());
                             if (isOrderSave) {
                                 connection.commit();
                                 result = true;

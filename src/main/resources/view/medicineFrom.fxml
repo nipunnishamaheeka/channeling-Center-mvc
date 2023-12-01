@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -27,7 +28,7 @@
       </Pane>
       <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
          <children>
-            <TableView fx:id="tblMedicine" layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0">
+            <TableView fx:id="tblMedicine" layoutX="380.0" layoutY="150.0" prefHeight="474.0" prefWidth="861.0" stylesheets="@../css/mix.css">
                <columns>
                   <TableColumn fx:id="colMediCode" prefWidth="90.4000244140625" text="Medi Code" />
                   <TableColumn fx:id="colMedicineName" prefWidth="217.5999755859375" text="Medicine Name" />
@@ -36,12 +37,18 @@
                   <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="111.2001953125" text="Unit Price" />
                   <TableColumn fx:id="ColDelete" prefWidth="76.0" text="User Action" />
                </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="table-cell" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
             </TableView>
             <HBox layoutX="305.0" layoutY="38.0" prefHeight="82.0" prefWidth="639.0" spacing="80.0" style="-fx-background-color: Tranprent;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="part1_pane" stylesheets="@../css/style.css">
                      <children>
-                        <Label contentDisplay="CENTER" text="2000" textFill="#25bcb7">
+                        <Label fx:id="totalOrders" contentDisplay="CENTER" text="2000">
                            <font>
                               <Font name="Arial Bold" size="26.0" />
                            </font>
@@ -53,23 +60,23 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="part2_pane" stylesheets="@../css/style.css">
                      <children>
-                        <Label contentDisplay="CENTER" text="2000" textFill="#166f6f">
+                        <Label fx:id="totalStock" contentDisplay="CENTER" text="2000">
                            <font>
                               <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label contentDisplay="CENTER" text="Total Delivered">
+                        <Label contentDisplay="CENTER" text="Total Stock">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="part3_pane" stylesheets="@../css/style.css">
                      <children>
-                        <Label contentDisplay="CENTER" text="2000">
+                        <Label fx:id="pendingOrders" contentDisplay="CENTER" text="2000">
                            <font>
                               <Font name="Arial Bold" size="26.0" />
                            </font>
@@ -81,14 +88,14 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c5c6c6;">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="part4_pane" stylesheets="@../css/style.css">
                      <children>
-                        <Label contentDisplay="CENTER" text="2000">
+                        <Label fx:id="completeOrders" contentDisplay="CENTER" text="0">
                            <font>
                               <Font name="Arial Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label contentDisplay="CENTER" text="Orders on Hold">
+                        <Label contentDisplay="CENTER" text="Complete Orders">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>

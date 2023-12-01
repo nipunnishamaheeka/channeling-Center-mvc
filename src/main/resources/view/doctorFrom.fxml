@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -61,7 +62,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1151.0">
+            <TableView fx:id="tblDoctor" layoutX="29.0" layoutY="322.0" prefHeight="356.0" prefWidth="1151.0" stylesheets="@../css/mix.css">
                <columns>
                   <TableColumn fx:id="tblId" prefWidth="75.0" text="Doctor ID" />
                   <TableColumn fx:id="tblName" prefWidth="195.1999969482422" text="Doctor Name" />
@@ -72,6 +73,12 @@
                   <TableColumn fx:id="tblDrFee" prefWidth="92.0" text="DR Fee" />
                   <TableColumn fx:id="colDelete" prefWidth="76.00006103515625" text="Action" />
                </columns>
+               <styleClass>
+                  <String fx:value="tab_pane" />
+                  <String fx:value="table-cell" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
             </TableView>
             <Button layoutX="983.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">
                <cursor>

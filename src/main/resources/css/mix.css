@@ -1,0 +1,47 @@
+/* Combined styles for TableView */
+.table-view {
+    -fx-background-color: #f0f0f0; /* Background color of the table */
+}
+
+/* Styles for TableHeader */
+.table-view .column-header {
+    -fx-background-color: #4CAF50; /* Header background color */
+    -fx-text-fill: white; /* Header text color */
+    -fx-font-weight: bold; /* Header font weight */
+}
+
+/* Styles for TableRows */
+.table-view .table-row-cell {
+    -fx-background-color: #ffffff; /* Row background color */
+    -fx-text-fill: #333333; /* Row text color */
+}
+
+/* Styles for alternating rows */
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f5f5f5; /* Alternate row background color */
+}
+
+/* Styles for selected rows */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #81C784; /* Selected row background color */
+    -fx-text-fill: white; /* Selected row text color */
+}
+
+/* Styles for cell content alignment */
+.table-view .table-cell {
+    -fx-font: 14px "Arial";
+    -fx-padding: 10px;
+    -fx-alignment: CENTER; /* Align cell content to center */
+}
+
+/* Styles for TableView borders */
+.table-view .column-header, .table-view .table-row-cell {
+    -fx-border-color: #d1d1d1; /* Border color */
+    -fx-border-width: 0.5; /* Border width */
+    -fx-border-style: solid; /* Border style */
+}
+
+/* Hover effect for rows */
+.table-view .table-row-cell:hover {
+    -fx-background-color: #e0e0e0; /* Hovered row background color */
+}

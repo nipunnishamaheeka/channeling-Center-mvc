@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -36,7 +37,7 @@
         </Pane>
         <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
             <children>
-                <TableView fx:id="tblMedicine" layoutX="43.0" layoutY="229.0" prefHeight="388.0" prefWidth="861.0">
+                <TableView fx:id="tblMedicine" layoutX="43.0" layoutY="229.0" prefHeight="388.0" prefWidth="861.0" stylesheets="@../css/mix.css">
                     <columns>
                         <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Medi Code" />
                         <TableColumn fx:id="colDescription" prefWidth="320.0" text="Medicine Details" />
@@ -45,6 +46,12 @@
                         <TableColumn fx:id="colTotal" prefWidth="142.39996337890625" text="total" />
                         <TableColumn fx:id="colAction" prefWidth="72.79998779296875" text="User Action" />
                     </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="table-cell" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
                 </TableView>
                 <Pane layoutX="43.0" layoutY="26.0" prefHeight="54.0" prefWidth="1009.0">
                     <children>

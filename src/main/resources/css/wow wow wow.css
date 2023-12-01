@@ -1,0 +1,33 @@
+/* styles.css */
+
+/* Remove default row selection color */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: transparent;
+}
+
+/* Style for odd and even rows */
+.table-view .table-row-cell:filled {
+    -fx-background-color: #f7f7f7; /* Light gray for odd rows */
+}
+
+.table-view .table-row-cell:filled:even {
+    -fx-background-color: #e0e0e0; /* Slightly darker gray for even rows */
+}
+
+/* Header style */
+.table-view .column-header-background {
+    -fx-background-color: #333; /* Dark background color for headers */
+    -fx-text-fill: white; /* White text color for headers */
+}
+
+/* Cell padding and text alignment */
+.table-view .table-cell {
+    -fx-font: 14px "Arial";
+    -fx-padding: 10px;
+    -fx-alignment: CENTER;
+}
+
+/* Hover effect for cells */
+.table-view .table-cell:hover {
+    -fx-background-color: #d0e6f5; /* Light blue on hover */
+}

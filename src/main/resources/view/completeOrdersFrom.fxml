@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,13 +17,20 @@
                         <Font name="Arial Bold" size="30.0" />
                     </font>
                 </Text>
-            <TableView fx:id="tblMedicine" layoutX="16.0" layoutY="67.0" prefHeight="311.0" prefWidth="882.0">
+            <TableView fx:id="tblMedicine" layoutX="30.0" layoutY="67.0" prefHeight="311.0" prefWidth="882.0" stylesheets="@../css/mix.css">
                <columns>
                   <TableColumn fx:id="colAppoinment_id" prefWidth="119.19998741149902" text="Appoinment ID " />
                   <TableColumn fx:id="colPatientName" prefWidth="260.8000183105469" text="Patient Name" />
                   <TableColumn fx:id="colDocName" prefWidth="310.3999328613281" text="Doctor Name" />
                   <TableColumn fx:id="colAction" prefWidth="191.2000732421875" text="Action" />
                </columns>
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="tab_pane" />
+                  <String fx:value="table-cell" />
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="table-view" />
+               </styleClass>
             </TableView>
             </children></Pane>
     </children>
