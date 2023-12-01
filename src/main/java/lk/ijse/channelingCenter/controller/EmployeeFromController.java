@@ -70,8 +70,8 @@ public void initialize() {
         colName.setCellValueFactory(new PropertyValueFactory<>("emp_name"));
         //colAddress.setCellValueFactory(new PropertyValueFactory<>("emp_address"));
         colNumber.setCellValueFactory(new PropertyValueFactory<>("mobile_number"));
-        colQulification.setCellValueFactory(new PropertyValueFactory<>("qualification"));
         colJob.setCellValueFactory(new PropertyValueFactory<>("job_role"));
+        colQulification.setCellValueFactory(new PropertyValueFactory<>("qualification"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateButton"));
         colDelete.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));

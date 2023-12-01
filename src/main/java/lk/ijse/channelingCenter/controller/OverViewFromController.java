@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.DoctorDto;
@@ -25,6 +26,7 @@ import lk.ijse.channelingCenter.dto.tm.AppoinmentTm;
 import lk.ijse.channelingCenter.dto.tm.DoctorTm;
 import lk.ijse.channelingCenter.model.AppoinmentModel;
 import lk.ijse.channelingCenter.model.DoctorModel;
+import lk.ijse.channelingCenter.model.PatientModel;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -52,12 +54,24 @@ public class OverViewFromController implements Initializable {
     public TableColumn colAction;
     public TableView tblBookedAppoinment;
     public TableView tblDoctorList;
+    @FXML
+    private Text ApoToday;
+
+    @FXML
+    private Text patientToday;
+
+    @FXML
+    private Text doctorToday;
     AppoinmentModel appoinmentModel = new AppoinmentModel();
     DoctorModel doctorModel = new DoctorModel();
+
 
     @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ApoToday.setText(AppoinmentModel.getToday());
+        patientToday.setText(PatientModel.getAll());
+        doctorToday.setText(DoctorModel.getAll());
         ObservableList<PieChart.Data> observableList = FXCollections.observableArrayList(
                 new PieChart.Data("Acetaminophen", 10),
                 new PieChart.Data("Adderall", 20),

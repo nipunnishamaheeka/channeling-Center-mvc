@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="channelingCenterReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53509f29-d16d-4571-8935-c8ba18fc91ef">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmployeeReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4c24776-8301-43ab-bf43-3aedfa790b8a">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
 	<queryString language="SQL">
-		<![CDATA[select * from employee where emp_id = "E001"]]>
+		<![CDATA[select * from employee where emp_id = 'E001']]>
 	</queryString>
 	<field name="emp_id" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="emp_id"/>
@@ -21,9 +21,9 @@
 		<property name="com.jaspersoft.studio.field.label" value="emp_address"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
 	</field>
-	<field name="email" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="email"/>
-		<property name="com.jaspersoft.studio.field.label" value="email"/>
+	<field name="mobile_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mobile_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="mobile_number"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
 	</field>
 	<field name="job_role" class="java.lang.String">
@@ -50,8 +50,8 @@
 	<group name="emp_address">
 		<groupExpression><![CDATA[$F{emp_address}]]></groupExpression>
 	</group>
-	<group name="email">
-		<groupExpression><![CDATA[$F{email}]]></groupExpression>
+	<group name="mobile_number">
+		<groupExpression><![CDATA[$F{mobile_number}]]></groupExpression>
 	</group>
 	<group name="job_role">
 		<groupExpression><![CDATA[$F{job_role}]]></groupExpression>
@@ -66,34 +66,37 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="88" splitType="Stretch">
 			<staticText>
-				<reportElement x="154" y="-1" width="240" height="69" uuid="58a47011-ce7e-4354-ab54-d86cb21997a8"/>
-				<textElement textAlignment="Center">
-					<font size="20" isBold="true" isUnderline="false"/>
+				<reportElement x="150" y="3" width="288" height="37" uuid="6df9ebd4-686b-4d2e-b2be-b34f11a435f5"/>
+				<textElement markup="styled">
+					<font fontName="Arial Black" size="24" isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Ayuwarna 
-Channeling Center]]></text>
+				<text><![CDATA[Employee Details]]></text>
 			</staticText>
 			<image>
-				<reportElement x="110" y="0" width="50" height="50" uuid="709fbadb-7c2b-461f-8668-d23541383c6b"/>
+				<reportElement x="20" y="3" width="90" height="70" uuid="90b22e88-b141-489a-9455-cbb9aba348b8"/>
 				<imageExpression><![CDATA["G:/Final Project Semster/channelingCenter/src/main/resources/assets/final logo .png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="172" y="36" width="210" height="30" uuid="7f5e3b86-5c18-4cef-ad64-21de1c8e2e41"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ayuwarna Channeling Center]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-20" y="87" width="595" height="1" uuid="66cf81f6-d31e-4e3b-9821-d49878365c8d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
 		</band>
 	</title>
 	<detail>
-		<band height="304" splitType="Stretch">
+		<band height="515" splitType="Stretch">
 			<textField>
-				<reportElement x="210" y="0" width="120" height="30" uuid="3094315f-5fc9-4751-a7a5-43082471fd5d">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f39b116f-2d62-4f64-9901-18ccd1274901"/>
-				</reportElement>
-				<textElement textAlignment="Left">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{emp_id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="210" y="40" width="147" height="30" uuid="48c94e12-6ca8-4e69-9c17-666213792f6a">
+				<reportElement x="186" y="98" width="147" height="30" uuid="5d67bba1-f336-4f86-8d59-12a1fc9b46b3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f710fedf-98ab-49c4-b1cf-d90c1329f1c2"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -102,7 +105,7 @@ Channeling Center]]></text>
 				<textFieldExpression><![CDATA[$F{emp_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="80" width="131" height="30" uuid="5add73b7-44cb-4ee5-9819-df33e5a29713">
+				<reportElement x="187" y="150" width="131" height="30" uuid="0249fd14-7b66-44df-ab7d-8e3632d11452">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9394ce37-92b0-4b9b-981f-3744fa27f731"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -111,7 +114,7 @@ Channeling Center]]></text>
 				<textFieldExpression><![CDATA[$F{emp_address}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="160" width="126" height="30" uuid="b0f833d3-5786-4701-beb7-4c3c818f8cf0">
+				<reportElement x="186" y="249" width="126" height="30" uuid="76d6bf73-36a8-45a7-83b0-e0ad3f5090d0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d742c354-87c9-451b-953a-779f2f8f4381"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -120,7 +123,7 @@ Channeling Center]]></text>
 				<textFieldExpression><![CDATA[$F{job_role}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="200" width="141" height="30" uuid="3d7073b7-7719-4f2c-97b3-396bcff7eb6b">
+				<reportElement x="186" y="300" width="141" height="30" uuid="fb5a4fbe-9228-45f5-873e-0bb4323bfdf3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d8665d7-5f6d-46fd-980f-d99247b5a354"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -129,7 +132,7 @@ Channeling Center]]></text>
 				<textFieldExpression><![CDATA[$F{qualification}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="211" y="240" width="124" height="30" uuid="d6b5aaa4-3634-43f4-a109-46feef1f7034">
+				<reportElement x="186" y="350" width="124" height="30" uuid="a9532bc6-fd27-46db-97fe-52fa67dda0e6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f669ab73-2d30-4033-bb13-c360c2f1c6a0"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -138,16 +141,7 @@ Channeling Center]]></text>
 				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="50" y="2" width="90" height="19" uuid="a4606a36-c5d5-40c3-8fcb-041335c30840">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f39b116f-2d62-4f64-9901-18ccd1274901"/>
-				</reportElement>
-				<textElement textAlignment="Left">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Employee ID :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="50" y="40" width="110" height="19" uuid="28a52561-f30a-4bec-aeab-6fb1363fd235">
+				<reportElement x="26" y="98" width="110" height="19" uuid="2c45a59e-b0b9-4729-b4b3-54be1a2eb8d2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f710fedf-98ab-49c4-b1cf-d90c1329f1c2"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -156,7 +150,7 @@ Channeling Center]]></text>
 				<text><![CDATA[Employee Name :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="50" y="88" width="71" height="19" uuid="c76268e6-c656-4c48-a743-e92928b69a47">
+				<reportElement x="27" y="150" width="71" height="19" uuid="41d54cf5-e61c-46a1-95d2-45ecdd8b6448">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9394ce37-92b0-4b9b-981f-3744fa27f731"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -165,7 +159,7 @@ Channeling Center]]></text>
 				<text><![CDATA[Address]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="52" y="165" width="66" height="19" uuid="c70d27af-2ddf-4028-9226-b046b748d649">
+				<reportElement x="27" y="250" width="66" height="19" uuid="a8b0a59d-22d8-4fe0-ac18-1ee7593f7d29">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d742c354-87c9-451b-953a-779f2f8f4381"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -174,7 +168,7 @@ Channeling Center]]></text>
 				<text><![CDATA[Job Role]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="52" y="206" width="81" height="19" uuid="8cec56a0-fb6a-40ae-a165-18225b2a200c">
+				<reportElement x="27" y="300" width="120" height="19" uuid="ab9d2ec9-a026-4ff0-ae31-0ee975474c5a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d8665d7-5f6d-46fd-980f-d99247b5a354"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -183,13 +177,55 @@ Channeling Center]]></text>
 				<text><![CDATA[qualification]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="53" y="240" width="64" height="19" uuid="0141bfa1-39e1-4de8-aad9-ea37c0b0b7db">
+				<reportElement x="28" y="350" width="64" height="19" uuid="6a26d177-7ebf-4d7f-b856-e984551782c3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f669ab73-2d30-4033-bb13-c360c2f1c6a0"/>
 				</reportElement>
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[salary]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="501" y="49" width="73" height="30" uuid="9535098c-e032-4de6-a30c-53303b7ebb55"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="415" y="49" width="82" height="30" uuid="4e01fc90-6b3f-400c-980b-4fe6660586fe"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="187" y="200" width="149" height="30" uuid="172f015c-7c29-4f10-aeab-cac6ab58bff7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobile_number}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="200" width="123" height="30" uuid="57620f27-76e7-4d79-83a0-371a26681660"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="16" width="378" height="30" uuid="85cd2ccb-498e-47b9-a9a5-50922296cb4f"/>
+				<textElement>
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Our Channeling Center Employee Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="480" width="40" height="30" uuid="aca6ce00-1e15-47dd-b2a2-e4130f7832f0"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[- End -]]></text>
 			</staticText>
 		</band>
 	</detail>

@@ -30,39 +30,54 @@
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtName" layoutX="38.0" layoutY="108.0" prefHeight="34.0" prefWidth="450.0" promptText="Employee Name" />
-                  <TextField fx:id="txtNumber" layoutX="38.0" layoutY="168.0" prefHeight="34.0" prefWidth="450.0" promptText="Mobile No" />
-                  <TextField fx:id="txtJobRole" layoutX="38.0" layoutY="228.0" prefHeight="34.0" prefWidth="124.0" promptText="Job Role" />
-                  <TextField fx:id="txtSalary" layoutX="38.0" layoutY="288.0" prefHeight="34.0" prefWidth="450.0" promptText="Salary " />
-                  <TextField fx:id="txtAddress" layoutX="38.0" layoutY="348.0" prefHeight="34.0" prefWidth="450.0" promptText="Address" />
-                  <TextField fx:id="txtQulification" layoutX="38.0" layoutY="408.0" prefHeight="34.0" prefWidth="450.0" promptText="Qulification" />
-                  <Button layoutX="276.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="132.0" styleClass="delete_button" stylesheets="@../css/button.css" text="Delete Employee">
+                  <TextField fx:id="txtName" layoutX="231.0" layoutY="138.0" prefHeight="34.0" prefWidth="257.0" promptText="Employee Name" />
+                  <TextField fx:id="txtNumber" layoutX="231.0" layoutY="198.0" prefHeight="34.0" prefWidth="257.0" promptText="Mobile No" />
+                  <TextField fx:id="txtSalary" layoutX="231.0" layoutY="318.0" prefHeight="34.0" prefWidth="257.0" promptText="Salary " />
+                  <TextField fx:id="txtAddress" layoutX="231.0" layoutY="378.0" prefHeight="34.0" prefWidth="257.0" promptText="Address" />
+                  <Button layoutX="107.0" layoutY="512.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="110.0" styleClass="save_button" stylesheets="@../css/button.css" text="Add Employee">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="8.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="110.0" styleClass="save_button" stylesheets="@../css/button.css" text="Add Employee">
+                  <Button layoutX="301.0" layoutY="512.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="140.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Employee">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="132.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" styleClass="update_button" stylesheets="@../css/button.css" text="Update Employee">
+                  <Button layoutX="407.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="110.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="415.0" layoutY="522.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="110.0" styleClass="clear_button" stylesheets="@../css/button.css" text="Clear Felids">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Text layoutX="42.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID : ">
+                  <Text layoutX="161.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID : ">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblEmpId" layoutX="176.0" layoutY="54.0" text="Label">
+                  <Label fx:id="lblEmpId" layoutX="295.0" layoutY="75.0" text="Label">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cmpJobRole" layoutX="176.0" layoutY="228.0" prefHeight="34.0" prefWidth="311.0" promptText="Job Role" />
+                  <ComboBox fx:id="cmpJobRole" layoutX="39.0" layoutY="258.0" prefHeight="34.0" prefWidth="213.0" promptText="Job Role" />
+                  <ComboBox fx:id="cmbQualification" layoutX="274.0" layoutY="259.0" prefHeight="34.0" prefWidth="213.0" promptText="Qualification" />
+                  <Text layoutX="42.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Name : ">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="42.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile Number   :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="42.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment              :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="42.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address              :">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Pane layoutX="582.0" layoutY="83.0" prefHeight="183.0" prefWidth="500.0" styleClass="inter_pane">

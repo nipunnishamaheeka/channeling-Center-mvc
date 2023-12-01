@@ -36,17 +36,17 @@
         </Pane>
         <Pane layoutX="10.0" layoutY="54.0" prefHeight="632.0" prefWidth="1248.0">
             <children>
-                <TableView fx:id="tblMedicine" layoutX="107.0" layoutY="228.0" prefHeight="366.0" prefWidth="802.0">
+                <TableView fx:id="tblMedicine" layoutX="43.0" layoutY="229.0" prefHeight="388.0" prefWidth="861.0">
                     <columns>
                         <TableColumn fx:id="colMediCode" prefWidth="95.0" text="Medi Code" />
-                        <TableColumn fx:id="colDescription" prefWidth="245.60003662109375" text="Medicine Details" />
-                        <TableColumn fx:id="colQty" prefWidth="93.60003662109375" text="QTY" />
-                        <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="111.20001220703125" text="Unit Price" />
-                        <TableColumn fx:id="colTotal" prefWidth="151.199951171875" text="total" />
-                        <TableColumn fx:id="colAction" prefWidth="99.199951171875" text="User Action" />
+                        <TableColumn fx:id="colDescription" prefWidth="320.0" text="Medicine Details" />
+                        <TableColumn fx:id="colQty" prefWidth="108.79998779296875" text="QTY" />
+                        <TableColumn fx:id="colPrice" minWidth="8.800048828125" prefWidth="122.4000244140625" text="Unit Price" />
+                        <TableColumn fx:id="colTotal" prefWidth="142.39996337890625" text="total" />
+                        <TableColumn fx:id="colAction" prefWidth="72.79998779296875" text="User Action" />
                     </columns>
                 </TableView>
-                <Pane layoutX="114.0" layoutY="23.0" prefHeight="54.0" prefWidth="1009.0">
+                <Pane layoutX="43.0" layoutY="26.0" prefHeight="54.0" prefWidth="1009.0">
                     <children>
                         <Text layoutX="6.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinment ID :">
                             <font>
@@ -56,29 +56,19 @@
                         <TextField fx:id="txtAppointmentID" layoutX="152.0" layoutY="18.0" onAction="#btnSearchAppoinmentIDOnAction" />
                     </children>
                 </Pane>
-                <Pane fx:id="visiblePane" layoutX="114.0" layoutY="77.0" prefHeight="145.0" prefWidth="1078.0" visible="false">
+                <Pane fx:id="visiblePane" layoutX="43.0" layoutY="80.0" prefHeight="145.0" prefWidth="1078.0" visible="false">
                     <children>
-                        <Text layoutX="5.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Id : ">
+                        <Text layoutX="445.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Date :">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <Label fx:id="lblOrderId" layoutX="104.0" layoutY="15.0" text="Label">
+                        <Label fx:id="lblDate" layoutX="564.0" layoutY="15.0" text="Label">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Text layoutX="365.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Date :">
-                            <font>
-                                <Font name="Arial Bold" size="18.0" />
-                            </font>
-                        </Text>
-                        <Label fx:id="lblDate" layoutX="484.0" layoutY="15.0" text="Label">
-                            <font>
-                                <Font name="Arial Bold" size="18.0" />
-                            </font>
-                        </Label>
-                        <Text layoutX="5.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Name : ">
+                        <Text layoutX="5.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Name : ">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -89,55 +79,55 @@
                             </font>
                         </Text>
                         <ComboBox fx:id="cmbMedicineId" layoutX="162.0" layoutY="113.0" onAction="#cmbMedicineOnAction" prefWidth="150.0" />
-                        <Text layoutX="365.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Details :">
+                        <Text layoutX="445.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine Details :">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <Text layoutX="685.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tablets :">
+                        <Text layoutX="775.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tablets :">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <Text layoutX="685.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price :">
+                        <Text layoutX="445.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price :">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="txtQty" layoutX="866.0" layoutY="113.0" prefHeight="25.0" prefWidth="67.0" />
-                        <Label fx:id="lblDescription" layoutX="534.0" layoutY="115.0" text="Label">
+                        <TextField fx:id="txtQty" layoutX="956.0" layoutY="113.0" prefHeight="25.0" prefWidth="67.0" />
+                        <Label fx:id="lblDescription" layoutX="614.0" layoutY="115.0" text="Label">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lblUnitPrice" layoutX="831.0" layoutY="67.0" text="Label">
+                        <Label fx:id="lblUnitPrice" layoutX="591.0" layoutY="67.0" text="Label">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lblDoctorName" layoutX="144.0" layoutY="65.0" text="Label">
+                        <Label fx:id="lblDoctorName" layoutX="144.0" layoutY="15.0" text="Label">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Text layoutX="365.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name :">
+                        <Text layoutX="5.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name :">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
-                        <Label fx:id="lblPatientName" layoutX="504.0" layoutY="65.0" text="Label">
+                        <Label fx:id="lblPatientName" layoutX="144.0" layoutY="65.0" text="Label">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="791.0" layoutY="67.0" text="RS :">
+                        <Label layoutX="551.0" layoutY="67.0" text="RS :">
                             <font>
                                 <Font name="Arial Bold" size="16.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
-            <Pane fx:id="cartPane" layoutX="974.0" layoutY="222.0" prefHeight="265.0" prefWidth="200.0" visible="false">
+            <Pane fx:id="cartPane" layoutX="921.0" layoutY="225.0" prefHeight="265.0" prefWidth="200.0" visible="false">
                <children>
                       <Button alignment="TOP_LEFT" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#AddbtnOnActhion" prefHeight="32.0" prefWidth="173.0" styleClass="AddCart" stylesheets="@../css/button.css" text="Add To Cart">
                           <cursor>

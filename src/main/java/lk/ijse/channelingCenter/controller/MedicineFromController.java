@@ -52,12 +52,14 @@ public class MedicineFromController {
     public TableColumn colUpdate;
     public TextField txtUniPrice;
     public TextField txtQty;
+    public ComboBox cmbMedicineName;
     MedicineModel medicineModel = new MedicineModel();
 
     public void initialize() throws SQLException {
         loadAllMedicine();
         setMedicineCode();
         setCellValueFactory();
+        loadMedicineTypes();
     }
 
 //    private void loadSupplierNames() {
@@ -75,7 +77,41 @@ public class MedicineFromController {
 //            throw new RuntimeException(e);
 //        }
 //    }
+private void loadMedicineTypes() {
+    ObservableList<String> obList = FXCollections.observableArrayList();
 
+    // Add "Dr Types" options
+    obList.addAll("Acetaminophen",
+            "Paracetamol",
+            "Ibuprofen",
+            "Aspirin",
+            "Amoxicillin",
+            "Ciprofloxacin",
+            "Lisinopril",
+            "Atorvastatin",
+            "Levothyroxine",
+            "Metformin",
+            "Omeprazole",
+            "Simvastatin",
+            "Gabapentin",
+            "Hydrochlorothiazide",
+            "Losartan",
+            "Amlodipine",
+            "Metoprolol",
+            "Escitalopram",
+            "Sertraline",
+            "Citalopram",
+            "Fluoxetine",
+            "Insulin",
+            "Warfarin",
+            "Diazepam",
+            "Furosemide",
+            "Prednisone",
+            "Acetaminophen",
+            "Hydrocodone",
+            "Oxycodone");
+    cmbMedicineName.setItems(obList);
+}
     private void setMedicineCode() {
         try {
             lblCode.setText(new MedicineModel().autoGenarateMedicineId());
@@ -89,7 +125,7 @@ public class MedicineFromController {
 
         if (isMedicineValid) {
             String id = lblCode.getText();
-            String medicineName = txtMedicineName.getText();
+            String medicineName = String.valueOf(cmbMedicineName.getValue());
             String description = txtDescription.getText();
             String qty = txtQty.getText();
             String unitPrice = txtUniPrice.getText();
@@ -119,7 +155,7 @@ public class MedicineFromController {
 
     private void clearFields() {
         lblCode.setText("");
-        txtMedicineName.setText("");
+        cmbMedicineName.setValue("");
         txtDescription.setText("");
         txtQty.setText("");
         txtUniPrice.setText("");
@@ -139,8 +175,7 @@ public class MedicineFromController {
     }
 
     private boolean validateMedicine() {
-        return validateTextField(txtMedicineName, "^[A-Za-z0-9\\s\\-()&,.]+$")
-                && validateTextField(txtQty, "^\\d+(\\.\\d+)?$")
+        return validateTextField(txtQty, "^\\d+(\\.\\d+)?$")
                 && validateTextField(txtUniPrice, "^\\d+(\\.\\d{1,2})?$");
     }
 
@@ -148,13 +183,6 @@ public class MedicineFromController {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
 
     }
-
-    public void btnClerOnAction(ActionEvent actionEvent) {
-    }
-
-    public void btnDeleteOnAction(ActionEvent actionEvent) {
-    }
-
 
     private void setCellValueFactory() {
 
@@ -269,7 +297,7 @@ public class MedicineFromController {
 
     private void setFields(MedicineDto dto) {
         lblCode.setText(dto.getMedi_code());
-        txtMedicineName.setText(dto.getMedicine_name());
+        cmbMedicineName.setValue(dto.getMedicine_name());
         txtDescription.setText(dto.getDescription());
         txtQty.setText(dto.getQty());
         txtUniPrice.setText(dto.getUnit_price());

@@ -37,14 +37,13 @@
                     <columns>
                         <TableColumn fx:id="colId" prefWidth="100.0" text="Appoinment ID" />
                         <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
-                        <TableColumn fx:id="colPatientId" prefWidth="150.0" text="Patient_ID" />
-                        <TableColumn fx:id="colAge" prefWidth="150.0" text="Age" />
-                        <TableColumn fx:id="colDoctorId" prefWidth="84.0" text="Dr.Id" />
-                        <TableColumn fx:id="colDoctor" prefWidth="193.60003662109375" text="Dr.Name" />
-                        <TableColumn fx:id="colPatientName" prefWidth="150.39996337890625" text="Patient Name" />
-                        <TableColumn fx:id="colUpdate" prefWidth="80.79998779296875" text="User Action" />
-                        <TableColumn fx:id="colDelete" prefWidth="80.79998779296875" text="User Action" />
-                        <TableColumn fx:id="colStatus" prefWidth="80.79998779296875" text="Status" />
+                        <TableColumn fx:id="colPatientId" prefWidth="111.20001220703125" text="Patient ID" />
+                        <TableColumn fx:id="colPatientName" prefWidth="253.60003662109375" text="Patient Name" />
+                        <TableColumn fx:id="colAge" prefWidth="97.5999755859375" text="Age" />
+                        <TableColumn fx:id="colDoctorId" prefWidth="106.4000244140625" text="Dr.Id" />
+                        <TableColumn fx:id="colDoctor" prefWidth="262.4000244140625" text="Dr.Name" />
+                        <TableColumn fx:id="colDelete" prefWidth="71.20001220703125" text="User Action" />
+                        <TableColumn fx:id="colStatus" prefWidth="84.0" text="Status" />
                     </columns>
                 </TableView>
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1189.0" layoutY="69.0" onMouseClicked="#btnrefershonAction" pickOnBounds="true" preserveRatio="true">

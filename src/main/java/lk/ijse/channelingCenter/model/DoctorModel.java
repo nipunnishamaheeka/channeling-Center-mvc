@@ -13,6 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorModel {
+    public static String getAll() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT COUNT(*) FROM doctor";
+        try (PreparedStatement pstm = connection.prepareStatement(sql);
+             ResultSet resultSet = pstm.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
     public boolean saveDoctor(DoctorDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 

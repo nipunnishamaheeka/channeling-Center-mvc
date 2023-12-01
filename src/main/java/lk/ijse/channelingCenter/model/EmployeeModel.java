@@ -130,8 +130,8 @@ public class EmployeeModel {
             String [] tempArray = current.split("E");
             int id = Integer.parseInt(tempArray[1]);
             id++;
-            if (9 > id && id > 0 ) return "E00" +id;
-            else if ((99 > id && id > 9)) return "E0" +id;
+            if (9 >= id && id > 0 ) return "E00" +id;
+            else if ((99 >= id && id > 9)) return "E0" +id;
             else return "E" +id;
         }return "E001";
     }

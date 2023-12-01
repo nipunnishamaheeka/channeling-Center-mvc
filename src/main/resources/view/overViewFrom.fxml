@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="overViewPane" prefHeight="694.0" prefWidth="1264.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.channelingCenter.controller.OverViewFromController">
    <children>
-      <Pane prefHeight="694.0" prefWidth="1266.0" stylesheets="@../css/style.css">
+      <Pane layoutX="-15.0" prefHeight="694.0" prefWidth="1266.0" stylesheets="@../css/style.css">
          <children>
             <Pane layoutX="570.0" layoutY="204.0" prefHeight="483.0" prefWidth="319.0" style="-fx-background-color: white;">
                <children>
@@ -38,7 +38,7 @@
                <children>
                   <Pane onMouseClicked="#btnPatientOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
-                        <Text layoutX="81.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                        <Text fx:id="patientToday" layoutX="81.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -60,7 +60,7 @@
                   </Pane>
                   <Pane onMouseClicked="#btnAppoinmentOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
-                        <Text layoutX="75.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                        <Text fx:id="ApoToday" layoutX="75.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="74.69530487060547">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -82,7 +82,7 @@
                   </Pane>
                   <Pane onMouseClicked="#btnDoctorOnAction" prefHeight="69.0" prefWidth="228.0" styleClass="payment_pane">
                      <children>
-                        <Text layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                        <Text fx:id="doctorToday" layoutX="86.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -126,9 +126,9 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane layoutX="14.0" layoutY="221.0" prefHeight="223.0" prefWidth="545.0" styleClass="card_pane" stylesheets="@../css/overViewPAne.css">
+            <Pane layoutX="44.0" layoutY="224.0" prefHeight="208.0" prefWidth="502.0" styleClass="card_pane" stylesheets="@../css/overViewPAne.css">
                <children>
-                  <ImageView fitHeight="277.0" fitWidth="215.0" layoutX="383.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="263.0" fitWidth="184.0" layoutX="338.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/portrait-doctor-removebg-preview%20(2).png" />
                      </image>
@@ -143,7 +143,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="14.0" layoutY="130.0" prefHeight="80.0" prefWidth="164.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
+                  <Pane layoutX="14.0" layoutY="130.0" prefHeight="70.0" prefWidth="150.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
                      <children>
                         <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Patients">
                            <font>
@@ -152,7 +152,7 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="194.0" layoutY="130.0" prefHeight="80.0" prefWidth="164.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
+                  <Pane layoutX="194.0" layoutY="130.0" prefHeight="70.0" prefWidth="150.0" styleClass="card_inter" stylesheets="@../css/overViewPAne.css">
                      <children>
                         <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old Patients">
                            <font>
@@ -163,14 +163,14 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane layoutX="122.0" layoutY="452.0" prefHeight="236.0" prefWidth="280.0" styleClass="tab_pane" stylesheets="@../css/style.css">
+            <Pane layoutX="42.0" layoutY="452.0" prefHeight="236.0" prefWidth="502.0" styleClass="tab_pane" stylesheets="@../css/style.css">
                <children>
                   <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top Medicine">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Text>
-                  <PieChart fx:id="pieChart" layoutX="25.0" layoutY="24.0" prefHeight="208.0" prefWidth="241.0" />
+                  <PieChart fx:id="pieChart" layoutX="12.0" layoutY="5.0" prefHeight="236.0" prefWidth="480.0" />
                </children>
             </Pane>
             <Text layoutX="76.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, Ayuwarna Channeling Center">

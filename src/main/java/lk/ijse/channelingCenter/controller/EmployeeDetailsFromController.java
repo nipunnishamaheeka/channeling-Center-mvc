@@ -1,12 +1,11 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.channelingCenter.db.DbConnection;
@@ -30,9 +29,10 @@ public class EmployeeDetailsFromController {
     public TextField employeeId;
     public TextField txtEmpName;
     public TextField txtemployeeId;
+    public ComboBox cmpJobRole;
+    public ComboBox cmbQualification;
     @FXML
     private TextField txtAddress;
-
 
 
     @FXML
@@ -56,6 +56,8 @@ public class EmployeeDetailsFromController {
 
     public void initialize() throws SQLException {
         setEmployeeID();
+        loadJobRolesTypes();
+        loadQualificationTypes();
         // validateEmployee();
     }
 
@@ -90,7 +92,7 @@ public class EmployeeDetailsFromController {
             txtName.setStyle("-fx-border-color: red");
             new animatefx.animation.Shake(txtName).play();
             return false;
-        }else {
+        } else {
             txtName.setStyle("-fx-border-color: green");
         }
         String numberText = txtNumber.getText();
@@ -99,66 +101,68 @@ public class EmployeeDetailsFromController {
             txtNumber.setStyle("-fx-border-color: red");
             new animatefx.animation.Shake(txtNumber).play();
             return false;
-        }else{
-                txtNumber.setStyle("-fx-border-color: green");
+        } else {
+            txtNumber.setStyle("-fx-border-color: green");
         }
-        String salaryText =txtSalary.getText();
+        String salaryText = txtSalary.getText();
         boolean isSalaryValid = salaryText.matches("^\\p{Sc}?\\d+(\\.\\d+)?$");
         if (!isSalaryValid) {
             txtSalary.setStyle("-fx-border-color: red");
             new animatefx.animation.Shake(txtSalary).play();
             return false;
-        }else {
+        } else {
             txtSalary.setStyle("-fx-border-color: green");
         }
-        String qulificationText =txtQulification.getText();
-        boolean isQulificationValid = qulificationText.matches("^[A-Za-z0-9\\s.,-]+$");
-        if (!isQulificationValid) {
-            txtSalary.setStyle("-fx-border-color: red");
-            new animatefx.animation.Shake(txtQulification).play();
+        String AddressText = txtSalary.getText();
+        boolean isAddressValid = AddressText.matches("^\\p{Sc}?\\d+(\\.\\d+)?$");
+        if (!isAddressValid) {
+            txtAddress.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtSalary).play();
             return false;
-        }else {
-            txtSalary.setStyle("-fx-border-color: green");
+        } else {
+            txtAddress.setStyle("-fx-border-color: green");
         }
         return true;
     }
-public void btnAddOnAction(ActionEvent actionEvent) {
-    boolean isEmployeeValid = validateEmployee();
 
-    if(isEmployeeValid) {
-        String id = lblEmpId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String number = txtNumber.getText();
-        String jobRole = txtJobRole.getText();
-        String qualification = txtQulification.getText();
-        String salary = txtSalary.getText();
+    public void btnAddOnAction(ActionEvent actionEvent) {
+        boolean isEmployeeValid = validateEmployee();
 
-        EmployeeDto itemDto = new EmployeeDto(id, name, address, number, jobRole, qualification, salary);
+        if (isEmployeeValid) {
+            String id = lblEmpId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String number = txtNumber.getText();
+            String jobRole = String.valueOf(cmpJobRole.getValue());
+            String qualification = String.valueOf(cmbQualification.getValue());
+            String salary = txtSalary.getText();
 
-        try {
-            EmployeeModel employeeModel = new EmployeeModel();
-            boolean isAdded = employeeModel.saveEmployee(itemDto);
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee added",ButtonType.OK).show();
-                clearFields();
-            }else{
-                new Alert(Alert.AlertType.ERROR, "Employee not added",ButtonType.OK).show();
+            EmployeeDto itemDto = new EmployeeDto(id, name, address, number, jobRole, qualification, salary);
+
+            try {
+                EmployeeModel employeeModel = new EmployeeModel();
+                boolean isAdded = employeeModel.saveEmployee(itemDto);
+                if (isAdded) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Employee added", ButtonType.OK).show();
+                    clearFields();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Employee not added", ButtonType.OK).show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } else {
+            //new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
         }
-    }else{
-        //new Alert(Alert.AlertType.ERROR,"Invalid Employee Details", ButtonType.OK).show();
     }
-}
+
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         String id = txtId.getText();
 
         try {
             boolean isDeleted = employeeModel.deleteEmployee(id);
 
-            if(isDeleted) {
+            if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee deleted!").show();
                 clearFields();
 
@@ -173,8 +177,8 @@ public void btnAddOnAction(ActionEvent actionEvent) {
         String name = txtName.getText();
         String address = txtAddress.getText();
         String number = txtNumber.getText();
-        String jobRole = txtJobRole.getText();
-        String qualification = txtQulification.getText();
+        String jobRole = String.valueOf(cmpJobRole.getValue());
+        String qualification = String.valueOf(cmbQualification.getValue());
         String salary = txtSalary.getText();
 
         var EmployeeDto = new EmployeeDto(id, name, address, number, jobRole, qualification, salary);
@@ -202,8 +206,8 @@ public void btnAddOnAction(ActionEvent actionEvent) {
         txtName.setText("");
         txtNumber.setText("");
         txtAddress.setText("");
-        txtJobRole.setText("");
-        txtQulification.setText("");
+        cmpJobRole.setValue("");
+        cmbQualification.setValue("");
         txtSalary.setText("");
     }
 
@@ -212,19 +216,21 @@ public void btnAddOnAction(ActionEvent actionEvent) {
         employeeDetailsPane.getChildren().add(FXMLLoader.load(this.getClass().getResource("/View/employeeFrom.fxml")));
 
     }
+
     void ReportbtnOnActhion() throws JRException, SQLException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/channelingCenterReport.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Reports/EmployeeReport.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JRDesignQuery jrDesignQuery = new JRDesignQuery();
-        jrDesignQuery.setText("SELECT * FROM employee WHERE emp_id = "+"\""+txtemployeeId.getText()+"\"");
+        jrDesignQuery.setText("SELECT * FROM employee WHERE emp_id = " + "\"" + txtemployeeId.getText() + "\"");
         load.setQuery(jrDesignQuery);
 
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null, DbConnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint,false);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
     }
+
     public void btnGenarateReportOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-ReportbtnOnActhion();
+        ReportbtnOnActhion();
 
     }
 
@@ -235,7 +241,7 @@ ReportbtnOnActhion();
         try {
             EmployeeDto dto = model.searchEmployee(id);
 
-            if(dto != null) {
+            if (dto != null) {
                 fillFields(dto);
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "Employee not found!").show();
@@ -251,12 +257,28 @@ ReportbtnOnActhion();
         txtName.setText(dto.getEmp_name());
         txtAddress.setText(dto.getEmp_address());
         txtNumber.setText(dto.getMobile_number());
-        txtJobRole.setText(dto.getJob_role());
-        txtQulification.setText(dto.getQualification());
+        cmpJobRole.setValue(dto.getJob_role());
+        cmbQualification.setValue(dto.getQualification());
         txtSalary.setText(dto.getSalary());
 
 
     }
+
+    private void loadJobRolesTypes() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        // Add "job Types" options
+        obList.addAll("Doctor", "Nurse", "Receptionist", "Pharmacist", "Lab Assistant", "Cleaner", "Clack", "Other");
+        cmpJobRole.setItems(obList);
+    }
+    private void loadQualificationTypes() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        // Add "job Types" options
+        obList.addAll("Degree(Hons)", "Degree(BA)", "Diploma", "Certificate Course","A/L", "O/L", "Other");
+        cmbQualification.setItems(obList);
+    }
+
 
     public void btnClearReportOnAction(ActionEvent actionEvent) {
         clearFields();

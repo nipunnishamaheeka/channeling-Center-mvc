@@ -13,7 +13,7 @@ public class EmployeeDto {
     private String emp_name;
     private String emp_address;
     private String mobile_number;
-    private String qualification;
     private String job_role;
+    private String qualification;
     private String salary;
 }

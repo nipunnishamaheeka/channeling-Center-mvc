@@ -24,13 +24,13 @@
                   <TableView fx:id="tblEmployeeView" layoutX="3.0" layoutY="48.0" prefHeight="578.0" prefWidth="1242.0" stylesheets="@../css/table.css">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="95.0" text="Employee ID" />
-                        <TableColumn fx:id="colName" prefWidth="176.00001525878906" text="Employee Name" />
-                        <TableColumn fx:id="colNumber" prefWidth="168.800048828125" text="Mobile Number" />
-                        <TableColumn fx:id="colJob" prefWidth="163.199951171875" text="Role" />
-                        <TableColumn fx:id="colSalary" prefWidth="172.7999267578125" text="Salary" />
-                        <TableColumn fx:id="colQulification" prefWidth="150.0" text="Qulification" />
-                        <TableColumn fx:id="colDelete" prefWidth="52.7999267578125" text="Action" />
-                        <TableColumn fx:id="colUpdate" prefWidth="52.7999267578125" text="Action" />
+                        <TableColumn fx:id="colName" prefWidth="258.4000244140625" text="Employee Name" />
+                        <TableColumn fx:id="colNumber" prefWidth="214.39996337890625" text="Mobile Number" />
+                        <TableColumn fx:id="colJob" prefWidth="188.0" text="Role" />
+                        <TableColumn fx:id="colSalary" prefWidth="168.0" text="Salary" />
+                        <TableColumn fx:id="colQulification" prefWidth="201.60003662109375" text="Qulification" />
+                        <TableColumn fx:id="colDelete" prefWidth="59.2000732421875" text="Action" />
+                        <TableColumn fx:id="colUpdate" prefWidth="59.19989013671875" text="Action" />
                      </columns>
                   </TableView>
                   <Pane fx:id="employee" layoutX="1110.0" layoutY="12.0" onMouseClicked="#btnaddemployeeOnAction" prefHeight="35.0" prefWidth="37.0" styleClass="function" stylesheets="@../css/button.css">

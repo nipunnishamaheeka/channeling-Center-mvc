@@ -3,6 +3,7 @@ package lk.ijse.channelingCenter.model;
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.AppoinmentDto;
 import lk.ijse.channelingCenter.dto.PatientDto;
+import lombok.SneakyThrows;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppoinmentModel {
+    @SneakyThrows
+    public static String getToday() {
+        String today = java.time.LocalDate.now().toString();
+        System.out.println(today);
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "SELECT COUNT(*) FROM appoinment WHERE date = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, today);
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
     public boolean saveAppoinment(final AppoinmentDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
