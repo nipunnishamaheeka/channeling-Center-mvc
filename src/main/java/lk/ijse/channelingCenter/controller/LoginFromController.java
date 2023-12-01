@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.channelingCenter.db.DbConnection;
 import lk.ijse.channelingCenter.dto.LoginDto;
@@ -24,7 +25,8 @@ public class LoginFromController {
     public AnchorPane loginPane;
     @FXML
     private Button btnlogin;
-
+    @FXML
+    private Text forgotPass;
     @FXML
     private PasswordField textpassword;
 
@@ -38,7 +40,7 @@ public class LoginFromController {
         String password = textpassword.getText();
         LoginModel model = new LoginModel();
         try {
-            boolean isIn= model.searchUser(new LoginDto(null,userName,password));
+            boolean isIn= model.searchUser(new LoginDto(null,userName,password,null));
             if (!isIn){
                 new Alert(Alert.AlertType.WARNING,"Invalid User Name or Password");
                 textpassword.setStyle("-fx-border-color: red");
@@ -51,6 +53,17 @@ public class LoginFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+    }
+    @FXML
+    void txtForgotOnAction(MouseEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/forgotPasswordFrom.fxml"));
+
+        Scene scene = new Scene(rootNode);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Forgot Password");
+        stage.centerOnScreen();
+        stage.show();
     }
     private void navigateToMainWindow() throws IOException {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/navigationPannelFrom.fxml"));

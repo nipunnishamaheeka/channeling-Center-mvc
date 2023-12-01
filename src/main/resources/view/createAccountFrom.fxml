@@ -33,12 +33,12 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="86.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
+      <Text layoutX="86.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="channeling_center" text="Channelling Center ">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
-      <Text fill="#828181" layoutX="52.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please Create your account.">
+      <Text fill="#828181" layoutX="52.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back! Please Create your account.">
          <font>
             <Font size="48.0" />
          </font>
@@ -47,23 +47,23 @@
             <String fx:value="welcome_back" />
          </styleClass>
       </Text>
-      <Text layoutX="52.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Full name">
+      <Text layoutX="52.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Full name">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFullname" layoutX="52.0" layoutY="311.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your full name" styleClass="promtText-field">
+      <TextField fx:id="txtFullname" layoutX="52.0" layoutY="271.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your full name" styleClass="promtText-field">
             <font>
                 <Font size="24.0" />
             </font>
       </TextField>
 
-      <Text layoutX="52.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Enter Password">
+      <Text layoutX="52.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Enter Password">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="btnlogin" layoutX="53.0" layoutY="662.0" mnemonicParsing="false" onAction="#btncreateYourAccountOnAction" prefHeight="54.0" prefWidth="359.0" style="-fx-background-color: #0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Create Your Account" textFill="WHITE">
+      <Button fx:id="btnlogin" layoutX="53.0" layoutY="681.0" mnemonicParsing="false" onAction="#btncreateYourAccountOnAction" prefHeight="54.0" prefWidth="359.0" style="-fx-background-color: #0067FF;" styleClass="login_button" stylesheets="@../css/style.css" text="Create Your Account" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -71,24 +71,34 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PasswordField fx:id="txtpassword" layoutX="53.0" layoutY="471.0" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
-      <ImageView fitHeight="100.0" fitWidth="96.0" layoutX="162.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+      <PasswordField fx:id="txtpassword" layoutX="53.0" layoutY="511.0" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
+      <ImageView fitHeight="100.0" fitWidth="96.0" layoutX="162.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/final%20logo%20.png" />
          </image>
       </ImageView>
-      <Text layoutX="52.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Confrom Password">
+      <Text layoutX="52.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Confrom Password">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <PasswordField fx:id="txtConfromPassword" layoutX="53.0" layoutY="551.0" prefHeight="44.0" prefWidth="359.0" promptText="Confrom your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
-      <Text layoutX="52.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="User Name">
+      <PasswordField fx:id="txtConfromPassword" layoutX="53.0" layoutY="591.0" prefHeight="44.0" prefWidth="359.0" promptText="Confrom your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
+      <Text layoutX="52.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="User Name">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="390.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
+      <TextField fx:id="txtUsername" layoutX="52.0" layoutY="350.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your user name" styleClass="promtText-field">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Text layoutX="52.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userName" text="Enter Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtEmail" layoutX="52.0" layoutY="430.0" prefHeight="44.0" prefWidth="359.0" promptText="Please enter your email" styleClass="promtText-field">
          <font>
             <Font size="24.0" />
          </font>

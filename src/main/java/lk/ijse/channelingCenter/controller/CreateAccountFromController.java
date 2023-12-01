@@ -34,7 +34,8 @@ public class CreateAccountFromController {
 
     @FXML
     private TextField txtUsername;
-
+    @FXML
+    private TextField txtEmail;
     @FXML
     void txtLoginOnMouseClicked(MouseEvent event) throws IOException {
         Stage stage = new Stage();
@@ -50,12 +51,13 @@ public class CreateAccountFromController {
         String fullname = txtFullname.getText();
         String username = txtUsername.getText();
         String password = txtpassword.getText();
+        String email = txtEmail.getText();
 
         LoginModel loginModel = new LoginModel();
         if (password.equals(txtConfromPassword.getText())) {
 
             try {
-                boolean isSaved = loginModel.saveUser(new LoginDto(fullname, username, password));
+                boolean isSaved = loginModel.saveUser(new LoginDto(fullname, username, password,email));
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfully").show();
                     return;

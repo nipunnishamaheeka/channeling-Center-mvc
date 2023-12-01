@@ -95,14 +95,13 @@
     -fx-background-radius:10;
 }
 .inter_pane{
-    -fx-background-color: #c5bdef;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
 }
 .tab_pane{
     -fx-background-color:white;
-
-    -fx-background-radius: 1 0;
+    -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-fill: white;
 }

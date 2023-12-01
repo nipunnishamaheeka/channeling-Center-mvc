@@ -74,10 +74,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fill="#0066ff" layoutX="53.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget Password?">
+      <Text fx:id="forgotPass" fill="#0066ff" layoutX="53.0" layoutY="472.0" onMouseClicked="#txtForgotOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget Password?">
          <font>
-            <Font size="11.0" />
-         </font></Text>
+            <Font name="Arial" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Text>
       <PasswordField fx:id="textpassword" layoutX="53.0" layoutY="391.0" prefHeight="44.0" prefWidth="359.0" promptText="Enter your password" styleClass="promtText-field" stylesheets="@../css/style.css" />
       <ImageView fitHeight="100.0" fitWidth="96.0" layoutX="162.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>

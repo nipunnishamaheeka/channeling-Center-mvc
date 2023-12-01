@@ -147,3 +147,46 @@
 .email_button:hover {
     -fx-background-color: #04e35d; /* Darker green on hover */
 }
+
+/* OTP Verification Button */
+.otpVerificationButton {
+    -fx-background-color: #4CAF50; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 12px "Arial Black";
+    /* Padding */
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 2px;          /* Add letter spacing */
+}
+
+.otpVerificationButton:hover {
+    -fx-background-color: #04e35d; /* Darker green on hover */
+}
+
+/* Styles for the email button */
+.email_button {
+    -fx-background-color: #cb03c8; /* Green background color */
+    -fx-text-fill: white;         /* White text color */
+    -fx-font: 12px "Arial Black";
+    -fx-border-radius: 5px;       /* Border radius */
+    -fx-cursor: hand;             /* Cursor on hover */
+    letter-spacing: 2px;          /* Add letter spacing */
+}
+
+.email_button:hover {
+    -fx-background-color: #b201af; /* Darker green on hover */
+}
+
+/* For the Conform button */
+.conformButton {
+    -fx-background-color: #FF5733; /* Orange background color */
+    -fx-text-fill: white;          /* White text color */
+    -fx-font: 12px "Arial Black";
+    -fx-border-radius: 5px;        /* Border radius */
+    -fx-cursor: hand;              /* Cursor on hover */
+    letter-spacing: 2px;           /* Add letter spacing */
+}
+
+.conformButton:hover {
+    -fx-background-color: #E84518; /* Darker orange on hover */
+}
