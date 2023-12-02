@@ -1,5 +1,7 @@
 package lk.ijse.channelingCenter.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import lk.ijse.channelingCenter.dto.EmployeeDto;
@@ -29,10 +31,17 @@ public class AddAppoinmentPatinetDetials {
     public void initialize() throws SQLException {
 
         setPatientID();
-        // loadPatientsBloodGroup();
+        loadPatientsBloodGroup();
     }
 
 
+    private void loadPatientsBloodGroup() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        // Add "Blood Group" options
+        obList.addAll("A_POSITIVE (A+)", "A_NEGATIVE (A-)", "B_POSITIVE (B+)", "B_NEGATIVE (B-)", "AB_POSITIVE (AB+)", "AB_NEGATIVE (AB-)", "O_POSITIVE (O+)", "O_NEGATIVE (O-)");
+        cmbBlood.setItems(obList);
+    }
 
     public void btnOkOnAction(ActionEvent actionEvent) {
         boolean isPatientValid = validatePatinet();
@@ -66,7 +75,7 @@ public class AddAppoinmentPatinetDetials {
                 throw new RuntimeException(e);
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Patient Details").show();
+           // new Alert(Alert.AlertType.ERROR, "Invalid Patient Details").show();
             lblPatientId.requestFocus();
         }
 
@@ -100,19 +109,11 @@ public class AddAppoinmentPatinetDetials {
         }
     }
     private boolean validatePatinet() {
-//        String patinetIdText = lblPatientId.getText();
-//        Pattern compile = Pattern.compile("[P][0-9]{3,}");
-//        Matcher matcher = compile.matcher(patinetIdText);
-//        boolean matches = matcher.matches();
-//
-//        if (!matches) {
-//            new Alert(Alert.AlertType.ERROR, "Invalid Patient ID").show();
-//            return false;
-//        }
         String nameText = txtName.getText();
         boolean isNameValid = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         if (!isNameValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Patient Name").show();
+            txtName.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtName).play();
             return false;
         }
         String gender_title = txtType.getText();
@@ -121,25 +122,29 @@ public class AddAppoinmentPatinetDetials {
         boolean isTitelValid = matcher1.matches();
 
         if (!isTitelValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Gender").show();
+            txtType.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtType).play();
             return false;
         }
         String numberText = txtNumber.getText();
         boolean isNumberValid = Pattern.compile("[(07)]\\d{9}|[+]\\d{11}").matcher(numberText).matches();
         if (!isNumberValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Patient Number").show();
+            txtNumber.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtNumber).play();
             return false;
         }
         String ageText = txtAge.getText();
         boolean isAgeValid = Pattern.compile("\\d{2}").matcher(ageText).matches();
         if (!isAgeValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Patient Age").show();
+            txtAge.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtAge).play();
             return false;
         }
         String emailText = txtEmail.getText();
         boolean isEmailValid = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}").matcher(emailText).matches();
         if (!isEmailValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Patient Email").show();
+            txtEmail.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtEmail).play();
             return false;
         }
         return true;

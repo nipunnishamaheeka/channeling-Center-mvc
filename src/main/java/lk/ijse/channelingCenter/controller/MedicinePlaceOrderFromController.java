@@ -233,7 +233,6 @@ public class MedicinePlaceOrderFromController {
 
     @FXML
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException {
-        String orderId = lblOrderId.getText();
         String appoinmentId = txtAppointmentID.getText();
         Date date = Date.valueOf(LocalDate.now());
         Time time = Time.valueOf(LocalTime.now());
@@ -244,7 +243,7 @@ public class MedicinePlaceOrderFromController {
             tmList.add(tm);
         }
 
-        PlaceOrderDto placeOrderDto = new PlaceOrderDto(appoinmentId, orderId, date, time, netTotal, tmList);
+        PlaceOrderDto placeOrderDto = new PlaceOrderDto(appoinmentId, date, time, netTotal, tmList);
 
         var placeOrderModel = new PlaceOrderModel();
         boolean isPlaced = placeOrderModel.placeOrder(placeOrderDto);

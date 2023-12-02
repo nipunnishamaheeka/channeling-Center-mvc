@@ -34,7 +34,7 @@ public class EmployeeModel {
     public  boolean updateEmployee(final EmployeeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE employee SET emp_name = ?, emp_address = ?, email = ?, job_role = ?, qualification = ?, salary = ? WHERE emp_id = ?";
+        String sql = "UPDATE employee SET emp_name = ?, emp_address = ?, mobile_number = ?, job_role = ?, qualification = ?, salary = ? WHERE emp_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getEmp_name());

@@ -127,7 +127,7 @@ public class DoctorFromController {
                 throw new RuntimeException(e);
             }
         }else {
-            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
+           // new Alert(Alert.AlertType.ERROR, "Invalid Doctor Details", ButtonType.OK).show();
         }
     }
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -289,19 +289,22 @@ public class DoctorFromController {
         String nameText = txtName.getText();
         boolean isNameValid = nameText.matches("[A-Za-z][A-Za-z. ]{3,}");
         if (!isNameValid) {
-            new Alert((Alert.AlertType.ERROR), "Invalid Name").show();
+            txtName.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtName).play();
             return false;
         }
         String emailText = txtEmail.getText();
         boolean isEmailValid = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}").matcher(emailText).matches();
         if (!isEmailValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Email").show();
+           txtEmail.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtEmail).play();
             return false;
         }
         String numberText = txtNumber.getText();
         boolean isNumberValid = Pattern.compile("[07]\\d{9}").matcher(numberText).matches();
         if (!isNumberValid) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Doctor Number").show();
+            txtNumber.setStyle("-fx-border-color: red");
+            new animatefx.animation.Shake(txtNumber).play();
             return false;
         }
         return true;

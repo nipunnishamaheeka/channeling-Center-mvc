@@ -208,10 +208,12 @@ public class ForgotPasswordApp {
     @FXML
     private Pane changePasswordVisiblePane;
 
+    @FXML
+    private Button btnVerifiyOtp;
 
     @FXML
     private Pane visiblePane;
-
+static int randNum;
     @FXML
     void btnResetOnAction(ActionEvent event) {
         String password = txtpassword.getText();
@@ -350,38 +352,55 @@ public class ForgotPasswordApp {
         visiblePane.setVisible(true);
     }
 
-    public void verifyOTP(ActionEvent actionEvent) {
+//    public void verifyOTP(ActionEvent actionEvent) {
+//        boolean isOTPValid = validateOTP();
+//        String enteredOTP = generateRandomOTP(); // Get the entered OTP from the user
+//        int expectedOTP = getGeneratedOTP(); // Replace with the actual OTP you generated or sent
+//if (isOTPValid) {
+//    if (expectedOTP == Integer.parseInt(enteredOTP)) {
+//        new Alert(Alert.AlertType.INFORMATION, "OTP verified. You can reset your password now.").show();
+//        changePasswordVisiblePane.setVisible(true);
+//    } else {
+//        new Alert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.").show();
+//    }
+//}else{
+//
+//}
+//    }
+//
+//    private String getEnteredOTP() {
+//        return "123456"; // Assuming you have a TextField named otpTextField for user input
+//    }
+//
+//    private int getGeneratedOTP() {
+//        return true ? 123456 : 0; // Assuming you have a TextField named otpTextField for user input
+//    }
+
+    @FXML
+    void btnVerifiyOtpOnAction(ActionEvent event) {
         boolean isOTPValid = validateOTP();
-        String enteredOTP = getEnteredOTP(); // Get the entered OTP from the user
-        int expectedOTP = getGeneratedOTP(); // Replace with the actual OTP you generated or sent
-if (isOTPValid) {
-    if (expectedOTP == Integer.parseInt(enteredOTP)) {
-        new Alert(Alert.AlertType.INFORMATION, "OTP verified. You can reset your password now.").show();
-        changePasswordVisiblePane.setVisible(true);
-    } else {
-        new Alert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.").show();
+        String enteredOTP = String.valueOf(generateRandomOTP()); // Get the entered OTP from the user
+        int expectedOTP = generateRandomOTP(); // Replace with the actual OTP you generated or sent
+        if (isOTPValid) {
+            if (expectedOTP == Integer.parseInt(enteredOTP)) {
+                new Alert(Alert.AlertType.INFORMATION, "OTP verified. You can reset your password now.").show();
+                changePasswordVisiblePane.setVisible(true);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.").show();
+            }
+        }
     }
-}else{
-
-}
-    }
-
-    private String getEnteredOTP() {
-        return "123456"; // Assuming you have a TextField named otpTextField for user input
-    }
-
-    private int getGeneratedOTP() {
-        return true ? 123456 : 0; // Assuming you have a TextField named otpTextField for user input
-    }
-
     private int generateRandomOTP() {
+
         SecureRandom random = new SecureRandom();
-        return 100000 + random.nextInt(900000); // Generates a 6-digit random number
+        int randNum =  100000 + random.nextInt(900000);
+        System.out.println(randNum);// Generates a 6-digit random number
+    return randNum;
     }
 
     private boolean validateOTP() {
-        String numberText = otpTextField.getText();
-        boolean isNumberValid = Pattern.compile(String.valueOf(generateRandomOTP())).matcher(numberText).matches();
+       otpTextField.getText();
+        boolean isNumberValid = CheckOTP();
         if (!isNumberValid) {
             otpTextField.setStyle("-fx-border-color: red");
             new animatefx.animation.Shake(otpTextField).play();
@@ -390,6 +409,11 @@ if (isOTPValid) {
             otpTextField.setStyle("-fx-border-color: green");
         }
         return true;
+    }
+    private boolean CheckOTP(){
+        if (generateRandomOTP() == Integer.parseInt(otpTextField.getText())) {
+            return true;
+        }return false;
     }
 }
 

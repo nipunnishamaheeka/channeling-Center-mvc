@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 public class PlaceOrderDto {
     private String appoinment_id;
-    private String order_id;
     private Date date;
     private Time time;
     private double amount;

@@ -78,6 +78,7 @@
                   <String fx:value="table-cell" />
                   <String fx:value="table-row-cell" />
                   <String fx:value="table-view" />
+                  <String fx:value="column-header" />
                </styleClass>
             </TableView>
             <Button layoutX="983.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="147.0" styleClass="update_button" stylesheets="@../css/button.css" text="Update Doctor">
